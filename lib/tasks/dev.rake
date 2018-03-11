@@ -2,12 +2,15 @@ namespace :dev do
   task fake_ticket: :environment do
     Ticket.destroy_all
 
+    now = Time.now
+    a_day_ago = now - 60*60*24
+
     25.times do |i|
       Ticket.create!(
         airline: FFaker::Airline.name,
         flight_no: FFaker::Airline.flight_number,
         flight_date: FFaker::Time.date,
-        flight_time: FFaker::Time.datetime,
+        flight_time: rand(a_day_ago..now),
         departure: FFaker::Address.city,
         destination: FFaker::Address.city,
         name: FFaker::Name.name.upcase, 
