@@ -2,9 +2,11 @@ namespace :dev do
   task fake_ticket: :environment do
     Ticket.destroy_all
 
+    #from creating rand time of ticket
     now = Time.now
     a_day_ago = now - 60*60*24
 
+    #create 25 fack tickets information
     25.times do |i|
       Ticket.create!(
         airline: FFaker::Airline.name,
@@ -23,5 +25,28 @@ namespace :dev do
     puts "now you have #{Ticket.count} tickets data"
   end
 
+  task fake_user: :environment do 
+    User.destroy_all
+
+    10.times do |i|
+      name = FFaker::Name::first_name
+      user = User.new(
+        name: name,
+        email: "#{name}@example.co",
+        password: "12345678",
+      )
+      user.save!
+      puts user.name
+    end
+
+    User.create(
+      email: "root@example.com",
+      password: 12345678,
+      name: "Admin",
+      role: "admin"
+      )
+    puts "admin has been created"
+
+  end
 
 end
