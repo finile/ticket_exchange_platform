@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
 
-  before_action :set_ticket, only: [:show, :edit, :update]
+  before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
     def index
       @tickets = Ticket.all
@@ -33,6 +33,12 @@ class TicketsController < ApplicationController
         flash.now[:alert] = "Ticket was failed to update"
         render :edit
       end 
+    end
+
+    def destroy
+      @ticket.destroy
+      redirect_to tickets_path
+      flash[:alert] = "Ticket was deleted"
     end
 
   private
