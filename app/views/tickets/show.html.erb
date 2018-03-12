@@ -18,8 +18,12 @@ Others: <%= @ticket.others %><br>
          <p><%= simple_format comment.content %></p>
          <p class="text-muted">
            <em><%= time_ago_in_words(comment.created_at) %> ago -</em>
+           <% if current_user.admin? %>
+             <%= link_to "Delete", ticket_comment_path(@ticket, comment), method: :delete %>
+           <% end %>
          </p>
        </div>
+
        <hr>
       <% end %>
 
