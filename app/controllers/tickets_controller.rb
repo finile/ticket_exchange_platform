@@ -5,7 +5,7 @@ class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
     def index
-      @tickets = Ticket.all
+      @tickets = Ticket.all.where({flight_date: (Time.now.midnight - 150.day)..Time.now.midnight}).limit(10)
     end
 
     def new
