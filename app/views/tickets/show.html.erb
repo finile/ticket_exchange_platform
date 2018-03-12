@@ -12,16 +12,28 @@ Others: <%= @ticket.others %><br>
 <br>
 <div class="container">
   <div class="row">
-   <%= form_for [@ticket, @comment] do |f| %>
-    <div class="form-group">
-      <%= f.text_area :content, placeholder: "留言給賣家", class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= f.submit class: "btn btn-primary" %>
-      <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
-    </div>
-  <% end %>
+    <% @tickt.comments.each do |comment| %>
+       <div>
+         <h4><%= comment.user %></h4>
+         <p><%= simple_format comment.content %></p>
+         <p class="text-muted">
+           <em><%= time_ago_in_words(comment.created_at) %> ago -</em>
+         </p>
+       </div>
+       <hr>
+      <% end %>
+
+     <%= form_for [@ticket, @comment] do |f| %>
+      <div class="form-group">
+        <%= f.text_area :content, placeholder: "留言給賣家", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit class: "btn btn-primary" %>
+        <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+      </div>
+    <% end %>
   </div>
 </div>
+
 
 <%= link_to 'Back to index', tickets_path %>
