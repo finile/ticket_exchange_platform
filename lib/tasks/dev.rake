@@ -15,7 +15,7 @@ namespace :dev do
         flight_time: rand(a_day_ago..now),
         departure: FFaker::Address.city,
         destination: FFaker::Address.city,
-        name: FFaker::Name.name.upcase, 
+        name: FFaker::Name.name.upcase,
         price: rand(1000..10000),
         image: FFaker::Avatar.image,
         others:FFaker::Lorem::sentence(15)
@@ -25,7 +25,7 @@ namespace :dev do
     puts "now you have #{Ticket.count} tickets data"
   end
 
-  task fake_user: :environment do 
+  task fake_user: :environment do
     User.destroy_all
 
     10.times do |i|
@@ -47,6 +47,19 @@ namespace :dev do
       )
     puts "admin has been created"
 
+  end
+
+  task fake_comment: :environment do
+    Ticket.all.each do |ticket|
+      3.times do |i|
+        ticket.comments.create!(
+          content: FFaker::Lorem.sentence,
+          user: User.all.sample
+        )
+      end
+    end
+    puts "have created fake comments"
+    puts "now you have #{Comment.count} comment data"
   end
 
 end
