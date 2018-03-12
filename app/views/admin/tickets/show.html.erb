@@ -9,5 +9,7 @@ Price: <%= @ticket.price %><br>
 Others: <%= @ticket.others %><br>
 
 <br>
-
+<%= link_to 'Favorite', favorite_ticket_path(@ticket), method: :post, class: "btn btn-primary" %>
+<%= link_to 'Unfavorite', unfavorite_ticket_path(@ticket), method: :post, class: "btn btn-info" %>
+<br>
 <%= link_to 'Back to Admin index', admin_tickets_path %>

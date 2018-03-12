@@ -24,6 +24,8 @@
       <%= ticket.others %>
       <%= link_to 'Show', ticket_path(ticket) %>
       <%= link_to 'Edit', edit_ticket_path(ticket) %>
+      <%= link_to 'Favorite', favorite_ticket_path(@ticket), method: :post, class: "btn btn-primary" %>
+      <%= link_to 'Unfavorite', unfavorite_ticket_path(@ticket), method: :post, class: "btn btn-info" %>
     </li>
   <% end %>
 

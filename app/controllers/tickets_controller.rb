@@ -1,8 +1,8 @@
 class TicketsController < ApplicationController
-  
 
 
-  before_action :set_ticket, only: [:show, :edit, :update, :destroy]
+
+  before_action :set_ticket, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite]
 
     def index
       @tickets = Ticket.all
@@ -42,6 +42,19 @@ class TicketsController < ApplicationController
       redirect_to tickets_path
       flash[:alert] = "Ticket was deleted"
     end
+
+    def favorite
+     @ticket = Ticket.find(params[:id])
+      @ticket.favorites.create!(user: current_user)
+      redirect_back(fallback_location: root_path)
+    end
+
+   def unfavorite
+     @ticket = Ticket.find(params[:id])
+     favorites = Favorite.where(ticket: @ticket, user: current_user)
+     favorites.destroy_all
+     redirect_back(fallback_location: root_path)
+   end
 
   private
 

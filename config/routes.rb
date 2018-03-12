@@ -4,10 +4,10 @@ Rails.application.routes.draw do
 
 
   resources :tickets, only: [:index, :show, :create, :edit, :new] do
-  
+
      member do
-        post :favorite
-        post :unfavorite
+      post :favorite
+      post :unfavorite
      end
   end
 resources :searches
