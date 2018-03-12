@@ -4,8 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+   has_many :favorites, dependent: :destroy
+   has_many :favorited_tickets, through: :favorites, source: :ticket
+
+
+
   def admin?
     self.role == "admin"
   end
-  
+
 end
