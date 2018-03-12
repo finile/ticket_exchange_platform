@@ -10,6 +10,7 @@ private
     tickets = Ticket.order(:flight_date)
     tickets = tickets.where("airline like ?", "%#{airline}%") if airline.present?
     tickets = tickets.where("flight_no like ?", "%#{flight_no}%") if flight_no.present?
+    tickets = tickets.where("destination like ?", "%#{destination}%") if destination.present?
     tickets = tickets.where("Date >= ?", date_from) if date_from.present?
     tickets = tickets.where("Date <= ?", date_to) if date_to.present?
     tickets = tickets.where("price >= ?", min_price) if min_price.present?
