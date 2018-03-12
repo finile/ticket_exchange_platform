@@ -1,6 +1,6 @@
 class Admin::TicketsController < ApplicationController
 
-  before_action :authenticate_user!
+  
   before_action :authenticate_admin
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
