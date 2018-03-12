@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   resources :tickets, only: [:index, :show, :create, :edit, :new]
   root "tickets#index"
 
-  namespace :admin do 
+  namespace :admin do
     resources :tickets
+    resources :users
     root "tickets#index"
   end
 
