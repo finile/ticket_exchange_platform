@@ -1,5 +1,23 @@
-<h1>機票交換平台後台</h1>
+<div class="container">
+    <div class="row">
 
+      <ul class="nav nav-tabs">
+       <li role="presentation">
+        <%= link_to 'Ticket', admin_tickets_path %>
+      </li>
+       <li role="presentation" class="active">
+        <%= link_to 'User List', admin_users_path %>
+      </li>
+
+      </ul>
+    </div>
+  </div>
+
+  <br>
+
+
+<h1>機票交換平台後台</h1>
+<%= link_to 'Index', tickets_path %>
 <ul>
   <% @tickets.each do |ticket|%>
     <li>

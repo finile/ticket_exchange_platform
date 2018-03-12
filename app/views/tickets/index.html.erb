@@ -2,7 +2,15 @@
 
 
 <%= link_to 'Advanced Search', new_search_path %>
+<%= link_to 'Admin', admin_tickets_path %>
 
+      <ul class="nav nav-tabs">
+       <li role="presentation" class="active">
+        <%= link_to 'Ticket', admin_tickets_path %>
+      </li>
+       <li role="presentation" >
+        <%= link_to 'User List', admin_users_path %>
+      </li>
 <ul>
   <% @tickets.each do |ticket|%>
     <li>
@@ -20,5 +28,5 @@
   <% end %>
 
   <%= link_to 'New Ticket', new_ticket_path %>
-  <%= link_to 'Admin', admin_tickets_path %>
+
 </ul>
