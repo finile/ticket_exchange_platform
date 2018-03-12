@@ -4,13 +4,7 @@
 <%= link_to 'Advanced Search', new_search_path %>
 <%= link_to 'Admin', admin_tickets_path %>
 
-      <ul class="nav nav-tabs">
-       <li role="presentation" class="active">
-        <%= link_to 'Ticket', admin_tickets_path %>
-      </li>
-       <li role="presentation" >
-        <%= link_to 'User List', admin_users_path %>
-      </li>
+      
 <ul>
   <% @tickets.each do |ticket|%>
     <li>
@@ -24,8 +18,7 @@
       <%= ticket.others %>
       <%= link_to 'Show', ticket_path(ticket) %>
       <%= link_to 'Edit', edit_ticket_path(ticket) %>
-      <%= link_to 'Favorite', favorite_ticket_path(@ticket), method: :post, class: "btn btn-primary" %>
-      <%= link_to 'Unfavorite', unfavorite_ticket_path(@ticket), method: :post, class: "btn btn-info" %>
+      <%= render partial: "shared/favorite", locals: {ticket: @ticket} %>
     </li>
   <% end %>
 
