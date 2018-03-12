@@ -1,7 +1,7 @@
 class Admin::TicketsController < Admin::BaseController
 
 
-  
+
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -10,6 +10,7 @@ class Admin::TicketsController < Admin::BaseController
 
   def show
     #set_ticket
+    @comment = Comment.new
   end
 
   def edit
