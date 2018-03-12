@@ -17,6 +17,7 @@ namespace :dev do
         destination: FFaker::Address.city,
         name: FFaker::Name.name.upcase, 
         price: rand(1000..10000),
+        quantity: rand(1..5),
         image: FFaker::Avatar.image,
         others:FFaker::Lorem::sentence(15)
       )
