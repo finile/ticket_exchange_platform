@@ -9,7 +9,7 @@ class TicketsController < ApplicationController
     end
 
     def new
-      @ticket = Ticket.new  
+      @ticket = Ticket.new
     end
 
     def create
@@ -20,7 +20,7 @@ class TicketsController < ApplicationController
     end
 
     def show
-      #set_ticket 
+      #set_ticket
     end
 
     def edit
@@ -34,7 +34,7 @@ class TicketsController < ApplicationController
       else
         flash.now[:alert] = "Ticket was failed to update"
         render :edit
-      end 
+      end
     end
 
     def destroy
@@ -54,5 +54,3 @@ class TicketsController < ApplicationController
       params.require(:ticket).permit(:airline, :flight_no, :flight_date, :flight_time, :departure, :destination, :name, :price, :image, :others )
     end
 end
-
-
