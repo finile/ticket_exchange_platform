@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
 
   resources :tickets, only: [:index, :show, :create, :edit, :new] do
-
+     resources :comments, only: [:create, :destroy]
      member do
       post :favorite
       post :unfavorite
