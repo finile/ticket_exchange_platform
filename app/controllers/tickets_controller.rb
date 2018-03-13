@@ -5,7 +5,8 @@ class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
     def index
-      @tickets = Ticket.all.where({flight_date: (Time.now.midnight - 150.day)..Time.now.midnight}).limit(10)
+      @tickets = Ticket.all
+      # .where({flight_date: (Time.now.midnight - 150.day)..Time.now.midnight}).limit(10)
     end
 
     def new
@@ -13,10 +14,14 @@ class TicketsController < ApplicationController
     end
 
     def create
-      @ticket = Ticket.new(ticket_params)
-      @ticket.save
-
-      redirect_to tickets_url
+      @ticket = current_user.tickets.new(ticket_params)
+      if @ticket.save
+        flash[:notice] = "ticket was successfully created"
+        redirect_to tickets_url
+      else
+        flash.now[:alert] = "ticket was failed to create"
+        redirect_to root_path
+      end
     end
 
     def show

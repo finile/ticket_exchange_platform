@@ -16,7 +16,10 @@
       <%= ticket.quantity %>
       <%= ticket.others %>
       <%= link_to 'Show', ticket_path(ticket) %>
-      <%= link_to 'Edit', edit_ticket_path(ticket) %>
+      <% if current_user.id == ticket.user_id %>
+        <%= link_to 'Edit', edit_ticket_path(ticket) %>
+      <% end -%>
+
     </li>
   <% end %>
 
