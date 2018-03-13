@@ -7,7 +7,7 @@ class User < ApplicationRecord
    has_many :favorites, dependent: :destroy
    has_many :favorited_tickets, through: :favorites, source: :ticket
 
-  has_many :comments
+   has_many :comments, dependent: :destroy
 
 
   def admin?
