@@ -9,6 +9,7 @@ Price: <%= @ticket.price %><br>
 Others: <%= @ticket.others %><br>
 
 <br>
+<%= link_to 'Edit', edit_ticket_path(@ticket) %>
 <%= render partial: "shared/favorite", locals: {ticket: @ticket} %>
 <br>
 <%= link_to 'Back to Admin index', admin_tickets_path %>

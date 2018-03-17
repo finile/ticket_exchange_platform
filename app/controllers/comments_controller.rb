@@ -1,6 +1,9 @@
 class CommentsController < ApplicationController
+
+  
+
    def create
-      @ticket = Ticket.find(params[:restaurant_id])
+      @ticket = Ticket.find(params[:ticket_id])
       @comment = @ticket.comments.build(comment_params)
       @comment.user = current_user
       @comment.save!

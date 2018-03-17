@@ -5,7 +5,7 @@ class Admin::TicketsController < Admin::BaseController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tickets = Ticket.all.order(created_at: :desc)
+    @tickets = Ticket.all.order(created_at: :desc).page(params[:page]).per(20)
   end
 
   def show

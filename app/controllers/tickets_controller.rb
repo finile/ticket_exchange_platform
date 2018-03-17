@@ -5,7 +5,9 @@ class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite]
 
     def index
-      @tickets = Ticket.all
+      @tickets = Ticket.page(params[:page]).per(20)
+
+
     end
 
     def new
@@ -21,6 +23,8 @@ class TicketsController < ApplicationController
 
     def show
       #set_ticket
+      
+      @comment = Comment.new
     end
 
     def edit
@@ -44,13 +48,13 @@ class TicketsController < ApplicationController
     end
 
     def favorite
-     @ticket = Ticket.find(params[:id])
+
       @ticket.favorites.create!(user: current_user)
       redirect_back(fallback_location: root_path)
     end
 
    def unfavorite
-     @ticket = Ticket.find(params[:id])
+
      favorites = Favorite.where(ticket: @ticket, user: current_user)
      favorites.destroy_all
      redirect_back(fallback_location: root_path)

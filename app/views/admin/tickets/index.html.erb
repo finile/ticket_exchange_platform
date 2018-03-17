@@ -19,21 +19,41 @@
 <h1>機票交換平台後台</h1>
 <%= link_to 'Index', tickets_path %>
 <ul>
-  <% @tickets.each do |ticket|%>
-    <li>
-      <%= ticket.airline %>
-      <%= ticket.flight_no %>
-      <%= ticket.flight_date %>
-      <%= ticket.flight_time %>
-      <%= ticket.departure %>
-      <%= ticket.destination %>
-      <%= ticket.name %>
-      <%= ticket.others %>
-      <%= link_to 'Show', admin_ticket_path(ticket) %>
-      <%= link_to 'Edit', edit_admin_ticket_path(ticket) %>
-      <%= link_to 'Delete', admin_tickets_path(ticket), method: :delete, data: {confirm:"Are you sure?"} %>
-    </li>
-  <% end %>
+
 
 
 </ul>
+<% @tickets.each do |ticket| %>
+  <div class="col-sm-6 col-md-4">
+    <div class="ticket-item">
+      <div class="caption">
+        <h3><%= link_to ticket.name, ticket_path(ticket) %></h3>
+        <%= link_to 'Show', admin_ticket_path(ticket) %>
+        <%= link_to 'Edit', edit_admin_ticket_path(ticket) %>
+        <%= link_to 'Delete', admin_tickets_path(ticket), method: :delete, data: {confirm:"Are you sure?"} %>
+      </div>
+      </div>
+      </div>
+
+      <li>
+
+
+      Airline: <%= ticket.airline %><br>
+      Flight no: <%= ticket.flight_no %><br>
+      Flight date: <%= ticket.flight_date %><br>
+      Flight time: <%= ticket.flight_time %><br>
+      Departure:<%= ticket.departure %><br>
+      Destination: <%= ticket.destination %><br>
+      Name: <%= ticket.name %><br>
+      Price: <%= ticket.price %><br>
+      Others: <%= ticket.others %><br>
+
+
+</li>
+
+<% end %>
+
+
+<div class="text-center">
+<%= paginate @tickets %>
+</div>
