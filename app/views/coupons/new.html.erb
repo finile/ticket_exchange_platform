@@ -1,0 +1,28 @@
+
+<%= form_for @coupon do |f| %>
+  <%= f.label :airline, "Airline" %>
+  <%= f.text_field :airline %>
+
+  <%= f.label :destination, "Destination" %>
+  <%= f.text_field :destination %>
+
+  <%= f.label :coupon_expiry_date, "Coupon Expiry Date" %>
+  <%= f.date_field :coupon_expiry_date %>
+
+  <%= f.label :flight_date_from, "Flight Date from" %>
+  <%= f.date_field :flight_date_from %>
+
+  <%= f.label :flight_date_to, "Flight Date to" %>
+  <%= f.date_field :flight_date_to %>
+
+  <%= f.label :tax, "Tax" %>
+  <%= f.text_field :tax %>
+
+  <%= f.label :image, "Photo" %>
+  <%= f.file_field :image %>
+
+  <%= f.label :others, "Others" %>
+  <%= f.text_area :others %>
+
+  <%= f.submit %>
+<% end %>

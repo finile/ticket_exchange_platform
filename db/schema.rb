@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180313031740) do
+ActiveRecord::Schema.define(version: 20180318065631) do
+
+  create_table "coupons", force: :cascade do |t|
+    t.string "airline"
+    t.string "destination"
+    t.date "coupon_expiry_date"
+    t.date "flight_date_from"
+    t.date "flight_date_to"
+    t.string "tax"
+    t.string "image"
+    t.text "others"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+  end
 
   create_table "searches", force: :cascade do |t|
     t.string "airline"

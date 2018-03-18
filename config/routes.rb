@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
 
 
+  resources :coupons, only: [:index, :show, :create, :edit, :new, :update]
 
 
   resources :searches
