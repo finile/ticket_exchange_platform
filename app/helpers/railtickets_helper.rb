@@ -1,0 +1,2 @@
+module RailticketsHelper
+end
