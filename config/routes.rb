@@ -23,9 +23,9 @@ Rails.application.routes.draw do
         end
 
 
-      resources :favorites, only: [:create, :destroy]
+  resources :favorites, only: [:create, :destroy]
 
-      resources :searches
+  resources :searches
 
   namespace :admin do
     resources :tickets

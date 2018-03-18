@@ -1,0 +1,2 @@
+class Railticket < ApplicationRecord
+end
