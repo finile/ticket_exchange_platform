@@ -3,7 +3,8 @@ class CouponsController < ApplicationController
   before_action :set_coupon, only: [:show, :edit, :update, :destroy]
   
   def index
-    @coupons = Coupon.all  
+    @coupons = Coupon.all 
+    @search = Search.new 
   end
 
   def new

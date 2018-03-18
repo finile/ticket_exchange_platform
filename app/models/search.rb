@@ -4,6 +4,10 @@ class Search < ApplicationRecord
     @tickets ||= find_tickets
   end
 
+  def coupons
+    @coupons ||= find_coupons
+  end
+
 private
   
   def find_tickets
@@ -16,6 +20,15 @@ private
     tickets = tickets.where("price >= ?", min_price) if min_price.present?
     tickets = tickets.where("price <= ?", max_price) if max_price.present?
     tickets
+  end
+
+  def find_coupons
+    coupons = Coupon
+    coupons = coupons.where("airline like ?", "%#{airline}%") if airline.present?
+    coupons = coupons.where("destination like ?", "%#{destination}%") if destination.present?
+    # coupons = coupons.where("Date >= ?", flight_date_from) if flight_date_from.present?
+    # coupons = coupons.where("Date <= ?", flight_date_to) if flight_date_to.present?
+    coupons
   end
 
 end

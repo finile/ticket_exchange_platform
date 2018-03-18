@@ -1,5 +1,22 @@
 <h1>Coupons</h1>
 
+<%= link_to 'Advanced Search', new_search_path %>
+
+<%= form_for [@coupon, @search] do |f| %>
+  <div class="field">
+    <%= f.label :airline %><br />
+    <%= f.text_field :airline %>
+  </div>
+  <div class="field">
+    <%= f.label :destination %><br />
+    <%= f.text_field :destination %>
+  </div>
+  
+  <div class="actions"><%= f.submit "Search" %></div>
+<% end %>
+
+
+
 
 <ul>
   <% @coupons.each do |coupon|%>
