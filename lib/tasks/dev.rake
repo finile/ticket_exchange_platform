@@ -53,4 +53,27 @@ namespace :dev do
     puts "now you have #{Ticket.count} tickets data"
   end
 
+  task fake_coupon: :environment do
+    Coupon.destroy_all
+
+    #create 25 fack tickets information
+    User.all.each do |user|
+      rand(5).times do
+        user.coupons.create(
+          airline: FFaker::Airline.name,
+          destination: FFaker::Address.city,
+          coupon_expiry_date: FFaker::Time.date,
+          flight_date_from: FFaker::Time.date,
+          flight_date_to: FFaker::Time.date,
+          tax: FFaker::Lorem::word,
+          image: FFaker::Avatar.image,
+          others:FFaker::Lorem::sentence(15)
+        )
+      end
+    end
+    puts "have created fake coupons by users"
+    puts "now you have #{Coupon.count} coupons data"
+  end
+
+
 end
