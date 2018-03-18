@@ -1,6 +1,6 @@
 class RailticketsController < ApplicationController
 
-  before_action :set_ticket, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite]
+  before_action :set_railticket, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite]
 
     def index
       @railtickets = Railticket.page(params[:page]).per(20)
@@ -60,7 +60,7 @@ class RailticketsController < ApplicationController
 
   private
 
-    def set_ticket
+    def set_railticket
       @railtickets = Railticket.find(params[:id])
     end
 
