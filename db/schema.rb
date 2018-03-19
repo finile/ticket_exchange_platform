@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180318170140) do
+ActiveRecord::Schema.define(version: 20180319154951) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20180318170140) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "ticket_id"
+    t.integer "railticket_id"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -25,6 +26,7 @@ ActiveRecord::Schema.define(version: 20180318170140) do
     t.integer "ticket_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "railticket_id"
   end
 
   create_table "railtickets", force: :cascade do |t|

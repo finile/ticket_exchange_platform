@@ -1,4 +1,4 @@
-class Admin::RailticketController < ApplicationController
+class Admin::RailticketsController < ApplicationController
 
   before_action :set_railticket, only: [:show, :edit, :update, :destroy]
 

@@ -31,7 +31,7 @@ namespace :dev do
     #from creating rand time of ticket
     now = Time.now
     a_day_ago = now - 60*60*24
-    arrive_time = a_day_ago - 60*3
+    arrive_time = a_day_ago + 60*3
 
     #create 25 fake tickets information
   25.times do |i|

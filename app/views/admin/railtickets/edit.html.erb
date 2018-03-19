@@ -1,0 +1,37 @@
+<%= form_for @railticket do |f| %>
+
+  <%= f.label :train_no, "Train_no" %>
+  <%= f.text_field :train_no %>
+
+  <%= f.label :train_date, "Train_date" %>
+  <%= f.date_field :train_date %>
+
+  <%= f.label :departur_time, "Departure_time" %>
+  <%= f.time_field :departur_time %>
+
+  <%= f.label :arrive_time, "Arrive_time" %>
+  <%= f.time_field :arrive_time %>
+
+  <%= f.label :departure, "Departure" %>
+  <%= f.text_field :departure %>
+
+  <%= f.label :destination, "Destination" %>
+  <%= f.text_field :destination %>
+
+  <%= f.label :name, "Name" %>
+  <%= f.text_field :name %>
+
+  <%= f.label :price, "Price" %>
+  <%= f.text_field :price %>
+
+  <%= f.label :discount, "Original_Discount" %>
+  <%= f.text_field :dicount %>
+
+  <%= f.label :image, "Photo" %>
+  <%= f.file_field :image %>
+
+  <%= f.label :others, "Others" %>
+  <%= f.text_area :others %>
+
+  <%= f.submit %>
+<% end %>
