@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'style';
+@import 'bootstrap';
+@import 'font-awesome';
+@import 'superslides';
+@import 'touchTouch';
+@import 'animate';
+@import 'isotope';
+@import 'select2';
+@import 'jquery';
