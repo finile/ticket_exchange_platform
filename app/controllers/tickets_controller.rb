@@ -7,6 +7,7 @@ class TicketsController < ApplicationController
     def index
       @tickets = Ticket.all
       # .where({flight_date: (Time.now.midnight - 150.day)..Time.now.midnight}).limit(10)
+      @search = Search.new 
     end
 
     def new
