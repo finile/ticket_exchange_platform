@@ -1,35 +1,6 @@
 <!-- <h1>機票交換平台前台</h1> -->
 
-<%= form_for [@ticket, @search] do |f| %>
-  <div class="field">
-    <%= f.label :airline %><br />
-    <%= f.text_field :airline %>
-  </div>
-  <div class="field">
-    <%= f.label :flight_no %><br />
-    <%= f.text_field :flight_no %>
-  </div>
-  <div class="field">
-    <%= f.label :destination %><br />
-    <%= f.text_field :destination %>
-  </div>
-  <div class="field">
-    <%= f.label :date_from, "Date Range" %><br />
-    <%= f.date_field :date_from %> -
-    <%= f.date_field :date_to %>
-  </div>
-  <div class="field">
-    <%= f.label :min_price, "Price Range" %><br />
-    <%= f.text_field :min_price %> -
-    <%= f.text_field :max_price %>
-  </div>
 
-<<<<<<< HEAD
-  <div class="actions"><%= f.submit "Search" %></div>
-<% end %>
-=======
-<!-- <%= link_to 'Advanced Search', new_search_path %> -->
->>>>>>> feature/frontend
 
 <!-- <ul>
   <% @tickets.each do |ticket|%>
@@ -139,8 +110,8 @@
       <div class="tabs tabs1">
         <div class="tabs_content tabs1_content">
           <div id="tabs-1">
-            <form action="javascript:;" class="form1">
-              <%= form_for [@ticket, @search] do |f| %>
+            <%= form_for [@ticket, @search] do |f| %>
+            <form class="form1">
               <div class="row">
                 <div class="col-sm-4 col-md-2">
                   <div class="select1_wrapper">
@@ -158,7 +129,7 @@
                   <div class="input1_wrapper">
                     <label><%= f.label :destination %></label>
                     <div class="input1_inner">
-                      <%= f.text_field :destination, class: "input datepicker", value: "City" %>
+                      <%= f.text_field :destination, class: "input datepicker" %>
                     </div>
                   </div>
                 </div>
@@ -166,8 +137,8 @@
                   <div class="input1_wrapper">
                     <label><%= f.label :date_from, "Date Range" %></label>
                     <div class="input1_inner">
-                      <%= f.date_field :date_from, class: "input datepicker", value: "Mm/Dd/Yy" %> - 
-                      <%= f.date_field :date_to, class: "input datepicker", value: "Mm/Dd/Yy" %>
+                      <%= f.date_field :date_from, class: "input datepicker" %> - 
+                      <%= f.date_field :date_to, class: "input datepicker" %>
                     </div>
                   </div>
                 </div>
@@ -181,12 +152,12 @@
                 </div>
                 <div class="col-sm-4 col-md-2">
                   <div class="button1_wrapper">
-                    <%= f.submit "Search", class: "btn-default btn-form1-submit" %>
+                    <div class="actions"><%= f.submit "Search" %></div>
                   </div>
                 </div>
               </div>
-              <% end %>
             </form>
+            <% end %>
           </div>
         </div>
       </div>
@@ -346,26 +317,6 @@
     </div>
 
 </div>
-<!-- <script src="js/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery-ui.js"></script>
-<script src="js/jquery-migrate-1.2.1.min.js"></script>
-<script src="js/jquery.easing.1.3.js"></script>
-<script src="js/superfish.js"></script>
 
-<script src="js/select2.js"></script>
-
-<script src="js/jquery.parallax-1.1.3.resize.js"></script>
-
-<script src="js/SmoothScroll.js"></script>
-
-<script src="js/jquery.appear.js"></script>
-
-<script src="js/jquery.caroufredsel.js"></script>
-<script src="js/jquery.touchSwipe.min.js"></script>
-
-<script src="js/jquery.ui.totop.js"></script>
-
-<script src="js/script.js"></script> -->
 
 </body>
