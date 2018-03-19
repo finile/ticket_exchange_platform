@@ -14,7 +14,7 @@
  *= require_self
  */
 @import 'bootstrap-sprockets';
-@import 'bootstrap';
+@import 'jquery';
 @import 'style';
 @import 'bootstrap';
 @import 'font-awesome';
@@ -23,4 +23,3 @@
 @import 'animate';
 @import 'isotope';
 @import 'select2';
-@import 'jquery';
