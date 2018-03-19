@@ -11,12 +11,13 @@
     <%= f.label :destination %><br />
     <%= f.text_field :destination %>
   </div>
-  
+    <div class="field">
+    <%= f.label :date_from, "Date Range" %><br />
+    <%= f.date_field :date_from %> -
+    <%= f.date_field :date_to %>
+  </div>
   <div class="actions"><%= f.submit "Search" %></div>
 <% end %>
-
-
-
 
 <ul>
   <% @coupons.each do |coupon|%>
