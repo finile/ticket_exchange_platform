@@ -1,0 +1,43 @@
+<h1>兌換卷交換平台前台</h1>
+
+<%= form_for [@coupon, @search] do |f| %>
+  <div class="field">
+    <%= f.label :airline %><br />
+    <%= f.text_field :airline %>
+  </div>
+  <div class="field">
+    <%= f.label :destination %><br />
+    <%= f.text_field :destination %>
+  </div>
+    <div class="field">
+    <%= f.label :date_from, "Date Range" %><br />
+    <%= f.date_field :date_from %> -
+    <%= f.date_field :date_to %>
+  </div>
+  <div class="actions"><%= f.submit "Search" %></div>
+<% end %>
+
+
+
+
+<ul>
+  <% @coupons.each do |coupon|%>
+
+    <li>
+      <%= coupon.airline %>
+      <%= coupon.destination %>
+      <%= coupon.coupon_expiry_date %>
+      <%= coupon.flight_date_from %>
+      <%= coupon.flight_date_to %>
+      <%= coupon.tax %>
+      <%= coupon.others %>
+      <%= link_to 'Show', coupon_path(coupon) %>
+      <% if current_user.id == coupon.user_id %>
+        <%= link_to 'Edit', edit_coupon_path(coupon) %>
+      <% end -%>
+
+    </li>
+  <% end %>
+
+  <%= link_to 'New coupon', new_coupon_path %>
+</ul>
