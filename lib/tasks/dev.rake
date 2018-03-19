@@ -1,5 +1,34 @@
 namespace :dev do
-  task fake_user: :environment do 
+
+  task fake_ticket: :environment do
+    Ticket.destroy_all
+
+    #from creating rand time of ticket
+    now = Time.now
+    a_day_ago = now - 60*60*24
+    #create 25 fack tickets information
+    User.all.each do |user|
+      rand(5).times do
+        user.tickets.create(
+          airline: FFaker::Airline.name,
+          flight_no: FFaker::Airline.flight_number,
+          flight_date: FFaker::Time.date,
+          flight_time: rand(a_day_ago..now),
+          departure: FFaker::Address.city,
+          destination: FFaker::Address.city,
+          name: FFaker::Name.name.upcase, 
+          price: rand(1000..10000),
+          quantity: rand(1..5),
+          image: FFaker::Avatar.image,
+          others:FFaker::Lorem::sentence(15)
+        )
+      end
+    end
+    puts "have created fake tickets by users"
+    puts "now you have #{Ticket.count} tickets data"
+  end
+
+  task fake_user: :environment do
     User.destroy_all
 
     10.times do |i|
@@ -24,38 +53,8 @@ namespace :dev do
   end
 
 
-  task fake_ticket: :environment do
-    Ticket.destroy_all
-
-    #from creating rand time of ticket
-    now = Time.now
-    a_day_ago = now - 60*60*24
-
-    #create 25 fack tickets information
-    User.all.each do |user|
-      rand(5).times do
-        user.tickets.create(
-          airline: FFaker::Airline.name,
-          flight_no: FFaker::Airline.flight_number,
-          flight_date: FFaker::Time.date,
-          flight_time: rand(a_day_ago..now),
-          departure: FFaker::Address.city,
-          destination: FFaker::Address.city,
-          name: FFaker::Name.name.upcase, 
-          price: rand(1000..10000),
-          quantity: rand(1..5),
-          image: FFaker::Avatar.image,
-          others:FFaker::Lorem::sentence(15)
-        )
-      end
-    end
-    puts "have created fake tickets by users"
-    puts "now you have #{Ticket.count} tickets data"
-  end
-
   task fake_coupon: :environment do
     Coupon.destroy_all
-
     #create 25 fack tickets information
     User.all.each do |user|
       rand(5).times do
@@ -75,5 +74,17 @@ namespace :dev do
     puts "now you have #{Coupon.count} coupons data"
   end
 
+  task fake_comment: :environment do
+    Ticket.all.each do |ticket|
+      3.times do |i|
+        ticket.comments.create!(
+          content: FFaker::Lorem.sentence,
+          user: User.all.sample
+        )
+      end
+    end
+    puts "have created fake comments"
+    puts "now you have #{Comment.count} comment data"
+  end
 
 end

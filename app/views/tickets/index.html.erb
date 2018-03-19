@@ -1,7 +1,6 @@
 <!-- <h1>機票交換平台前台</h1> -->
 
 
-
 <!-- <ul>
   <% @tickets.each do |ticket|%>
 
@@ -301,4 +300,15 @@
 </div>
 
 
+
+
+<%= link_to 'Admin', admin_tickets_path %>
+
+
+<ul>
+
+  <%= render partial: "shared/ticket" %>
+  <%= link_to 'New Ticket', new_ticket_path %>
+
+</ul>
 </body>

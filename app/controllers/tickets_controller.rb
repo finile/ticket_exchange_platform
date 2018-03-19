@@ -1,17 +1,16 @@
 class TicketsController < ApplicationController
-  before_action :authenticate_user!
 
-
-  before_action :set_ticket, only: [:show, :edit, :update, :destroy]
+  before_action :set_ticket, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite]
 
     def index
-      @tickets = Ticket.all
+      # @tickets = Ticket.all
       # .where({flight_date: (Time.now.midnight - 150.day)..Time.now.midnight}).limit(10)
+      @tickets = Ticket.page(params[:page]).per(20)
       @search = Search.new 
     end
 
     def new
-      @ticket = Ticket.new  
+      @ticket = Ticket.new
     end
 
     def create
@@ -26,7 +25,9 @@ class TicketsController < ApplicationController
     end
 
     def show
-      #set_ticket 
+      #set_ticket
+      
+      @comment = Comment.new
     end
 
     def edit
@@ -40,7 +41,7 @@ class TicketsController < ApplicationController
       else
         flash.now[:alert] = "Ticket was failed to update"
         render :edit
-      end 
+      end
     end
 
     def destroy
@@ -48,6 +49,19 @@ class TicketsController < ApplicationController
       redirect_to tickets_path
       flash[:alert] = "Ticket was deleted"
     end
+
+    def favorite
+
+      @ticket.favorites.create!(user: current_user)
+      redirect_back(fallback_location: root_path)
+    end
+
+   def unfavorite
+
+     favorites = Favorite.where(ticket: @ticket, user: current_user)
+     favorites.destroy_all
+     redirect_back(fallback_location: root_path)
+   end
 
   private
 
@@ -60,5 +74,3 @@ class TicketsController < ApplicationController
       params.require(:ticket).permit(:airline, :flight_no, :flight_date, :flight_time, :departure, :destination, :name, :price, :image, :others )
     end
 end
-
-

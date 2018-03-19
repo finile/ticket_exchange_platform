@@ -1,0 +1,34 @@
+
+<%= form_for @ticket do |f| %>
+  <%= f.label :airline, "Airline" %>
+  <%= f.text_field :airline %>
+
+  <%= f.label :flight_no, "Flight_no" %>
+  <%= f.text_field :flight_no %>
+
+  <%= f.label :flight_date, "Flight_date" %>
+  <%= f.date_field :flight_date %>
+
+  <%= f.label :flight_time, "FLight_time" %>
+  <%= f.time_field :flight_time %>
+
+  <%= f.label :departure, "Departure" %>
+  <%= f.text_field :departure %>
+
+  <%= f.label :destination, "Destination" %>
+  <%= f.text_field :destination %>
+
+  <%= f.label :name, "Name" %>
+  <%= f.text_field :name %>
+
+  <%= f.label :price, "Price" %>
+  <%= f.text_field :price %>
+
+  <%= f.label :image, "Photo" %>
+  <%= f.file_field :image %>
+
+  <%= f.label :others, "Others" %>
+  <%= f.text_area :others %>
+
+  <%= f.submit %>
+<% end %>

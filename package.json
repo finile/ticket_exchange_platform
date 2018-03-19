@@ -1,5 +1,13 @@
 {
   "name": "ticket_exchange_platform",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "jquery": "^3.3.1"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/finile/ticket_exchange_platform.git",
+  "author": "fion chen <wakinglife_615@yahoo.com>",
+  "license": "MIT"
 }

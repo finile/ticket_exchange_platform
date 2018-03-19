@@ -12,6 +12,14 @@
 
 ActiveRecord::Schema.define(version: 20180318065631) do
 
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "ticket_id"
+  end
+
   create_table "coupons", force: :cascade do |t|
     t.string "airline"
     t.string "destination"
@@ -24,6 +32,13 @@ ActiveRecord::Schema.define(version: 20180318065631) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "ticket_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "searches", force: :cascade do |t|
