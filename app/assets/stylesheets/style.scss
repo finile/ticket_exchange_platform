@@ -28,10 +28,10 @@ visibility: visible;
 
 /* ============================= header ====================== */
 .top1_wrapper{background: #fafafa; border-top: 3px solid #1cbbb4; padding-top: 13px; padding-bottom: 13px;}
-.email1{float: left; padding-left: 25px; background: url(../images/email1.png) left center no-repeat;border-right: 1px solid #ebebeb; margin-right: 20px; padding-right: 20px;}
+.email1{float: left; padding-left: 25px; background: url(../images/email1.png) left center no-repeat; border-right: 1px solid #ebebeb; margin-right: 20px; padding-right: 20px; padding-bottom: 10px; padding-top: 5px;}
 .email1 a{display: block; font-size: 13px; color: #acacac; text-decoration: none; line-height: 20px;}
 
-.phone1{float: left; padding-left: 25px; background: url(../images/phone1.png) left center no-repeat;}
+.phone1{float: left; background: url(../images/phone1.png) left center no-repeat; padding-bottom: 10px; padding-top: 5px;}
 
 .social_wrapper{float: right;}
 .social{ display: block; margin: 0; padding: 0; list-style: none;}
@@ -81,7 +81,7 @@ transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; -webkit-trans
 .lang1 .dropdown-menu a.ge:before{background: url(../images/flag_ge.png) 0 0 no-repeat;}
 .lang1 .dropdown-menu a.ru:before{background: url(../images/flag_ru.png) 0 0 no-repeat;}
 
-.top2_wrapper{position: relative; background: #fff;}
+.top2_wrapper{position: relative; background:#00a99d; padding-top: 10px; }
 .top2{position: relative;}
 header{position: absolute; left: 0; top: 10px; z-index: 31;}
 
@@ -93,7 +93,7 @@ header{position: absolute; left: 0; top: 10px; z-index: 31;}
 
 #slider{position: relative;padding-top: 0px; padding-bottom: 0px;}
 
-.slider_pagination{padding-top: 160px;}
+.slider_pagination{padding-top: 110px;}
 .slider_pagination a{display: inline-block; width: 15px; height: 15px; margin-right: 5px; background: url(../images/pagination.png) center center no-repeat; position: relative; overflow: hidden; text-indent: -9999px;}
 .slider_pagination a:hover, .slider_pagination a.selected{background: url(../images/pagination_hover.png) center center no-repeat;}
 
@@ -205,10 +205,10 @@ transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; -webkit-trans
 .tabs2 .tabs_content .ui-tabs-panel{display: block!important;}
 .tabs2 .tabs_content .ui-tabs-panel.tab-hidden{position: absolute; width: 100%; clip: rect(1px 1px 1px 1px); clip: rect(1px, 1px, 1px, 1px); overflow: hidden; height: 1px;}
 
-.form1{display: block; background: #fafafa;padding: 30px; border-bottom: 3px solid #1cbbb4; margin-bottom: 20px;}
+.form1{display: block; background: #fafafa;padding: 30px; border-bottom: 3px solid #1cbbb4; margin-bottom: 20px; padding-bottom: 70px;}
 .front .form1{margin-bottom: 0;}
 
-.form1 label{font-family: 'Raleway'; font-size: 14px; color: #636363; line-height: 1; padding-bottom: 10px; display: block; font-weight: 600; margin-bottom: 0; white-space: nowrap;}
+.form1 label{font-family: 'Raleway'; font-size: 14px; color: #636363; line-height: 1; padding-bottom: 5px; display: block; font-weight: 600; margin-bottom: 0; white-space: nowrap;}
 
 .form2{display: block; background: #fafafa;padding: 20px 30px; border-bottom: 3px solid #1cbbb4; margin-bottom: 30px;}
 .form2 label{font-family: 'Raleway'; font-size: 14px; color: #636363; line-height: 1; padding-bottom: 10px; display: block; font-weight: 600; margin-bottom: 0; white-space: nowrap;}
@@ -476,7 +476,7 @@ transition: background 0.3s ease-out; -moz-transition: background 0.3s ease-out;
 
 
 
-#slider_wrapper{padding-bottom: 180px; padding-top: 270px; background: url(http://placehold.it/1920x809) center center no-repeat; background-size: cover;}
+#slider_wrapper{padding-bottom: 180px; padding-top: 200px; background: url(http://placehold.it/1920x750) center center no-repeat; background-size: cover;}
 
 #why1{position: relative; padding-top: 20px; padding-bottom: 30px;}
 
@@ -629,10 +629,10 @@ transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; -webkit-trans
 .navbar_ .navbar-toggle:hover, .navbar_ .navbar-toggle:focus{background: #076f68;}
 .navbar_ .navbar-toggle .icon-bar{background: #fff;}
 .navbar-collapse_{padding-left: 0; padding-right: 0; border: none;}
-.navbar_ .nav{position: relative; margin: 0; padding: 0; display: block; float: none; padding-right: 0px; background: none;}
+.navbar_ .nav{position: relative; margin: 0; padding: 5px; display: block; float: none; padding-right: 0px; background: none;}
 .navbar_ .nav > li{position: relative; display: block; float: left; white-space: nowrap; padding-left: 0px; background: none; margin-left: 50px;}
 .navbar_ .nav > li:first-child{margin-left: 0;}
-.navbar_ .nav > li > a{display: block; text-decoration: none; background: none; font-family: 'Raleway'; font-weight: 500; font-size: 14px; line-height: 20px; color: #8c8c8c; text-shadow:none; padding: 20px 0px 20px 0; border: none; margin: 0; border-radius:0px; -moz-border-radius:0px; -webkit-border-radius:0px; text-align: left; text-transform: none; vertical-align: middle; border-bottom: 3px solid transparent;
+.navbar_ .nav > li > a{display: block; text-decoration: none; background: none; font-family: 'Raleway'; font-weight: 500; font-size: 14px; line-height: 20px; color: #8c8c8c; text-shadow:none; padding: 15px 5px 10px 5px; border: none; margin: 0; border-radius:0px; -moz-border-radius:0px; -webkit-border-radius:0px; text-align: left; text-transform: none; vertical-align: middle; border-bottom: 3px solid transparent;
 transition: color 0.3s ease-out; -moz-transition: color 0.3s ease-out; -webkit-transition: color 0.3s ease-out; -o-transition: color 0.3s ease-out;
 }
 .navbar_ .nav > li > a em{display: inline-block; width: 8px; height: 5px; background: url(../images/caret.png); margin-left: 5px;}
@@ -721,7 +721,7 @@ h5{font-family:'Raleway'; font-weight:700; font-size:19px; color:#464646; backgr
 
 
 
-.img-responsive{width: auto \9;}
+.img-responsive{width: auto \9; border-radius: 10px; }
 
 .img-responsive-old{display: block; max-width: 100%; height: auto;}
 
