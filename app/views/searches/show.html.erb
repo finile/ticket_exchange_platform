@@ -1,4 +1,9 @@
 <h1>Search Results</h1>
 
-<%= render @search.tickets %>
-<%= render @search.coupons %>
+<% if @search.flight_no %>
+  <%= render @search.tickets %>
+  <%= link_to 'Back to index', tickets_path %>
+<% else %>
+  <%= render @search.coupons %>
+  <%= link_to 'Back to index', coupons_path %>
+<% end %>

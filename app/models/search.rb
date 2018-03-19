@@ -1,6 +1,5 @@
 class Search < ApplicationRecord
 
-
   def tickets
     @tickets ||= find_tickets
   end
