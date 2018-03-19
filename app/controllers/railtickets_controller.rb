@@ -20,13 +20,13 @@ class RailticketsController < ApplicationController
     end
 
     def show
-      #set_ticket
+      #set_railticket
 
       @comment = Comment.new
     end
 
     def edit
-      #set_ticket
+      #set_railticket
     end
 
     def update
