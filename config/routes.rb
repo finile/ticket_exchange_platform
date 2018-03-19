@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :tickets
     resources :users
+    resources :railtickets
     root "tickets#index"
   end
 
