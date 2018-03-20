@@ -1,0 +1,44 @@
+
+
+Train no: <%= @railticket.train_no %><br>
+Train date: <%= @railticket.train_date %><br>
+Departure time: <%= @railticket.departure_time %><br>
+Arrive time: <%= @railticket.arrive_time %><br>
+Departure:<%= @railticket.departure %><br>
+Destination: <%= @railticket.destination %><br>
+Name: <%= @railticket.name %><br>
+Price: <%= @railticket.price %><br>
+Original Discount: <%= @railticket.discount %><br>
+Others: <%= @railticket.others %><br>
+
+<br>
+<div class="container">
+  <div class="row">
+    <% @railticket.comments.each do |comment| %>
+       <div>
+         <h4><%= comment.user.name %></h4>
+         <p><%= simple_format comment.content %></p>
+         <p class="text-muted">
+           <em><%= time_ago_in_words(comment.created_at) %> ago -</em>
+           <% if current_user.admin? %>
+             <%= link_to "Delete", railticket_comment_path(@railticket, comment), method: :delete, data: {confirm:"Are you sure?"} %>
+           <% end %>
+         </p>
+       </div>
+
+       <hr>
+      <% end %>
+
+     <%= form_for [@railticket, @comment] do |f| %>
+      <div class="form-group">
+        <%= f.text_area :content, placeholder: "留言給賣家", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit class: "btn btn-primary" %>
+        <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to 'Back to Train ticket index', railtickets_path %>

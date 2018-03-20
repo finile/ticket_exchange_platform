@@ -1,0 +1,16 @@
+Train no: <%= railticket.train_no %><br>
+Train date: <%= railticket.train_date %><br>
+Departure time: <%= railticket.departure_time %><br>
+Arrive time: <%= railticket.arrive_time %><br>
+Departure:<%= railticket.departure %><br>
+Destination: <%= railticket.destination %><br>
+Name: <%= railticket.name %><br>
+Price: <%= railticket.price %><br>
+Original Discout: <%= railticket.discount %><br>
+Others: <%= railticket.others %><br>
+
+<br>
+<%= link_to 'Edit', edit_railticket_path(@railticket) %>
+<%= render partial: "shared/train_favorite", locals: {railticket: @railticket} %>
+<br>
+<%= link_to 'Back to Admin Train Ticket', admin_railtickets_path %>

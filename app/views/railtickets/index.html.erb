@@ -1,0 +1,13 @@
+<h1>高鐵交換平台前台</h1>
+<<%= link_to 'Advanced Search', new_search_path %>
+<%= link_to 'Flight Ticket', tickets_path %>
+<%= link_to 'Admin', admin_tickets_path %>
+
+
+
+<ul>
+
+  <%= render partial: "shared/railticket" %>
+  <%= link_to 'New Train Ticket', new_railticket_path %>
+
+</ul>

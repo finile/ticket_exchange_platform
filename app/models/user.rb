@@ -11,7 +11,14 @@ class User < ApplicationRecord
   has_many :favorited_tickets, through: :favorites, source: :ticket
 
   has_many :comments, dependent: :destroy
+  
+  has_many :railtickets, dependent: :destroy
 
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_tickets, through: :favorites, source: :ticket
+
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_railtickets, through: :favorites, source: :railticket
 
   def admin?
     self.role == "admin"
