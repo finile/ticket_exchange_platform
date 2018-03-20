@@ -1,5 +1,29 @@
 namespace :dev do
 
+  task fake_user: :environment do
+    User.destroy_all
+
+    10.times do |i|
+      name = FFaker::Name::first_name
+      user = User.new(
+        name: name,
+        email: "#{name}@example.co",
+        password: "12345678",
+      )
+      user.save!
+      puts user.name
+    end
+
+    User.create(
+      email: "root@example.com",
+      password: 12345678,
+      name: "Admin",
+      role: "admin"
+      )
+    puts "admin has been created"
+  end
+
+
   task fake_ticket: :environment do
     Ticket.destroy_all
 
@@ -37,49 +61,29 @@ namespace :dev do
     arrive_time = a_day_ago + 60*3
 
     #create 25 fake tickets information
-  25.times do |i|
-    Railticket.create!(
-
-      train_no: rand(100..1500),
-      train_date: FFaker::Time.date,
-      departure_time: rand(a_day_ago..now),
-      arrive_time: rand(arrive_time..now),
-      departure: FFaker::Address.city,
-      destination: FFaker::Address.city,
-      name: FFaker::Name.name.upcase,
-      price: rand(900..2000),
-      image: FFaker::Avatar.image,
-      others:FFaker::Lorem::sentence(15)
-    )
-  end
-  puts "have created fake railtickets"
-  puts "now you have #{Railticket.count} railtickets data"
-  end
-
-
-  task fake_user: :environment do
-    User.destroy_all
-
-    10.times do |i|
-      name = FFaker::Name::first_name
-      user = User.new(
-        name: name,
-        email: "#{name}@example.co",
-        password: "12345678",
+    User.all.each do |user|
+      rand(5).times do
+        user.railtickets.create(
+        train_no: rand(100..1500),
+        train_date: FFaker::Time.date,
+        departure_time: rand(a_day_ago..now),
+        arrive_time: rand(arrive_time..now),
+        departure: FFaker::Address.city,
+        destination: FFaker::Address.city,
+        name: FFaker::Name.name.upcase,
+        price: rand(900..2000),
+        image: FFaker::Avatar.image,
+        others:FFaker::Lorem::sentence(15)
       )
-      user.save!
-      puts user.name
+      end
     end
 
-    User.create(
-      email: "root@example.com",
-      password: 12345678,
-      name: "Admin",
-      role: "admin"
-      )
-    puts "admin has been created"
-
+    puts "have created fake railtickets"
+    puts "now you have #{Railticket.count} railtickets data"
   end
+
+
+
 
 
   task fake_coupon: :environment do
@@ -118,20 +122,19 @@ namespace :dev do
     puts "now you have #{Comment.count} comment data"
 
 
-  Railticket.all.each do |railticket|
-    3.times do |i|
-      railticket.comments.create!(
-        content: FFaker::Lorem.sentence,
-        user: User.all.sample
-      )
+    Railticket.all.each do |railticket|
+      3.times do |i|
+        railticket.comments.create!(
+          content: FFaker::Lorem.sentence,
+          user: User.all.sample
+        )
+      end
     end
+    puts "have created fake railticket comments"
+    puts "now you have #{Comment.count} railticket comment data"
   end
-  puts "have created fake railticket comments"
-  puts "now you have #{Comment.count} railticket comment data"
 
- end
-
- task fake_favorite: :environment do
+  task fake_favorite: :environment do
    Favorite.destroy_all
 
    20.times do |i|
@@ -145,6 +148,6 @@ namespace :dev do
      puts "have created fake favorite"
      puts "now you have 20 favorite data"
    end
- end
+  end
 
 end

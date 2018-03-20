@@ -3,7 +3,7 @@ class RailticketsController < ApplicationController
   before_action :set_railticket, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite]
 
     def index
-      @railtickets = Railticket.page(params[:page]).per(20)
+      @railtickets = Railticket.page(params[:page]).per(9)
 
 
     end

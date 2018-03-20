@@ -1,13 +1,96 @@
-<h1>高鐵交換平台前台</h1>
-<<%= link_to 'Advanced Search', new_search_path %>
-<%= link_to 'Flight Ticket', tickets_path %>
-<%= link_to 'Admin', admin_tickets_path %>
 
+  <%= render partial: "shared/navbar" %>
 
-
-<ul>
-
-  <%= render partial: "shared/railticket" %>
+  <div id="slider_wrapper">
+    <div class="container">
+      <div id="slider_inner">
+        <div class="">
+          <div id="slider">
+            <div class="">
+              <div class="carousel-box">
+                <div class="inner">
+                  <div class="carousel main">
+                    <ul>
+                      <li>
+                        <div class="slider">
+                          <div class="slider_inner">
+                            <div class="txt1"><span>Welcome To Our</span></div>
+                            <div class="txt2"><span>高鐵交換平台前台</span></div>
+                            <div class="txt3"><span>Please search what flight tickets you need: </span></div>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="slider_pagination"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+  <div id="popular_cruises1">
+    <div class="container">
+      <h2 class="animated">熱門兌換卷</h2>
+      <div class="title1 animated">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod <br>tincidunt ut laoreet dolore magna aliquam erat volutpat.
+      </div>
+      <br><br>
+      
+      <div id="popular_wrapper" class="animated" data-animation="fadeIn" data-animation-delay="300">
+        <div id="popular_inner">
+          <div class="">
+            <div id="popular">
+              <div class="">
+                <div class="carousel-box">
+                  <div class="inner">
+                    <div class="carousel main">
+                      <ul>
+                        <% @railtickets.each do |railticket| %>
+                        <div class="col-sm-6 col-md-4">
+                          <li>
+                          <div class="popular ">
+                            <div class="popular_inner">
+                              <figure>
+                                <img src="http://placehold.it/370x232" alt="" class="img-responsive">
+                                  <div class="over">
+                                    <div class="v1"><%= railticket.destination %><span>17 Deal Offers</span></div>
+                                    <div class="v2">Lorem ipsum dolor sit amet,concateus.</div>
+                                  </div>
+                              </figure>
+                              <div class="caption">
+                                <div class="txt1"><span><%= railticket.destination %></span></div>
+                                <div class="txt1">Departure:<%= railticket.departure %></div>
+                                <div class="txt1">Train no: <%= railticket.train_no %></div>
+                                <div class="txt2">Train date: <%= railticket.train_date %></div>
+                                <div class="txt2">Departure time: <%= railticket.departure_time %></div>
+                                <div class="txt3 clearfix">
+                                  <div class="left_side">
+                                    <div class="nums"> 18 Reviews</div>
+                                  </div>
+                                  <div class="right_side"><%= render partial: "shared/favorite", locals: {ticket: railticket} %> </div>
+                                  <div class="right_side"><%= link_to 'Show', railticket_path(railticket), class: "btn btn-info" %></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        </div>
+                        <% end %>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="popular_pagination"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= render partial: "shared/footer"%>
   <%= link_to 'New Train Ticket', new_railticket_path %>
-
-</ul>
+  

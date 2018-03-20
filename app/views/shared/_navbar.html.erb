@@ -1,0 +1,32 @@
+<div id="main">
+  <div class="top2_wrapper">
+    <div class="container">
+      <div class="top2 clearfix">
+      <header>
+        <div class="logo_wrapper">
+          <a href="index.html" class="logo">
+            <%= link_to tickets_path do %>
+              <img src="http://placehold.it/190x60" alt="" class="img-responsive">
+            <% end %>
+          </a>
+        </div>
+      </header>
+      <div class="navbar navbar_ navbar-default">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <div class="navbar-collapse navbar-collapse_ collapse">
+          <ul class="nav navbar-nav sf-menu clearfix">
+            <li class="sub-menu sub-menu-1 active"><%= link_to 'Flight Ticket', tickets_path %><em></em></li>
+            <li class="sub-menu sub-menu-1"><%= link_to 'Coupon', coupons_path %><em></em></li>
+            <li class="sub-menu sub-menu-1"><%= link_to 'Train Ticket', railtickets_path %><em></em></li>
+            <li><a href="contacts.html">Contacts</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,313 +1,155 @@
-<!-- <h1>機票交換平台前台</h1> -->
-
-
-<!-- <ul>
-  <% @tickets.each do |ticket|%>
-
-    <li>
-      <%= ticket.airline %>
-      <%= ticket.flight_no %>
-      <%= ticket.flight_date %>
-      <%= ticket.flight_time %>
-      <%= ticket.departure %>
-      <%= ticket.destination %>
-      <%= ticket.quantity %>
-      <%= ticket.others %>
-      <%= link_to 'Show', ticket_path(ticket) %>
-      <% if current_user.id == ticket.user_id %>
-        <%= link_to 'Edit', edit_ticket_path(ticket) %>
-      <% end -%>
-
-    </li>
-  <% end %>
-
-  <%= link_to 'New Ticket', new_ticket_path 
-  %>
-</ul> -->
-
 <body class="front">
+  <%= render partial: "shared/navbar" %>
 
-  <div id="main">
-    <div class="top2_wrapper">
-      <div class="container">
-          <div class="top2 clearfix">
-            <header>
-              <div class="logo_wrapper">
-                <a href="index.html" class="logo">
-                  <img src="http://placehold.it/190x60" alt="" class="img-responsive">
-                </a>
-              </div>
-            </header>
-            <div class="navbar navbar_ navbar-default">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-                <div class="navbar-collapse navbar-collapse_ collapse">
-                  <ul class="nav navbar-nav sf-menu clearfix">
-                    <li class="sub-menu sub-menu-1 active"><a href="#">Flight Tickets<em></em></a></li>
-                    <li class="sub-menu sub-menu-1"><a href="#">Cupons<em></em></a></li>
-                    <li class="sub-menu sub-menu-1"><a href="#">HSR Tickets<em></em></a></li>
-                    <li><a href="contacts.html">Contacts</a></li>
-                  </ul>
-                </div>
-              </div>
-          </div>
-        </div>
-    </div>
-
-    <div id="slider_wrapper">
-      <div class="container">
-        <div id="slider_inner">
-          <div class="">
-            <div id="slider">
-              <div class="">
-                <div class="carousel-box">
-                  <div class="inner">
-                    <div class="carousel main">
-                      <ul>
-                        <li>
-                          <div class="slider">
-                            <div class="slider_inner">
-                              <div class="txt1"><span>Welcome To Our</span></div>
-                              <div class="txt2"><span>Ticket Exchange Platform</span></div>
-                              <div class="txt3"><span>Please search what flight tickets you need: </span></div>
-                            </div>
+  <div id="slider_wrapper">
+    <div class="container">
+      <div id="slider_inner">
+        <div class="">
+          <div id="slider">
+            <div class="">
+              <div class="carousel-box">
+                <div class="inner">
+                  <div class="carousel main">
+                    <ul>
+                      <li>
+                        <div class="slider">
+                          <div class="slider_inner">
+                            <div class="txt1"><span>Welcome To Our</span></div>
+                            <div class="txt2"><span>廉航機票交換平台前台</span></div>
+                            <div class="txt3"><span>Please search what flight tickets you need: </span></div>
                           </div>
-                        </li>
-                      </ul>
-                    </div>
+                        </div>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
-            <div class="slider_pagination"></div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-<div id="front_tabs">
-  <div class="container">
-    <div class="tabs_wrapper tabs1_wrapper">
-      <div class="tabs tabs1">
-        <div class="tabs_content tabs1_content">
-          <div id="tabs-1" class="form1">
-            <%= form_for [@ticket, @search] do |f| %>
-              <div class="row">
-                <div class="col-sm-4 col-md-2">
-                  <div class="select1_wrapper">
-                    <label><%= f.label :airline %></label>
-                    <div><%= f.text_field :airline, class: "select1_inner" %></div>
-                  </div>
-                </div>
-                <div class="col-sm-4 col-md-2">
-                  <div class="select1_wrapper">
-                    <label><%= f.label :flight_no %></label>
-                    <div><%= f.text_field :flight_no, class: "select1_inner" %></div>
-                  </div>
-                </div>
-                <div class="col-sm-4 col-md-2">
-                  <div class="input1_wrapper">
-                    <label><%= f.label :destination %></label>
-                    <div><%= f.text_field :destination, class: "select1_inner" %></div>
-                  </div>
-                </div>
-                <div class="col-sm-4 col-md-2">
-                  <div class="input1_wrapper">
-                    <label><%= f.label :date_from, "Date Range" %></label>
-                    <div class="input1_inner">
-                      <%= f.date_field :date_from, class: "input datepicker" %> - 
-                      <%= f.date_field :date_to, class: "input datepicker" %>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-4 col-md-1">
-                  <div class="input1_wrapper">
-                    <label><%= f.label :min_price, "Price Range NTD$" %></label>
-                    <div class="input1_wrapper">
-                      <%= f.text_field :min_price, class: "select1_inner" %> - <%= f.text_field :max_price, class: "select1_inner" %>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-4 col-md-2">
-                  <div class="button1_wrapper">
-                    <%= f.submit "Search", class: "btn btn-info btn-form1-submit" %>
-                  </div>
-                </div>
-              </div>
-            <% end %>
+            <div class="slider_pagination"></div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-    <div id="popular_cruises1">
-      <div class="container">
-        <h2 class="animated">POPULAR CRUISES</h2>
-        <div class="title1 animated">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod <br>tincidunt ut laoreet dolore magna aliquam erat volutpat.
-        </div>
-        <br><br>
-        
-        <div id="popular_wrapper" class="animated" data-animation="fadeIn" data-animation-delay="300">
-          <div id="popular_inner">
-            <div class="">
-              <div id="popular">
-                <div class="">
-                  <div class="carousel-box">
-                    <div class="inner">
-                      <div class="carousel main">
-                        <ul>
-                          <li>
-                            <div class="popular">
-                                <div class="popular_inner">
-                                    <figure>
-                                        <img src="http://placehold.it/370x232" alt=""
-                                             class="img-responsive">
-                                        <div class="over">
-                                            <div class="v1">Bahamas <span>17 Deal Offers</span>
-                                            </div>
-                                            <div class="v2">Lorem ipsum dolor sit amet,
-                                                concateus.
-                                            </div>
-                                        </div>
-                                    </figure>
-                                    <div class="caption">
-                                        <div class="txt1"><span>Bahamas</span> 7 Night Tour
-                                        </div>
-                                        <div class="txt2">Nam liber tempor cum soluta nobis
-                                            eleifend option congue nihil imperdiet doming.
-                                        </div>
-                                        <div class="txt3 clearfix">
-                                            <div class="left_side">
-                                                <div class="stars1">
-                                                    <img src="images/star1.png" alt="">
-                                                    <img src="images/star1.png" alt="">
-                                                    <img src="images/star1.png" alt="">
-                                                    <img src="images/star1.png" alt="">
-                                                    <img src="images/star2.png" alt="">
-                                                </div>
-                                                <div class="nums">- 18 Reviews</div>
-                                            </div>
-                                            <div class="right_side"><a href="#"
-                                                                       class="btn-default btn1">See
-                                                All</a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                          </li>
-                        </ul>
+  <div id="front_tabs">
+    <div class="container">
+      <div class="tabs_wrapper tabs1_wrapper">
+        <div class="tabs tabs1">
+          <div class="tabs_content tabs1_content">
+            <div id="tabs-1" class="form1">
+              <%= form_for [@ticket, @search] do |f| %>
+                <div class="row">
+                  <div class="col-sm-4 col-md-2">
+                    <div class="select1_wrapper">
+                      <label><%= f.label :airline %></label>
+                      <div><%= f.text_field :airline, class: "select1_inner" %></div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4 col-md-2">
+                    <div class="select1_wrapper">
+                      <label><%= f.label :flight_no %></label>
+                      <div><%= f.text_field :flight_no, class: "select1_inner" %></div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4 col-md-2">
+                    <div class="input1_wrapper">
+                      <label><%= f.label :destination %></label>
+                      <div><%= f.text_field :destination, class: "select1_inner" %></div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4 col-md-2">
+                    <div class="input1_wrapper">
+                      <label><%= f.label :date_from, "Date Range" %></label>
+                      <div class="input1_inner">
+                        <%= f.date_field :date_from, class: "input datepicker" %> - <%= f.date_field :date_to, class: "input datepicker" %>
                       </div>
                     </div>
                   </div>
+                  <div class="col-sm-4 col-md-2">
+                    <div class="input1_wrapper">
+                      <label><%= f.label :min_price, "Price Range NTD$" %></label>
+                      <div class="input1_inner">
+                        <%= f.text_field :min_price, class: "select1_inner" %> - <%= f.text_field :max_price, class: "select1_inner" %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4 col-md-2">
+                    <div class="button1_wrapper">
+                      <%= f.submit "Search", class: "btn btn-info btn-form1-submit" %>
+                    </div>
+                  </div>
                 </div>
-                <div class="popular_pagination"></div>
-              </div>
+              <% end %>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="bot1_wrapper">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-3">
-                    <div class="logo2_wrapper">
-                        <a href="index.html" class="logo2">
-                            <img src="images/logo2.png" alt="" class="img-responsive">
-                        </a>
-                    </div>
-                    <p>
-                        Nam liber tempor cum soluta nobis option congue nihil imperdiet doming id quod mazim. Lorem
-                        ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-                        laoreet dolore magna.
-                    </p>
-                    <p>
-                        <a href="#" class="btn-default btn2">Read More</a>
-                    </p>
-                </div>
-                <div class="col-sm-3">
-                    <div class="bot1_title">Travel Specialists</div>
-                    <ul class="ul1">
-                        <li><a href="#">First Class Flights</a></li>
-                        <li><a href="#">Accessible Travel</a></li>
-                        <li><a href="#">Amazing Cruises</a></li>
-                    </ul>
-
-                    <div class="social2_wrapper">
-                        <ul class="social2 clearfix">
-                            <li class="nav1"><a href="#"></a></li>
-                            <li class="nav2"><a href="#"></a></li>
-                            <li class="nav3"><a href="#"></a></li>
-                            <li class="nav4"><a href="#"></a></li>
-                            <li class="nav5"><a href="#"></a></li>
-                            <li class="nav6"><a href="#"></a></li>
-                        </ul>
-                    </div>
-
-                </div>
-                <div class="col-sm-3">
-                    <div class="bot1_title">Our Twitter</div>
-                    <div class="twits1">
-                        <div class="twit1">
-                            <a href="#"> @travel</a> Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                            <div class="date">5 minutes ago</div>
+  <div id="popular_cruises1">
+    <div class="container">
+      <h2 class="animated">熱門機票</h2>
+      <div class="title1 animated">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod <br>tincidunt ut laoreet dolore magna aliquam erat volutpat.
+      </div>
+      <br><br>
+      
+      <div id="popular_wrapper" class="animated" data-animation="fadeIn" data-animation-delay="300">
+        <div id="popular_inner">
+          <div class="">
+            <div id="popular">
+              <div class="">
+                <div class="carousel-box">
+                  <div class="inner">
+                    <div class="carousel main">
+                      <ul>
+                        <% @tickets.each do |ticket| %>
+                        <div class="col-sm-6 col-md-4">
+                          <li>
+                          <div class="popular ">
+                            <div class="popular_inner">
+                              <figure>
+                                <img src="http://placehold.it/370x232" alt="" class="img-responsive">
+                                  <div class="over">
+                                    <div class="v1"><%= ticket.destination %><span>17 Deal Offers</span></div>
+                                    <div class="v2">Lorem ipsum dolor sit amet,concateus.</div>
+                                  </div>
+                              </figure>
+                              <div class="caption">
+                                <div class="txt1"><span><%= ticket.destination %></span></div>
+                                <div class="txt1"><%= ticket.airline %></div>
+                                <div class="txt2">Flight No: <%= ticket.flight_no %></div>
+                                <div class="txt2">Flight Date: <%= ticket.flight_date %></div>
+                                <div class="txt2">Departure: <%= ticket.departure %></div>
+                                <div class="txt3 clearfix">
+                                  <div class="left_side">
+                                    <div class="nums"> 18 Reviews</div>
+                                  </div>
+                                  <div class="right_side"><%= render partial: "shared/favorite", locals: {ticket: ticket} %> </div>
+                                  <div class="right_side"><%= link_to 'Show', ticket_path(ticket), class: "btn btn-info" %></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
                         </div>
-                        <div class="twit1">
-                            <a href="#">@leo</a> Nam liber tempor cum soluta nobis option congue nihil imperdiet doming
-                            id quod mazim.
-                            <div class="date">2 days ago</div>
-                        </div>
+                        <% end %>
+                      </ul>
                     </div>
+                  </div>
                 </div>
-                <div class="col-sm-3">
-                    <div class="bot1_title">Newsletter</div>
-                    <div class="newsletter_block">
-                        <div class="txt1">Inspiration, ideas, news and your feedback.</div>
-                        <div class="newsletter-wrapper clearfix">
-                            <form class="newsletter" action="javascript:;">
-                                <input type="text" name="s" value='Email Address'
-                                       onBlur="if(this.value=='') this.value='Email Address'"
-                                       onFocus="if(this.value =='Email Address' ) this.value=''">
-                                <a href="#" class="btn-default btn3">SUBMIT</a>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="phone2">1-917-338-6831</div>
-                    <div class="support1"><a href="#">support@templates-support.com</a></div>
-                </div>
+              </div>
+              <div class="popular_pagination"></div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 
-    <div class="bot2_wrapper">
-        <div class="container">
-            <div class="left_side">
-                Copyright © 2017 <strong>MECOVACHE</strong> <span>|</span> <a href="#">Privacy Policy</a> <span>|</span>
-                <a href="#">About Us</a> <span>|</span> <a href="#">FAQ</a> <span>|</span> <a href="#">Contact
-                Support</a>
-            </div>
-            <div class="right_side">Designed by <strong>MECOVACHE</strong></div>
-        </div>
-    </div>
+  <%= render partial: "shared/footer"%>
 
-</div>
-
-
-<%= link_to 'Train Ticket', railtickets_path %>
-<%= link_to 'Admin', admin_tickets_path %>
-
-
-<ul>
-
-  <%= render partial: "shared/ticket" %>
   <%= link_to 'New Ticket', new_ticket_path %>
 
-</ul>
 </body>
