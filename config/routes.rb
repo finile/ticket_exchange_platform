@@ -43,6 +43,8 @@ Rails.application.routes.draw do
       get :railtickets
       get :favorites
       get :comments
+      get :coupons
+      get :boards
     end
   end
 
