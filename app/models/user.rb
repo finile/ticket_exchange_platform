@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
 
+  # validates_presence_of :name
+
   has_many :tickets, dependent: :destroy
   has_many :coupons, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -14,6 +16,11 @@ class User < ApplicationRecord
   has_many :favorited_tickets, through: :favorites, source: :ticket
   has_many :favorited_railtickets, through: :favorites, source: :railticket
 
+
+
+
+
+  # for FB log in
   def self.from_omniauth(auth)
     # Case 1: Find existing user by facebook uid
     user = User.find_by_fb_uid( auth.uid )
@@ -42,7 +49,7 @@ class User < ApplicationRecord
     return user
   end
 
-
+  # for admin role checking
   def admin?
     self.role == "admin"
   end
