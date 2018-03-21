@@ -1,9 +1,13 @@
      <div class="container">
          <div class="row">
-
+          <%= link_to 'Index', tickets_path %>
            <ul class="nav nav-tabs">
             <li role="presentation">
              <%= link_to 'Ticket', admin_tickets_path %>
+           </li>
+           <ul class="nav nav-tabs">
+            <li role="presentation" >
+             <%= link_to 'Coupon', admin_coupons_path %>
            </li>
            <li role="presentation" >
             <%= link_to 'Train Ticket', admin_railtickets_path %>
@@ -17,7 +21,7 @@
        </div>
 
        <br>
-       <%= link_to 'Index', tickets_path %>
+
        <div class="container">
          <div class="row">
          <table class="table table-bordered">

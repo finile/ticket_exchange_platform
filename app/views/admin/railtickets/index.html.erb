@@ -1,9 +1,13 @@
 <div class="container">
     <div class="row">
-
+    <%= link_to 'Index', tickets_path %>
       <ul class="nav nav-tabs">
        <li role="presentation" >
         <%= link_to 'Ticket', admin_tickets_path %>
+      </li>
+      <ul class="nav nav-tabs">
+       <li role="presentation" >
+        <%= link_to 'Coupon', admin_coupons_path %>
       </li>
       <li role="presentation" class="active">
        <%= link_to 'Train Ticket', admin_railtickets_path %>
@@ -20,42 +24,57 @@
 
 
 <h1>高鐵交換平台後台</h1>
-<%= link_to 'Index', tickets_path %>
-<ul>
 
 
+<div class="container">
+  <div class="row">
+  <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Train Ticket ID</th>
+            <th>Train no</th>
+            <th>Train date</th>
+            <th>Departure time</th>
+            <th>Arrive time</th>
+            <th>Departure</th>
+            <th>Destination</th>
+            <th>User Name</th>
+            <th>Price</th>
+            <th>Original Discout</th>
+            <th>Others</th>
+            <th>Show</th>
+            <th>Edit</th>
+            <th>Delete</th>
 
-</ul>
-<% @railtickets.each do |railticket| %>
-  <div class="col-sm-6 col-md-4">
-    <div class="ticket-item">
-      <div class="caption">
-        <h3><%= link_to railticket.name, railticket_path(railticket) %></h3>
-        <%= link_to 'Show', admin_railticket_path(railticket) %>
-        <%= link_to 'Edit', edit_admin_railticket_path(railticket) %>
-        <%= link_to 'Delete', admin_railtickets_path(railticket), method: :delete, data: {confirm:"Are you sure?"} %>
-      </div>
-      </div>
-      </div>
+          </tr>
+        </thead>
+        <tbody>
+          <% @railtickets.each do |railticket| %>
+          <tr>
+            <th scope="row"><%= railticket.id %></th>
+            <td><%= railticket.train_no %></td>
+            <td><%= railticket.train_date %></td>
+            <td><%= railticket.departure_time %></td>
+            <td><%= railticket.arrive_time %></td>
+            <td><%= railticket.departure %></td>
+            <td><%= railticket.destination %></td>
+            <td><%= railticket.name %></td>
+            <td><%= railticket.price %></td>
+            <td><%= railticket.discount %></td>
+            <td><%= railticket.others %></td>
 
-      <li>
+            <td><%= link_to 'Show', admin_railticket_path(railticket) %></td>
+            <td><%= link_to 'Edit', edit_admin_railticket_path(railticket) %></td>
+            <td><%= link_to 'Delete', admin_railtickets_path(railticket), method: :delete, data: {confirm:"Are you sure?"}%></td>
 
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-        Train no: <%= railticket.train_no %><br>
-        Train date: <%= railticket.train_date %><br>
-        Departure time: <%= railticket.departure_time %><br>
-        Arrive time: <%= railticket.arrive_time %><br>
-        Departure:<%= railticket.departure %><br>
-        Destination: <%= railticket.destination %><br>
-        Name: <%= railticket.name %><br>
-        Price: <%= railticket.price %><br>
-        Original Discout: <%= railticket.discount %><br>
-        Others: <%= railticket.others %><br>
-
-
-</li>
-
-<% end %>
+   </div>
+ </div>
 
 
 <div class="text-center">
