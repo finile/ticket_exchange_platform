@@ -48,6 +48,15 @@ class BoardsController < ApplicationController
       flash[:alert] = "Message was deleted"
     end
 
+    def notify_buyer
+      if @board.save
+
+         UserMailer.notify_buyer(@board).deliver_now!
+         redirect_to boards_path, notice: "notice has been sent"
+
+       end
+    end
+
   private
 
     def set_board
