@@ -2,8 +2,9 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
-  
-  ActiveAdmin.routes(self)
+
+  # ActiveAdmin.routes(self)
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "tickets#index"
 
@@ -29,6 +30,11 @@ Rails.application.routes.draw do
       post :favorite
       post :unfavorite
    end
+  end
+
+  resources :boards, only: [:index, :show, :create, :edit, :new, :update] do
+   resources :comments, only: [:create, :destroy]
+
   end
 
   resources :users, only: [:index, :show, :edit, :update, :destroy] do

@@ -2,11 +2,11 @@ class Admin::CouponsController < ApplicationController
   before_action :set_coupon, only: [:show, :edit, :update, :destroy]
 
   def index
-    @coupons = Coupon.page(params[:page]).per(9)
+    @coupons = Coupon.all.order(created_at: :desc).page(params[:page]).per(10)
 
   end
 
-  
+
 
   def show
     #set_coupon
