@@ -21,6 +21,9 @@
 
        <br>
 
+
+     <h1>後台 User List</h1>
+
        <div class="container">
          <div class="row">
          <table class="table table-bordered">
@@ -38,7 +41,7 @@
                  <% @users.each do |user| %>
                  <tr>
                    <th scope="row"><%= user.id %></th>
-                   <td><%= user.name %></td>
+                   <td><%= link_to user.name, user_path(user) %></td>
 
                    <td>
                    <% user.comments.each do |comment| %>
