@@ -40,6 +40,7 @@ gem 'jquery-rails'
 gem 'font-awesome-sass'
 gem "font-awesome-rails"
 gem 'kaminari'
+gem 'omniauth-facebook'
 
 
 group :development, :test do
