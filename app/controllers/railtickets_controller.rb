@@ -1,5 +1,5 @@
 class RailticketsController < ApplicationController
-
+  before_action :authenticate_user!
   before_action :set_railticket, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite]
 
     def index
@@ -8,14 +8,18 @@ class RailticketsController < ApplicationController
     end
 
     def new
-    @railtickets = Railticket.new
+      @railticket = Railticket.new
     end
 
     def create
-      @railtickets = Railticket.new(railticket_params)
-      @railtickets.save
-
-      redirect_to railtickets_url
+      @railticket = current_user.railtickets.new(railticket_params)
+      if @railticket.save
+        flash[:notice] = "railticket was successfully created"
+        redirect_to railtickets_url
+      else
+        flash.now[:alert] = "railticket was failed to create"
+        redirect_to railtickets_url
+      end
     end
 
     def show
