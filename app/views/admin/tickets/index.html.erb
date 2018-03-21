@@ -1,9 +1,13 @@
 <div class="container">
     <div class="row">
-
+    <%= link_to 'Index', tickets_path %>
       <ul class="nav nav-tabs">
        <li role="presentation" class="active">
         <%= link_to 'Ticket', admin_tickets_path %>
+      </li>
+      <ul class="nav nav-tabs">
+       <li role="presentation" >
+        <%= link_to 'Coupon', admin_coupons_path %>
       </li>
       <li role="presentation" >
        <%= link_to 'Train Ticket', admin_railtickets_path %>
@@ -20,42 +24,57 @@
 
 
 <h1>機票交換平台後台</h1>
-<%= link_to 'Index', tickets_path %>
-<ul>
 
 
 
-</ul>
-<% @tickets.each do |ticket| %>
-  <div class="col-sm-6 col-md-4">
-    <div class="ticket-item">
-      <div class="caption">
-        <h3><%= link_to ticket.name, ticket_path(ticket) %></h3>
-        <%= link_to 'Show', admin_ticket_path(ticket) %>
-        <%= link_to 'Edit', edit_admin_ticket_path(ticket) %>
-        <%= link_to 'Delete', admin_tickets_path(ticket), method: :delete, data: {confirm:"Are you sure?"} %>
-      </div>
-      </div>
-      </div>
 
-      <li>
+<div class="container">
+  <div class="row">
+  <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Ticket ID</th>
+            <th>Airline</th>
+            <th>Flight no</th>
+            <th>Flight date</th>
+            <th>Flight time</th>
+            <th>Departure</th>
+            <th>Destination</th>
+            <th>User Name</th>
+            <th>Price</th>
+            <th>Others</th>
+            <th>Show</th>
+            <th>Edit</th>
+            <th>Delete</th>
 
+          </tr>
+        </thead>
+        <tbody>
+          <% @tickets.each do |ticket| %>
+          <tr>
+            <th scope="row"><%= ticket.id %></th>
+            <td><%= ticket.airline %></td>
+            <td><%= ticket.flight_no %></td>
+            <td><%= ticket.flight_date %></td>
+            <td><%= ticket.flight_time %></td>
+            <td><%= ticket.departure %></td>
+            <td><%= ticket.destination %></td>
+            <td><%= ticket.name %></td>
+            <td><%= ticket.price %></td>
+            <td><%= ticket.others %></td>
 
-      Airline: <%= ticket.airline %><br>
-      Flight no: <%= ticket.flight_no %><br>
-      Flight date: <%= ticket.flight_date %><br>
-      Flight time: <%= ticket.flight_time %><br>
-      Departure:<%= ticket.departure %><br>
-      Destination: <%= ticket.destination %><br>
-      Name: <%= ticket.name %><br>
-      Price: <%= ticket.price %><br>
-      Others: <%= ticket.others %><br>
+            <td><%= link_to 'Show', admin_ticket_path(ticket) %></td>
+            <td><%= link_to 'Edit', edit_admin_ticket_path(ticket) %></td>
+            <td> <%= link_to 'Delete', admin_ticket_path(ticket), method: :delete, data: {confirm:"Are you sure?"} %></td>
 
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-</li>
-
-<% end %>
-
+   </div>
+ </div>
 
 <div class="text-center">
 <%= paginate @tickets %>

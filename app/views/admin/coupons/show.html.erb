@@ -1,0 +1,14 @@
+Airline: <%= @coupon.airline %><br>
+Destination: <%= @coupon.destination %><br>
+Coupon expiry date: <%= @coupon.coupon_expiry_date %><br>
+Flight date from: <%= @coupon.flight_date_from %><br>
+Flight date to:<%= @coupon.flight_date_to %><br>
+Tax: <%= @coupon.tax %><br>
+Image: <%= @coupon.image %><br>
+Others: <%= @coupon.others %><br>
+
+<br>
+<%= link_to 'Edit', edit_coupon_path(@coupon) %>
+<%#= render partial: "shared/favorite", locals: {coupon: @coupon} %>
+<br>
+<%= link_to 'Back to Admin Coupon index', admin_coupons_path %>
