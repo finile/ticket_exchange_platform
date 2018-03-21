@@ -11,12 +11,20 @@ Rails.application.routes.draw do
      end
   end
 
-  resources :railtickets, only: [:index, :show, :create, :edit, :new, :update] do
-     resources :comments, only: [:create, :destroy]
-     member do
+  resources :coupons, only: [:index, :show, :create, :edit, :new, :update] do
+    member do
       post :favorite
       post :unfavorite
-     end
+    end
+  end
+
+
+  resources :railtickets, only: [:index, :show, :create, :edit, :new, :update] do
+   resources :comments, only: [:create, :destroy]
+    member do
+      post :favorite
+      post :unfavorite
+   end
   end
 
   resources :users, only: [:index, :show, :edit, :update, :destroy] do
@@ -25,22 +33,17 @@ Rails.application.routes.draw do
       get :railtickets
       get :favorites
       get :comments
-
     end
   end
 
   resources :searches
 
   namespace :admin do
-    resources :tickets
     resources :users
+    resources :tickets
     resources :railtickets
+    resources :coupons
     root "tickets#index"
   end
-
-
-  resources :coupons, only: [:index, :show, :create, :edit, :new, :update]
-
-  
 
 end

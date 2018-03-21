@@ -1,6 +1,6 @@
 class CouponsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_coupon, only: [:show, :edit, :update, :destroy]
+  before_action :set_coupon, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite]
   
   def index
     @coupons = Coupon.page(params[:page]).per(9)
@@ -45,6 +45,18 @@ class CouponsController < ApplicationController
     redirect_to tickets_path
     flash[:alert] = "Coupon was deleted"
   end
+
+  def favorite
+    @coupon.favorites.create!(user: current_user)
+    redirect_back(fallback_location: root_path)
+  end
+
+  def unfavorite
+   favorites = Favorite.where(coupon: @coupon, user: current_user)
+   favorites.destroy_all
+   redirect_back(fallback_location: root_path)
+  end
+
 
   private
 
