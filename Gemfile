@@ -40,7 +40,8 @@ gem 'jquery-rails'
 gem 'font-awesome-sass'
 gem "font-awesome-rails"
 gem 'kaminari'
-
+gem 'activeadmin', '~> 1.0.0.pre2'
+gem 'cancancan'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

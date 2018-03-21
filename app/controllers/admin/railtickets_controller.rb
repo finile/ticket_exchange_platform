@@ -3,7 +3,7 @@ class Admin::RailticketsController < ApplicationController
   before_action :set_railticket, only: [:show, :edit, :update, :destroy]
 
   def index
-    @railtickets = Railticket.all.order(created_at: :desc).page(params[:page]).per(20)
+    @railtickets = Railticket.all.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def show

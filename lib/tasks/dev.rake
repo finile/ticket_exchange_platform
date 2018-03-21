@@ -40,7 +40,7 @@ namespace :dev do
           flight_time: rand(a_day_ago..now),
           departure: FFaker::Address.city,
           destination: FFaker::Address.city,
-          name: FFaker::Name.name.upcase, 
+          name: FFaker::Name.name.upcase,
           price: rand(1000..10000),
           quantity: rand(1..5),
           image: FFaker::Avatar.image,
@@ -72,6 +72,7 @@ namespace :dev do
         destination: FFaker::Address.city,
         name: FFaker::Name.name.upcase,
         price: rand(900..2000),
+        discount: rand(65..90),
         image: FFaker::Avatar.image,
         others:FFaker::Lorem::sentence(15)
       )
