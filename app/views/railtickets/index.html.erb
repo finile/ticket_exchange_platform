@@ -70,7 +70,13 @@
                                   <div class="left_side">
                                     <div class="nums"> 18 Reviews</div>
                                   </div>
-                                  <div class="right_side"><%= render partial: "shared/favorite", locals: {ticket: railticket} %> </div>
+                                  <div class="right_side">
+                                    <% if railticket.is_favorited?(current_user) %>
+                                        <%= link_to 'Unfavor', unfavorite_railticket_path(railticket), method: :post, class: "btn btn-info" %>
+                                    <% else %>
+                                        <%= link_to 'Favor', favorite_railticket_path(railticket), method: :post, class: "btn btn-primary" %>
+                                    <% end %>
+                                  </div>
                                   <div class="right_side"><%= link_to 'Show', railticket_path(railticket), class: "btn btn-info" %></div>
                                 </div>
                               </div>

@@ -5,7 +5,6 @@ class RailticketsController < ApplicationController
     def index
       @railtickets = Railticket.page(params[:page]).per(9)
 
-
     end
 
     def new
@@ -61,7 +60,7 @@ class RailticketsController < ApplicationController
   private
 
     def set_railticket
-      @railtickets = Railticket.find(params[:id])
+      @railticket = Railticket.find(params[:id])
     end
 
 

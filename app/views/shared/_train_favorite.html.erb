@@ -1,5 +1,4 @@
 
-
 <% if railticket.is_favorited?(current_user) %>
   <%= link_to 'Unfavorite', unfavorite_railticket_path(railticket), method: :post, class: "btn btn-info" %>
 <% else %>

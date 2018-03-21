@@ -1,6 +1,7 @@
 class Comment < ApplicationRecord
   belongs_to :user
-  belongs_to :ticket
-  belongs_to :railticket
+  belongs_to :railticket, optional: true
+  belongs_to :ticket, optional: true
+  
 
 end

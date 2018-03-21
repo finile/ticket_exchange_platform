@@ -22,7 +22,7 @@
   <h3><%= link_to railticket.name, railticket_path(railticket) %></h3>
   <%= link_to 'Show', railticket_path(railticket) %>
   <%= link_to 'Edit', edit_railticket_path(railticket) %>
-  <%= render partial: "shared/train_favorite", locals: {railticket: railticket} %>
+  <%= render partial: "shared/train_favorite", locals: {ticket: railticket} %>
 </div>
 </div>
 </div>

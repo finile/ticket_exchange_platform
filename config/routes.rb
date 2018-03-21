@@ -20,17 +20,17 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:index, :show, :edit, :update, :destroy] do
-          member do
-            get :tickets
-            get :railtickets
-            get :favorites
-            get :comments
+    member do
+      get :tickets
+      get :railtickets
+      get :favorites
+      get :comments
 
-          end
-        end
+    end
+  end
 
 
-  resources :favorites, only: [:create, :destroy]
+  # resources :favorites, only: [:create, :destroy]
   resources :searches
 
   namespace :admin do

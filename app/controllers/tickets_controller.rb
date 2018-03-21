@@ -51,17 +51,15 @@ class TicketsController < ApplicationController
     end
 
     def favorite
-
       @ticket.favorites.create!(user: current_user)
       redirect_back(fallback_location: root_path)
     end
 
-   def unfavorite
-
-     favorites = Favorite.where(ticket: @ticket, user: current_user)
-     favorites.destroy_all
-     redirect_back(fallback_location: root_path)
-   end
+     def unfavorite
+       favorites = Favorite.where(ticket: @ticket, user: current_user)
+       favorites.destroy_all
+       redirect_back(fallback_location: root_path)
+     end
 
   private
 
