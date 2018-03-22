@@ -1,7 +1,5 @@
-class Comment < ApplicationRecord
+class Comment < ActiveRecord::Base
   belongs_to :user
-  belongs_to :railticket, optional: true
-  belongs_to :ticket, optional: true
-  
-
+  belongs_to :commentable, :polymorphic => true
 end
+

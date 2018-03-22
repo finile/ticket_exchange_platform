@@ -60,22 +60,10 @@
 
 <div class="container">
   <div class="row">
-    <% @ticket.comments.each do |comment| %>
-       <div>
-         <h4><%= comment.user.name %></h4>
-         <p><%= simple_format comment.content %></p>
-         <p class="text-muted">
-           <em><%= time_ago_in_words(comment.created_at) %> ago -</em>
-           <% if current_user.admin? %>
-             <%= link_to "Delete", ticket_comment_path(@ticket, comment), method: :delete, data: {confirm:"Are you sure?"} %>
-           <% end %>
-         </p>
-       </div>
 
-       <hr>
-      <% end %>
+    <%= render partial: "shared/comments", locals: {commentable: @ticket} %>
 
-     <%= form_for [@ticket, @comment] do |f| %>
+    <%= form_for [@ticket, @comment] do |f| %>
       <div class="form-group">
         <%= f.text_area :content, placeholder: "留言給賣家", class: "form-control" %>
       </div>

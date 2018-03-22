@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   root "tickets#index"
 
   resources :tickets, only: [:index, :show, :create, :edit, :new, :update] do
-     resources :comments, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
      member do
       post :favorite
       post :unfavorite
@@ -16,10 +16,11 @@ Rails.application.routes.draw do
   end
 
   resources :coupons, only: [:index, :show, :create, :edit, :new, :update] do
-    member do
-      post :favorite
-      post :unfavorite
-    end
+    resources :comments, only: [:create, :destroy]
+      member do
+        post :favorite
+        post :unfavorite
+      end
   end
 
 
