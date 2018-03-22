@@ -57,6 +57,9 @@ class BoardsController < ApplicationController
        end
     end
 
+
+
+
   private
 
     def set_board

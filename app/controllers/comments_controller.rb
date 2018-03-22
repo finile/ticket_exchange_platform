@@ -8,6 +8,16 @@ class CommentsController < ApplicationController
       redirect_to ticket_path(@ticket)
     end
 
+    # def create
+    #   comment = Comment.new(comment_params)
+    #   if comment.save
+    #     UserMailer.notify_comment(current_user, comment).deliver_later!
+    #     redirect_to comments_path
+    #   else
+    #     render :action => :new
+    #   end
+    # end
+
 
     def destroy
       @ticket = Ticket.find(params[:ticket_id])

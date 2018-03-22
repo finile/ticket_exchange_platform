@@ -10,4 +10,6 @@ class UserMailer < ApplicationMailer
       subject: "Ticket Exchange Platform | 你徵求的機票已經有賣家提供了"
     end
 
+
+
 end
