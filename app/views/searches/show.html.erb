@@ -1,5 +1,7 @@
 <% if @search.flight_no %>
   <%= render partial: "shared/search_ticket", locals: {ticket: @search.tickets} %>
+<% elsif @search.train_no %>
+  <%= render @search.railtickets %>
 <% else %>
   <%= render partial: "shared/search_coupon", locals: {ticket: @search.coupons} %>
 <% end %>
