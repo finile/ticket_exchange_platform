@@ -253,7 +253,7 @@ transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; -webkit-trans
 .ui-datepicker{font-size: 14px; width: 212px;}
 
 
-.input1_inner{position: relative; background: none; border: 1px solid #ebebeb; height: 42px; position: relative;}
+.input1_inner{position: relative; background: none; height: 42px; position: relative;}
 .input1_inner:after{content: ''; display: block; width: 16px; height: 17px; /*background: url(../images/m2.png) 0 0 no-repeat; */position: absolute; right: 10px; top: 11px;}
 .input1_inner input{padding: 5px 5px 5px 5px; height: 40px; border: none; background: #fff; color: #c2c2c2; font-size: 13px; line-height: 20px; font-family: inherit; display: block; width: 100%;}
 .input1_inner input:focus{outline: none;}
