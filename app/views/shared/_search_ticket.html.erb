@@ -1,0 +1,67 @@
+<%= render partial: "shared/navbar" %>
+
+<div id="popular_cruises1">
+    <div class="container">
+      <h2 class="animated">廉航機票搜尋結果</h2>
+      <div class="title1 animated">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod <br>tincidunt ut laoreet dolore magna aliquam erat volutpat.
+      </div>
+      <br><br>
+      
+      <div id="popular_wrapper" class="animated" data-animation="fadeIn" data-animation-delay="300">
+        <div id="popular_inner">
+          <div class="">
+            <div id="popular">
+              <div class="">
+                <div class="carousel-box">
+                  <div class="inner">
+                    <div class="carousel main">
+                      <ul>
+                        <% @search.tickets.each do |ticket| %>
+                        <div class="col-sm-6 col-md-4">
+                          <li>
+                           <div class="popular ">
+                            <div class="popular_inner">
+                              <figure>
+                                <img src="http://placehold.it/370x232" alt="" class="img-responsive">
+                                  <div class="over">
+                                    <div class="v1"><%= ticket.destination %><span>17 Deal Offers</span></div>
+                                    <div class="v2">Lorem ipsum dolor sit amet,concateus.</div>
+                                  </div>
+                              </figure>
+                              <div class="caption">
+                                <div class="txt1"><span><%= ticket.destination %></span></div>
+                                <div class="txt1"><%= ticket.airline %></div>
+                                <div class="txt2">Flight No: <%= ticket.flight_no %></div>
+                                <div class="txt2">Flight Date: <%= ticket.flight_date %></div>
+                                <div class="txt2">Departure: <%= ticket.departure %></div>
+                                <div class="txt3 clearfix">
+                                  <div class="left_side">
+                                    <div class="nums"> 18 Reviews</div>
+                                  </div>
+                                  <div class="right_side">
+                                    <% if ticket.is_favorited?(current_user) %>
+                                        <%= link_to 'Unfavor', unfavorite_ticket_path(ticket), method: :post, class: "btn btn-info" %>
+                                    <% else %>
+                                        <%= link_to 'Favor', favorite_ticket_path(ticket), method: :post, class: "btn btn-primary" %>
+                                    <% end %>
+                                  </div>
+                                  <div class="right_side"><%= link_to 'Show', ticket_path(ticket), class: "btn btn-info" %></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <% end %>
+                      </div>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="popular_pagination"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
