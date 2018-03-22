@@ -20,11 +20,11 @@
         </button>
         <div class="navbar-collapse navbar-collapse_ collapse">
           <ul class="nav navbar-nav sf-menu clearfix">
-            <li class="sub-menu sub-menu-1 active"><%= link_to 'Flight Ticket', tickets_path %><em></em></li>
-            <li class="sub-menu sub-menu-1"><%= link_to 'Coupon', coupons_path %><em></em></li>
-            <li class="sub-menu sub-menu-1"><%= link_to 'Train Ticket', railtickets_path %><em></em></li>
+            <li class="<%= active_class(tickets_path) %>"><%= link_to 'Flight Ticket', tickets_path %><em></em></li>
+            <li class="<%= active_class(coupons_path) %>"><%= link_to 'Coupon', coupons_path %><em></em></li>
+            <li class="<%= active_class(railtickets_path) %>"><%= link_to 'Train Ticket', railtickets_path %><em></em></li>
             <% if current_user %>
-              <li class="sub-menu sub-menu-1"><%= link_to 'Profile', user_path(current_user) %><em></em></li>
+              <li class="<%= active_class(user_path(current_user)) %>"><%= link_to 'Profile', user_path(current_user) %><em></em></li>
             <% end %>
           </ul>
         </div>
@@ -32,3 +32,4 @@
     </div>
   </div>
 </div>
+
