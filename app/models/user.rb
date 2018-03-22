@@ -16,7 +16,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorited_tickets, through: :favorites, source: :ticket
   has_many :favorited_railtickets, through: :favorites, source: :railticket
-
+  has_many :favorited_coupons, through: :favorites, source: :coupon
 
 
 
