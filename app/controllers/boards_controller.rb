@@ -48,17 +48,35 @@ class BoardsController < ApplicationController
        flash[:alert] = "Message was deleted"
      end
 
-     def notify_buyer
-       if @board.save
+     # def notify_buyer
+     #   if @board.save
+     #
+     #      UserMailer.notify_buyer(@board).deliver_now!
+     #      redirect_to boards_path, notice: "notice has been sent"
+     #
+     #    end
+     # end
 
-          UserMailer.notify_buyer(@board).deliver_now!
-          redirect_to boards_path, notice: "notice has been sent"
+     # def create
+     #   comment = Comment.new(comment_params)
+     #   if comment.save
+     #     UserMailer.notify_comment(current_user, comment).deliver_later!
+     #     redirect_to comments_path
+     #   else
+     #     render :action => :new
+     #   end
+     # end
 
-        end
-     end
 
-
-
+     # if @board.comment.save
+     #   UserMailer.notify_buyer(@board.user).deliver_now!
+     #   redirect_to boards_path, notice: "notice has been sent"
+     # else
+     #  @comment = @commentable.comments.build(comment_params)
+     #  @comment.user = current_user
+     #  @comment.save
+     #  redirect_to @commentable, notice: "your comment was sucessfully posted"
+     # end
 
    private
 
