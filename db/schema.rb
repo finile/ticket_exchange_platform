@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180322151207) do
+ActiveRecord::Schema.define(version: 20180323031449) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20180322151207) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.integer "favorites_count", default: 0
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -75,6 +76,7 @@ ActiveRecord::Schema.define(version: 20180322151207) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.integer "favorites_count", default: 0
   end
 
   create_table "searches", force: :cascade do |t|
@@ -106,6 +108,7 @@ ActiveRecord::Schema.define(version: 20180322151207) do
     t.datetime "updated_at", null: false
     t.integer "quantity"
     t.integer "user_id"
+    t.integer "favorites_count", default: 0
   end
 
   create_table "users", force: :cascade do |t|
@@ -125,6 +128,10 @@ ActiveRecord::Schema.define(version: 20180322151207) do
     t.string "name"
     t.string "fb_uid"
     t.string "fb_token"
+    t.integer "tickets_count", default: 0
+    t.integer "coupons_count", default: 0
+    t.integer "railtickets_count", default: 0
+    t.integer "favorites_count", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

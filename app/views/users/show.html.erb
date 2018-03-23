@@ -92,6 +92,9 @@
                           <%= ticket.airline %> <br>
                           Flight No: <%= ticket.flight_no %> 
                         </div>
+                        <div class="txt">
+                          <%= render partial: "shared/ticket_favorite", locals: {ticket: ticket} %>
+                        </div>
                     </div>
                 </div>
               <% end %>
@@ -115,6 +118,9 @@
                           使用期間: <br>
                           <%= coupon.flight_date_from %> ~ <br>
                           <%= coupon.flight_date_to %> 
+                        </div>
+                        <div class="txt">
+                          <%= render partial: "shared/coupon_favorite", locals: {coupon: coupon} %>
                         </div>
                     </div>
                 </div>
@@ -140,6 +146,9 @@
                         Train date: <%= railticket.train_date %> <br>
                         Departure time: <%= railticket.departure_time %>
                       </div>
+                      <div class="txt">
+                        <%= render partial: "shared/train_favorite", locals: {railticket: railticket} %>
+                      </div>
                     </div>
                 </div>
              <% end %>
@@ -150,12 +159,12 @@
         <div class="blog_sidebar">
           <h3><%= current_user.name%></h3>
           <ul class="ul4">
-            <li><a>Posted Flight Ticket<span>125</span></a></li>
-            <li><a href="#posted_coupon">Posted Coupon<span>97</span></a></li>
-            <li><a href="#posted_rail_ticket">Posted Rail Ticket<span>56</span></a></li>
-            <li><a href="#favorited_ticket">Favorited Flight Ticket<span>56</span></a></li>
-            <li><a href="#favorited_coupon">Favorited Coupon<span>56</span></a></li>
-            <li><a href="#favorited_railticket">Favorited Railtickets<span>24</span></a></li>
+            <li><a>Posted Flight Ticket<span><%= @user.tickets.count %></span></a></li>
+            <li><a href="#posted_coupon">Posted Coupon<span><%= @user.coupons.count %></span></a></li>
+            <li><a href="#posted_rail_ticket">Posted Rail Ticket<span><%= @user.railtickets.count %></span></a></li>
+            <li><a href="#favorited_ticket">Favorited Flight Ticket<span><%= @favorited_tickets.count %></span></a></li>
+            <li><a href="#favorited_coupon">Favorited Coupon<span><%= @favorited_coupons.count %></span></a></li>
+            <li><a href="#favorited_railticket">Favorited Railtickets<span><%= @favorited_railtickets.count %></span></a></li>
           </ul>
         </div>
       </div>
