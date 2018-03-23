@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "tickets#index"
 
-  resources :tickets, only: [:index, :show, :create, :edit, :new, :update] do
+  resources :tickets, only: [:index, :show, :create, :edit, :new, :update, :destroy] do
     resources :comments, only: [:create, :destroy]
      member do
       post :favorite
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
      end
   end
 
-  resources :coupons, only: [:index, :show, :create, :edit, :new, :update] do
+  resources :coupons, only: [:index, :show, :create, :edit, :new, :update, :destroy] do
     resources :comments, only: [:create, :destroy]
       member do
         post :favorite
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   end
 
 
-  resources :railtickets, only: [:index, :show, :create, :edit, :new, :update] do
+  resources :railtickets, only: [:index, :show, :create, :edit, :new, :update, :destroy] do
    resources :comments, only: [:create, :destroy]
     member do
       post :favorite

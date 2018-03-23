@@ -2,33 +2,6 @@
 <div id="content">
   <div class="container">
     <div class="row">
-      <div class="col-sm-3">
-        <div class="sidebar-block">
-          <form action="javascript;">
-            <div class="clearfix"></div>
-            <div style="margin-top:10px;"></div>
-            <div class="clearfix"></div>
-            <div class="col-sm-12 no-padding margin-top">
-              <div class="input1_wrapper">
-                <label class="col-md-6" style="padding-left:0;padding-top:12px;font-weight:500;color:#464646;font-size:13px;">
-                  建議價格:
-                </label>
-                <div class="col-md-6 price-total-left" style="padding-right:0;padding-left:0;">
-                  <span class="red">NTD$ <%= @railticket.price %></span>
-                </div>
-              </div>
-            </div>
-            <div class="clearfix"></div>
-            <div class="no-padding margin-top text-center" style="margin-top:30px;">
-              <a href="booking-cars-page.html" class="btn btn-default btn-cf-submit3" style="width:100%;">
-              立即購買 </a>
-            </div>
-            <div class="clearfix"></div>
-          </form>
-        </div>
-        <div class="clearfix"></div>
-        <div class="margin-top"></div>
-      </div>
       <div class="col-sm-9">
         <div class="blog_content">
           <div class="post post-full">
@@ -71,10 +44,42 @@
                   <li>Original Discount: <%= @railticket.discount %></li>
                 </ul>
                 <p>Others: <%= @railticket.others %></p>
+                <% if current_user == @railticket.user %>
+                  <div class="right_side">
+                    <%= link_to 'Edit', edit_railticket_path(@railticket), class: "btn btn-info" %> | <%= link_to 'Delete', railticket_path(@railticket), method: :delete, class: "btn btn-info", data: {confirm:"Are you sure?"} %>
+                  </div>
+                <% end %>
               </div>
             </div>
           </div>
         </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="sidebar-block">
+          <form action="javascript;">
+            <div class="clearfix"></div>
+            <div style="margin-top:10px;"></div>
+            <div class="clearfix"></div>
+            <div class="col-sm-12 no-padding margin-top">
+              <div class="input1_wrapper">
+                <label class="col-md-6" style="padding-left:0;padding-top:12px;font-weight:500;color:#464646;font-size:13px;">
+                  建議價格:
+                </label>
+                <div class="col-md-6 price-total-left" style="padding-right:0;padding-left:0;">
+                  <span class="red">NTD$ <%= @railticket.price %></span>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="no-padding margin-top text-center" style="margin-top:30px;">
+              <a href="booking-cars-page.html" class="btn btn-default btn-cf-submit3" style="width:100%;">
+              立即購買 </a>
+            </div>
+            <div class="clearfix"></div>
+          </form>
+        </div>
+        <div class="clearfix"></div>
+        <div class="margin-top"></div>
       </div>
     </div>
   </div>

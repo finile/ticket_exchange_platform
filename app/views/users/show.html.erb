@@ -23,6 +23,9 @@
                           <%= ticket.airline %> <br>
                           Flight No: <%= ticket.flight_no %> 
                         </div>
+                        <div class="txt">
+                          <a href="#"><%= link_to 'Delete', ticket_path(ticket), method: :delete, class: "btn btn-info", data: {confirm:"Are you sure?"} %></a>
+                        </div>
                     </div>
                 </div>
               <% end %>
@@ -43,8 +46,10 @@
                         </div>
                         <div class="txt">
                           使用期間: <br>
-                          <%= coupon.flight_date_from %> ~ <br>
-                          <%= coupon.flight_date_to %> 
+                          <%= coupon.flight_date_from %> ~ <%= coupon.flight_date_to %> 
+                        </div>
+                         <div class="txt">
+                          <%= link_to 'Delete', coupon_path(coupon), method: :delete, class: "btn btn-info", data: {confirm:"Are you sure?"} %>
                         </div>
                     </div>
                 </div>
@@ -68,6 +73,9 @@
                         Train no: <%= railticket.train_no %> <br>
                         Train date: <%= railticket.train_date %> <br>
                         Departure time: <%= railticket.departure_time %>
+                      </div>
+                      <div class="txt">
+                        <%= link_to 'Delete', railticket_path(railticket), method: :delete, class: "btn btn-info", data: {confirm:"Are you sure?"} %>
                       </div>
                     </div>
                 </div>
