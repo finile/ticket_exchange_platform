@@ -81,7 +81,7 @@ transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; -webkit-trans
 .lang1 .dropdown-menu a.ge:before{background: url(../images/flag_ge.png) 0 0 no-repeat;}
 .lang1 .dropdown-menu a.ru:before{background: url(../images/flag_ru.png) 0 0 no-repeat;}
 
-.top2_wrapper{position: relative; background:#00a99d; padding-top: 10px; }
+.top2_wrapper{position: relative; background:#00a99d; padding-top: 10px; padding-bottom: 20px;}
 .top2{position: relative;}
 header{position: absolute; left: 0; top: 10px; z-index: 31;}
 
@@ -624,7 +624,7 @@ transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; -webkit-trans
 
 /* ============================= main menu ====================== */
 .menu_wrapper{}
-.navbar_ {padding: 0; background: none; border:none; position: relative;z-index: 30; min-height: 0; float: right; display: block; background: none; line-height: 1px; margin-top: 10px; margin-bottom: 10px;}
+.navbar_ {padding: 0; background: none; border:none; position: relative;z-index: 30; min-height: 0; float: right; display: block; background: none; line-height: 1px; margin-top: 25px; margin-bottom: 10px;}
 .navbar_ .navbar-toggle {float: right; background: #1cbbb4; border: none;box-shadow: none; moz-box-shadow: none; -webkit-box-shadow: none; margin-top: 41px; margin-bottom: 41px; margin-left: 15px;}
 .navbar_ .navbar-toggle:hover, .navbar_ .navbar-toggle:focus{background: #076f68;}
 .navbar_ .navbar-toggle .icon-bar{background: #fff;}
