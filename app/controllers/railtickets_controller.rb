@@ -4,7 +4,7 @@ class RailticketsController < ApplicationController
 
     def index
       @railtickets = Railticket.page(params[:page]).per(9)
-
+      @search = Search.new 
     end
 
     def new

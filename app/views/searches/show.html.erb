@@ -1,9 +1,8 @@
-<h1>Search Results</h1>
-
 <% if @search.flight_no %>
-  <%= render @search.tickets %>
-  <%= link_to 'Back to index', tickets_path %>
+  <%= render partial: "shared/search_ticket", locals: {ticket: @search.tickets} %>
+<% elsif @search.train_no %>
+  <%= render partial: "shared/search_railticket", locals: { ticket: @search.railtickets} %>
 <% else %>
-  <%= render @search.coupons %>
-  <%= link_to 'Back to index', coupons_path %>
+  <%= render partial: "shared/search_coupon", locals: {ticket: @search.coupons} %>
 <% end %>
+

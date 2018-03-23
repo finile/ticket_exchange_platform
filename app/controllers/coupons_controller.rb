@@ -24,6 +24,7 @@ class CouponsController < ApplicationController
 
   def show
     #set_coupon 
+    @comment = Comment.new
   end
 
   def edit

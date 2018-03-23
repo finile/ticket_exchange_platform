@@ -31,6 +31,62 @@
       </div>
     </div>
   </div>
+  
+    <div id="front_tabs">
+    <div class="container">
+      <div class="tabs_wrapper tabs1_wrapper">
+        <div class="tabs tabs1">
+          <div class="tabs_content tabs1_content">
+            <div id="tabs-1" class="form1">
+              <%= form_for [@railticket, @search] do |f| %>
+                <div class="row">
+                  <div class="col-sm-4 col-md-2">
+                    <div class="select1_wrapper">
+                      <label><%= f.label :train_no %></label>
+                      <div><%= f.text_field :train_no, class: "select1_inner" %></div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4 col-md-2">
+                    <div class="input1_wrapper">
+                      <label><%= f.label :destination %></label>
+                      <div><%= f.text_field :destination, class: "select1_inner" %></div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4 col-md-2">
+                    <div class="input1_wrapper">
+                      <label><%= f.label :departure %></label>
+                      <div><%= f.text_field :departure, class: "select1_inner" %></div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4 col-md-2">
+                    <div class="input1_wrapper">
+                      <label><%= f.label :date_from, "Date Range" %></label>
+                      <div class="input1_inner">
+                        <%= f.date_field :date_from, class: "input datepicker" %> - <%= f.date_field :date_to, class: "input datepicker" %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4 col-md-2">
+                    <div class="input1_wrapper">
+                      <label><%= f.label :min_price, "Price Range NTD$" %></label>
+                      <div class="input1_inner">
+                        <%= f.text_field :min_price, class: "select1_inner" %> - <%= f.text_field :max_price, class: "select1_inner" %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4 col-md-2">
+                    <div class="button1_wrapper">
+                      <%= f.submit "Search", class: "btn btn-info btn-form1-submit" %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div id="popular_cruises1">
     <div class="container">

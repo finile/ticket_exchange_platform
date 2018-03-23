@@ -24,6 +24,9 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    active_link_to (1.0.5)
+      actionpack
+      addressable
     activeadmin (1.0.0)
       arbre (>= 1.1.1)
       bourbon
@@ -279,6 +282,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_link_to
   activeadmin (~> 1.0.0.pre2)
   bootstrap-sass (~> 3.3.7)
   byebug

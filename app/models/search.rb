@@ -8,6 +8,10 @@ class Search < ApplicationRecord
     @coupons ||= find_coupons
   end
 
+  def railtickets
+    @railtickets ||= find_railtickets
+  end
+
 private
   
   def find_tickets
@@ -29,6 +33,18 @@ private
     coupons = coupons.where("flight_date_from >= ?", date_from ) if date_from.present?
     coupons = coupons.where("flight_date_to<= ?", date_to ) if date_to.present?
     coupons
+  end
+
+    def find_railtickets
+    railtickets = Railticket
+    railtickets = railtickets.where("train_no like ?", "%#{train_no}%") if train_no.present?
+    railtickets = railtickets.where("departure like ?", "%#{departure}%") if departure.present?
+    railtickets = railtickets.where("destination like ?", "%#{destination}%") if destination.present?
+    railtickets = railtickets.where("train_date >= ?", date_from ) if date_from.present?
+    railtickets = railtickets.where("train_date <= ?", date_to ) if date_to.present?
+    railtickets = railtickets .where("price >= ?", min_price) if min_price.present?
+    railtickets = railtickets .where("price <= ?", max_price) if max_price.present?
+    railtickets
   end
 
 end
