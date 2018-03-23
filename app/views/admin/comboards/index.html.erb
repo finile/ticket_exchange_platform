@@ -10,7 +10,7 @@
         <%= link_to 'Coupon', admin_coupons_path %>
       </li>
       <li role="presentation" class="active">
-       <%= link_to 'Board', admin_boards_path %>
+       <%= link_to 'Board', admin_comboards_path %>
      </li>
       <li role="presentation" >
        <%= link_to 'Train Ticket', admin_railtickets_path %>
@@ -50,18 +50,18 @@
           </tr>
         </thead>
         <tbody>
-          <% @boards.each do |board| %>
+          <% @comboards.each do |comboard| %>
           <tr>
-            <th scope="row"><%= board.flight_date_from %></th>
-            <td><%= board.flight_date_to %></td>
-            <td><%= board.departure  %></td>
-            <td><%= board.destination %></td>
-            <td><%= board.name %></td>
-            <td><%= board.price%></td>
-            <td><%= board.content %></td>
-            <td><%= link_to 'Show', admin_board_path(board) %></td>
-            <td><%= link_to 'Edit', edit_admin_board_path(board) %></td>
-            <td> <%= link_to 'Delete', admin_board_path(board), method: :delete, data: {confirm:"Are you sure?"} %></td>
+            <th scope="row"><%= comboard.flight_date_from %></th>
+            <td><%= comboard.flight_date_to %></td>
+            <td><%= comboard.departure  %></td>
+            <td><%= comboard.destination %></td>
+            <td><%= comboard.name %></td>
+            <td><%= comboard.price%></td>
+            <td><%= comboard.content %></td>
+            <td><%= link_to 'Show', admin_comboard_path(comboard) %></td>
+            <td><%= link_to 'Edit', edit_admin_comboard_path(comboard) %></td>
+            <td> <%= link_to 'Delete', admin_comboard_path(comboard), method: :delete, data: {confirm:"Are you sure?"} %></td>
 
             </td>
           </tr>
@@ -73,5 +73,5 @@
  </div>
 
 <div class="text-center">
-<%= paginate @boards %>
+<%= paginate @comboards %>
 </div>

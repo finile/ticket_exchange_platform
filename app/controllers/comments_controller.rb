@@ -1,11 +1,6 @@
 class CommentsController < ApplicationController
 
     def create
-      # @ticket = Ticket.find(params[:ticket_id])
-      # @comment = @ticket.comments.build(comment_params)
-      # @comment.user = current_user
-      # @comment.save!
-      # redirect_to ticket_path(@ticket)
 
       if params[:ticket_id]
           @commentable = Ticket.find(params[:ticket_id])
@@ -13,8 +8,8 @@ class CommentsController < ApplicationController
           @commentable = Coupon.find(params[:coupon_id])
       elsif params[:railticket_id]
           @commentable = Railticket.find(params[:railticket_id])
-      elsif params[:board_id]
-          @commentable = Board.find(params[:board_id])
+      elsif params[:comboard_id]
+          @commentable = Comboard.find(params[:comboard_id])
       end
 
 
@@ -22,11 +17,7 @@ class CommentsController < ApplicationController
        @comment.user = current_user
        @comment.save
        redirect_to @commentable, notice: "your comment was sucessfully posted"
-      
     end
-
-
-
 
     def destroy
       if params[:ticket_id]
@@ -49,6 +40,13 @@ class CommentsController < ApplicationController
         if current_user.admin?
           @comment.destroy
           redirect_to railticket_path(@railticket)
+        end
+      elsif params[:comboard_id]
+        @comboard = Comboard.find(params[:comboard_id])
+        @comment = Comment.find(params[:id])
+        if current_user.admin?
+          @comment.destroy
+          redirect_to comboard_path(@comboard)
         end
       end
     end

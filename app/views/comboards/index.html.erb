@@ -1,0 +1,45 @@
+<h1>徵求機票交換平台前台</h1>
+<%= link_to 'Advanced Search', new_search_path %>
+<%= link_to 'Flight Ticket', tickets_path %>
+<%= link_to 'Admin', admin_tickets_path %>
+
+
+ <ul>
+
+   <%= link_to 'New Message', new_comboard_path %>
+
+ </ul>
+
+ <% @comboards.each do |comboard| %>
+   <div class="col-sm-6 col-md-4">
+     <div class="board-item">
+       <li>
+
+
+
+         Flight date from: <%= comboard.flight_date_from %><br>
+         Flight date to: <%= comboard.flight_date_to %><br>
+         Departure:<%= comboard.departure %><br>
+         Destination: <%= comboard.destination %><br>
+         User Name: <%= comboard.name %><br>
+         Expecting Price: <%= comboard.price %><br>
+         Additional Remarkes: <%= comboard.content %><br>
+
+ <br>
+ </li>
+ <div class="caption">
+   <h3><%= link_to comboard.name, comboard_path(comboard) %></h3>
+   <%= link_to 'Show', comboard_path(comboard) %>
+   <%= link_to 'Edit', edit_comboard_path(comboard) %>
+    <%= link_to 'I have match ticket', new_ticket_path(@ticket) %>
+    <%= link_to 'Notify Buyer', comboard_path(comboard) %>
+
+ </div>
+ </div>
+ </div>
+ <% end %>
+
+
+ <div class="text-center">
+ <%= paginate @comboards %>
+ </div>

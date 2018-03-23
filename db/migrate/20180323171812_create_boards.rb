@@ -9,6 +9,7 @@ class CreateBoards < ActiveRecord::Migration[5.1]
       t.integer :price
       t.text :content
       t.integer :user_id
+
       t.timestamps
     end
   end

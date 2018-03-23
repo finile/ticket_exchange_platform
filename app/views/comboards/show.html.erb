@@ -1,23 +1,25 @@
 
-Flight date from: <%= @board.flight_date_from %><br>
-Flight date to: <%= @board.flight_date_to %><br>
-Departure:<%= @board.departure %><br>
-Destination: <%= @board.destination %><br>
-User Name: <%= @board.name %><br>
-Expecting Price: <%= @board.price %><br>
-Additional Remarkes: <%= @board.content %><br>
+
+Flight date from: <%= @comboard.flight_date_from %><br>
+Flight date to: <%= @comboard.flight_date_to %><br>
+Departure:<%= @comboard.departure %><br>
+Destination: <%= @comboard.destination %><br>
+User Name: <%= @comboard.name %><br>
+Expecting Price: <%= @comboard.price %><br>
+Additional Remarkes: <%= @comboard.content %><br>
+
 
 <br>
 <div class="container">
   <div class="row">
-    <% @board.comments.each do |comment| %>
+    <% @comboard.comments.each do |comment| %>
        <div>
          <h4><%= comment.user.name %></h4>
          <p><%= simple_format comment.content %></p>
          <p class="text-muted">
            <em><%= time_ago_in_words(comment.created_at) %> ago -</em>
            <% if current_user.admin? %>
-             <%= link_to "Delete", board_comment_path(@board, comment), method: :delete, data: {confirm:"Are you sure?"} %>
+             <%= link_to "Delete", comboard_comment_path(@comboard, comment), method: :delete, data: {confirm:"Are you sure?"} %>
            <% end %>
          </p>
        </div>
@@ -25,7 +27,7 @@ Additional Remarkes: <%= @board.content %><br>
        <hr>
       <% end %>
 
-     <%= form_for [@board, @comment] do |f| %>
+     <%= form_for [@comboard, @comment] do |f| %>
       <div class="form-group">
         <%= f.text_area :content, placeholder: "留言給徵求者", class: "form-control" %>
       </div>
@@ -37,4 +39,4 @@ Additional Remarkes: <%= @board.content %><br>
   </div>
 </div>
 
-<%= link_to 'Back to Board index', boards_path %>
+<%= link_to 'Back to Board index', comboards_path %>

@@ -134,9 +134,9 @@
                 </div>
               <% end %>
 
-              <div class="num-comments">Favorited Railticket</div>
-              <a name="favorited_railticket"></a>
-              <% @favorited_railtickets.each do |railticket| %>
+              <a name="posted_rail_ticket"></a>
+              <div class="num-comments">Posted Railticket</div>
+              <% @posted_railtickets.each do |railticket| %>
                 <div class="comment-block clearfix">
                     <figure>
                         <img src="http://placehold.it/70x70" alt="" class="img-responsive">
@@ -156,6 +156,77 @@
                       </div>
                       <div class="txt">
                         <%= render partial: "shared/train_favorite", locals: {railticket: railticket} %>
+                      </div>
+                    </div>
+                </div>
+             <% end %>
+
+              <a name="favorited_ticket"></a>
+              <div class="num-comments">Favorited Flight Tickets</div>
+              <% @favorited_tickets.each do |ticket| %>
+                <div class="comment-block clearfix">
+                    <figure>
+                        <img src="http://placehold.it/70x70" alt="" class="img-responsive">
+                    </figure>
+                    <div class="caption">
+                        <div class="top clearfix">
+                          <div class="txt1">Destination to<a href="#"> <%= ticket.destination %></a></div>
+                          <span>|</span>
+                          <div class="txt2">Flight Date: <%= ticket.flight_date %></div>
+                          <span>|</span>
+                          <div class="txt3"><%= link_to 'Show', ticket_path(ticket) %></div>
+                        </div>
+                        <div class="txt">
+                          <%= ticket.airline %> <br>
+                          Flight No: <%= ticket.flight_no %> 
+                        </div>
+                    </div>
+                </div>
+              <% end %>
+              
+              <a name="favorited_coupon"></a>
+              <div class="num-comments">Favorited Coupon</div>
+              <% @favorited_coupons.each do |coupon| %>
+                <div class="comment-block clearfix">
+                    <figure>
+                        <img src="http://placehold.it/70x70" alt="" class="img-responsive">
+                    </figure>
+                    <div class="caption">
+                        <div class="top clearfix">
+                          <div class="txt1">Destination to<a href="#"> <%= coupon.destination %></a></div>
+                          <span>|</span>
+                          <div class="txt2">Expiry Date: <%= coupon.coupon_expiry_date %></div>
+                          <span>|</span>
+                          <div class="txt3"><%= link_to 'Show', coupon_path(coupon) %></div>
+                        </div>
+                        <div class="txt">
+                          使用期間: <br>
+                          <%= coupon.flight_date_from %> ~ <br>
+                          <%= coupon.flight_date_to %> 
+                        </div>
+                    </div>
+                </div>
+              <% end %>
+
+              <div class="num-comments">Favorited Railticket</div>
+              <a name="favorited_railticket"></a>
+              <% @favorited_railtickets.each do |railticket| %>
+                <div class="comment-block clearfix">
+                    <figure>
+                        <img src="http://placehold.it/70x70" alt="" class="img-responsive">
+                    </figure>
+                    <div class="caption">
+                      <div class="top clearfix">
+                        <div class="txt1">Destination to<a href="#"> <%= railticket.destination %></a></div>
+                        <span>|</span>
+                        <div class="txt2">Train date: <%= railticket.train_date %></div>
+                        <span>|</span>
+                        <div class="txt3"><%= link_to 'Show', railticket_path(railticket) %></div>
+                      </div>
+                      <div class="txt">
+                        Train no: <%= railticket.train_no %> <br>
+                        Train date: <%= railticket.train_date %> <br>
+                        Departure time: <%= railticket.departure_time %>
                       </div>
                     </div>
                 </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180323084233) do
+ActiveRecord::Schema.define(version: 20180323175638) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20180323084233) do
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
   end
 
-  create_table "boards", force: :cascade do |t|
+  create_table "comboards", force: :cascade do |t|
     t.date "flight_date_from"
     t.date "flight_date_to"
     t.string "departure"

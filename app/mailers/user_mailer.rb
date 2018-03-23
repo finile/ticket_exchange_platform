@@ -1,4 +1,5 @@
 class UserMailer < ApplicationMailer
+
   default from: "Ticket Exchange Platform <ticket.exchange.p@gmail.com>"
 
     def notify_buyer(board)

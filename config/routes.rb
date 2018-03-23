@@ -2,12 +2,12 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
-
-  ActiveAdmin.routes(self)
+  # ActiveAdmin.routes(self)
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
   root "tickets#index"
 
-  resources :tickets, only: [:index, :show, :create, :edit, :new, :update, :destroy] do
+  resources :tickets, only: [:index, :show, :create, :edit, :new, :update] do
     resources :comments, only: [:create, :destroy]
      member do
       post :favorite
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
      end
   end
 
-  resources :coupons, only: [:index, :show, :create, :edit, :new, :update, :destroy] do
+  resources :coupons, only: [:index, :show, :create, :edit, :new, :update] do
     resources :comments, only: [:create, :destroy]
       member do
         post :favorite
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
    end
   end
 
-  resources :boards, only: [:index, :show, :create, :edit, :new, :update] do
+  resources :comboards, only: [:index, :show, :create, :edit, :new, :update] do
    resources :comments, only: [:create, :destroy]
 
   end
@@ -45,7 +45,7 @@ Rails.application.routes.draw do
       get :unfavorites
       get :comments
       get :coupons
-      get :boards
+      get :comboards
     end
   end
 
@@ -56,7 +56,7 @@ Rails.application.routes.draw do
     resources :tickets
     resources :railtickets
     resources :coupons
-    resources :boards
+    resources :comboards
     root "tickets#index"
   end
 
