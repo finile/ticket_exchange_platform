@@ -1,0 +1,26 @@
+<%= form_for @board do |f| %>
+
+
+  <%= f.label :flight_date_from, "Flight_date_from" %>
+  <%= f.time_field :flight_date_from %>
+
+  <%= f.label :flight_date_to, "Flight_date_to" %>
+  <%= f.time_field :flight_date_to %>
+
+  <%= f.label :departure, "Departure" %>
+  <%= f.text_field :departure %>
+
+  <%= f.label :destination, "Destination" %>
+  <%= f.text_field :destination %>
+
+  <%= f.label :name, "User Name" %>
+  <%= f.text_field :name %>
+
+  <%= f.label :price, "Expecting Price" %>
+  <%= f.text_field :price %>
+
+  <%= f.label :content, "Additional Remarkes" %>
+  <%= f.text_area :content %>
+
+  <%= f.submit %>
+<% end %>

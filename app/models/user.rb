@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :coupons, dependent: :destroy
   has_many :railtickets, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :boards, dependent: :destroy
   
 
   has_many :favorites, dependent: :destroy

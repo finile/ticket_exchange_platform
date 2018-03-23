@@ -1,0 +1,45 @@
+<h1>徵求機票交換平台前台</h1>
+<%= link_to 'Advanced Search', new_search_path %>
+<%= link_to 'Flight Ticket', tickets_path %>
+<%= link_to 'Admin', admin_tickets_path %>
+
+
+ <ul>
+
+   <%= link_to 'New Message', new_board_path %>
+
+ </ul>
+
+ <% @boards.each do |board| %>
+   <div class="col-sm-6 col-md-4">
+     <div class="board-item">
+       <li>
+
+
+
+         Flight date from: <%= board.flight_date_from %><br>
+         Flight date to: <%= board.flight_date_to %><br>
+         Departure:<%= board.departure %><br>
+         Destination: <%= board.destination %><br>
+         User Name: <%= board.name %><br>
+         Expecting Price: <%= board.price %><br>
+         Additional Remarkes: <%= board.content %><br>
+
+ <br>
+ </li>
+ <div class="caption">
+   <h3><%= link_to board.name, board_path(board) %></h3>
+   <%= link_to 'Show', board_path(board) %>
+   <%= link_to 'Edit', edit_board_path(board) %>
+    <%= link_to 'I have match ticket', new_ticket_path(@ticket) %>
+    <%= link_to 'Notify Buyer', board_path(board) %>
+
+ </div>
+ </div>
+ </div>
+ <% end %>
+
+
+ <div class="text-center">
+ <%= paginate @boards %>
+ </div>

@@ -13,13 +13,19 @@ class CommentsController < ApplicationController
           @commentable = Coupon.find(params[:coupon_id])
       elsif params[:railticket_id]
           @commentable = Railticket.find(params[:railticket_id])
+      elsif params[:board_id]
+          @commentable = Board.find(params[:board_id])
       end
 
-       @comment = @commentable.comments.build(comment_params) 
+
+       @comment = @commentable.comments.build(comment_params)
        @comment.user = current_user
        @comment.save
        redirect_to @commentable, notice: "your comment was sucessfully posted"
+      
     end
+
+
 
 
     def destroy

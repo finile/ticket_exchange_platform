@@ -135,6 +135,27 @@ namespace :dev do
     puts "now you have #{Comment.count} railticket comment data"
   end
 
+  task fake_board: :environment do
+      Board.destroy_all
+      #create 25 fake boards information
+      User.all.each do |user|
+        rand(5).times do
+          user.boards.create(
+            departure: FFaker::Address.city,
+            destination: FFaker::Address.city,
+            flight_date_from: FFaker::Time.date,
+            flight_date_to: FFaker::Time.date,
+            price: rand(1000..10000),
+            content:FFaker::Lorem::sentence(15)
+          )
+        end
+      end
+      puts "have created fake boards by users"
+      puts "now you have #{Board.count} boards data"
+    end
+
+
+
   task fake_favorite: :environment do
    Favorite.destroy_all
 

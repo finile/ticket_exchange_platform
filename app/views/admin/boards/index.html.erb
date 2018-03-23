@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="row">
+    <%= link_to 'Index', tickets_path %>
+      <ul class="nav nav-tabs">
+       <li role="presentation">
+        <%= link_to 'Ticket', admin_tickets_path %>
+      </li>
+
+       <li role="presentation">
+        <%= link_to 'Coupon', admin_coupons_path %>
+      </li>
+      <li role="presentation" class="active">
+       <%= link_to 'Board', admin_boards_path %>
+     </li>
+      <li role="presentation" >
+       <%= link_to 'Train Ticket', admin_railtickets_path %>
+     </li>
+       <li role="presentation" >
+        <%= link_to 'User List', admin_users_path %>
+      </li>
+
+      </ul>
+    </div>
+  </div>
+
+  <br>
+
+
+<h1>機票徵求留言後台</h1>
+
+
+
+
+<div class="container">
+  <div class="row">
+  <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Flight date from</th>
+            <th>Flight date to</th>
+            <th>Departure</th>
+            <th>Destination</th>
+            <th>User Name</th>
+            <th>Expecting Price</th>
+            <th>Additional Remarkes</th>
+            <th>Show</th>
+            <th>Edit</th>
+            <th>Delete</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <% @boards.each do |board| %>
+          <tr>
+            <th scope="row"><%= board.flight_date_from %></th>
+            <td><%= board.flight_date_to %></td>
+            <td><%= board.departure  %></td>
+            <td><%= board.destination %></td>
+            <td><%= board.name %></td>
+            <td><%= board.price%></td>
+            <td><%= board.content %></td>
+            <td><%= link_to 'Show', admin_board_path(board) %></td>
+            <td><%= link_to 'Edit', edit_admin_board_path(board) %></td>
+            <td> <%= link_to 'Delete', admin_board_path(board), method: :delete, data: {confirm:"Are you sure?"} %></td>
+
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+   </div>
+ </div>
+
+<div class="text-center">
+<%= paginate @boards %>
+</div>

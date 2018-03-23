@@ -5,10 +5,13 @@
             <li role="presentation">
              <%= link_to 'Ticket', admin_tickets_path %>
            </li>
-           <ul class="nav nav-tabs">
+
             <li role="presentation" >
              <%= link_to 'Coupon', admin_coupons_path %>
            </li>
+           <li role="presentation" >
+            <%= link_to 'Board', admin_boards_path %>
+          </li>
            <li role="presentation" >
             <%= link_to 'Train Ticket', admin_railtickets_path %>
           </li>
@@ -39,7 +42,7 @@
                  <% @users.each do |user| %>
                  <tr>
                    <th scope="row"><%= user.id %></th>
-                   <td><%= user.name %></td>
+                   <td><%= link_to user.name, user_path(user) %></td>
 
                    <td>
                    <% user.comments.each do |comment| %>
