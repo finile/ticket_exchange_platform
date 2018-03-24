@@ -156,12 +156,12 @@ namespace :dev do
     puts "now you have #{Comment.count} railticket comment data"
   end
 
-  task fake_board: :environment do
-      Board.destroy_all
-      #create 25 fake boards information
+  task fake_comboard: :environment do
+      Comboard.destroy_all
+      #create 25 fake comboards information
       User.all.each do |user|
         rand(5).times do
-          user.boards.create(
+          user.comboards.create(
             departure: FFaker::Address.city,
             destination: FFaker::Address.city,
             flight_date_from: FFaker::Time.date,
@@ -171,8 +171,8 @@ namespace :dev do
           )
         end
       end
-      puts "have created fake boards by users"
-      puts "now you have #{Board.count} boards data"
+      puts "have created fake comboards by users"
+      puts "now you have #{Comboard.count} comboards data"
     end
 
 

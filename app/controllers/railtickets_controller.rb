@@ -1,10 +1,10 @@
 class RailticketsController < ApplicationController
-  before_action :authenticate_user!
+  
   before_action :set_railticket, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite]
 
     def index
       @railtickets = Railticket.page(params[:page]).per(9)
-      @search = Search.new 
+      @search = Search.new
     end
 
     def new
