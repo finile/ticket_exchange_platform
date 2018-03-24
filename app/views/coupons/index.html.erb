@@ -1,6 +1,6 @@
 
   <%= render partial: "shared/navbar" %>
-  
+
   <div id="slider_wrapper">
     <div class="container">
       <div id="slider_inner">
@@ -15,7 +15,7 @@
                         <div class="slider">
                           <div class="slider_inner">
                             <div class="txt1"><span>Welcome To Our</span></div>
-                            <div class="txt2"><span>機票兌換卷交換平台前台</span></div>
+                            <div class="txt2"><span>機票兌換卷</span></div>
                             <div class="txt3"><span>Please search what flight tickets you need: </span></div>
                           </div>
                         </div>
@@ -57,7 +57,7 @@
                     <div class="input1_wrapper">
                       <label><%= f.label :date_from, "Date Range" %></label>
                       <div class="input1_inner">
-                        <%= f.date_field :date_from, class: "input datepicker" %> - 
+                        <%= f.date_field :date_from, class: "input datepicker" %> -
                         <%= f.date_field :date_to, class: "input datepicker" %>
                       </div>
                     </div>
@@ -82,7 +82,7 @@
       <div class="title1 animated">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod <br>tincidunt ut laoreet dolore magna aliquam erat volutpat.
       </div>
       <br><br>
-      
+
       <div id="popular_wrapper" class="animated" data-animation="fadeIn" data-animation-delay="300">
         <div id="popular_inner">
           <div class="">
@@ -145,7 +145,7 @@
   <%= render partial: "shared/footer"%>
   <%= link_to 'New coupon', new_coupon_path %>
 
-<!-- 
+<!--
 <%= form_for [@coupon, @search] do |f| %>
   <div class="field">
     <%= f.label :airline %><br />
@@ -166,5 +166,3 @@
 
 
 <div>
-  
-
