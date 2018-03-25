@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
-
+  after_create :subscribe_job
   # validates_presence_of :name
 
   has_many :tickets, dependent: :destroy
@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :railtickets, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :comboards, dependent: :destroy
-  
+
 
   has_many :favorites, dependent: :destroy
   has_many :favorited_tickets, through: :favorites, source: :ticket
@@ -54,6 +54,17 @@ class User < ApplicationRecord
   # for admin role checking
   def admin?
     self.role == "admin"
+  end
+
+  def mailchimp_list_id
+    mailchimp_list_id = Rails.application.secrets.mailchimp_list_id
+  end
+
+
+private
+
+  def subscribe_user_to_mailing_list
+    SubscribeJob.perform_later(self)
   end
 
 end
