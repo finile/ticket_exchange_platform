@@ -60,6 +60,9 @@ class User < ApplicationRecord
     mailchimp_list_id = Rails.application.secrets.mailchimp_list_id
   end
 
+# def
+#   Gibbon::API = Gibbon::API.new
+# end
 
 private
 
