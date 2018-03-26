@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180323175638) do
+ActiveRecord::Schema.define(version: 20180326015253) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -24,6 +24,20 @@ ActiveRecord::Schema.define(version: 20180323175638) do
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
     t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  end
+
+  create_table "cart_items", force: :cascade do |t|
+    t.integer "cart_id"
+    t.integer "coupon_id", null: false
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "railticket_id"
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "comboards", force: :cascade do |t|
@@ -65,6 +79,8 @@ ActiveRecord::Schema.define(version: 20180323175638) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "favorites_count", default: 0
+    t.integer "quantity"
+    t.integer "price"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -92,6 +108,7 @@ ActiveRecord::Schema.define(version: 20180323175638) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "favorites_count", default: 0
+    t.integer "quantity"
   end
 
   create_table "searches", force: :cascade do |t|

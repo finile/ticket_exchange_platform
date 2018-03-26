@@ -20,6 +20,8 @@ Rails.application.routes.draw do
       member do
         post :favorite
         post :unfavorite
+        post :add_to_cart
+        post :remove_from_cart
       end
   end
 
@@ -34,7 +36,6 @@ Rails.application.routes.draw do
 
   resources :comboards, only: [:index, :show, :create, :edit, :new, :update] do
    resources :comments, only: [:create, :destroy]
-
   end
 
   resources :users, only: [:index, :show, :edit, :update, :destroy] do
@@ -49,8 +50,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :searches
-
   namespace :admin do
     resources :users
     resources :tickets
@@ -60,4 +59,7 @@ Rails.application.routes.draw do
     root "tickets#index"
   end
 
+  resources :searches
+
+  resource :cart
 end

@@ -74,7 +74,8 @@ namespace :dev do
         price: rand(900..2000),
         discount: rand(65..90),
         image: FFaker::Avatar.image,
-        others:FFaker::Lorem::sentence(15)
+        others:FFaker::Lorem::sentence(15),
+        quantity: rand(1..5)
       )
       end
     end
@@ -82,9 +83,6 @@ namespace :dev do
     puts "have created fake railtickets"
     puts "now you have #{Railticket.count} railtickets data"
   end
-
-
-
 
 
   task fake_coupon: :environment do
@@ -100,7 +98,9 @@ namespace :dev do
           flight_date_to: FFaker::Time.date,
           tax: FFaker::Lorem::word,
           image: FFaker::Avatar.image,
-          others:FFaker::Lorem::sentence(15)
+          others:FFaker::Lorem::sentence(15),
+          quantity: rand(1..5),
+          price: rand(1000..10000)
         )
       end
     end
@@ -109,8 +109,8 @@ namespace :dev do
   end
 
 
-  task fake_board: :environment do
-    Board.destroy_all
+  task fake_comboard: :environment do
+    Comboard.destroy_all
     #create 25 fake boards information
     User.all.each do |user|
       rand(5).times do
@@ -125,7 +125,7 @@ namespace :dev do
       end
     end
     puts "have created fake boards by users"
-    puts "now you have #{Board.count} boards data"
+    puts "now you have #{Comborad.count} boards data"
   end
 
 
@@ -155,26 +155,6 @@ namespace :dev do
     puts "have created fake railticket comments"
     puts "now you have #{Comment.count} railticket comment data"
   end
-
-  task fake_board: :environment do
-      Board.destroy_all
-      #create 25 fake boards information
-      User.all.each do |user|
-        rand(5).times do
-          user.boards.create(
-            departure: FFaker::Address.city,
-            destination: FFaker::Address.city,
-            flight_date_from: FFaker::Time.date,
-            flight_date_to: FFaker::Time.date,
-            price: rand(1000..10000),
-            content:FFaker::Lorem::sentence(15)
-          )
-        end
-      end
-      puts "have created fake boards by users"
-      puts "now you have #{Board.count} boards data"
-    end
-
 
 
   task fake_favorite: :environment do

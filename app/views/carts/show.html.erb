@@ -1,0 +1,13 @@
+<h1>Cart</h1>
+
+
+    <% @items.each do |item| %>
+      <%= item.coupon.airline %> <br>
+      $<%= item.coupon.price %> <br>
+      Cart Quantity: <%= item.quantity %>
+      Quantity: <%= item.coupon.quantity%> <br>
+      <%= link_to "Detele", remove_from_cart_coupon_path(item.coupon), method: :post, remote: true %> <br>
+      
+      <br>
+    <% end %>
+    <%= current_cart.subtotal %> <br>

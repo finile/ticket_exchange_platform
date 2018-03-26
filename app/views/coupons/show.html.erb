@@ -40,15 +40,29 @@
                       建議售價: 
                     </label>
                     <div class="col-md-6 price-total-left" style="padding-right:0;padding-left:0;">
-                        <span class="red">$729</span>
+                        <span class="red">NTD$ <%= @coupon.price %></span>
+                    </div>
+                    <label class="col-md-6" style="padding-left:0;padding-top:12px;font-weight:500;color:#464646;font-size:13px;"> 
+                      數量: 
+                    </label>
+                    <div class="col-md-6 price-total-left" style="padding-right:0;padding-left:0;margin-top: 12px;">
+                        <h3><%= @coupon.quantity %></h3> 
                     </div>
                   </div>
                 </div>
-              <div class="clearfix"></div>
-              <div class="no-padding margin-top text-center" style="margin-top:30px;">
-                <a href="booking-flights-page.html" class="btn btn-default btn-cf-submit3"style="width:100%;">立即聯絡賣家</a>
+                <div class="clearfix"></div>
+                <div class="no-padding margin-top text-center" style="margin-top:30px;">
+                  <% if @coupon.quantity == 0 %>
+                    <a class="btn btn-default btn-cf-submit3"style="width:100%;">已售出</a> <br>
+                  <% else %>
+                    <%= link_to '立即購買', add_to_cart_coupon_path(@coupon), class: "btn btn-default btn-cf-submit3" ,method: :post %> <br> 
+                  <% end %>
+                </div>
+                <div class="clearfix"></div>
+                <div class="select1_wrapper">
+                  <label><%= link_to "瀏覽購物車", cart_path, class: "btn btn-default btn-cf-submit3" %>  </label>
+                </div>
               </div>
-            <div class="clearfix"></div>
           </form>
         </div>
         <div class="clearfix"></div>
@@ -60,7 +74,20 @@
 
 <div class="container">
   <div class="row">
-    <%= render partial: "shared/comments", locals: {commentable: @coupon} %>
+    <% @coupon.comments.each do |comment| %>
+       <div>
+         <h4><%= comment.user.name %></h4>
+         <p><%= simple_format comment.content %></p>
+         <p class="text-muted">
+           <em><%= time_ago_in_words(comment.created_at) %> ago -</em>
+           <% if current_user.admin? %>
+             <%= link_to "Delete", coupon_comment_path(@coupon, comment), method: :delete, data: {confirm:"Are you sure?"} %>
+           <% end %>
+         </p>
+       </div>
+
+       <hr>
+      <% end %>
   
   <%= form_for [@coupon, @comment] do |f| %>
     <div class="form-group">
