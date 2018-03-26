@@ -4,30 +4,26 @@
            <ul class="nav nav-tabs">
             <li role="presentation">
              <%= link_to 'Ticket', admin_tickets_path %>
-           </li>
-            <li role="presentation" >
-             <%= link_to 'Coupon', admin_coupons_path %>
-           <li role="presentation">
-            <%= link_to 'Coupon', admin_coupons_path %>
-           </li>
-           <li role="presentation" >
-            <%= link_to 'Board', admin_boards_path %>
-          </li>
-           <li role="presentation" >
-            <%= link_to 'Train Ticket', admin_railtickets_path %>
-          </li>
+             </li>
+             <li role="presentation">
+              <%= link_to 'Coupon', admin_coupons_path %>
+             </li>
+             <li role="presentation" >
+              <%= link_to 'Board', admin_comboards_path %>
+             </li>
+             <li role="presentation" >
+              <%= link_to 'Train Ticket', admin_railtickets_path %>
+             </li>
             <li role="presentation" class="active">
              <%= link_to 'User List', admin_users_path %>
-           </li>
-
+            </li>
            </ul>
          </div>
        </div>
 
        <br>
 
-
-     <h1>後台 User List</h1>
+     <h1>使用者</h1>
 
        <div class="container">
          <div class="row">
@@ -35,11 +31,9 @@
                <thead>
                  <tr>
                    <th>ID</th>
-
                    <th>User Name</th>
                    <th>Comments</th>
                    <th>Delete</th>
-
                  </tr>
                </thead>
                <tbody>
@@ -47,7 +41,6 @@
                  <tr>
                    <th scope="row"><%= user.id %></th>
                    <td><%= link_to user.name, user_path(user) %></td>
-
                    <td>
                    <% user.comments.each do |comment| %>
                     <%= comment.content %>
@@ -55,7 +48,6 @@
                   </td>
                    <td> <%= link_to 'Delete', admin_users_path(user), method: :delete, data: {confirm:"Are you sure?"} %></td>
 
-                   </td>
                  </tr>
                  <% end %>
                </tbody>

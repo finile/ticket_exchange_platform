@@ -4,32 +4,26 @@
       <ul class="nav nav-tabs">
        <li role="presentation" >
         <%= link_to 'Ticket', admin_tickets_path %>
-      </li>
+       </li>
        <li role="presentation" >
         <%= link_to 'Coupon', admin_coupons_path %>
-      </li>
-      <li role="presentation" >
-       <%= link_to 'Board', admin_comboards_path %>
-     </li>
-      <li role="presentation">
-       <%= link_to 'Coupon', admin_coupons_path %>
-      </li>
-      <li role="presentation" class="active">
-       <%= link_to 'Train Ticket', admin_railtickets_path %>
-     </li>
+       </li>
+       <li role="presentation" >
+        <%= link_to 'Board', admin_comboards_path %>
+       </li>
+       <li role="presentation" class="active">
+        <%= link_to 'Train Ticket', admin_railtickets_path %>
+       </li>
        <li role="presentation" >
         <%= link_to 'User List', admin_users_path %>
-      </li>
-
+       </li>
       </ul>
     </div>
   </div>
 
   <br>
 
-
-<h1>高鐵交換平台後台</h1>
-
+<h1>高鐵票</h1>
 
 <div class="container">
   <div class="row">
@@ -37,7 +31,7 @@
         <thead>
           <tr>
             <th>Train Ticket ID</th>
-            <th>Train no</th>
+            <th>Train No.</th>
             <th>Train date</th>
             <th>Departure time</th>
             <th>Arrive time</th>
@@ -50,7 +44,6 @@
             <th>Show</th>
             <th>Edit</th>
             <th>Delete</th>
-
           </tr>
         </thead>
         <tbody>
@@ -67,17 +60,14 @@
             <td><%= railticket.price %></td>
             <td><%= railticket.discount %></td>
             <td><%= railticket.others %></td>
-
             <td><%= link_to 'Show', admin_railticket_path(railticket) %></td>
             <td><%= link_to 'Edit', edit_admin_railticket_path(railticket) %></td>
             <td><%= link_to 'Delete', admin_railtickets_path(railticket), method: :delete, data: {confirm:"Are you sure?"}%></td>
 
-            </td>
           </tr>
           <% end %>
         </tbody>
       </table>
-
    </div>
  </div>
 

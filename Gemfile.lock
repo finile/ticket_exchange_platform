@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/amro/gibbon.git
+  revision: ad1497c1251b25f77c4015416dd648afa96d01e9
+  specs:
+    gibbon (3.2.0)
+      faraday (>= 0.9.1)
+      multi_json (>= 1.11.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -293,6 +301,7 @@ DEPENDENCIES
   ffaker
   font-awesome-rails
   font-awesome-sass
+  gibbon!
   jbuilder (~> 2.5)
   jquery-rails
   kaminari

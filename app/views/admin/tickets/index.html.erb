@@ -1,46 +1,38 @@
 <div class="container">
     <div class="row">
     <%= link_to 'Index', tickets_path %>
-      <ul class="nav nav-tabs">
-       <li role="presentation" class="active">
-        <%= link_to 'Ticket', admin_tickets_path %>
-      </li>
-       <li role="presentation" >
-        <%= link_to 'Coupon', admin_coupons_path %>
-      <li role="presentation">
-       <%= link_to 'Coupon', admin_coupons_path %>
-      </li>
-
-      <li role="presentation" >
-       <%= link_to 'Board', admin_comboards_path %>
-     </li>
-      <li role="presentation" >
-       <%= link_to 'Train Ticket', admin_railtickets_path %>
-     </li>
-       <li role="presentation" >
-        <%= link_to 'User List', admin_users_path %>
-      </li>
-
+       <ul class="nav nav-tabs">
+        <li role="presentation" class="active">
+         <%= link_to 'Ticket', admin_tickets_path %>
+        </li>
+        <li role="presentation">
+         <%= link_to 'Coupon', admin_coupons_path %>
+        </li>
+        <li role="presentation" >
+         <%= link_to 'Board', admin_comboards_path %>
+        </li>
+        <li role="presentation" >
+          <%= link_to 'Train Ticket', admin_railtickets_path %>
+        </li>
+        <li role="presentation" >
+          <%= link_to 'User List', admin_users_path %>
+        </li>
       </ul>
     </div>
   </div>
 
   <br>
 
-
-<h1>機票交換平台後台</h1>
-
-
-
+<h1>機票</h1>
 
 <div class="container">
   <div class="row">
   <table class="table table-bordered">
         <thead>
           <tr>
-            <th>Ticket ID</th>
+            <th>Flight Ticket ID</th>
             <th>Airline</th>
-            <th>Flight no</th>
+            <th>Flight No.</th>
             <th>Flight date</th>
             <th>Flight time</th>
             <th>Departure</th>
@@ -51,7 +43,6 @@
             <th>Show</th>
             <th>Edit</th>
             <th>Delete</th>
-
           </tr>
         </thead>
         <tbody>
@@ -67,17 +58,14 @@
             <td><%= ticket.name %></td>
             <td><%= ticket.price %></td>
             <td><%= ticket.others %></td>
-
             <td><%= link_to 'Show', admin_ticket_path(ticket) %></td>
             <td><%= link_to 'Edit', edit_admin_ticket_path(ticket) %></td>
             <td> <%= link_to 'Delete', admin_ticket_path(ticket), method: :delete, data: {confirm:"Are you sure?"} %></td>
 
-            </td>
           </tr>
           <% end %>
         </tbody>
       </table>
-
    </div>
  </div>
 
