@@ -15,4 +15,8 @@ class Cart < ActiveRecord::Base
     cart_items.map{|x| x.item_total }.sum
   end
 
+  def find_item_by(coupon)
+    self.cart_items.where(coupon_id: coupon).first
+  end
+
 end

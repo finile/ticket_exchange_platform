@@ -62,4 +62,5 @@ Rails.application.routes.draw do
   resources :searches
 
   resource :cart
+  resources :orders
 end

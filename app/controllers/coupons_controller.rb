@@ -1,6 +1,6 @@
 class CouponsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_coupon, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite ]
+  before_action :set_coupon, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite, :add_to_cart, :remove_from_cart ]
   
   def index
     @coupons = Coupon.page(params[:page]).per(9)
@@ -59,7 +59,6 @@ class CouponsController < ApplicationController
   end
 
   def add_to_cart
-    @coupon = Coupon.find(params[:id])
     if current_cart.add_cart_item(@coupon)
       @coupon.quantity = 0
       @coupon.save
@@ -68,7 +67,6 @@ class CouponsController < ApplicationController
   end
 
   def remove_from_cart
-    @coupon = Coupon.find(params[:id])
     cart_item = current_cart.cart_items.find_by(coupon_id: @coupon)
     @coupon.quantity = cart_item.quantity
     @coupon.save

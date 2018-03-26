@@ -12,7 +12,6 @@ class CommentsController < ApplicationController
           @commentable = Comboard.find(params[:comboard_id])
       end
 
-
        @comment = @commentable.comments.build(comment_params)
        @comment.user = current_user
        @comment.save
