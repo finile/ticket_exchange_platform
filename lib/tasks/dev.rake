@@ -108,27 +108,6 @@ namespace :dev do
     puts "now you have #{Coupon.count} coupons data"
   end
 
-
-  task fake_comboard: :environment do
-    Comboard.destroy_all
-    #create 25 fake boards information
-    User.all.each do |user|
-      rand(5).times do
-        user.boards.create(
-          departure: FFaker::Address.city,
-          destination: FFaker::Address.city,
-          flight_date_from: FFaker::Time.date,
-          flight_date_to: FFaker::Time.date,
-          price: rand(1000..10000),
-          content:FFaker::Lorem::sentence(15)
-        )
-      end
-    end
-    puts "have created fake boards by users"
-    puts "now you have #{Comborad.count} boards data"
-  end
-
-
   task fake_comment: :environment do
     Comment.destroy_all
 
@@ -156,6 +135,24 @@ namespace :dev do
     puts "now you have #{Comment.count} railticket comment data"
   end
 
+  task fake_comboard: :environment do
+      Comboard.destroy_all
+      #create 25 fake comboards information
+      User.all.each do |user|
+        rand(5).times do
+          user.comboards.create(
+            departure: FFaker::Address.city,
+            destination: FFaker::Address.city,
+            flight_date_from: FFaker::Time.date,
+            flight_date_to: FFaker::Time.date,
+            price: rand(1000..10000),
+            content:FFaker::Lorem::sentence(15)
+          )
+        end
+      end
+      puts "have created fake comboards by users"
+      puts "now you have #{Comboard.count} comboards data"
+    end
 
   task fake_favorite: :environment do
    Favorite.destroy_all

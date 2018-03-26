@@ -1,10 +1,10 @@
 class CouponsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_coupon, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite, :add_to_cart, :remove_from_cart ]
-  
+
   def index
     @coupons = Coupon.page(params[:page]).per(9)
-    @search = Search.new 
+    @search = Search.new
   end
 
   def new
@@ -16,14 +16,14 @@ class CouponsController < ApplicationController
     if @coupon.save
       flash[:notice] = "coupon was successfully created"
       redirect_to coupons_url
-    else  
+    else
       flash.now[:alert] = "coupon was failed to create"
       redirect_to root_path
     end
   end
 
   def show
-    #set_coupon 
+    #set_coupon
     @comment = Comment.new
   end
 
@@ -38,7 +38,7 @@ class CouponsController < ApplicationController
     else
       flash.now[:alert] = "Coupon was failed to update"
       render :edit
-    end 
+    end
   end
 
   def destroy
