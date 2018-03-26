@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
   root "tickets#index"
+  post "spgateway/return"
 
   resources :tickets, only: [:index, :show, :create, :edit, :new, :update] do
     resources :comments, only: [:create, :destroy]
@@ -62,5 +63,7 @@ Rails.application.routes.draw do
   resources :searches
 
   resource :cart
-  resources :orders
+  resources :orders do 
+    post :checkout_spgateway, on: :member
+  end
 end

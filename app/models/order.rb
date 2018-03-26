@@ -4,6 +4,7 @@ class Order < ApplicationRecord
   belongs_to :user
   has_many :order_items, dependent: :destroy
   has_many :coupons, through: :order_items
+  has_many :payments
 
   def add_order_items(cart)
     cart.cart_items.each do |item|
