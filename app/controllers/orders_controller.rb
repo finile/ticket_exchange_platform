@@ -1,4 +1,5 @@
-class OrdersController < ApplicationController
+class OrdersController < ActionController::Base
+  
   def index
     @orders = current_user.orders.order(created_at: :desc)
   end

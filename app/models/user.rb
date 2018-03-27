@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :comboards, dependent: :destroy
   has_many :orders
+  has_many :rail_orders
 
   has_many :favorites, dependent: :destroy
   has_many :favorited_tickets, through: :favorites, source: :ticket

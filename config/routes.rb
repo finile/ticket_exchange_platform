@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   
   root "tickets#index"
   post "spgateway/return"
+  post 'spgateway1/return'
 
   resources :tickets, only: [:index, :show, :create, :edit, :new, :update] do
     resources :comments, only: [:create, :destroy]
@@ -70,4 +71,8 @@ Rails.application.routes.draw do
   end
 
   resource :rail_cart
+  resources :rail_orders do
+    post :checkout_spgateway1, on: :member
+  end
+
 end

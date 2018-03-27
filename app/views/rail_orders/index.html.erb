@@ -1,0 +1,34 @@
+<% @rail_orders.each do |rail_order| %>
+  <div class="panel panel-order">
+    <h2>Order # <%= rail_order.sn %></h2>
+    <div class="order-content">
+      <div class="right-border">
+        <div class="order-data">
+          <ul class="order-list">
+            <% rail_order.rail_order_items.each do |rail_item| %>
+            <li><%= rail_item.railticket.id %> <%= rail_item.quantity %> x <%= rail_item.price %></li>
+            <% end %>
+            <hr>
+            Subtotal <%= rail_order.subtotal %>
+          </ul>
+        </div>
+        <div>
+          <h2>Shipping Information</h2>
+          <div class="order-data">
+            <%= rail_order.name %>, <%= rail_order.phone %>, <%= rail_order.address %>
+          </div>
+        </div>
+      </div>
+      <div class="order-data">
+        <p>Payment Status: <%= rail_order.rail_payment_status %></p>
+        <p>Shipping Status: <%= rail_order.rail_shipping_status %></p>
+        <% if rail_order.rail_payment_status == "not_paid" && rail_order.rail_shipping_status != "cancelled" %>
+          <%= link_to "Pay Now", checkout_spgateway1_rail_order_path(rail_order), method: :post, class: "btn" %>
+        <% end %>
+        <% if rail_order.rail_shipping_status == "not_shipped" %>
+          <%= link_to "Cancel Order", rail_order_path(rail_order), method: :patch, class: "btn"  %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

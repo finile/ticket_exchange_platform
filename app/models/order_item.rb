@@ -4,7 +4,6 @@ class OrderItem < ApplicationRecord
 
   def item_total
     self.quantity * self.coupon.price
-    
   end
 
 end
