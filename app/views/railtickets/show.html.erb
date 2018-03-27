@@ -68,14 +68,26 @@
                 <div class="col-md-6 price-total-left" style="padding-right:0;padding-left:0;">
                   <span class="red">NTD$ <%= @railticket.price %></span>
                 </div>
+                <label class="col-md-6" style="padding-left:0;padding-top:12px;font-weight:500;color:#464646;font-size:13px;"> 
+                  數量: 
+                </label>
+                <div class="col-md-6 price-total-left" style="padding-right:0;padding-left:0;margin-top: 12px;">
+                  <h3><%= @railticket.quantity %></h3> 
+                </div>
               </div>
             </div>
             <div class="clearfix"></div>
             <div class="no-padding margin-top text-center" style="margin-top:30px;">
-              <a href="booking-cars-page.html" class="btn btn-default btn-cf-submit3" style="width:100%;">
-              立即購買 </a>
+              <% if @railticket.quantity == 0 %>
+                <a class="btn btn-default btn-cf-submit3"style="width:100%;">已售出</a> <br>
+              <% else %>
+                <%= link_to '立即購買', add_to_rail_cart_railticket_path(@railticket), class: "btn btn-default btn-cf-submit3" ,method: :post %> <br> 
+              <% end %>
             </div>
             <div class="clearfix"></div>
+            <div class="select1_wrapper">
+              <label><%= link_to "瀏覽購物車", rail_cart_path, class: "btn btn-default btn-cf-submit3" %>  </label>
+            </div>
           </form>
         </div>
         <div class="clearfix"></div>

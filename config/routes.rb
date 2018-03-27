@@ -32,6 +32,8 @@ Rails.application.routes.draw do
     member do
       post :favorite
       post :unfavorite
+      post :add_to_rail_cart
+      post :remove_from_rail_cart
    end
   end
 
@@ -66,4 +68,6 @@ Rails.application.routes.draw do
   resources :orders do 
     post :checkout_spgateway, on: :member
   end
+
+  resource :rail_cart
 end

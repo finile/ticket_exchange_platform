@@ -1,6 +1,6 @@
 class RailticketsController < ApplicationController
   
-  before_action :set_railticket, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite]
+  before_action :set_railticket, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite, :add_to_rail_cart, :remove_from_rail_cart]
 
     def index
       @railtickets = Railticket.page(params[:page]).per(9)
@@ -54,12 +54,29 @@ class RailticketsController < ApplicationController
       redirect_back(fallback_location: root_path)
     end
 
-   def unfavorite
+    def unfavorite
 
-     favorites = Favorite.where(railticket: @railticket, user: current_user)
-     favorites.destroy_all
-     redirect_back(fallback_location: root_path)
-   end
+      favorites = Favorite.where(railticket: @railticket, user: current_user)
+      favorites.destroy_all
+      redirect_back(fallback_location: root_path)
+    end
+
+    def add_to_rail_cart
+      if current_rail_cart.add_rail_cart_item(@railticket)
+        @railticket.quantity = 0
+        @railticket.save
+      end
+        redirect_back(fallback_location: root_path)
+    end
+
+    def remove_from_rail_cart
+      rail_cart_item = current_rail_cart.rail_cart_items.find_by(railticket_id: @railticket)
+      @railticket.quantity = rail_cart_item.quantity
+      @railticket.save
+      rail_cart_item.destroy
+      redirect_back(fallback_location: root_path)
+    end
+
 
   private
 

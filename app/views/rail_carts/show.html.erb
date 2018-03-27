@@ -1,0 +1,13 @@
+<h1>Rail_Cart</h1>
+
+
+    <% @rail_items.each do |rail_item| %>
+      <%= rail_item.railticket.train_no %> <br>
+      $<%= rail_item.railticket.price %> <br>
+      Cart Quantity: <%= rail_item.quantity %>
+      Quantity: <%= rail_item.railticket.quantity%> <br>
+      <%= link_to "Detele", remove_from_rail_cart_railticket_path(rail_item.railticket), method: :post, remote: true %> <br>
+      
+      <br>
+    <% end %>
+    <%= current_rail_cart.subtotal %> <br>
