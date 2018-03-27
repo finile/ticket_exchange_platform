@@ -1,45 +1,98 @@
-<h1>徵求機票留言板</h1>
-<%= link_to 'Advanced Search', new_search_path %>
-<%= link_to 'Flight Ticket', tickets_path %>
-<%= link_to 'Admin', admin_tickets_path %>
+<%= render partial: "shared/navbar" %>
+<div id="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-11">
+        <div class="blog_content">
+          <div class="num-comments">徵求機票留言板</div>
+          <% @comboards.each do |comboard| %>
+          <div class="comment-block clearfix">
+            <div class="caption">
+              <div class="top clearfix">
+                <div class="txt1">By <a href="#"><%= comboard.user.name %></a></div>
+                <span>|</span>
+                <div class="txt2">Date: <%= comboard.created_at %></div>
+                <span>|</span>
+                <div class="txt3"><%= link_to 'Show', comboard_path(comboard) %></div>
+                <% if current_user == comboard.user %>
+                  <div class="txt3"><%= link_to 'Edit', edit_comboard_path(comboard) %></div>
+                  <div class="txt3"><%= link_to 'Delete', comboard_path(comboard), method: :delete, data: {confirm:"Are you sure?"} %> </div>
+                <% end %>
+              </div>
+              <div class="txt">
+                Flight date from: <%= comboard.flight_date_from %><br>
+                Flight date to: <%= comboard.flight_date_to %><br>
+                Departure:<%= comboard.departure %><br>
+                Destination: <%= comboard.destination %><br>
+                Expecting Price: <%= comboard.price %><br>
+                Additional Remarkes: <%= comboard.content %><br>
+              </div>
+              <div class="top clearfix">
+                <div class="txt3"><%= link_to 'I have match ticket', new_ticket_path(@ticket) %></div>
+                <span>|</span>
+                <div class="txt3"><%= link_to 'Notify Buyer', comboard_path(comboard) %></div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+          <div class="live-comment">
+            <div class="live-comment-title"></div>
+            <div class="live-comment-form">
+              <div id="note3"></div>
+              <div id="fields3">
+                <%= form_for @comboard do |f| %>
+                <form id="ajax-contact-form3" class="form-horizontal" action="javascript:;">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <%= f.label :flight_date_from, "Flight_date_from" %>
+                        <%= f.date_field :flight_date_from, class: "form-control" %>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <%= f.label :flight_date_to, "Flight_date_to" %>
+                        <%= f.date_field :flight_date_to, class: "form-control" %>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <%= f.label :departure, "Departure" %>
+                        <%= f.text_field :departure, class: "form-control" %>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <%= f.label :destination, "Destination" %>
+                        <%= f.text_field :destination, class: "form-control" %>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <%= f.label :price, "Expecting Price" %>
+                        <%= f.text_field :price , class: "form-control" %>
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <%= f.label :content, "Additional Remarkes" %>
+                        <%= f.text_area :content %>
+                      </div>
+                    </div>
+                  </div>
+                <%= f.submit '留言' %>
+              </form>
+              <% end %>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="text-center">
+  <%= paginate @comboards %>
+</div>
 
-
- <ul>
-
-   <%= link_to 'New Message', new_comboard_path %>
-
- </ul>
-
- <% @comboards.each do |comboard| %>
-   <div class="col-sm-6 col-md-4">
-     <div class="board-item">
-       <li>
-
-
-
-         Flight date from: <%= comboard.flight_date_from %><br>
-         Flight date to: <%= comboard.flight_date_to %><br>
-         Departure:<%= comboard.departure %><br>
-         Destination: <%= comboard.destination %><br>
-         User Name: <%= comboard.name %><br>
-         Expecting Price: <%= comboard.price %><br>
-         Additional Remarkes: <%= comboard.content %><br>
-
- <br>
- </li>
- <div class="caption">
-   <h3><%= link_to comboard.name, comboard_path(comboard) %></h3>
-   <%= link_to 'Show', comboard_path(comboard) %>
-   <%= link_to 'Edit', edit_comboard_path(comboard) %>
-    <%= link_to 'I have match ticket', new_ticket_path(@ticket) %>
-    <%= link_to 'Notify Buyer', comboard_path(comboard) %>
-
- </div>
- </div>
- </div>
- <% end %>
-
-
- <div class="text-center">
- <%= paginate @comboards %>
- </div>
+<%= render partial: "shared/footer"%>

@@ -17,7 +17,7 @@ class TicketsController < ApplicationController
       @ticket = current_user.tickets.new(ticket_params)
       if @ticket.save
         flash[:notice] = "ticket was successfully created"
-        redirect_to tickets_url
+        redirect_to ticket_path(@ticket)
       else
         flash.now[:alert] = "ticket was failed to create"
         redirect_to root_path
@@ -46,7 +46,7 @@ class TicketsController < ApplicationController
 
     def destroy
       @ticket.destroy
-      redirect_to tickets_path
+      redirect_back(fallback_location: root_path)
       flash[:alert] = "Ticket was deleted"
     end
 

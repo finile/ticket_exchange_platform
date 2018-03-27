@@ -1,33 +1,56 @@
+<%= render partial: "shared/navbar" %>
+<div class="breadcrumbs1_wrapper">
+  <div class="container">
+    <div class="breadcrumbs1"><a><%= link_to 'Back to 留言板', comboards_path %></a><span>/</span>留言</div>
+  </div>
+</div>
 
 
-Flight date from: <%= @comboard.flight_date_from %><br>
-Flight date to: <%= @comboard.flight_date_to %><br>
-Departure:<%= @comboard.departure %><br>
-Destination: <%= @comboard.destination %><br>
-User Name: <%= @comboard.name %><br>
-Expecting Price: <%= @comboard.price %><br>
-Additional Remarkes: <%= @comboard.content %><br>
 
-
-<br>
+<div id="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="blog_content">
+          <div class="post post-full">
+            <div class="post-story">
+              <h2>Destination: <%= @comboard.destination %></h2>
+              <div class="post-story-info">
+                <div class="date1"><%= @comboard.created_at %></div>
+                <div class="by">Posted by <a><%= @comboard.user.name %></a></div>
+              </div>
+              <div class="post-story-body clearfix">
+                Flight date from: <%= @comboard.flight_date_from %><br>
+                Flight date to: <%= @comboard.flight_date_to %><br>
+                Departure:<%= @comboard.departure %><br>
+                Destination: <%= @comboard.destination %><br>
+                User Name: <%= @comboard.name %><br>
+                Expecting Price: <%= @comboard.price %><br>
+                Additional Remarkes: <%= @comboard.content %><br> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="container">
   <div class="row">
     <% @comboard.comments.each do |comment| %>
-       <div>
-         <h4><%= comment.user.name %></h4>
-         <p><%= simple_format comment.content %></p>
-         <p class="text-muted">
-           <em><%= time_ago_in_words(comment.created_at) %> ago -</em>
-           <% if current_user.admin? %>
-             <%= link_to "Delete", comboard_comment_path(@comboard, comment), method: :delete, data: {confirm:"Are you sure?"} %>
+      <div>
+        <h4><%= comment.user.name %></h4>
+        <p><%= simple_format comment.content %></p>
+        <p class="text-muted">
+        <em><%= time_ago_in_words(comment.created_at) %> ago -</em>
+        <% if current_user.admin? %>
+          <%= link_to "Delete", comboard_comment_path(@comboard, comment), method: :delete, data: {confirm:"Are you sure?"} %>
            <% end %>
-         </p>
-       </div>
-
-       <hr>
-      <% end %>
-
-     <%= form_for [@comboard, @comment] do |f| %>
+        </p>
+      </div>
+      <hr>
+    <% end %>
+    <%= form_for [@comboard, @comment] do |f| %>
       <div class="form-group">
         <%= f.text_area :content, placeholder: "留言給徵求者", class: "form-control" %>
       </div>
@@ -39,4 +62,6 @@ Additional Remarkes: <%= @comboard.content %><br>
   </div>
 </div>
 
-<%= link_to 'Back to Board index', comboards_path %>
+
+<%= render partial: "shared/footer"%>
+

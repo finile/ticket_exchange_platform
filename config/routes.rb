@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post "spgateway/return"
   post 'spgateway1/return'
 
-  resources :tickets, only: [:index, :show, :create, :edit, :new, :update] do
+  resources :tickets, only: [:index, :show, :create, :edit, :new, :update, :destroy] do
     resources :comments, only: [:create, :destroy]
      member do
       post :favorite
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
      end
   end
 
-  resources :coupons, only: [:index, :show, :create, :edit, :new, :update] do
+  resources :coupons, only: [:index, :show, :create, :edit, :new, :update, :destroy] do
     resources :comments, only: [:create, :destroy]
       member do
         post :favorite
@@ -38,7 +38,7 @@ Rails.application.routes.draw do
    end
   end
 
-  resources :comboards, only: [:index, :show, :create, :edit, :new, :update] do
+  resources :comboards, only: [:index, :show, :create, :edit, :new, :update, :destroy] do
    resources :comments, only: [:create, :destroy]
   end
 

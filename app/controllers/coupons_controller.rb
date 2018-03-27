@@ -15,7 +15,7 @@ class CouponsController < ApplicationController
     @coupon = current_user.coupons.new(coupon_params)
     if @coupon.save
       flash[:notice] = "coupon was successfully created"
-      redirect_to coupons_url
+      redirect_to coupon_path(@coupon)
     else
       flash.now[:alert] = "coupon was failed to create"
       redirect_to root_path
@@ -43,7 +43,7 @@ class CouponsController < ApplicationController
 
   def destroy
     @coupon.destroy
-    redirect_to tickets_path
+    redirect_back(fallback_location: root_path)
     flash[:alert] = "Coupon was deleted"
   end
 
@@ -82,7 +82,7 @@ class CouponsController < ApplicationController
 
 
   def coupon_params
-    params.require(:coupon).permit(:airline, :destination, :coupon_expiry_date, :flight_date_from, :flight_date_to, :tax, :image, :others)
+    params.require(:coupon).permit(:airline, :destination, :coupon_expiry_date, :flight_date_from, :flight_date_to, :tax, :image, :others, :price, :quantity)
   end
 
 end

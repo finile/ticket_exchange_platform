@@ -2,9 +2,8 @@ class ComboardsController < ApplicationController
   before_action :set_comboard, only: [:show, :edit, :update, :destroy]
 
     def index
-
       @comboards = Comboard.page(params[:page]).per(10)
-
+      @comboard = Comboard.new
     end
 
     def new

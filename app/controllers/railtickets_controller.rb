@@ -15,7 +15,7 @@ class RailticketsController < ApplicationController
       @railticket = current_user.railtickets.new(railticket_params)
       if @railticket.save
         flash[:notice] = "railticket was successfully created"
-        redirect_to railtickets_url
+        redirect_to railticket_path(@railticket)
       else
         flash.now[:alert] = "railticket was failed to create"
         redirect_to railtickets_url
@@ -44,7 +44,7 @@ class RailticketsController < ApplicationController
 
     def destroy
       @railticket.destroy
-      redirect_to railtickets_path
+      redirect_back(fallback_location: root_path)
       flash[:alert] = "Ticket was deleted"
     end
 
