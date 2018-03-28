@@ -1,34 +1,52 @@
-<% @orders.each do |order| %>
-  <div class="panel panel-order">
-    <h2>Order # <%= order.sn %></h2>
-    <div class="order-content">
-      <div class="right-border">
-        <div class="order-data">
-          <ul class="order-list">
-            <% order.order_items.each do |item| %>
-            <li><%= item.coupon.id %> <%= item.quantity %> x <%= item.price %></li>
-            <% end %>
-            <hr>
-            Subtotal <%= order.subtotal %>
-          </ul>
-        </div>
-        <div>
-          <h2>Shipping Information</h2>
-          <div class="order-data">
-            <%= order.name %>, <%= order.phone %>, <%= order.address %>
+<%= render partial: "shared/navbar" %>
+
+<div id="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+      <% @orders.each do |order| %>
+        <div class="panel panel-order">
+          <h2>機票兌換卷訂單 # <%= order.sn %></h2>
+          <div class="order-content">
+            <div class="right-border">
+              <div class="order-data">
+                <ul class="order-list">
+                  <% order.order_items.each do |item| %>
+                  <li>兌換卷ID: <%= item.coupon.id %><br> 
+                    商品數量: <%= item.quantity %><br>
+                    商品單價: <%= item.price %><br>
+                  </li>
+                  <% end %>
+                  <hr>
+                  訂單總價: <%= order.subtotal %>
+                </ul>
+              </div>
+              <div>
+                <h2>寄送＆聯絡資訊</h2>
+                <div class="order-data">
+                  姓名: <%= order.name %><br> 
+                  Email: <%= order.user.email %><br>
+                  電話: <%= order.phone %><br> 
+                  地址: <%= order.address %><br>
+                </div>
+              </div>
+            </div>
+            <div class="order-data">
+              <p>Payment Status: <%= order.payment_status %></p>
+              <p>Shipping Status: <%= order.shipping_status %></p>
+              <% if order.payment_status == "not_paid" && order.shipping_status != "cancelled" %>
+                <%= link_to "Pay Now", checkout_spgateway_order_path(order), method: :post, class: "btn btn-info btn-form1-submit" %>
+              <% end %>
+              <% if order.shipping_status == "not_shipped" %>
+                <%= link_to "Cancel Order", order_path(order), method: :patch, class: "btn btn-info btn-form1-submit"  %>
+              <% end %>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="order-data">
-        <p>Payment Status: <%= order.payment_status %></p>
-        <p>Shipping Status: <%= order.shipping_status %></p>
-        <% if order.payment_status == "not_paid" && order.shipping_status != "cancelled" %>
-          <%= link_to "Pay Now", checkout_spgateway_order_path(order), method: :post, class: "btn" %>
-        <% end %>
-        <% if order.shipping_status == "not_shipped" %>
-          <%= link_to "Cancel Order", order_path(order), method: :patch, class: "btn"  %>
-        <% end %>
+      <% end %>
       </div>
     </div>
   </div>
-<% end %>
+</div>
+
+<%= render partial: "shared/footer"%>

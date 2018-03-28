@@ -9,22 +9,44 @@
             <h3 class="hch">To <%= @ticket.destination %></h3>
             <div class="clearfix"></div>
               <p class="address">Airline: <%= @ticket.airline %></p>
-                <div class="post-story">
-                  <hr>
-                  <div class="post-story-body clearfix">
-                  <h3>Flight date: <%= @ticket.flight_date %>; <%= @ticket.flight_time %></h3>
-                  <ul>
-                      <li>Departure: <%= @ticket.departure %></li>
-                      <li>Destination: <%= @ticket.destination %></li>
-                  </ul>
-                  <hr>
-                  <h4>Details:</h4>
-                  <ul>
-                    <li>From <%= @ticket.departure %></li>
-                    <li>To <%= @ticket.destination %></li>
-                    <li><%= @ticket.airline %></li>
-                    <li>Quantity: <%= @ticket.quantity %></li>
-                  </ul>
+              <div class="post-header">
+                <div class="post-slide">
+                  <div id="sl1">
+                    <div class="sl1_pagination"></div>
+                    <div class="carousel-box">
+                      <div class="inner">
+                        <div class="carousel main">
+                          <ul>
+                            <li>
+                              <div class="sl1">
+                                <div class="sl1_inner">
+                                  <img src="http://placehold.it/862x457" alt="" class="img-responsive">
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="post-story">
+                <hr>
+                <div class="post-story-body clearfix">
+                <h3>Flight date: <%= @ticket.flight_date %>; <%= @ticket.flight_time %></h3>
+                <ul>
+                    <li>Departure: <%= @ticket.departure %></li>
+                    <li>Destination: <%= @ticket.destination %></li>
+                </ul>
+                <hr>
+                <h4>Details:</h4>
+                <ul>
+                  <li>From <%= @ticket.departure %></li>
+                  <li>To <%= @ticket.destination %></li>
+                  <li><%= @ticket.airline %></li>
+                  <li>Quantity: <%= @ticket.quantity %></li>
+                </ul>
                 <p>Others: <%= @ticket.others %></p>
                 <% if current_user == @ticket.user %>
                   <div class="right_side">
@@ -39,20 +61,17 @@
       <div class="col-sm-3">
         <div class="sidebar-block">
             <form action="javascript:void(0);">
-               <div class="col-sm-12 no-padding margin-top">
-                  <div class="input1_wrapper">
-                    <label class="col-md-6" style="padding-left:0;padding-top:12px;font-weight:500;color:#464646;font-size:13px;"> 
-                      建議售價: 
-                    </label>
-                    <div class="col-md-6 price-total-left" style="padding-right:0;padding-left:0;">
-                        <span class="red">NTD$ <%= @ticket.price %></span>
-                    </div>
+             <div class="col-sm-12 no-padding margin-top">
+                <div class="input1_wrapper">
+                  <label class="col-md-6" style="padding-left:0;padding-top:12px;font-weight:500;color:#464646;font-size:13px;"> 
+                    建議售價: 
+                  </label>
+                  <div class="col-md-6 price-total-left" style="padding-right:0;padding-left:0;">
+                      <span class="red">NTD$ <%= @ticket.price %></span>
                   </div>
                 </div>
-              <div class="clearfix"></div>
-              <div class="no-padding margin-top text-center" style="margin-top:30px;">
-                <a href="booking-flights-page.html" class="btn btn-default btn-cf-submit3"style="width:100%;">立即聯絡賣家</a>
               </div>
+              <div class="clearfix"></div>
             <div class="clearfix"></div>
           </form>
         </div>
@@ -70,10 +89,10 @@
 
     <%= form_for [@ticket, @comment] do |f| %>
       <div class="form-group">
-        <%= f.text_area :content, placeholder: "留言給賣家", class: "form-control" %>
+        <a name="comment"><%= f.text_area :content, placeholder: "留言給賣家", class: "form-control" %></a>
       </div>
       <div class="form-group">
-        <%= f.submit class: "btn btn-primary"%>
+        <%= f.submit '立即聯絡賣家', class: "btn btn-default btn-cf-submit3"%> <br>
         <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
       </div>
     <% end %>
