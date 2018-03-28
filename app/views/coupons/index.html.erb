@@ -138,11 +138,7 @@
                                     <div class="nums"> 18 Reviews</div>
                                   </div>
                                   <div class="right_side">
-                                    <% if coupon.is_favorited?(current_user) %>
-                                        <%= link_to 'Unfavor', unfavorite_coupon_path(coupon), method: :post, class: "btn btn-info" %>
-                                    <% else %>
-                                        <%= link_to 'Favor', favorite_coupon_path(coupon), method: :post, class: "btn btn-primary" %>
-                                    <% end %>
+                                    <%= render partial: "shared/coupon_favorite", locals: {coupon: coupon} %>
                                   </div>
                                   <div class="right_side"><%= link_to 'Show', coupon_path(coupon), class: "btn btn-info" %></div>
                                 </div>

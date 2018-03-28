@@ -73,9 +73,6 @@
                     Train date: <%= railticket.train_date %> <br>
                     Departure time: <%= railticket.departure_time %>
                   </div>
-                  <div class="txt">
-                    <%= render partial: "shared/train_favorite", locals: {railticket: railticket} %>
-                  </div>
                 </div>
             </div>
          <% end %>
@@ -87,17 +84,20 @@
                     <img src="http://placehold.it/70x70" alt="" class="img-responsive">
                 </figure>
                 <div class="caption">
-                    <div class="top clearfix">
-                      <div class="txt1">Destination to<a href="#"> <%= ticket.destination %></a></div>
-                      <span>|</span>
-                      <div class="txt2">Flight Date: <%= ticket.flight_date %></div>
-                      <span>|</span>
-                      <div class="txt3"><%= link_to 'Show', ticket_path(ticket) %></div>
-                    </div>
-                    <div class="txt">
-                      <%= ticket.airline %> <br>
-                      Flight No: <%= ticket.flight_no %> 
-                    </div>
+                  <div class="top clearfix">
+                    <div class="txt1">Destination to<a href="#"> <%= ticket.destination %></a></div>
+                    <span>|</span>
+                    <div class="txt2">Flight Date: <%= ticket.flight_date %></div>
+                    <span>|</span>
+                    <div class="txt3"><%= link_to 'Show', ticket_path(ticket) %></div>
+                  </div>
+                  <div class="txt">
+                    <%= ticket.airline %> <br>
+                    Flight No: <%= ticket.flight_no %> 
+                  </div>
+                  <div class="txt">
+                    <%= render partial: "shared/ticket_favorite", locals: {ticket: ticket} %>
+                  </div>
                 </div>
             </div>
           <% end %>
@@ -106,23 +106,26 @@
           <div class="num-comments">Favorited Coupon</div>
           <% @favorited_coupons.each do |coupon| %>
             <div class="comment-block clearfix">
-                <figure>
-                    <img src="http://placehold.it/70x70" alt="" class="img-responsive">
-                </figure>
-                <div class="caption">
-                    <div class="top clearfix">
-                      <div class="txt1">Destination to<a href="#"> <%= coupon.destination %></a></div>
-                      <span>|</span>
-                      <div class="txt2">Expiry Date: <%= coupon.coupon_expiry_date %></div>
-                      <span>|</span>
-                      <div class="txt3"><%= link_to 'Show', coupon_path(coupon) %></div>
-                    </div>
-                    <div class="txt">
-                      使用期間: <br>
-                      <%= coupon.flight_date_from %> ~ <br>
-                      <%= coupon.flight_date_to %> 
-                    </div>
+              <figure>
+                  <img src="http://placehold.it/70x70" alt="" class="img-responsive">
+              </figure>
+              <div class="caption">
+                <div class="top clearfix">
+                  <div class="txt1">Destination to<a href="#"> <%= coupon.destination %></a></div>
+                  <span>|</span>
+                  <div class="txt2">Expiry Date: <%= coupon.coupon_expiry_date %></div>
+                  <span>|</span>
+                  <div class="txt3"><%= link_to 'Show', coupon_path(coupon) %></div>
                 </div>
+                <div class="txt">
+                  使用期間: <br>
+                  <%= coupon.flight_date_from %> ~ <br>
+                  <%= coupon.flight_date_to %> 
+                </div>
+                <div class="txt">
+                  <%= render partial: "shared/coupon_favorite", locals: {coupon: coupon} %>
+                </div>
+              </div>
             </div>
           <% end %>
           <div class="num-comments">Favorited Railticket</div>
@@ -144,6 +147,9 @@
                 Train no: <%= railticket.train_no %> <br>
                 Train date: <%= railticket.train_date %> <br>
                 Departure time: <%= railticket.departure_time %>
+              </div>
+              <div class="txt">
+                <%= render partial: "shared/train_favorite", locals: {railticket: railticket} %>
               </div>
             </div>
           </div>

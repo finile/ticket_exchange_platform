@@ -1,4 +1,4 @@
-class Comboard < ActiveRecord::Base
+class Comboard < ApplicationRecord
   belongs_to :user
   has_many :comments, :as => :commentable
 end

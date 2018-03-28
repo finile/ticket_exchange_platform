@@ -19,7 +19,7 @@
             </tr>
             <% @rail_items.each do |rail_item| %>
             <tr>
-              <td><%= item.railticket.id %></td>
+              <td><%= rail_item.railticket.id %></td>
               <td><%= rail_item.railticket.train_no %><br></td>
               <td>NTD $<%= rail_item.railticket.price %> <br></td>
               <td><%= rail_item.quantity %></td>

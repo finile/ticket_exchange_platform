@@ -1,4 +1,4 @@
-class Railticket < ActiveRecord::Base
+class Railticket < ApplicationRecord
 
   belongs_to :user, counter_cache: true
 

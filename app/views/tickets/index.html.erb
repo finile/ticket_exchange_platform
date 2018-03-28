@@ -158,11 +158,7 @@
                                     <div class="nums"> 18 Reviews</div>
                                   </div>
                                   <div class="right_side">
-                                    <% if ticket.is_favorited?(current_user) %>
-                                        <%= link_to 'Unfavor', unfavorite_ticket_path(ticket), method: :post, class: "btn btn-info" %>
-                                    <% else %>
-                                        <%= link_to 'Favor', favorite_ticket_path(ticket), method: :post, class: "btn btn-primary" %>
-                                    <% end %>
+                                    <%= render partial: "shared/ticket_favorite", locals: {ticket: ticket} %>
                                   </div>
                                   <div class="right_side"><%= link_to 'Show', ticket_path(ticket), class: "btn btn-info" %></div>
                                 </div>

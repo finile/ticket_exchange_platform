@@ -1,4 +1,4 @@
-class Coupon < ActiveRecord::Base
+class Coupon < ApplicationRecord
   belongs_to :user, counter_cache: true
 
   has_many :favorites, dependent: :destroy

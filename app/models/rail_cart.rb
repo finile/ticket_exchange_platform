@@ -1,4 +1,4 @@
-class RailCart < ActiveRecord::Base
+class RailCart < ApplicationRecord
   has_many :rail_cart_items, dependent: :destroy
   has_many :railtickets, through: :rail_cart_items
 
@@ -11,7 +11,7 @@ class RailCart < ActiveRecord::Base
 
 
   def subtotal
-    rail_cart_items.map{|x| x.item_total }.sum
+    rail_cart_items.map{|x| x.rail_item_total }.sum
   end
 
   def find_item_by(railticket)
