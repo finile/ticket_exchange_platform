@@ -138,34 +138,34 @@
                         <% @tickets.each do |ticket| %>
                         <div class="col-sm-6 col-md-4">
                           <li>
-                          <div class="popular ">
-                            <div class="popular_inner">
-                              <figure>
-                                <img src="http://placehold.it/370x232" alt="" class="img-responsive">
-                                  <div class="over">
-                                    <div class="v1"><%= ticket.destination %><span>17 Deal Offers</span></div>
-                                    <div class="v2">Lorem ipsum dolor sit amet,concateus.</div>
+                            <div class="popular ">
+                              <div class="popular_inner">
+                                <figure>
+                                  <img src="http://placehold.it/370x232" alt="" class="img-responsive">
+                                    <div class="over">
+                                      <div class="v1"><%= ticket.destination %><span>17 Deal Offers</span></div>
+                                      <div class="v2">Lorem ipsum dolor sit amet,concateus.</div>
+                                    </div>
+                                </figure>
+                                <div class="caption">
+                                  <div class="txt1"><span><%= ticket.destination %></span></div>
+                                  <div class="txt1"><%= ticket.airline %></div>
+                                  <div class="txt2">Flight No: <%= ticket.flight_no %></div>
+                                  <div class="txt2">Flight Date: <%= ticket.flight_date %></div>
+                                  <div class="txt2">Departure: <%= ticket.departure %></div>
+                                  <div class="txt3 clearfix">
+                                    <div class="left_side">
+                                      <div class="nums"> 18 Reviews</div>
+                                    </div>
+                                    <div class="right_side">
+                                      <%= render partial: "shared/ticket_favorite", locals: {ticket: ticket} %>
+                                    </div>
+                                    <div class="right_side"><%= link_to 'Show', ticket_path(ticket), class: "btn btn-info" %></div>
                                   </div>
-                              </figure>
-                              <div class="caption">
-                                <div class="txt1"><span><%= ticket.destination %></span></div>
-                                <div class="txt1"><%= ticket.airline %></div>
-                                <div class="txt2">Flight No: <%= ticket.flight_no %></div>
-                                <div class="txt2">Flight Date: <%= ticket.flight_date %></div>
-                                <div class="txt2">Departure: <%= ticket.departure %></div>
-                                <div class="txt3 clearfix">
-                                  <div class="left_side">
-                                    <div class="nums"> 18 Reviews</div>
-                                  </div>
-                                  <div class="right_side">
-                                    <%= render partial: "shared/ticket_favorite", locals: {ticket: ticket} %>
-                                  </div>
-                                  <div class="right_side"><%= link_to 'Show', ticket_path(ticket), class: "btn btn-info" %></div>
                                 </div>
                               </div>
                             </div>
-                          </div>
-                        </li>
+                          </li>
                         </div>
                         <% end %>
                       </ul>

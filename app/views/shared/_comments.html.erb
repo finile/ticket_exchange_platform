@@ -7,7 +7,7 @@
   <% if current_user.admin? %>
     <%= link_to "Delete", ticket_comment_path(commentable, comment), method: :delete, data: {confirm:"Are you sure?"} %>
   <% end %>
-</p>
+  </p>
 </div>
 <hr>
 <% end %>

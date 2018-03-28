@@ -1,67 +1,63 @@
 <%= render partial: "shared/navbar" %>
 
-  <div id="popular_cruises1">
-    <div class="container">
-      <h2 class="animated">高鐵票搜尋結果</h2>
-      <div class="title1 animated">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod <br>tincidunt ut laoreet dolore magna aliquam erat volutpat.
-      </div>
-      <br><br>
+<div id="popular_cruises1">
+  <div class="container">
+    <h2 class="animated">高鐵票搜尋結果</h2>
+    <div class="title1 animated">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod <br>tincidunt ut laoreet dolore magna aliquam erat volutpat.
+    </div>
+    <br><br>
 
-      <div id="popular_wrapper" class="animated" data-animation="fadeIn" data-animation-delay="300">
-        <div id="popular_inner">
-          <div class="">
-            <div id="popular">
-              <div class="">
-                <div class="carousel-box">
-                  <div class="inner">
-                    <div class="carousel main">
-                      <ul>
-                        <% @search.railtickets.each do |railticket| %>
-                        <div class="col-sm-6 col-md-4">
-                          <li>
-                          <div class="popular ">
-                            <div class="popular_inner">
-                              <figure>
-                                <img src="http://placehold.it/370x232" alt="" class="img-responsive">
-                                  <div class="over">
-                                    <div class="v1"><%= railticket.destination %><span>17 Deal Offers</span></div>
-                                    <div class="v2">Lorem ipsum dolor sit amet,concateus.</div>
-                                  </div>
-                              </figure>
-                              <div class="caption">
-                                <div class="txt1"><span><%= railticket.destination %></span></div>
-                                <div class="txt1">Departure:<%= railticket.departure %></div>
-                                <div class="txt1">Train no: <%= railticket.train_no %></div>
-                                <div class="txt2">Train date: <%= railticket.train_date %></div>
-                                <div class="txt2">Departure time: <%= railticket.departure_time %></div>
-                                <div class="txt3 clearfix">
-                                  <div class="left_side">
-                                    <div class="nums"> 18 Reviews</div>
-                                  </div>
-                                  <div class="right_side">
-                                    <% if railticket.is_favorited?(current_user) %>
-                                        <%= link_to 'Unfavor', unfavorite_railticket_path(railticket), method: :post, class: "btn btn-info" %>
-                                    <% else %>
-                                        <%= link_to 'Favor', favorite_railticket_path(railticket), method: :post, class: "btn btn-primary" %>
-                                    <% end %>
-                                  </div>
-                                  <div class="right_side"><%= link_to 'Show', railticket_path(railticket), class: "btn btn-info" %></div>
+    <div id="popular_wrapper" class="animated" data-animation="fadeIn" data-animation-delay="300">
+      <div id="popular_inner">
+        <div class="">
+          <div id="popular">
+            <div class="">
+              <div class="carousel-box">
+                <div class="inner">
+                  <div class="carousel main">
+                    <ul>
+                      <% @search.railtickets.each do |railticket| %>
+                      <div class="col-sm-6 col-md-4">
+                        <li>
+                        <div class="popular ">
+                          <div class="popular_inner">
+                            <figure>
+                              <img src="http://placehold.it/370x232" alt="" class="img-responsive">
+                                <div class="over">
+                                  <div class="v1"><%= railticket.destination %><span>17 Deal Offers</span></div>
+                                  <div class="v2">Lorem ipsum dolor sit amet,concateus.</div>
                                 </div>
+                            </figure>
+                            <div class="caption">
+                              <div class="txt1"><span><%= railticket.destination %></span></div>
+                              <div class="txt1">Departure:<%= railticket.departure %></div>
+                              <div class="txt1">Train no: <%= railticket.train_no %></div>
+                              <div class="txt2">Train date: <%= railticket.train_date %></div>
+                              <div class="txt2">Departure time: <%= railticket.departure_time %></div>
+                              <div class="txt3 clearfix">
+                                <div class="left_side">
+                                  <div class="nums"> 18 Reviews</div>
+                                </div>
+                                <div class="right_side">
+                                 <%= render partial: "shared/train_favorite", locals: {railticket: railticket} %>
+                                </div>
+                                <div class="right_side"><%= link_to 'Show', railticket_path(railticket), class: "btn btn-info" %></div>
                               </div>
                             </div>
                           </div>
-                        </li>
                         </div>
-                        <% end %>
-                      </ul>
-                    </div>
+                      </li>
+                      </div>
+                      <% end %>
+                    </ul>
                   </div>
                 </div>
               </div>
-              <div class="popular_pagination"></div>
             </div>
+            <div class="popular_pagination"></div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>

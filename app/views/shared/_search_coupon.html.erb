@@ -19,38 +19,34 @@
                       <% @search.coupons.each do |coupon| %>
                       <div class="col-sm-6 col-md-4">
                         <li>
-                        <div class="popular ">
-                          <div class="popular_inner">
-                            <figure>
-                              <img src="http://placehold.it/370x232" alt="" class="img-responsive">
-                                <div class="over">
-                                  <div class="v1"><%= coupon.destination %><span>17 Deal Offers</span></div>
-                                  <div class="v2">Lorem ipsum dolor sit amet,concateus.</div>
+                          <div class="popular ">
+                            <div class="popular_inner">
+                              <figure>
+                                <img src="http://placehold.it/370x232" alt="" class="img-responsive">
+                                  <div class="over">
+                                    <div class="v1"><%= coupon.destination %><span>17 Deal Offers</span></div>
+                                    <div class="v2">Lorem ipsum dolor sit amet,concateus.</div>
+                                  </div>
+                              </figure>
+                              <div class="caption">
+                                <div class="txt1"><span><%= coupon.destination %></span></div>
+                                <div class="txt1"><%= coupon.airline %></div>
+                                <div class="txt2">Expiry Date: <%= coupon.coupon_expiry_date %></div>
+                                <div class="txt2">使用期間: </div>
+                                <div class="txt2"> <%= coupon.flight_date_from %> ~ <%= coupon.flight_date_to %></div>
+                                <div class="txt3 clearfix">
+                                  <div class="left_side">
+                                    <div class="nums"> 18 Reviews</div>
+                                  </div>
+                                  <div class="right_side">
+                                    <%= render partial: "shared/coupon_favorite", locals: {coupon: coupon} %>
+                                  </div>
+                                  <div class="right_side"><%= link_to 'Show', coupon_path(coupon), class: "btn btn-info" %></div>
                                 </div>
-                            </figure>
-                            <div class="caption">
-                              <div class="txt1"><span><%= coupon.destination %></span></div>
-                              <div class="txt1"><%= coupon.airline %></div>
-                              <div class="txt2">Expiry Date: <%= coupon.coupon_expiry_date %></div>
-                              <div class="txt2">使用期間: </div>
-                              <div class="txt2"> <%= coupon.flight_date_from %> ~ <%= coupon.flight_date_to %></div>
-                              <div class="txt3 clearfix">
-                                <div class="left_side">
-                                  <div class="nums"> 18 Reviews</div>
-                                </div>
-                                <div class="right_side">
-                                  <% if coupon.is_favorited?(current_user) %>
-                                      <%= link_to 'Unfavor', unfavorite_coupon_path(coupon), method: :post, class: "btn btn-info" %>
-                                  <% else %>
-                                      <%= link_to 'Favor', favorite_coupon_path(coupon), method: :post, class: "btn btn-primary" %>
-                                  <% end %>
-                                </div>
-                                <div class="right_side"><%= link_to 'Show', coupon_path(coupon), class: "btn btn-info" %></div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      </li>
+                        </li>
                       </div>
                       <% end %>
                     </ul>
