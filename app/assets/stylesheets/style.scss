@@ -270,6 +270,8 @@ transition: background 0.3s ease-out; -moz-transition: background 0.3s ease-out;
 .btn-form1-submit:hover{background: #fb000d; color: #fff;}
 .btn-form1-submit:focus{outline: none;}
 
+.fb-login-button {display: inline-block; background:#d3e1ff; border-top: 1px solid #29447e; border-right: 1px solid #29447e; border-bottom: 1px solid #1a356e; border-left: 1px solid #29447e;height: 40px; padding-right: 29px; padding-left: 29px; padding-top: 8px; font-weight: bold; font-size: 11px; color: white; line-height: 22px; border-radius: 15px; cursor: pointer;}
+
 
 /* ============================= tabs end ====================== */
 
