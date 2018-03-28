@@ -1,4 +1,5 @@
-class SubscribeJob < ActiveJob::Base
+class SubscribeJob < ApplicationJob
+  
   include SuckerPunch::Job
   queue_as :defaul
 
