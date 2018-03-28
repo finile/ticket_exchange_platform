@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
-  after_create :subscribe_job
+  # after_create :subscribe_job
   # validates_presence_of :name
 
   has_many :tickets, dependent: :destroy
