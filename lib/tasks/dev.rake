@@ -156,18 +156,15 @@ namespace :dev do
 
   task fake_favorite: :environment do
    Favorite.destroy_all
-
-   20.times do |i|
-
+   50.times do |i|
      Favorite.create!(
        user_id: User.all.sample.id,
        ticket_id: Ticket.all.sample.id,
        railticket_id: Railticket.all.sample.id,
      )
-
-     puts "have created fake favorite"
-     puts "now you have 20 favorite data"
-   end
+    end
+    puts "have created fake favorite"
+    puts "now you have 50 favorite data"
   end
 
 end
