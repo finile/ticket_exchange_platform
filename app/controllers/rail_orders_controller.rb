@@ -1,4 +1,5 @@
 class RailOrdersController < ApplicationController
+  skip_before_action :verify_authenticity_token
   
   def index
     @rail_orders = current_user.rail_orders.order(created_at: :desc)
