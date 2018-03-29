@@ -40,7 +40,7 @@ class Admin::RailticketsController < ApplicationController
 
 
   def railticket_params
-    params.require(:railticket).permit(:train_no, :train_date, :departur_time, :arrive_time, :departure, :destination, :name, :price, :discount, :image, :others )
+    params.require(:railticket).permit(:train_no, :train_date, :departure_time, :arrive_time, :departure, :destination, :name, :price, :discount, :image, :others )
   end
 
 

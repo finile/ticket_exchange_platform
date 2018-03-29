@@ -134,6 +134,28 @@ namespace :dev do
     end
     puts "have created fake railticket comments"
     puts "now you have #{Comment.count} railticket comment data"
+
+    Coupon.all.each do |coupon|
+      3.times do |i|
+        coupon.comments.create!(
+          content: FFaker::Lorem.sentence,
+          user: User.all.sample
+        )
+      end
+    end
+    puts "have created fake coupon comments"
+    puts "now you have #{Comment.count} coupon comment data"
+
+    Comboard.all.each do |comboard|
+      3.times do |i|
+        comboard.comments.create!(
+          content: FFaker::Lorem.sentence,
+          user: User.all.sample
+        )
+      end
+    end
+    puts "have created fake comboard comments"
+    puts "now you have #{Comment.count} comboard comment data"
   end
 
   task fake_comboard: :environment do

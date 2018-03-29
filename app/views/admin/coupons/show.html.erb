@@ -1,14 +1,141 @@
-Airline: <%= @coupon.airline %><br>
-Destination: <%= @coupon.destination %><br>
-Coupon expiry date: <%= @coupon.coupon_expiry_date %><br>
-Flight date from: <%= @coupon.flight_date_from %><br>
-Flight date to:<%= @coupon.flight_date_to %><br>
-Tax: <%= @coupon.tax %><br>
-Image: <%= @coupon.image %><br>
-Others: <%= @coupon.others %><br>
 
 <br>
-<%= link_to 'Edit', edit_coupon_path(@coupon) %>
-<%#= render partial: "shared/favorite", locals: {coupon: @coupon} %>
+<div class="container">
+  <div class="row">
+    <% @coupon.comments.each do |comment| %>
+       <div>
+         <h4><%= comment.user.name %></h4>
+         <p><%= simple_format comment.content %></p>
+         <p class="text-muted">
+           <em><%= time_ago_in_words(comment.created_at) %> ago -</em>
+           <% if current_user.admin? %>
+             <%= link_to "Delete", coupon_comment_path(@coupon, comment), method: :delete, data: {confirm:"Are you sure?"} %>
+           <% end %>
+         </p>
+       </div>
+
+       <hr>
+      <% end %>
+
+      <div id="content">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-9">
+              <div class="blog_content">
+                <div class="post post-full">
+                  <h3 class="hch">To <%= @coupon.destination %></h3>
+                  <div class="clearfix"></div>
+                    <p class="address">Airline: <%= @coupon.airline %></p>
+                    <div class="post-header">
+                      <div class="post-slide">
+                        <div id="sl1">
+                          <div class="sl1_pagination"></div>
+                          <div class="carousel-box">
+                            <div class="inner">
+                              <div class="carousel main">
+                                <ul>
+                                  <li>
+                                    <div class="sl1">
+                                      <div class="sl1_inner">
+                                        <img src=<%= @coupon.image.url %> alt="coupon-image" class="img-responsive" />
+                                      </div>
+                                    </div>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="post-story">
+                      <hr>
+                      <div class="post-story-body clearfix">
+                      <h3>Coupon Expiry Date: <%= @coupon.coupon_expiry_date %><br></h3>
+                      <h3>使用區間: <%= @coupon.flight_date_from %> ~ <%= @coupon.flight_date_to %> </h3>
+                      <hr>
+                      <h4>Details:</h4>
+                      <ul>
+                        <li>Destination: <%= @coupon.destination %></li>
+                        <li>Airline: <%= @coupon.airline %></li>
+                        <li>Tax: <%= @coupon.tax %></li>
+                      </ul>
+                      <p>Others: <%= @coupon.others %></p>
+                      <div class="right_side">
+                        <%= link_to 'Edit', edit_admin_coupon_path(@coupon), class: "btn btn-info" %> |
+                        <%= render partial: "shared/coupon_favorite", locals: {coupon: @coupon} %> |
+                        <% if current_user == @coupon.user %>
+                          <%= link_to 'Edit', edit_coupon_path(@coupon), class: "btn btn-info" %> | <%= link_to 'Delete', coupon_path(@coupon), method: :delete, class: "btn btn-info", data: {confirm:"Are you sure?"} %>
+                        <% end %>
+                      </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="sidebar-block">
+                <form action="javascript:void(0);">
+                   <div class="col-sm-12 no-padding margin-top">
+                      <div class="input1_wrapper">
+                        <label class="col-md-6" style="padding-left:0;padding-top:12px;font-weight:500;color:#464646;font-size:13px;">
+                          建議售價:
+                        </label>
+                        <div class="col-md-6 price-total-left" style="padding-right:0;padding-left:0;">
+                            <span class="red">NTD$ <%= @coupon.price %></span>
+                        </div>
+                        <label class="col-md-6" style="padding-left:0;padding-top:12px;font-weight:500;color:#464646;font-size:13px;">
+                          數量:
+                        </label>
+                        <div class="col-md-6 price-total-left" style="padding-right:0;padding-left:0;margin-top: 12px;">
+                            <h3><%= @coupon.quantity %></h3>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="no-padding margin-top text-center" style="margin-top:30px;">
+                      <% if @coupon.quantity == 0 %>
+                        <a class="btn btn-default btn-cf-submit3"style="width:100%;">已售出</a> <br>
+                      <% else %>
+                        <%= link_to '立即購買', add_to_cart_coupon_path(@coupon), class: "btn btn-default btn-cf-submit3" ,method: :post %> <br>
+                      <% end %>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="select1_wrapper">
+                      <label><%= link_to "瀏覽購物車", cart_path, class: "btn btn-default btn-cf-submit3" %>  </label>
+                    </div>
+                </form>
+              </div>
+              <div class="clearfix"></div>
+              <div class="margin-top"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <% @coupon.comments.each do |comment| %>
+             <div>
+               <h4><%= comment.user.name %></h4>
+               <p><%= simple_format comment.content %></p>
+               <p class="text-muted">
+                 <em><%= time_ago_in_words(comment.created_at) %> ago -</em>
+                 <% if current_user.admin? %>
+                   <%= link_to "Delete", coupon_comment_path(@coupon, comment), method: :delete, data: {confirm:"Are you sure?"} %>
+                 <% end %>
+               </p>
+             </div>
+
+             <hr>
+            <% end %>
+
+
+        </div>
+      </div>
+
+
+
 <br>
 <%= link_to 'Back to Admin Coupon index', admin_coupons_path %>

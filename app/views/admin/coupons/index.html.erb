@@ -12,7 +12,7 @@
           <th>Coupon expiry date</th>
           <th>Flight date from</th>
           <th>Flight date to</th>
-          <th>tax</th>
+          <th>Price</th>
           <th>Others</th>
           <th>Show</th>
           <th>Edit</th>
@@ -28,7 +28,7 @@
           <td><%= coupon.coupon_expiry_date %></td>
           <td><%= coupon.flight_date_from %></td>
           <td><%= coupon.flight_date_to %></td>
-          <td><%= coupon.tax %></td>
+          <td><%= coupon.price %></td>
           <td><%= coupon.others %></td>
           <td><%= link_to 'Show', admin_coupon_path(coupon) %></td>
           <td><%= link_to 'Edit', edit_admin_coupon_path(coupon) %></td>
@@ -40,4 +40,3 @@
     <%= paginate @coupons %>
   </div>
 </div>
-

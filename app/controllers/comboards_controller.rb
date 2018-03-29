@@ -47,14 +47,7 @@ class ComboardsController < ApplicationController
       flash[:alert] = "Message was deleted"
     end
 
-    def notify_buyer
-      if @comboard.save
-
-         UserMailer.notify_buyer(@comboard).deliver_now!
-         redirect_to comboards_path, notice: "notice has been sent"
-
-       end
-    end
+    
 
   private
 
