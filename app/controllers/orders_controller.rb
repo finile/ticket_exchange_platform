@@ -40,37 +40,43 @@ class OrdersController < ApplicationController
         amount: @order.amount
       )
 
-       spgateway_data = {
-        MerchantID: "MS33487888",
-        Version: 1.4,
-        RespondType: "JSON",
-        TimeStamp: Time.now.to_i,
-        MerchantOrderNo: "#{@payment.id}AC",
-        Amt: @order.amount,
-        ItemDesc: @order.name,
-        ReturnURL: spgateway_return_url,
-        Email: @order.user.email,
-        LoginType: 0
-      }.to_query
+      #  spgateway_data = {
+      #   MerchantID: "MS33487888",
+      #   Version: 1.4,
+      #   RespondType: "JSON",
+      #   TimeStamp: Time.now.to_i,
+      #   MerchantOrderNo: "#{@payment.id}AC",
+      #   Amt: @order.amount,
+      #   ItemDesc: @order.name,
+      #   ReturnURL: spgateway_return_url,
+      #   Email: @order.user.email,
+      #   LoginType: 0
+      # }.to_query
 
-      hash_key = "TYiU1DmujbmURuMe0Htc6sep2Er4xD0L"
-      hash_iv = "JhTNuxOHK7jDcZQQ"
+      # spgateway_data = Spgateway.new(@payment).generate_form_data(spgateway_return_url)
 
-      cipher = OpenSSL::Cipher::AES256.new(:CBC)
-      cipher.encrypt
-      cipher.key = hash_key
-      cipher.iv  = hash_iv
-      encrypted = cipher.update(spgateway_data) + cipher.final
-      aes = encrypted.unpack('H*').first
+      # hash_key = "TYiU1DmujbmURuMe0Htc6sep2Er4xD0L"
+      # hash_iv = "JhTNuxOHK7jDcZQQ"
 
-      str = "HashKey=#{hash_key}&#{aes}&HashIV=#{hash_iv}"
-      sha = Digest::SHA256.hexdigest(str).upcase
+      # cipher = OpenSSL::Cipher::AES256.new(:CBC)
+      # cipher.encrypt
+      # cipher.key = hash_key
+      # cipher.iv  = hash_iv
+      # encrypted = cipher.update(spgateway_data) + cipher.final
+      # aes = encrypted.unpack('H*').first
 
-      @merchant_id = "MS33487888"
-      @trade_info = aes
-      @trade_sha = sha
-      @version = "1.4"
+      # str = "HashKey=#{hash_key}&#{aes}&HashIV=#{hash_iv}"
+      # sha = Digest::SHA256.hexdigest(str).upcase
 
+      # @merchant_id = "MS33487888"
+      # @trade_info = aes
+      # @trade_sha = sha
+      # @version = "1.4"
+
+      # @merchant_id = spgateway_data[:MerchantID]
+      # @trade_info = spgateway_data[:TradeInfo]
+      # @trade_sha = spgateway_data[:TradeSha]
+      # @version = spgateway_data[:Version]
 
       render layout: false
     end
