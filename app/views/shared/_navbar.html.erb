@@ -25,7 +25,7 @@
             <li class="<%= active_class(railtickets_path) %>"><%= link_to '高鐵票', railtickets_path %><em></em></li>
             <li class="<%= active_class(comboards_path) %>"><%= link_to '需求佈告欄', comboards_path %><em></em></li>
             <% if current_user %>
-              <li class="<%= active_class(user_path(current_user)) %>"><%= link_to 'Profile', user_path(current_user) %><em></em></li>
+              <li class="<%= active_class(user_path(current_user)) %>"><%= link_to '個人資訊', user_path(current_user) %><em></em></li>
             <% end %>
           </ul>
         </div>

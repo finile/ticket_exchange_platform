@@ -1,4 +1,5 @@
 class Coupon < ApplicationRecord
+  mount_uploader :image, TicketImageUploader 
   belongs_to :user, counter_cache: true
 
   has_many :favorites, dependent: :destroy

@@ -3,7 +3,7 @@ class CouponsController < ApplicationController
   before_action :set_coupon, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite, :add_to_cart, :remove_from_cart ]
 
   def index
-    @coupons = Coupon.page(params[:page]).per(9)
+    @coupons = Coupon.all.order(favorites_count: :desc).limit(6)
     @search = Search.new
   end
 

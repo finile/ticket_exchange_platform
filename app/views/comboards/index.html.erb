@@ -9,33 +9,34 @@
           <div class="comment-block clearfix">
             <div class="caption">
               <div class="top clearfix">
-                <div class="txt1">By <a href="#"><%= comboard.user.name %></a></div>
+                <div class="txt1">留言者: <a href="#"><%= comboard.user.name %></a></div>
                 <span>|</span>
-                <div class="txt2">Date: <%= comboard.created_at %></div>
+                <div class="txt2">留言時間: <%= comboard.created_at %></div>
                 <span>|</span>
-                <div class="txt3"><%= link_to 'Show', comboard_path(comboard) %></div>
+                <div class="txt3"><%= link_to '詳情', comboard_path(comboard) %></div>
                 <% if current_user == comboard.user %>
-                  <div class="txt3"><%= link_to 'Edit', edit_comboard_path(comboard) %></div>
-                  <div class="txt3"><%= link_to 'Delete', comboard_path(comboard), method: :delete, data: {confirm:"Are you sure?"} %> </div>
+                  <div class="txt3"><%= link_to '編輯', edit_comboard_path(comboard) %></div>
+                  <div class="txt3"><%= link_to '刪除', comboard_path(comboard), method: :delete, data: {confirm:"Are you sure?"} %> </div>
                 <% end %>
               </div>
               <div class="txt">
-                Flight date from: <%= comboard.flight_date_from %><br>
-                Flight date to: <%= comboard.flight_date_to %><br>
-                Departure:<%= comboard.departure %><br>
-                Destination: <%= comboard.destination %><br>
-                Expecting Price: <%= comboard.price %><br>
-                Additional Remarkes: <%= comboard.content %><br>
+                機票需求日期: 從 <%= comboard.flight_date_from %> ～ 到 <%= comboard.flight_date_to %><br>
+                出發地:<%= comboard.departure %><br>
+                目的地: <%= comboard.destination %><br>
+                期望價格: <%= comboard.price %><br>
+                其他資訊: <%= comboard.content %><br>
               </div>
               <div class="top clearfix">
-                <div class="txt3"><%= link_to 'I have match ticket', new_ticket_path(@ticket) %></div>
+                <br>
+                <div class="txt3"><%= link_to '我有合適機票', new_ticket_path(@ticket) %></div>
                 <span>|</span>
-                <div class="txt3"><%= link_to 'Notify Buyer', comboard_path(comboard) %></div>
+                <div class="txt3"><%= link_to '通知買家', comboard_path(comboard) %></div>
               </div>
             </div>
           </div>
           <% end %>
           <div class="live-comment">
+            <div class="num-comments">留下您的需求</div>
             <div class="live-comment-title"></div>
             <div class="live-comment-form">
               <div id="note3"></div>
@@ -45,37 +46,37 @@
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <%= f.label :flight_date_from, "Flight_date_from" %>
+                        <%= f.label :flight_date_from, "機票需求開始日期:" %>
                         <%= f.date_field :flight_date_from, class: "form-control" %>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <%= f.label :flight_date_to, "Flight_date_to" %>
+                        <%= f.label :flight_date_to, "機票需求結束日期:" %>
                         <%= f.date_field :flight_date_to, class: "form-control" %>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <%= f.label :departure, "Departure" %>
+                        <%= f.label :departure, "出發地" %>
                         <%= f.text_field :departure, class: "form-control" %>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <%= f.label :destination, "Destination" %>
+                        <%= f.label :destination, "目的地" %>
                         <%= f.text_field :destination, class: "form-control" %>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <%= f.label :price, "Expecting Price" %>
+                        <%= f.label :price, "期望價格" %>
                         <%= f.text_field :price , class: "form-control" %>
                       </div>
                     </div>
                     <div class="col-sm-12">
                       <div class="form-group">
-                        <%= f.label :content, "Additional Remarkes" %>
+                        <%= f.label :content, "其他資訊" %>
                         <%= f.text_area :content %>
                       </div>
                     </div>

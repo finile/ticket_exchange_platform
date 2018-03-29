@@ -32,6 +32,8 @@ private
     coupons = coupons.where("destination like ?", "%#{destination}%") if destination.present?
     coupons = coupons.where("flight_date_from >= ?", date_from ) if date_from.present?
     coupons = coupons.where("flight_date_to<= ?", date_to ) if date_to.present?
+    coupons = coupons.where("price >= ?", min_price) if min_price.present?
+    coupons = coupons.where("price <= ?", max_price) if max_price.present?
     coupons
   end
 

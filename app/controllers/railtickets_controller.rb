@@ -3,7 +3,7 @@ class RailticketsController < ApplicationController
   before_action :set_railticket, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite, :add_to_rail_cart, :remove_from_rail_cart]
 
     def index
-      @railtickets = Railticket.page(params[:page]).per(9)
+      @railtickets = Railticket.all.order(favorites_count: :desc).limit(6)
       @search = Search.new
     end
 

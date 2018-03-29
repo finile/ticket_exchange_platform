@@ -26,7 +26,7 @@ namespace :dev do
 
   task fake_ticket: :environment do
     Ticket.destroy_all
-
+    file = File.open("#{Rails.root}/public/images/370x232.png")
     #from creating rand time of ticket
     now = Time.now
     a_day_ago = now - 60*60*24
@@ -43,7 +43,7 @@ namespace :dev do
           name: FFaker::Name.name.upcase,
           price: rand(1000..10000),
           quantity: rand(1..5),
-          image: FFaker::Avatar.image,
+          image: file,
           others:FFaker::Lorem::sentence(15)
         )
       end
@@ -54,7 +54,7 @@ namespace :dev do
 
   task fake_railticket: :environment do
     Railticket.destroy_all
-
+    file = File.open("#{Rails.root}/public/images/370x232.png")
     #from creating rand time of ticket
     now = Time.now
     a_day_ago = now - 60*60*24
@@ -73,7 +73,7 @@ namespace :dev do
         name: FFaker::Name.name.upcase,
         price: rand(900..2000),
         discount: rand(65..90),
-        image: FFaker::Avatar.image,
+        image: file,
         others:FFaker::Lorem::sentence(15),
         quantity: rand(1..5)
       )
@@ -88,6 +88,7 @@ namespace :dev do
   task fake_coupon: :environment do
     Coupon.destroy_all
     #create 25 fake coupons information
+    file = File.open("#{Rails.root}/public/images/370x232.png")
     User.all.each do |user|
       rand(5).times do
         user.coupons.create(
@@ -97,7 +98,7 @@ namespace :dev do
           flight_date_from: FFaker::Time.date,
           flight_date_to: FFaker::Time.date,
           tax: FFaker::Lorem::word,
-          image: FFaker::Avatar.image,
+          image: file,
           others:FFaker::Lorem::sentence(15),
           quantity: rand(1..5),
           price: rand(1000..10000)

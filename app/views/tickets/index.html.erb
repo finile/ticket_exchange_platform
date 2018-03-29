@@ -14,9 +14,9 @@
                       <li>
                         <div class="slider">
                           <div class="slider_inner">
-                            <div class="txt1"><span>Welcome To Our</span></div>
-                            <div class="txt2"><span>廉航機票</span></div>
-                            <div class="txt3"><span>Please search what flight tickets you need: </span></div>
+                            <div class="txt1"><span>歡迎來到</span></div>
+                            <div class="txt2"><span>讓.齁.哩 廉航機票交換平台</span></div>
+                            <div class="txt3"><span>立即搜尋你要的機票: </span></div>
                           </div>
                         </div>
                       </li>
@@ -42,25 +42,25 @@
                 <div class="row">
                   <div class="col-sm-4 col-md-2">
                     <div class="select1_wrapper">
-                      <label><%= f.label :airline %></label>
+                      <label><%= f.label :airline, "廉航公司" %></label>
                       <div><%= f.text_field :airline, class: "select1_inner" %></div>
                     </div>
                   </div>
                   <div class="col-sm-4 col-md-2">
                     <div class="select1_wrapper">
-                      <label><%= f.label :flight_no %></label>
+                      <label><%= f.label :flight_no, "班機號碼" %></label>
                       <div><%= f.text_field :flight_no, class: "select1_inner" %></div>
                     </div>
                   </div>
                   <div class="col-sm-4 col-md-2">
                     <div class="input1_wrapper">
-                      <label><%= f.label :destination %></label>
+                      <label><%= f.label :destination, "目的地" %></label>
                       <div><%= f.text_field :destination, class: "select1_inner" %></div>
                     </div>
                   </div>
                   <div class="col-sm-4 col-md-2">
                     <div class="input1_wrapper">
-                      <label><%= f.label :date_from, "Date Range" %></label>
+                      <label><%= f.label :date_from, "出發日期" %></label>
                       <div class="input1_inner">
                         <%= f.date_field :date_from, class: "input datepicker" %> - <%= f.date_field :date_to, class: "input datepicker" %>
                       </div>
@@ -68,7 +68,7 @@
                   </div>
                   <div class="col-sm-4 col-md-2">
                     <div class="input1_wrapper">
-                      <label><%= f.label :min_price, "Price Range NTD$" %></label>
+                      <label><%= f.label :min_price, "價格區間 NTD$" %></label>
                       <div class="input1_inner">
                         <%= f.text_field :min_price, class: "select1_inner" %> - <%= f.text_field :max_price, class: "select1_inner" %>
                       </div>
@@ -76,7 +76,7 @@
                   </div>
                   <div class="col-sm-4 col-md-2">
                     <div class="button1_wrapper">
-                      <%= f.submit "Search", class: "btn btn-info btn-form1-submit" %>
+                      <%= f.submit "立馬搜尋", class: "btn btn-info btn-form1-submit" %>
                     </div>
                   </div>
                 </div>
@@ -109,10 +109,8 @@
   <div id="sky_widget">
   <div class="container">
     <div class="row">
-        <h3 class="title">搜尋即時票價和比價</h2>
-        <br>
-      <!-- <div data-skyscanner-widget="SearchWidget"></div>
-      <script src="https://widgets.skyscanner.net/widget-server/js/loader.js" async></script> -->
+      <h3 class="title">搜尋即時票價和比價</h2>
+      <br>
       <script charset="utf-8" src="//www.travelpayouts.com/widgets/0d971e4a17022288108f5e9469f8553e.js?v=1238" async></script>
    </div>
  </div>
@@ -141,7 +139,7 @@
                             <div class="popular ">
                               <div class="popular_inner">
                                 <figure>
-                                  <img src="http://placehold.it/370x232" alt="" class="img-responsive">
+                                  <img src=<%= ticket.image.url %> alt="ticket-image" class="img-responsive" /> 
                                     <div class="over">
                                       <div class="v1"><%= ticket.destination %><span>17 Deal Offers</span></div>
                                       <div class="v2">Lorem ipsum dolor sit amet,concateus.</div>

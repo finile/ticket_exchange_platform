@@ -1,5 +1,5 @@
 class Ticket < ApplicationRecord
-
+  mount_uploader :image, TicketImageUploader 
   belongs_to :user, counter_cache: true
 
 

@@ -5,7 +5,8 @@ class TicketsController < ApplicationController
     def index
       # @tickets = Ticket.all
       # .where({flight_date: (Time.now.midnight - 150.day)..Time.now.midnight}).limit(10)
-      @tickets = Ticket.page(params[:page]).per(9)
+      # @tickets = Ticket.page(params[:page]).per(9)
+      @tickets = Ticket.all.order(favorites_count: :desc).limit(6)
       @search = Search.new 
     end
 

@@ -24,7 +24,10 @@ body{ background: #fff;  border:0; font: 14px 'Raleway', Arial, Helvetica, sans-
 .visible {
 visibility: visible;
 }
-
+.txt {font-size: 15px; line-height: 30px;}
+.txt1 { font-size: 15px; }
+.txt2 { font-size: 15px; }
+.txt3 { font-size: 15px; }
 
 /* ============================= header ====================== */
 .top1_wrapper{background: #fafafa; border-top: 3px solid #1cbbb4; padding-top: 13px; padding-bottom: 13px;}
@@ -801,7 +804,7 @@ transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; -webkit-trans
 
 
 /*-----btn-----*/
-.btn-default.btn0{ display: block; color: #fff; border: none; font-size: 14px; line-height: 20px; font-weight: 700; padding: 15px 10px; text-decoration: none; border-radius:0px; -moz-border-radius:0px; -webkit-border-radius:0px; margin-top: 0px; margin-bottom: 0px; text-transform: uppercase; background: #fb000d; position: relative; text-align: center; width: 100%;box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.2) inset; moz-box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.2) inset; -webkit-box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.2) inset; margin-top: 50px;}
+.btn-default.btn0{ display: block; color: #7f7f7f; border: none; font-size: 18px; line-height: 20px; font-weight: 700; padding: 15px 10px; text-decoration: none; border-radius:0px; -moz-border-radius:0px; -webkit-border-radius:0px; margin-top: 0px; margin-bottom: 0px; text-transform: uppercase; background:#fff799; position: relative; text-align: center; width: 100%;box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.2) inset; moz-box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.2) inset; -webkit-box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.2) inset; margin-top: 50px; border-radius: 20px;}
 .btn-default.btn0:hover{color: #fff; background: #00a99d;}
 
 .btn-default.btn1{ display: inline-block; color: #fff; border: none; font-size: 12px; line-height: 20px; font-weight: 700; padding: 5px 20px; text-decoration: none; border-radius:0px; -moz-border-radius:0px; -webkit-border-radius:0px; margin-top: 0px; margin-bottom: 0px; text-transform: uppercase; background: #00a99d; position: relative; text-align: center; width: 100%;box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.2) inset; moz-box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.2) inset; -webkit-box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.2) inset;}
