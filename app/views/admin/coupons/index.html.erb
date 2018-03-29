@@ -1,71 +1,43 @@
-<div class="container">
-    <div class="row">
-    <%= link_to 'Index', tickets_path %>
-      <ul class="nav nav-tabs">
-       <li role="presentation">
-        <%= link_to 'Ticket', admin_tickets_path %>
-       </li>
-        <li role="presentation" class="active">
-         <%= link_to 'Coupon', admin_coupons_path %>
-        </li>
-        <li role="presentation" >
-         <%= link_to 'Board', admin_comboards_path %>
-        </li>
-        <li role="presentation" >
-         <%= link_to 'Train Ticket', admin_railtickets_path %>
-        </li>
-         <li role="presentation" >
-          <%= link_to 'User List', admin_users_path %>
-         </li>
-      </ul>
-    </div>
-  </div>
-
-  <br>
-
-<h1>機票優惠券</h1>
+<%= render partial: "shared/admin_nav_bar" %>
 
 <div class="container">
+  <h1>機票優惠券清單</h1>
   <div class="row">
-  <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>Coupon ID</th>
-            <th>Airline</th>
-            <th>Destination</th>
-            <th>Coupon expiry date</th>
-            <th>Flight date from</th>
-            <th>Flight date to</th>
-            <th>tax</th>
-            <th>image</th>
-            <th>Others</th>
-            <th>Show</th>
-            <th>Edit</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @coupons.each do |coupon| %>
-          <tr>
-            <th scope="row"><%= coupon.id %></th>
-            <td><%= coupon.airline %></td>
-            <td><%= coupon.destination %></td>
-            <td><%= coupon.coupon_expiry_date %></td>
-            <td><%= coupon.flight_date_from %></td>
-            <td><%= coupon.flight_date_to %></td>
-            <td><%= coupon.tax %></td>
-            <td><%= coupon.image %></td>
-            <td><%= coupon.others %></td>
-            <td><%= link_to 'Show', admin_coupon_path(coupon) %></td>
-            <td><%= link_to 'Edit', edit_admin_coupon_path(coupon) %></td>
-            <td> <%= link_to 'Delete', admin_coupon_path(coupon), method: :delete, data: {confirm:"Are you sure?"} %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-   </div>
- </div>
-
-<div class="text-center">
-<%= paginate @coupons %>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Coupon ID</th>
+          <th>Airline</th>
+          <th>Destination</th>
+          <th>Coupon expiry date</th>
+          <th>Flight date from</th>
+          <th>Flight date to</th>
+          <th>tax</th>
+          <th>Others</th>
+          <th>Show</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @coupons.each do |coupon| %>
+        <tr>
+          <th scope="row"><%= coupon.id %></th>
+          <td><%= coupon.airline %></td>
+          <td><%= coupon.destination %></td>
+          <td><%= coupon.coupon_expiry_date %></td>
+          <td><%= coupon.flight_date_from %></td>
+          <td><%= coupon.flight_date_to %></td>
+          <td><%= coupon.tax %></td>
+          <td><%= coupon.others %></td>
+          <td><%= link_to 'Show', admin_coupon_path(coupon) %></td>
+          <td><%= link_to 'Edit', edit_admin_coupon_path(coupon) %></td>
+          <td> <%= link_to 'Delete', admin_coupon_path(coupon), method: :delete, data: {confirm:"Are you sure?"} %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @coupons %>
+  </div>
 </div>
+

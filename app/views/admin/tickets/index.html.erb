@@ -1,74 +1,47 @@
+<%= render partial: "shared/admin_nav_bar" %>
 <div class="container">
-    <div class="row">
-    <%= link_to 'Index', tickets_path %>
-       <ul class="nav nav-tabs">
-        <li role="presentation" class="active">
-         <%= link_to 'Ticket', admin_tickets_path %>
-        </li>
-        <li role="presentation">
-         <%= link_to 'Coupon', admin_coupons_path %>
-        </li>
-        <li role="presentation" >
-         <%= link_to 'Board', admin_comboards_path %>
-        </li>
-        <li role="presentation" >
-          <%= link_to 'Train Ticket', admin_railtickets_path %>
-        </li>
-        <li role="presentation" >
-          <%= link_to 'User List', admin_users_path %>
-        </li>
-      </ul>
-    </div>
-  </div>
-
-  <br>
-
-<h1>機票</h1>
-
-<div class="container">
+  <h1>機票清單</h1>
   <div class="row">
-  <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>Flight Ticket ID</th>
-            <th>Airline</th>
-            <th>Flight No.</th>
-            <th>Flight date</th>
-            <th>Flight time</th>
-            <th>Departure</th>
-            <th>Destination</th>
-            <th>User Name</th>
-            <th>Price</th>
-            <th>Others</th>
-            <th>Show</th>
-            <th>Edit</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @tickets.each do |ticket| %>
-          <tr>
-            <th scope="row"><%= ticket.id %></th>
-            <td><%= ticket.airline %></td>
-            <td><%= ticket.flight_no %></td>
-            <td><%= ticket.flight_date %></td>
-            <td><%= ticket.flight_time %></td>
-            <td><%= ticket.departure %></td>
-            <td><%= ticket.destination %></td>
-            <td><%= ticket.name %></td>
-            <td><%= ticket.price %></td>
-            <td><%= ticket.others %></td>
-            <td><%= link_to 'Show', admin_ticket_path(ticket) %></td>
-            <td><%= link_to 'Edit', edit_admin_ticket_path(ticket) %></td>
-            <td> <%= link_to 'Delete', admin_ticket_path(ticket), method: :delete, data: {confirm:"Are you sure?"} %></td>
-
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-   </div>
- </div>
-
-<div class="text-center">
-<%= paginate @tickets %>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Ticket ID</th>
+          <th>Airline</th>
+          <th>Flight No.</th>
+          <th>Flight date</th>
+          <th>Flight time</th>
+          <th>Departure</th>
+          <th>Destination</th>
+          <th>User Name</th>
+          <th>Price</th>
+          <th>Others</th>
+          <th>Show</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+      <% @tickets.each do |ticket| %>
+        <tr>
+          <th scope="row"><%= ticket.id %></th>
+          <td><%= ticket.airline %></td>
+          <td><%= ticket.flight_no %></td>
+          <td><%= ticket.flight_date %></td>
+          <td><%= ticket.flight_time %></td>
+          <td><%= ticket.departure %></td>
+          <td><%= ticket.destination %></td>
+          <td><%= ticket.name %></td>
+          <td><%= ticket.price %></td>
+          <td><%= ticket.others %></td>
+          <td><%= link_to 'Show', admin_ticket_path(ticket) %></td>
+          <td><%= link_to 'Edit', edit_admin_ticket_path(ticket) %></td>
+          <td> <%= link_to 'Delete', admin_ticket_path(ticket), method: :delete, data: {confirm:"Are you sure?"} %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <%= paginate @tickets %>
+  </div>
 </div>
+
+

@@ -1,61 +1,32 @@
-     <div class="container">
-         <div class="row">
-          <%= link_to 'Index', tickets_path %>
-           <ul class="nav nav-tabs">
-            <li role="presentation">
-             <%= link_to 'Ticket', admin_tickets_path %>
-             </li>
-             <li role="presentation">
-              <%= link_to 'Coupon', admin_coupons_path %>
-             </li>
-             <li role="presentation" >
-              <%= link_to 'Board', admin_comboards_path %>
-             </li>
-             <li role="presentation" >
-              <%= link_to 'Train Ticket', admin_railtickets_path %>
-             </li>
-            <li role="presentation" class="active">
-             <%= link_to 'User List', admin_users_path %>
-            </li>
-           </ul>
-         </div>
-       </div>
+<%= render partial: "shared/admin_nav_bar" %>
 
-       <br>
-
-     <h1>使用者</h1>
-
-       <div class="container">
-         <div class="row">
-         <table class="table table-bordered">
-               <thead>
-                 <tr>
-                   <th>ID</th>
-                   <th>User Name</th>
-                   <th>Comments</th>
-                   <th>Delete</th>
-                 </tr>
-               </thead>
-               <tbody>
-                 <% @users.each do |user| %>
-                 <tr>
-                   <th scope="row"><%= user.id %></th>
-                   <td><%= link_to user.name, user_path(user) %></td>
-                   <td>
-                   <% user.comments.each do |comment| %>
-                    <%= comment.content %>
-                    <% end %>
-                  </td>
-                   <td> <%= link_to 'Delete', admin_users_path(user), method: :delete, data: {confirm:"Are you sure?"} %></td>
-
-                 </tr>
-                 <% end %>
-               </tbody>
-             </table>
-
-          </div>
-        </div>
-
-        <div class="text-center">
-        <%= paginate @users %>
-        </div>
+<div class="container">
+  <h1>使用者清單</h1>
+    <div class="row">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>User Name</th>
+            <th>Comments</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @users.each do |user| %>
+        <tr>
+          <th scope="row"><%= user.id %></th>
+          <td><%= link_to user.name, user_path(user) %></td>
+          <td>
+          <% user.comments.each do |comment| %>
+            <%= comment.content %>
+          <% end %>
+          </td>
+          <td> <%= link_to 'Delete', admin_users_path(user), method: :delete, data: {confirm:"Are you sure?"} %></td>
+        </tr>
+       <% end %>
+      </tbody>
+     </table>
+  </div>
+  <%= paginate @users %>
+</div>
