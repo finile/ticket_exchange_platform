@@ -44,11 +44,12 @@
                   <li>Original Discount: <%= @railticket.discount %></li>
                 </ul>
                 <p>Others: <%= @railticket.others %></p>
-                <% if current_user == @railticket.user %>
                   <div class="right_side">
-                    <%= link_to 'Edit', edit_railticket_path(@railticket), class: "btn btn-info" %> | <%= link_to 'Delete', railticket_path(@railticket), method: :delete, class: "btn btn-info", data: {confirm:"Are you sure?"} %>
+                    <%= render partial: "shared/train_favorite", locals: {railticket: @railticket} %> |
+                    <% if current_user == @railticket.user %>
+                      <%= link_to 'Edit', edit_railticket_path(@railticket), class: "btn btn-info" %> | <%= link_to 'Delete', railticket_path(@railticket), method: :delete, class: "btn btn-info", data: {confirm:"Are you sure?"} %>
+                    <% end %>
                   </div>
-                <% end %>
               </div>
             </div>
           </div>

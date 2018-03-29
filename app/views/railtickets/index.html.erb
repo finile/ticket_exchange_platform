@@ -128,10 +128,9 @@
                           <div class="popular ">
                             <div class="popular_inner">
                               <figure>
-                                <!-- <img src="http://placehold.it/370x232" alt="" class="img-responsive"> -->
                                 <img src=<%= railticket.image %> alt="railticket-image" class="img-responsive"/>
                                   <div class="over">
-                                    <div class="v1"><%= railticket.destination %><span>17 Deal Offers</span></div>
+                                    <div class="v1"><%= railticket.destination %><span>被收藏次數: <%= railticket.favorites_count %></span></div>
                                     <div class="v2">Lorem ipsum dolor sit amet,concateus.</div>
                                   </div>
                               </figure>
@@ -143,7 +142,7 @@
                                 <div class="txt2">Departure time: <%= railticket.departure_time %></div>
                                 <div class="txt3 clearfix">
                                   <div class="left_side">
-                                    <div class="nums"> 18 Reviews</div>
+                                    <div class="nums">收藏次數: <%= railticket.favorites_count %></div>
                                   </div>
                                   <div class="right_side">
                                     <%= render partial: "shared/train_favorite", locals: {railticket: railticket} %>

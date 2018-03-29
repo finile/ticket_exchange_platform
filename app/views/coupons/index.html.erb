@@ -1,4 +1,3 @@
-
 <%= render partial: "shared/navbar" %>
 
 <div id="slider_wrapper">
@@ -124,8 +123,7 @@
                             <figure>
                              <img src=<%= coupon.image.url %> alt="coupon-image" class="img-responsive"/> 
                                 <div class="over">
-                                  <div class="v1"><%= coupon.destination %><span>17 Deal Offers</span></div>
-                                  <div class="v2">Lorem ipsum dolor sit amet,concateus.</div>
+                                  <div class="v1"><%= coupon.destination %><span>被收藏次數: <%= coupon.favorites_count %></span></div>
                                 </div>
                             </figure>
                             <div class="caption">
@@ -136,7 +134,7 @@
                               <div class="txt2"> <%= coupon.flight_date_from %> ~ <%= coupon.flight_date_to %></div>
                               <div class="txt3 clearfix">
                                 <div class="left_side">
-                                  <div class="nums"> 18 Reviews</div>
+                                  <div class="nums">收藏次數: <%= coupon.favorites_count %></div>
                                 </div>
                                 <div class="right_side">
                                   <%= render partial: "shared/coupon_favorite", locals: {coupon: coupon} %>
