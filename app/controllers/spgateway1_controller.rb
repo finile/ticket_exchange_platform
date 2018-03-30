@@ -44,7 +44,6 @@ class Spgateway1Controller < ActionController::Base
     else
       flash[:alert] = "Something wrong!!!"
     end
-
     redirect_to rail_orders_path
   end
 
@@ -53,4 +52,5 @@ class Spgateway1Controller < ActionController::Base
   def spagatway_params
     params.slice("Status", "MerchantID", "Version", "TradeInfo", "TradeSha")
   end
+  
 end

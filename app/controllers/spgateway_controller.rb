@@ -45,7 +45,6 @@ class SpgatewayController < ActionController::Base
     else
       flash[:alert] = "Something wrong!!!"
     end
-
     redirect_to orders_path
   end
 

@@ -38,7 +38,7 @@
           <td><%= railticket.others %></td>
           <td><%= link_to 'Show', admin_railticket_path(railticket) %></td>
           <td><%= link_to 'Edit', edit_admin_railticket_path(railticket) %></td>
-          <td><%= link_to 'Delete', admin_railtickets_path(railticket), method: :delete, data: {confirm:"Are you sure?"}%></td>
+          <td><%= link_to 'Delete', admin_railticket_path(railticket), method: :delete, data: {confirm:"Are you sure?"}%></td>
         </tr>
         <% end %>
       </tbody>

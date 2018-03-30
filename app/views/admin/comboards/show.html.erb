@@ -1,39 +1,34 @@
-Flight date from: <%= @board.flight_date_from %><br>
-Flight date to: <%= @board.flight_date_to %><br>
-Departure:<%= @board.departure %><br>
-Destination: <%= @board.destination %><br>
-User Name: <%= @board.name %><br>
-Expecting Price: <%= @board.price %><br>
-Additional Remarkes: <%= @board.content %><br>
-
-<br>
-<div class="container">
-  <div class="row">
-    <% @board.comments.each do |comment| %>
-       <div>
-         <h4><%= comment.user.name %></h4>
-         <p><%= simple_format comment.content %></p>
-         <p class="text-muted">
-           <em><%= time_ago_in_words(comment.created_at) %> ago -</em>
-           <% if current_user.admin? %>
-             <%= link_to "Delete", board_comment_path(@board, comment), method: :delete, data: {confirm:"Are you sure?"} %>
-           <% end %>
-         </p>
-       </div>
-
-       <hr>
-      <% end %>
-
-     <%= form_for [@board, @comment] do |f| %>
-      <div class="form-group">
-        <%= f.text_area :content, placeholder: "留言給徵求者", class: "form-control" %>
+<%= render partial: "shared/admin_nav_bar" %>
+<div id="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="blog_content">
+          <div class="post post-full">
+            <div class="post-story">
+              <h2>Destination: <%= @comboard.destination %></h2>
+              <div class="post-story-info">
+                <div class="date1"><%= @comboard.created_at %></div>
+                <div class="by">Posted by <a><%= @comboard.user.name %></a></div>
+              </div>
+              <div class="post-story-body clearfix">
+                Flight date from: <%= @comboard.flight_date_from %><br>
+                Flight date to: <%= @comboard.flight_date_to %><br>
+                Departure:<%= @comboard.departure %><br>
+                Destination: <%= @comboard.destination %><br>
+                User Name: <%= @comboard.name %><br>
+                Expecting Price: <%= @comboard.price %><br>
+                Additional Remarkes: <%= @comboard.content %><br>
+              </div>
+              <div class="right_side">
+                <%= link_to 'Edit', edit_admin_comboard_path(@comboard), class: "btn btn-info" %>
+                <%= link_to 'Delete', admin_comboard_path(@comboard), method: :delete, data: {confirm:"Are you sure?"}, class: "btn btn-info" %>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <%= f.submit class: "btn btn-primary" %>
-        <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
-      </div>
-    <% end %>
+    </div>
   </div>
 </div>
 
-<%= link_to 'Back to Board index', boards_path %>

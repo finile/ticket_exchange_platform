@@ -1,5 +1,4 @@
 class Admin::RailticketsController < ApplicationController
-
   before_action :set_railticket, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -8,13 +7,12 @@ class Admin::RailticketsController < ApplicationController
 
   def show
     #set_railticket
-    @comment = Comment.new
+    # @comment = Comment.new
   end
 
   def edit
     #set_railticket
   end
-
 
   def update
     if @railticket.update(railticket_params)
@@ -35,13 +33,11 @@ class Admin::RailticketsController < ApplicationController
   private
 
   def set_railticket
-    @railtickets = Railticket.find(params[:id])
+    @railticket = Railticket.find(params[:id])
   end
-
 
   def railticket_params
-    params.require(:railticket).permit(:train_no, :train_date, :departur_time, :arrive_time, :departure, :destination, :name, :price, :discount, :image, :others )
+    params.require(:railticket).permit(:train_no, :train_date, :departure_time, :arrive_time, :departure, :destination, :name, :price, :discount, :image, :others, :quantity)
   end
-
 
 end

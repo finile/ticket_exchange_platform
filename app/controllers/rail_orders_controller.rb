@@ -6,26 +6,28 @@ class RailOrdersController < ApplicationController
   end
 
   def create
-      @rail_order = current_user.rail_orders.new(rail_order_params)
-      @rail_order.sn = Time.now.to_i
-      @rail_order.add_rail_order_items(current_rail_cart)
-      @rail_order.amount = current_rail_cart.subtotal
-      if @rail_order.save
-        current_rail_cart.destroy
-        redirect_to rail_orders_path, notice: "new order created"
-      else
-        @rail_items = current_rail_cart.rail_cart_items
-        render "rail_carts/show"
-      end
+    @rail_order = current_user.rail_orders.new(rail_order_params)
+    @rail_order.sn = Time.now.to_i
+    @rail_order.add_rail_order_items(current_rail_cart)
+    @rail_order.amount = current_rail_cart.subtotal
+    if @rail_order.save
+      current_rail_cart.destroy
+      redirect_to rail_orders_path, notice: "new order created"
+    else
+      @rail_items = current_rail_cart.rail_cart_items
+      render "rail_carts/show"
+    end
+
   end
 
-   def update
+  def update
     @rail_order = current_user.rail_orders.find(params[:id])
     if @rail_order.rail_shipping_status == "not_shipped"
       @rail_order.rail_shipping_status = "cancelled"
       @rail_order.save
       redirect_to rail_orders_path, alert: "order##{@rail_order.sn} cancelled."
     end
+
   end
 
   def checkout_spgateway1
@@ -87,4 +89,5 @@ class RailOrdersController < ApplicationController
   def rail_order_params
     params.require(:rail_order).permit(:name, :phone, :address, :payment_method)
   end
+  
 end

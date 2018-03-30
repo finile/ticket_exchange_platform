@@ -6,20 +6,20 @@ class OrdersController < ApplicationController
   end
 
   def create
-      @order = current_user.orders.new(order_params)
-      @order.sn = Time.now.to_i
-      @order.add_order_items(current_cart)
-      @order.amount = current_cart.subtotal
-      if @order.save
-        current_cart.destroy
-        redirect_to orders_path, notice: "new order created"
-      else
-        @items = current_cart.cart_items
-        render "carts/show"
-      end
+    @order = current_user.orders.new(order_params)
+    @order.sn = Time.now.to_i
+    @order.add_order_items(current_cart)
+    @order.amount = current_cart.subtotal
+    if @order.save
+      current_cart.destroy
+      redirect_to orders_path, notice: "new order created"
+    else
+      @items = current_cart.cart_items
+      render "carts/show"
+    end
   end
 
-   def update
+  def update
     @order = current_user.orders.find(params[:id])
     if @order.shipping_status == "not_shipped"
       @order.shipping_status = "cancelled"
@@ -27,7 +27,6 @@ class OrdersController < ApplicationController
       redirect_to orders_path, alert: "order##{@order.sn} cancelled."
     end
   end
-
 
   def checkout_spgateway
     @order = current_user.orders.find(params[:id])
@@ -38,8 +37,7 @@ class OrdersController < ApplicationController
       @payment = Payment.create!(
         sn: Time.now.to_i,
         order_id: @order.id,
-        amount: @order.amount
-      )
+        amount: @order.amount )
 
       #  spgateway_data = {
       #   MerchantID: "MS33487888",
@@ -89,4 +87,5 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:name, :phone, :address, :payment_method)
   end
+  
 end

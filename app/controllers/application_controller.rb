@@ -19,7 +19,6 @@ class ApplicationController < ActionController::Base
   end
 
   def set_cart
-
     if session[:cart_id]
       @cart = Cart.find_by(id: session[:cart_id])
     end
@@ -35,7 +34,6 @@ class ApplicationController < ActionController::Base
   end
 
   def set_rail_cart
-
     if session[:rail_cart_id]
       @rail_cart = RailCart.find_by(id: session[:rail_cart_id])
     end

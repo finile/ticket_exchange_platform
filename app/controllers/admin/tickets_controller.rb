@@ -1,5 +1,4 @@
-class Admin::TicketsController < Admin::BaseController
-  
+class Admin::TicketsController < Admin::BaseController  
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -8,13 +7,12 @@ class Admin::TicketsController < Admin::BaseController
 
   def show
     #set_ticket
-    @comment = Comment.new
+    # @comment = Comment.new
   end
 
   def edit
     #set_ticket
   end
-
 
   def update
     if @ticket.update(ticket_params)
@@ -38,8 +36,8 @@ class Admin::TicketsController < Admin::BaseController
     @ticket = Ticket.find(params[:id])
   end
 
-
   def ticket_params
-    params.require(:ticket).permit(:airline, :flight_no, :flight_date, :flight_time, :departure, :destination, :name, :price, :image, :others )
+    params.require(:ticket).permit(:airline, :flight_no, :flight_date, :flight_time, :departure, :destination, :name, :price, :image, :others, :quantity )
   end
+  
 end

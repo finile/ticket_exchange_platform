@@ -3,10 +3,7 @@ class Admin::CouponsController < ApplicationController
 
   def index
     @coupons = Coupon.all.order(created_at: :desc).page(params[:page]).per(10)
-
   end
-
-
 
   def show
     #set_coupon
@@ -19,7 +16,7 @@ class Admin::CouponsController < ApplicationController
   def update
     if @coupon.update(coupon_params)
       flash[:notice] = "Coupon was successfully updated"
-      redirect_to coupon_path(@coupon)
+      redirect_to admin_coupon_path(@coupon)
     else
       flash.now[:alert] = "Coupon was failed to update"
       render :edit
@@ -28,7 +25,7 @@ class Admin::CouponsController < ApplicationController
 
   def destroy
     @coupon.destroy
-    redirect_to tickets_path
+    redirect_to admin_coupons_path
     flash[:alert] = "Coupon was deleted"
   end
 
@@ -38,9 +35,8 @@ class Admin::CouponsController < ApplicationController
     @coupon = Coupon.find(params[:id])
   end
 
-
   def coupon_params
-    params.require(:coupon).permit(:airline, :destination, :coupon_expiry_date, :flight_date_from, :flight_date_to, :tax, :image, :others)
+    params.require(:coupon).permit(:airline, :destination, :coupon_expiry_date, :flight_date_from, :flight_date_to, :tax, :image, :others, :quantity )
   end
 
 end
