@@ -4,43 +4,48 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
+      <h1>高鐵票訂單</h1>
       <% @rail_orders.each do |rail_order| %>
         <div class="panel panel-order">
           <h2>高鐵票訂單 # <%= rail_order.sn %></h2>
           <div class="order-content">
-            <div class="right-border">
-              <div class="order-data">
-                <ul class="order-list">
-                  <% rail_order.rail_order_items.each do |rail_item| %>
-                  <li>
-                    高鐵票ID: <%= rail_item.railticket.id %><br>
-                    商品數量: <%= rail_item.quantity %><br>
-                    商品單價: <%= rail_item.price %><br>
-                  </li>
-                  <% end %>
-                  <hr>
-                  訂單總價 <%= rail_order.subtotal %>
-                </ul>
-              </div>
-              <div>
-                <h2>寄送＆聯絡資訊</h2>
+            <div class="col-sm-9">
+              <div class="right-border">
                 <div class="order-data">
-                  姓名: <%= rail_order.name %><br>
-                  Email: <%= rail_order.user.email %><br>
-                  電話: <%= rail_order.phone %><br>
-                  地址: <%= rail_order.address %><br>
+                  <ul class="order-list">
+                    <% rail_order.rail_order_items.each do |rail_item| %>
+                    <li>
+                      高鐵票ID: <%= rail_item.railticket.id %><br>
+                      商品數量: <%= rail_item.quantity %><br>
+                      商品單價: <%= rail_item.price %><br>
+                    </li>
+                    <% end %>
+                    <hr>
+                    訂單總價 <%= rail_order.subtotal %>
+                  </ul>
+                </div>
+                <div>
+                  <h2>寄送＆聯絡資訊</h2>
+                  <div class="order-data">
+                    姓名: <%= rail_order.name %><br>
+                    Email: <%= rail_order.user.email %><br>
+                    電話: <%= rail_order.phone %><br>
+                    地址: <%= rail_order.address %><br>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="order-data">
-              <p>Payment Status: <%= rail_order.rail_payment_status %></p>
-              <p>Shipping Status: <%= rail_order.rail_shipping_status %></p>
-              <% if rail_order.rail_payment_status == "not_paid" && rail_order.rail_shipping_status != "cancelled" %>
-                <%= link_to "Pay Now", checkout_spgateway1_rail_order_path(rail_order), method: :post, class: "btn btn-info btn-form1-submit" %>
-              <% end %>
-              <% if rail_order.rail_shipping_status == "not_shipped" %>
-                <%= link_to "Cancel Order", rail_order_path(rail_order), method: :patch, class: "btn btn-info btn-form1-submit"  %>
-              <% end %>
+            <div class="col-sm-3">
+              <div class="order-data">
+                <p>Payment Status: <%= rail_order.rail_payment_status %></p>
+                <p>Shipping Status: <%= rail_order.rail_shipping_status %></p>
+                <% if rail_order.rail_payment_status == "not_paid" && rail_order.rail_shipping_status != "cancelled" %>
+                  <%= link_to "Pay Now", checkout_spgateway1_rail_order_path(rail_order), method: :post, class: "btn btn-info btn-form1-submit" %>
+                <% end %>
+                <% if rail_order.rail_shipping_status == "not_shipped" %>
+                  <%= link_to "Cancel Order", rail_order_path(rail_order), method: :patch, class: "btn btn-info btn-form1-submit"  %>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>

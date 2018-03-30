@@ -27,7 +27,6 @@ class TicketsController < ApplicationController
 
   def show
     #set_ticket
-    
     @comment = Comment.new
   end
 
@@ -38,7 +37,7 @@ class TicketsController < ApplicationController
   def update
     if @ticket.update(ticket_params)
       flash[:notice] = "Ticket was successfully updated"
-      redirect_to ticket_path(@ticket)
+      redirect_to 
     else
       flash.now[:alert] = "Ticket was failed to update"
       render :edit
@@ -47,7 +46,7 @@ class TicketsController < ApplicationController
 
   def destroy
     @ticket.destroy
-    redirect_back(fallback_location: root_path)
+    redirect_to user_path(current_user)
     flash[:alert] = "Ticket was deleted"
   end
 

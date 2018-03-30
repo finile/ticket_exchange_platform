@@ -36,7 +36,7 @@ class Admin::CouponsController < ApplicationController
   end
 
   def coupon_params
-    params.require(:coupon).permit(:airline, :destination, :coupon_expiry_date, :flight_date_from, :flight_date_to, :tax, :image, :others, :quantity )
+    params.require(:coupon).permit(:airline, :destination, :coupon_expiry_date, :flight_date_from, :flight_date_to, :tax, :image, :others, :quantity, :departure)
   end
 
 end

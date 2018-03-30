@@ -43,7 +43,7 @@ class CouponsController < ApplicationController
 
   def destroy
     @coupon.destroy
-    redirect_back(fallback_location: root_path)
+    redirect_to user_path(current_user)
     flash[:alert] = "Coupon was deleted"
   end
 
@@ -82,7 +82,7 @@ class CouponsController < ApplicationController
 
 
   def coupon_params
-    params.require(:coupon).permit(:airline, :destination, :coupon_expiry_date, :flight_date_from, :flight_date_to, :tax, :image, :others, :price, :quantity)
+    params.require(:coupon).permit(:airline, :destination, :coupon_expiry_date, :flight_date_from, :flight_date_to, :tax, :image, :others, :price, :quantity, :departure)
   end
 
 end

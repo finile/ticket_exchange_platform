@@ -20,6 +20,7 @@ namespace :dev do
       name: "Admin",
       role: "admin"
       )
+    
     puts "admin has been created"
   end
 
@@ -94,6 +95,7 @@ namespace :dev do
         user.coupons.create(
           airline: FFaker::Airline.name,
           destination: FFaker::Address.city,
+          departure: FFaker::Address.city, 
           coupon_expiry_date: FFaker::Time.date,
           flight_date_from: FFaker::Time.date,
           flight_date_to: FFaker::Time.date,

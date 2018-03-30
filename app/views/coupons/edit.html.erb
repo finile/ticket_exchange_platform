@@ -20,6 +20,15 @@
             <div class="clearfix"></div>
             <div class="col-sm-12 no-padding margin-top">
               <div class="input1_wrapper">
+                <label><%= f.label :departure, "出發地:" %></label>
+                <div class="input2_inner">
+                  <%= f.text_field :departure, class: "input" %>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-sm-12 no-padding margin-top">
+              <div class="input1_wrapper">
                 <label><%= f.label :destination, "目的地:" %></label>
                 <div class="input2_inner">
                   <%= f.text_field :destination, class: "input" %>

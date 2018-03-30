@@ -43,7 +43,7 @@ class RailticketsController < ApplicationController
 
   def destroy
     @railticket.destroy
-    redirect_back(fallback_location: root_path)
+    redirect_to user_path(current_user)
     flash[:alert] = "Ticket was deleted"
   end
 

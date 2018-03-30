@@ -38,6 +38,7 @@
                 <hr>
                 <h4>Details:</h4>
                 <ul>
+                  <li>Departure: <%= @coupon.departure %></li>
                   <li>Destination: <%= @coupon.destination %></li>
                   <li>Airline: <%= @coupon.airline %></li>
                   <li>Tax: <%= @coupon.tax %></li>
@@ -58,34 +59,33 @@
     <div class="col-sm-3">
       <div class="sidebar-block">
           <form action="javascript:void(0);">
-             <div class="col-sm-12 no-padding margin-top">
-                <div class="input1_wrapper">
-                  <label class="col-md-6" style="padding-left:0;padding-top:12px;font-weight:500;color:#464646;font-size:13px;"> 
-                    建議售價: 
-                  </label>
-                  <div class="col-md-6 price-total-left" style="padding-right:0;padding-left:0;">
-                      <span class="red">NTD$ <%= @coupon.price %></span>
-                  </div>
-                  <label class="col-md-6" style="padding-left:0;padding-top:12px;font-weight:500;color:#464646;font-size:13px;"> 
-                    數量: 
-                  </label>
-                  <div class="col-md-6 price-total-left" style="padding-right:0;padding-left:0;margin-top: 12px;">
-                      <h3><%= @coupon.quantity %></h3> 
-                  </div>
+            <div class="col-sm-12 no-padding margin-top">
+              <div class="input1_wrapper">
+                <label class="col-md-6" style="padding-left:0;padding-top:12px;font-weight:500;color:#464646;font-size:13px;"> 
+                  建議售價: 
+                </label>
+                <div class="col-md-6 price-total-left" style="padding-right:0;padding-left:0;">
+                    <span class="red">NTD$ <%= @coupon.price %></span>
+                </div>
+                <label class="col-md-6" style="padding-left:0;padding-top:12px;font-weight:500;color:#464646;font-size:13px;"> 
+                  數量: 
+                </label>
+                <div class="col-md-6 price-total-left" style="padding-right:0;padding-left:0;margin-top: 12px;">
+                    <h3><%= @coupon.quantity %></h3> 
                 </div>
               </div>
-              <div class="clearfix"></div>
-              <div class="no-padding margin-top text-center" style="margin-top:30px;">
-                <% if @coupon.quantity == 0 %>
-                  <a class="btn btn-default btn-cf-submit3"style="width:100%;">已售出</a> <br>
-                <% else %>
-                  <%= link_to '立即購買', add_to_cart_coupon_path(@coupon), class: "btn btn-default btn-cf-submit3" ,method: :post %> <br> 
-                <% end %>
-              </div>
-              <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+            <% if @coupon.quantity == 0 %>
+            <div class="no-padding margin-top text-center" style="margin-top:30px;">
+                <a class="btn btn-default btn-cf-submit3"style="width:100%;">已售出</a> <br>
+              <% else %>
+                <%= link_to '立即購買', add_to_cart_coupon_path(@coupon), class: "btn btn-default btn-cf-submit3" ,method: :post %> <br> 
               <div class="select1_wrapper">
-                <label><%= link_to "瀏覽購物車", cart_path, class: "btn btn-default btn-cf-submit3" %>  </label>
+                <label><%= link_to "瀏覽購物車", cart_path, class: "btn btn-default btn-cf-submit3" %></label>
               </div>
+            </div>
+            <% end %>
           </form>
         </div>
         <div class="clearfix"></div>

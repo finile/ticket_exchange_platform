@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180327083707) do
+ActiveRecord::Schema.define(version: 20180330151814) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 20180327083707) do
     t.integer "favorites_count", default: 0
     t.integer "quantity"
     t.integer "price"
+    t.string "departure"
   end
 
   create_table "favorites", force: :cascade do |t|
