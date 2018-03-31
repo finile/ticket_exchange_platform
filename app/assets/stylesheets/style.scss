@@ -34,7 +34,7 @@ visibility: visible;
 
 /* ============================= header ====================== */
 .top1_wrapper{background: #fafafa; border-top: 3px solid #1cbbb4; padding-top: 13px; padding-bottom: 13px;}
-.email1{float: left; padding-left: 25px; background: url(/public/images/email1.png) left center no-repeat; border-right: 1px solid #ebebeb; margin-right: 20px; padding-right: 20px; padding-bottom: 10px; padding-top: 5px;}
+.email1{float: left; padding-left: 25px; /*background: url(/public/images/email1.png) left center no-repeat;*/ border-right: 1px solid #ebebeb; margin-right: 20px; padding-right: 20px; padding-bottom: 10px; padding-top: 5px;}
 .email1 a{display: block; font-size: 13px; color: #acacac; text-decoration: none; line-height: 20px;}
 
 .phone1{float: left; background: none left center no-repeat; padding-bottom: 10px; padding-top: 5px;}
@@ -262,7 +262,7 @@ transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; -webkit-trans
 
 
 .input1_inner{position: relative; background: none; height: 42px; position: relative;}
-.input1_inner:after{content: ''; display: block; width: 16px; height: 17px; background: url(../images/m2.png) 0 0 no-repeat; position: absolute; right: 10px; top: 11px;}
+.input1_inner:after{content: ''; display: block; width: 16px; height: 17px; /*background: url(../images/m2.png) 0 0 no-repeat;*/ position: absolute; right: 10px; top: 11px;}
 .input1_inner input{padding: 5px 5px 5px 5px; height: 40px; border: none; background: #fff; color: #c2c2c2; font-size: 13px; line-height: 20px; font-family: inherit; display: block; width: 100%;}
 .input1_inner input:focus{outline: none;}
 

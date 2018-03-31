@@ -5,8 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
   # after_create :subscribe_job
-  # validates_presence_of :name
-
+ 
+  validates_presence_of :name
+  
   has_many :tickets, dependent: :destroy
   has_many :coupons, dependent: :destroy
   has_many :railtickets, dependent: :destroy

@@ -63,7 +63,8 @@ class CouponsController < ApplicationController
       @coupon.quantity = 0
       @coupon.save
     end
-    redirect_back(fallback_location: root_path)
+    flash[:notice] = "兌換卷已加入購物車"
+    redirect_to cart_path
   end
 
   def remove_from_cart
