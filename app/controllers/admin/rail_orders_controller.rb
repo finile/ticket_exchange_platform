@@ -26,6 +26,6 @@ class Admin::RailOrdersController < Admin::BaseController
   private
 
   def rail_order_params
-    params.require(:rail_order).permit(:payment_status, :shipping_status)
+    params.require(:rail_order).permit(:rail_payment_status, :rail_shipping_status)
   end
 end
