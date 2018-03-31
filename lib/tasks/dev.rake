@@ -1,4 +1,5 @@
 namespace :dev do
+  task fake: [:fake_user, :fake_ticket, :fake_railticket, :fake_coupon, :fake_comboard, :fake_comment, :fake_favorite]
 
   task fake_user: :environment do
     User.destroy_all
@@ -111,6 +112,38 @@ namespace :dev do
     puts "now you have #{Coupon.count} coupons data"
   end
 
+  task fake_comboard: :environment do
+    Comboard.destroy_all
+    #create 25 fake comboards information
+    User.all.each do |user|
+      rand(5).times do
+        user.comboards.create(
+          departure: FFaker::Address.city,
+          destination: FFaker::Address.city,
+          flight_date_from: FFaker::Time.date,
+          flight_date_to: FFaker::Time.date,
+          price: rand(1000..10000),
+          content:FFaker::Lorem::sentence(15)
+        )
+      end
+    end
+    puts "have created fake comboards by users"
+    puts "now you have #{Comboard.count} comboards data"
+  end
+
+  task fake_favorite: :environment do
+   Favorite.destroy_all
+   50.times do |i|
+     Favorite.create!(
+       user_id: User.all.sample.id,
+       ticket_id: Ticket.all.sample.id,
+       railticket_id: Railticket.all.sample.id,
+     )
+    end
+    puts "have created fake favorite"
+    puts "now you have 50 favorite data"
+  end
+
   task fake_comment: :environment do
     Comment.destroy_all
 
@@ -158,38 +191,6 @@ namespace :dev do
     end
     puts "have created fake comboard comments"
     puts "now you have #{Comment.count} comboard comment data"
-  end
-
-  task fake_comboard: :environment do
-      Comboard.destroy_all
-      #create 25 fake comboards information
-      User.all.each do |user|
-        rand(5).times do
-          user.comboards.create(
-            departure: FFaker::Address.city,
-            destination: FFaker::Address.city,
-            flight_date_from: FFaker::Time.date,
-            flight_date_to: FFaker::Time.date,
-            price: rand(1000..10000),
-            content:FFaker::Lorem::sentence(15)
-          )
-        end
-      end
-      puts "have created fake comboards by users"
-      puts "now you have #{Comboard.count} comboards data"
-    end
-
-  task fake_favorite: :environment do
-   Favorite.destroy_all
-   50.times do |i|
-     Favorite.create!(
-       user_id: User.all.sample.id,
-       ticket_id: Ticket.all.sample.id,
-       railticket_id: Railticket.all.sample.id,
-     )
-    end
-    puts "have created fake favorite"
-    puts "now you have 50 favorite data"
   end
 
 end

@@ -1,0 +1,52 @@
+<%= render partial: "shared/navbar" %>
+
+<div id="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="sidebar-block">
+          <%= form_for @user do |f| %>
+          <form action="javascript:void(0);">
+            <h3>修改您的資訊</h3>
+
+            <div class="col-sm-12 no-padding margin-top">
+              <div class="input1_wrapper">
+                <label><%= f.label :name, "姓名:" %></label>
+                <div class="input2_inner">
+                  <%= f.text_field :name %>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-sm-12 no-padding margin-top">
+              <div class="input1_wrapper">
+                <label><%= f.label :phone, "電話:" %></label>
+                <div class="input2_inner">
+                  <%= f.text_field :phone, class: "input" %>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-sm-12 no-padding margin-top">
+              <div class="input1_wrapper">
+                <label><%= f.label :address, "地址" %></label>
+                <div class="input1_inner">
+                  <%= f.text_field :address, class: "input"  %>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="no-padding margin-top text-center" style="margin-top:30px;">
+              <%= f.submit '資訊輸入', class: 'btn btn-default btn-cf-submit3', style: 'width:100%;' %>
+            </div>
+            <div class="clearfix"></div>
+          </form>
+        <% end %>
+        </div>
+        <div class="clearfix"></div>
+        <div class="margin-top"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render partial: "shared/footer"%>

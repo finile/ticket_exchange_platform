@@ -37,7 +37,7 @@ class TicketsController < ApplicationController
   def update
     if @ticket.update(ticket_params)
       flash[:notice] = "Ticket was successfully updated"
-      redirect_to 
+      redirect_to root_path
     else
       flash.now[:alert] = "Ticket was failed to update"
       render :edit

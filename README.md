@@ -3,9 +3,9 @@
 git clone https://github.com/finile/ticket_exchange_platform.git
 cd ticket_exchange_platform
 bundle install
-rails db:migrate
-rails dev:fake_ticket
-rails dev:fake_user
+
+Fake Data:
+Please run 'rails dev:fake' to create all fake data, including user, ticket, coupon, railticket, comborad, comment and favorite.
 
 admin:
 account: root@example.com

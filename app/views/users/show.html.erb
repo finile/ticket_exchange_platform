@@ -162,7 +162,9 @@
       <div class="col-sm-3">
         <div class="blog_sidebar">
           <h3><%= current_user.name%></h3>
+          <%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-info"%> 
           <ul class="ul4">
+            <br>
             <li><a>Posted Flight Ticket<span><%= @user.tickets.count %></span></a></li>
             <li><a href="#posted_coupon">Posted Coupon<span><%= @user.coupons.count %></span></a></li>
             <li><a href="#posted_rail_ticket">Posted Rail Ticket<span><%= @user.railtickets.count %></span></a></li>

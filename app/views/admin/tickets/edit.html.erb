@@ -1,4 +1,4 @@
-
+<%= render partial: "shared/admin_nav_bar" %>
 <div id="content">
   <div class="container">
     <div class="row">
@@ -39,7 +39,7 @@
               <div class="input1_wrapper">
                 <label><%= f.label :flight_time, "起飛時間:" %></label>
                 <div class="input1_inner">
-                  <%= f.time_field :flight_time, class: "input datepicker" %>
+                  <%= f.time_field :flight_time, class: "input timepicker" %>
                 </div>
               </div>
             </div>
@@ -118,3 +118,4 @@
     </div>
   </div>
 </div>
+<%= render partial: "shared/footer"%>
