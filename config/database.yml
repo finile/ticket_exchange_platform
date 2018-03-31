@@ -26,4 +26,4 @@ production:
 
 production:
   adapter: postgresql
-  encoding: utf8
+  encoding: Unicode
