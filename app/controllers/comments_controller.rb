@@ -13,9 +13,10 @@ class CommentsController < ApplicationController
     
     @comment = @commentable.comments.build(comment_params)
     @comment.user = current_user
-    if @comment.save
-      UserMailer.notify_buyer(@comment).deliver_now!
-    end
+    @comment.save
+    # if @comment.save
+    #   UserMailer.notify_buyer(@comment).deliver_now!
+    # end
     redirect_to @commentable, notice: "your comment was sucessfully posted and notice has been sent"
     
   end
