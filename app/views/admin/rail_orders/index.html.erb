@@ -1,0 +1,34 @@
+<%= render partial: "shared/admin_nav_bar" %>
+<div class="container">
+  <h1>高鐵票訂單清單</h1>
+  <div class="row">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>訂單ID</th>
+          <th>訂單號碼</th>
+          <th>客戶Email</th>
+          <th>總金額 NTD$</th>
+          <th>付款狀態</th>
+          <th>寄送狀態</th>
+          <th>訂單細節</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @rail_orders.each do |rail_order| %>
+        <tr>
+          <td><%= rail_order.id %></td>
+          <td><%= rail_order.sn %></td>
+          <td><%= rail_order.user.email %></td>
+          <td><%= rail_order.amount %></td>
+          <td><%= rail_order.rail_payment_status %></td>
+          <td><%= rail_order.rail_shipping_status %></td>
+          <td><%= link_to "Edit Detail", edit_admin_rail_order_path(rail_order) %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <%= paginate @rail_orders %>
+  </div>
+</div>
+<%= render partial: "shared/footer"%>

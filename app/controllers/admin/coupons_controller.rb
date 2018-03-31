@@ -1,4 +1,4 @@
-class Admin::CouponsController < ApplicationController
+class Admin::CouponsController < Admin::BaseController  
   before_action :set_coupon, only: [:show, :edit, :update, :destroy]
 
   def index

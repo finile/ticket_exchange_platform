@@ -6,6 +6,16 @@ class RailOrder < ApplicationRecord
   has_many :railtickets, through: :rail_order_items
   has_many :payments
 
+  PAYMENT_STATUS = [
+    ["Not Paid", :not_paid],
+    ["Paid", :paid]
+  ]
+
+  SHIPPING_STATUS = [
+    ["Not Shipped", :not_shipped],
+    ["Shipped",:shipped]
+  ]
+
   def add_rail_order_items(rail_cart)
     rail_cart.rail_cart_items.each do |rail_item|
       self.rail_order_items.build(

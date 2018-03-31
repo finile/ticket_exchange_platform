@@ -60,6 +60,8 @@ Rails.application.routes.draw do
     resources :railtickets
     resources :coupons
     resources :comboards
+    resources :orders
+    resources :rail_orders
     root "tickets#index"
   end
 

@@ -1,4 +1,4 @@
-class Admin::RailticketsController < ApplicationController
+class Admin::RailticketsController < Admin::BaseController  
   before_action :set_railticket, only: [:show, :edit, :update, :destroy]
 
   def index

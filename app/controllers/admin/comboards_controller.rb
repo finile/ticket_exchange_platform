@@ -1,4 +1,4 @@
-class Admin::ComboardsController < ApplicationController
+class Admin::ComboardsController < Admin::BaseController  
   before_action :set_comboard, only: [:show, :edit, :update, :destroy]
 
   def index
