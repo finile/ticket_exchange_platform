@@ -22,5 +22,4 @@
 
 .byebug_history
 node_modules/
-config/email.yml
 config/secrets.yml
