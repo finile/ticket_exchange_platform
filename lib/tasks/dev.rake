@@ -4,7 +4,7 @@ namespace :dev do
   task fake_user: :environment do
     User.destroy_all
 
-    10.times do |i|
+    5.times do |i|
       name = FFaker::Name::first_name
       user = User.new(
         name: name,
@@ -34,7 +34,7 @@ namespace :dev do
     a_day_ago = now - 60*60*24
     #create 25 fack tickets information
     User.all.each do |user|
-      rand(5).times do
+      rand(2).times do
         user.tickets.create(
           airline: FFaker::Airline.name,
           flight_no: FFaker::Airline.flight_number,
@@ -64,7 +64,7 @@ namespace :dev do
 
     #create 25 fake tickets information
     User.all.each do |user|
-      rand(5).times do
+      rand(2).times do
         user.railtickets.create(
         train_no: rand(100..1500),
         train_date: FFaker::Time.date,
@@ -92,7 +92,7 @@ namespace :dev do
     #create 25 fake coupons information
     file = File.open("#{Rails.root}/public/images/370x232.png")
     User.all.each do |user|
-      rand(5).times do
+      rand(2).times do
         user.coupons.create(
           airline: FFaker::Airline.name,
           destination: FFaker::Address.city,
@@ -116,7 +116,7 @@ namespace :dev do
     Comboard.destroy_all
     #create 25 fake comboards information
     User.all.each do |user|
-      rand(5).times do
+      rand(2).times do
         user.comboards.create(
           departure: FFaker::Address.city,
           destination: FFaker::Address.city,
@@ -133,7 +133,7 @@ namespace :dev do
 
   task fake_favorite: :environment do
    Favorite.destroy_all
-   50.times do |i|
+   3.times do |i|
      Favorite.create!(
        user_id: User.all.sample.id,
        ticket_id: Ticket.all.sample.id,
@@ -148,7 +148,7 @@ namespace :dev do
     Comment.destroy_all
 
     Ticket.all.each do |ticket|
-      3.times do |i|
+      2.times do |i|
         ticket.comments.create!(
           content: FFaker::Lorem.sentence,
           user: User.all.sample
@@ -160,7 +160,7 @@ namespace :dev do
 
 
     Railticket.all.each do |railticket|
-      3.times do |i|
+      2.times do |i|
         railticket.comments.create!(
           content: FFaker::Lorem.sentence,
           user: User.all.sample
@@ -171,7 +171,7 @@ namespace :dev do
     puts "now you have #{Comment.count} railticket comment data"
 
     Coupon.all.each do |coupon|
-      3.times do |i|
+      2.times do |i|
         coupon.comments.create!(
           content: FFaker::Lorem.sentence,
           user: User.all.sample
@@ -182,7 +182,7 @@ namespace :dev do
     puts "now you have #{Comment.count} coupon comment data"
 
     Comboard.all.each do |comboard|
-      3.times do |i|
+      2.times do |i|
         comboard.comments.create!(
           content: FFaker::Lorem.sentence,
           user: User.all.sample
