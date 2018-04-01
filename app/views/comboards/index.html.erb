@@ -35,6 +35,7 @@
             </div>
           </div>
           <% end %>
+          <div class="text-center"><%= paginate @comboards %></div>
           <div class="live-comment">
             <div class="num-comments">留下您的需求</div>
             <div class="live-comment-title"></div>
@@ -92,8 +93,6 @@
     </div>
   </div>
 </div>
-<div class="text-center">
-  <%= paginate @comboards %>
-</div>
+
 
 <%= render partial: "shared/footer"%>

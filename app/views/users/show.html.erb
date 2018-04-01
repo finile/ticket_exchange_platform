@@ -4,173 +4,183 @@
     <div class="row">     
       <div class="col-sm-9">
         <div class="blog_content">
-          <div class="num-comments">Posted Flight Tickets</div>
-          <% @posted_tickets.each do |ticket| %>
-            <div class="comment-block clearfix">
-                <figure>
-                    <img src="http://placehold.it/70x70" alt="" class="img-responsive">
-                </figure>
-                <div class="caption">
+          <% if @user.tickets.count != 0 %>
+            <div class="num-comments">已張貼的機票</div>
+            <% @posted_tickets.each do |ticket| %>
+              <div class="comment-block clearfix">
+                  <figure>
+                      <img src="http://placehold.it/70x70" alt="" class="img-responsive">
+                  </figure>
+                  <div class="caption">
+                      <div class="top clearfix">
+                        <div class="txt1">目的地:<a href="#"> <%= ticket.destination %></a></div>
+                        <span>|</span>
+                        <div class="txt2">出發日期: <%= ticket.flight_date %></div>
+                        <span>|</span>
+                        <div class="txt3"><%= link_to '詳情', ticket_path(ticket) %></div>
+                      </div>
+                      <div class="txt">
+                        <%= ticket.airline %> <br>
+                        航班號碼: <%= ticket.flight_no %> 
+                      </div>
+                      <div class="txt">
+                        <a href="#"><%= link_to '刪除', ticket_path(ticket), method: :delete, class: "btn btn-info", data: {confirm:"Are you sure?"} %></a>
+                      </div>
+                  </div>
+              </div>
+            <% end %>
+          <% end %>
+          <% if @user.coupons.count != 0 %>
+            <a name="posted_coupon"></a>
+            <div class="num-comments">已張貼的優惠卷</div>
+            <% @posted_coupons.each do |coupon| %>
+              <div class="comment-block clearfix">
+                  <figure>
+                      <img src="http://placehold.it/70x70" alt="" class="img-responsive">
+                  </figure>
+                  <div class="caption">
+                      <div class="top clearfix">
+                        <div class="txt1">目的地:<a href="#"> <%= coupon.destination %></a></div>
+                        <span>|</span>
+                        <div class="txt2">優惠眷到期日: <%= coupon.coupon_expiry_date %></div>
+                        <span>|</span>
+                        <div class="txt3"><%= link_to '詳情', coupon_path(coupon) %></div>
+                      </div>
+                      <div class="txt">
+                        使用期間: <br>
+                        <%= coupon.flight_date_from %> ~ <%= coupon.flight_date_to %> 
+                      </div>
+                       <div class="txt">
+                        <%= link_to '刪除', coupon_path(coupon), method: :delete, class: "btn btn-info", data: {confirm:"Are you sure?"} %>
+                      </div>
+                  </div>
+              </div>
+            <% end %>
+          <% end %>
+          <% if @user.railtickets.count != 0 %>
+            <a name="posted_rail_ticket"></a>
+            <div class="num-comments">已張貼的高鐵票</div>
+            <% @posted_railtickets.each do |railticket| %>
+              <div class="comment-block clearfix">
+                  <figure>
+                      <img src="http://placehold.it/70x70" alt="" class="img-responsive">
+                  </figure>
+                  <div class="caption">
                     <div class="top clearfix">
-                      <div class="txt1">Destination to<a href="#"> <%= ticket.destination %></a></div>
+                      <div class="txt1">目的地:<a href="#"> <%= railticket.destination %></a></div>
                       <span>|</span>
-                      <div class="txt2">Flight Date: <%= ticket.flight_date %></div>
+                      <div class="txt2">出發日期: <%= railticket.train_date %></div>
                       <span>|</span>
-                      <div class="txt3"><%= link_to 'Show', ticket_path(ticket) %></div>
+                      <div class="txt3"><%= link_to '詳情', railticket_path(railticket) %></div>
+                    </div>
+                    <div class="txt">
+                      Train no: <%= railticket.train_no %> <br>
+                      Train date: <%= railticket.train_date %> <br>
+                      Departure time: <%= railticket.departure_time %>
+                    </div>
+                    <div class="txt">
+                        <%= link_to '刪除', railticket_path(railticket), method: :delete, class: "btn btn-info", data: {confirm:"Are you sure?"} %>
+                      </div>
+                  </div>
+              </div>
+           <% end %>
+          <% end %>
+          <% if @favorited_tickets.count != 0 %>
+            <a name="favorited_ticket"></a>
+            <div class="num-comments">收藏的機票</div>
+            <% @favorited_tickets.each do |ticket| %>
+              <div class="comment-block clearfix">
+                  <figure>
+                      <img src="http://placehold.it/70x70" alt="" class="img-responsive">
+                  </figure>
+                  <div class="caption">
+                    <div class="top clearfix">
+                      <div class="txt1">目的地: <a href="#"> <%= ticket.destination %></a></div>
+                      <span>|</span>
+                      <div class="txt2">出發日期: <%= ticket.flight_date %></div>
+                      <span>|</span>
+                      <div class="txt3"><%= link_to '詳情', ticket_path(ticket) %></div>
                     </div>
                     <div class="txt">
                       <%= ticket.airline %> <br>
-                      Flight No: <%= ticket.flight_no %> 
+                      航班號碼: <%= ticket.flight_no %> 
                     </div>
                     <div class="txt">
-                      <a href="#"><%= link_to 'Delete', ticket_path(ticket), method: :delete, class: "btn btn-info", data: {confirm:"Are you sure?"} %></a>
+                      <%= render partial: "shared/ticket_favorite", locals: {ticket: ticket} %>
                     </div>
-                </div>
-            </div>
+                  </div>
+              </div>
+            <% end %>
           <% end %>
-          <a name="posted_coupon"></a>
-          <div class="num-comments">Posted Coupon</div>
-          <% @posted_coupons.each do |coupon| %>
-            <div class="comment-block clearfix">
-                <figure>
-                    <img src="http://placehold.it/70x70" alt="" class="img-responsive">
-                </figure>
-                <div class="caption">
-                    <div class="top clearfix">
-                      <div class="txt1">Destination to<a href="#"> <%= coupon.destination %></a></div>
-                      <span>|</span>
-                      <div class="txt2">Expiry Date: <%= coupon.coupon_expiry_date %></div>
-                      <span>|</span>
-                      <div class="txt3"><%= link_to 'Show', coupon_path(coupon) %></div>
-                    </div>
-                    <div class="txt">
-                      使用期間: <br>
-                      <%= coupon.flight_date_from %> ~ <%= coupon.flight_date_to %> 
-                    </div>
-                     <div class="txt">
-                      <%= link_to 'Delete', coupon_path(coupon), method: :delete, class: "btn btn-info", data: {confirm:"Are you sure?"} %>
-                    </div>
-                </div>
-            </div>
-          <% end %>
-          <a name="posted_rail_ticket"></a>
-          <div class="num-comments">Posted Railticket</div>
-          <% @posted_railtickets.each do |railticket| %>
-            <div class="comment-block clearfix">
+          <% if @favorited_coupons.count != 0 %>
+            <a name="favorited_coupon"></a>
+            <div class="num-comments">收藏的優惠卷</div>
+            <% @favorited_coupons.each do |coupon| %>
+              <div class="comment-block clearfix">
                 <figure>
                     <img src="http://placehold.it/70x70" alt="" class="img-responsive">
                 </figure>
                 <div class="caption">
                   <div class="top clearfix">
-                    <div class="txt1">Destination to<a href="#"> <%= railticket.destination %></a></div>
+                    <div class="txt1">目的地: <a href="#"> <%= coupon.destination %></a></div>
                     <span>|</span>
-                    <div class="txt2">Train date: <%= railticket.train_date %></div>
+                    <div class="txt2">優惠眷到期日: <%= coupon.coupon_expiry_date %></div>
                     <span>|</span>
-                    <div class="txt3"><%= link_to 'Show', railticket_path(railticket) %></div>
+                    <div class="txt3"><%= link_to 'Show', coupon_path(coupon) %></div>
                   </div>
                   <div class="txt">
-                    Train no: <%= railticket.train_no %> <br>
-                    Train date: <%= railticket.train_date %> <br>
-                    Departure time: <%= railticket.departure_time %>
+                    使用期間: <br>
+                    <%= coupon.flight_date_from %> ~ <br>
+                    <%= coupon.flight_date_to %> 
                   </div>
                   <div class="txt">
-                      <%= link_to 'Delete', railticket_path(railticket), method: :delete, class: "btn btn-info", data: {confirm:"Are you sure?"} %>
-                    </div>
-                </div>
-            </div>
-         <% end %>
-          <a name="favorited_ticket"></a>
-          <div class="num-comments">Favorited Flight Tickets</div>
-          <% @favorited_tickets.each do |ticket| %>
-            <div class="comment-block clearfix">
-                <figure>
-                    <img src="http://placehold.it/70x70" alt="" class="img-responsive">
-                </figure>
-                <div class="caption">
-                  <div class="top clearfix">
-                    <div class="txt1">Destination to<a href="#"> <%= ticket.destination %></a></div>
-                    <span>|</span>
-                    <div class="txt2">Flight Date: <%= ticket.flight_date %></div>
-                    <span>|</span>
-                    <div class="txt3"><%= link_to 'Show', ticket_path(ticket) %></div>
-                  </div>
-                  <div class="txt">
-                    <%= ticket.airline %> <br>
-                    Flight No: <%= ticket.flight_no %> 
-                  </div>
-                  <div class="txt">
-                    <%= render partial: "shared/ticket_favorite", locals: {ticket: ticket} %>
+                    <%= render partial: "shared/coupon_favorite", locals: {coupon: coupon} %>
                   </div>
                 </div>
-            </div>
+              </div>
+            <% end %>
           <% end %>
-          
-          <a name="favorited_coupon"></a>
-          <div class="num-comments">Favorited Coupon</div>
-          <% @favorited_coupons.each do |coupon| %>
+          <% if @favorited_railtickets.count != 0 %>
+            <div class="num-comments">收藏的高鐵票</div>
+            <a name="favorited_railticket"></a>
+            <% @favorited_railtickets.each do |railticket| %>
             <div class="comment-block clearfix">
               <figure>
-                  <img src="http://placehold.it/70x70" alt="" class="img-responsive">
+                <img src="http://placehold.it/70x70" alt="" class="img-responsive">
               </figure>
               <div class="caption">
                 <div class="top clearfix">
-                  <div class="txt1">Destination to<a href="#"> <%= coupon.destination %></a></div>
+                  <div class="txt1">目的地: <a href="#"> <%= railticket.destination %></a></div>
                   <span>|</span>
-                  <div class="txt2">Expiry Date: <%= coupon.coupon_expiry_date %></div>
+                  <div class="txt2">高鐵出發日期: <%= railticket.train_date %></div>
                   <span>|</span>
-                  <div class="txt3"><%= link_to 'Show', coupon_path(coupon) %></div>
+                  <div class="txt3"><%= link_to '詳情', railticket_path(railticket) %></div>
                 </div>
                 <div class="txt">
-                  使用期間: <br>
-                  <%= coupon.flight_date_from %> ~ <br>
-                  <%= coupon.flight_date_to %> 
+                  高鐵班次: <%= railticket.train_no %> <br>
+                  班次出發時間: <%= railticket.departure_time %>
                 </div>
                 <div class="txt">
-                  <%= render partial: "shared/coupon_favorite", locals: {coupon: coupon} %>
+                  <%= render partial: "shared/train_favorite", locals: {railticket: railticket} %>
                 </div>
               </div>
             </div>
-          <% end %>
-          <div class="num-comments">Favorited Railticket</div>
-          <a name="favorited_railticket"></a>
-          <% @favorited_railtickets.each do |railticket| %>
-          <div class="comment-block clearfix">
-            <figure>
-              <img src="http://placehold.it/70x70" alt="" class="img-responsive">
-            </figure>
-            <div class="caption">
-              <div class="top clearfix">
-                <div class="txt1">Destination to<a href="#"> <%= railticket.destination %></a></div>
-                <span>|</span>
-                <div class="txt2">Train date: <%= railticket.train_date %></div>
-                <span>|</span>
-                <div class="txt3"><%= link_to 'Show', railticket_path(railticket) %></div>
-              </div>
-              <div class="txt">
-                Train no: <%= railticket.train_no %> <br>
-                Train date: <%= railticket.train_date %> <br>
-                Departure time: <%= railticket.departure_time %>
-              </div>
-              <div class="txt">
-                <%= render partial: "shared/train_favorite", locals: {railticket: railticket} %>
-              </div>
-            </div>
-          </div>
+            <% end %>
           <% end %>
         </div>
       </div>
       <div class="col-sm-3">
         <div class="blog_sidebar">
           <h3><%= current_user.name%></h3>
-          <%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-info"%> 
+          <%= link_to '編輯個人資料', edit_user_path(current_user), class: "btn btn-info"%> 
           <ul class="ul4">
             <br>
-            <li><a>Posted Flight Ticket<span><%= @user.tickets.count %></span></a></li>
-            <li><a href="#posted_coupon">Posted Coupon<span><%= @user.coupons.count %></span></a></li>
-            <li><a href="#posted_rail_ticket">Posted Rail Ticket<span><%= @user.railtickets.count %></span></a></li>
-            <li><a href="#favorited_ticket">Favorited Flight Ticket<span><%= @favorited_tickets.count %></span></a></li>
-            <li><a href="#favorited_coupon">Favorited Coupon<span><%= @favorited_coupons.count %></span></a></li>
-            <li><a href="#favorited_railticket">Favorited Railtickets<span><%= @favorited_railtickets.count %></span></a></li>
+            <li><a>已張貼的機票<span><%= @user.tickets.count %></span></a></li>
+            <li><a href="#posted_coupon">已張貼的優惠卷<span><%= @user.coupons.count %></span></a></li>
+            <li><a href="#posted_rail_ticket">已張貼的高鐵票<span><%= @user.railtickets.count %></span></a></li>
+            <li><a href="#favorited_ticket">收藏的機票<span><%= @favorited_tickets.count %></span></a></li>
+            <li><a href="#favorited_coupon">收藏的優惠卷<span><%= @favorited_coupons.count %></span></a></li>
+            <li><a href="#favorited_railticket">收藏的高鐵票<span><%= @favorited_railtickets.count %></span></a></li>
             <li><%= link_to "機票兌換卷購物車", cart_path %><span></span></li>
             <li><%= link_to "高鐵票購物車", rail_cart_path%><span></span></li>
             <li><%= link_to "機票兌換卷訂單", orders_path %><span></span></li>

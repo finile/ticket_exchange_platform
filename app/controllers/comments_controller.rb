@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  
+
   def create
     if params[:ticket_id]
         @commentable = Ticket.find(params[:ticket_id])
