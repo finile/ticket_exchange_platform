@@ -5,9 +5,10 @@
       <div class="col-sm-9">
         <div class="blog_content">
           <div class="post post-full">
-            <h3 class="hch">Destination: <%= @railticket.destination %></h3>
+            <h3 class="hch">抵達站: <%= @railticket.destination %></h3>
             <div class="clearfix"></div>
-            <p class="address">Train no: <%= @railticket.train_no %></p>
+            <p class="address">高鐵車號: <%= @railticket.train_no %></p>
+            <p class="address">由<a> <%= link_to "#{@railticket.user.name}", user_path(@railticket.user) %></a>提供</p>
             <div class="post-header">
               <div class="post-slide">
                 <div id="sl1">
@@ -33,18 +34,18 @@
             </div>
             <div class="post-story">
               <div class="post-story-body clearfix">              
-                <h4>Details</h4>
+                <h4>詳細資訊</h4>
                 <ul>
-                  <li>Train no: <%= @railticket.train_no %></li>
-                  <li>Train date: <%= @railticket.train_date %></li>
-                  <li>Departure time: <%= @railticket.departure_time %></li>
-                  <li>Arrive time: <%= @railticket.arrive_time %></li>
-                  <li>Departure:<%= @railticket.departure %></li>
-                  <li>Destination: <%= @railticket.destination %></li>
-                  <li>Price: <%= @railticket.price %></li>
-                  <li>Original Discount: <%= @railticket.discount %></li>
+                  <li>高鐵車號: <%= @railticket.train_no %></li>
+                  <li>出發日期: <%= @railticket.train_date %></li>
+                  <li>出發時間: <%= @railticket.departure_time %></li>
+                  <li>抵達時間: <%= @railticket.arrive_time %></li>
+                  <li>出發站:<%= @railticket.departure %></li>
+                  <li>抵達站: <%= @railticket.destination %></li>
+                  <li>價格: <%= @railticket.price %></li>
+                  <li>折扣價格: <%= @railticket.discount %></li>
                 </ul>
-                <p>Others: <%= @railticket.others %></p>
+                <p>其他資訊: <%= @railticket.others %></p>
                   <div class="right_side">
                     <%= render partial: "shared/train_favorite", locals: {railticket: @railticket} %> |
                     <% if current_user == @railticket.user %>
@@ -95,7 +96,6 @@
     </div>
   </div>
 </div>
-
 <div class="container">
   <div class="row">
     <%= render partial: "shared/comments", locals: {commentable: @railticket} %>
@@ -105,8 +105,8 @@
       <%= f.text_area :content, placeholder: "留言給賣家", class: "form-control" %>
     </div>
     <div class="form-group">
-      <%= f.submit class: "btn btn-primary" %>
-      <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+      <%= f.submit "立即聯絡賣家", class: "btn btn-primary" %>
+      <%= f.button "取消留言", type: :reset, class: "btn btn-default" %>
     </div>
   <% end %>
   </div>

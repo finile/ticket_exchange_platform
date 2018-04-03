@@ -267,7 +267,7 @@ transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; -webkit-trans
 .input1_inner input:focus{outline: none;}
 
 
-.input2_inner{position: relative; background: none; border: 1px solid #ebebeb; height: 42px; position: relative;}
+.input2_inner{position: relative; background: none;/* border: 1px solid #ebebeb; */height: 42px; position: relative;}
 .input2_inner input{padding: 10px 25px 10px 15px; height: 40px; border: none; background: #fff; color: #c2c2c2; font-size: 13px; line-height: 20px; font-family: inherit; display: block; width: 100%;}
 .input2_inner input:focus{outline: none;}
 

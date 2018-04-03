@@ -5,9 +5,10 @@
       <div class="col-sm-9">
         <div class="blog_content">
           <div class="post post-full">
-            <h3 class="hch">To <%= @ticket.destination %></h3>
+            <h3 class="hch">目的地: <%= @ticket.destination %></h3>
             <div class="clearfix"></div>
-              <p class="address">Airline: <%= @ticket.airline %></p>
+              <p class="address">航空公司: <%= @ticket.airline %></a></p>
+              <p class="address">由<a> <%= link_to "#{@ticket.user.name}", user_path(@ticket.user) %> </a>提供</p>
               <div class="post-header">
                 <div class="post-slide">
                   <div id="sl1">
@@ -34,19 +35,19 @@
               <div class="post-story">
                 <hr>
                 <div class="post-story-body clearfix">
-                <h3>Flight date: <%= @ticket.flight_date %>; <%= @ticket.flight_time %></h3>
+                <h3>出發日: <%= @ticket.flight_date %>; <%= @ticket.flight_time %></h3>
                 <ul>
-                    <li>Departure: <%= @ticket.departure %></li>
-                    <li>Destination: <%= @ticket.destination %></li>
+                    <li>出發地: <%= @ticket.departure %></li>
+                    <li>目的地: <%= @ticket.destination %></li>
                 </ul>
                 <hr>
-                <h4>Details:</h4>
+                <h4>詳細資訊:</h4>
                 <ul>
-                  <li>From <%= @ticket.departure %></li>
-                  <li>To <%= @ticket.destination %></li>
+                  <li>出發地: <%= @ticket.departure %></li>
+                  <li>目的地: <%= @ticket.destination %></li>
                   <li><%= @ticket.airline %></li>
                 </ul>
-                <p>Others: <%= @ticket.others %></p>
+                <p>其他資訊: <%= @ticket.others %></p>
                 
                   <div class="right_side">
                     <%= render partial: "shared/ticket_favorite", locals: {ticket: @ticket} %> |
@@ -102,8 +103,8 @@
         <a name="comment"><%= f.text_area :content, placeholder: "留言給賣家", class: "form-control" %></a>
       </div>
       <div class="form-group">
-        <%= f.submit '立即聯絡賣家', class: "btn btn-default btn-cf-submit3"%> <br>
-        <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+        <%= f.submit "立即聯絡賣家", class: "btn btn-primary" %>
+        <%= f.button "取消留言", type: :reset, class: "btn btn-default" %>
       </div>
     <% end %>
   </div>

@@ -2,7 +2,7 @@
 <div id="content">
   <div class="container">
     <div class="row">
-      <div class="col-sm-12">
+      <div class="col-sm-9 col-sm-offset-2">
         <div class="sidebar-block">
           <%= form_for [:admin, @coupon] do |f| %>
           <form action="javascript:void(0);">
@@ -48,7 +48,7 @@
               <div class="input1_wrapper">
                 <label><%= f.label :flight_date_from, "兌換卷使用開始日期" %></label>
                 <div class="input1_inner">
-                  <%= f.time_field :flight_date_from, class: "input datepicker" %>
+                  <%= f.date_field :flight_date_from, class: "input datepicker" %>
                 </div>
               </div>
             </div>

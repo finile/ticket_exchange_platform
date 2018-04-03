@@ -9,7 +9,7 @@
           <div class="comment-block clearfix">
             <div class="caption">
               <div class="top clearfix">
-                <div class="txt1">留言者: <a href="#"><%= comboard.user.name %></a></div>
+                <div class="txt1">留言者: <a href="#"><%= link_to "#{comboard.user.name}", user_path(comboard.user) %></a></div>
                 <span>|</span>
                 <div class="txt2">留言時間: <%= comboard.created_at %></div>
                 <span>|</span>
@@ -93,6 +93,4 @@
     </div>
   </div>
 </div>
-
-
 <%= render partial: "shared/footer"%>
