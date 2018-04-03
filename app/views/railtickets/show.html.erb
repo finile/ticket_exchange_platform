@@ -83,11 +83,8 @@
             <div class="no-padding margin-top text-center" style="margin-top:30px;">
               <a class="btn btn-default btn-cf-submit3"style="width:100%;">已售出</a> <br>
             <% else %>
-              <%= link_to '立即購買', add_to_rail_cart_railticket_path(@railticket), class: "btn btn-default btn-cf-submit3" ,method: :post %> <br> 
+              <%= link_to '立即加入高鐵票購物車', add_to_rail_cart_railticket_path(@railticket), class: "btn btn-default btn-cf-submit3" ,method: :post %> <br> 
               <div class="clearfix"></div>
-              <div class="select1_wrapper">
-                <label><%= link_to "瀏覽購物車", rail_cart_path, class: "btn btn-default btn-cf-submit3" %>  </label>
-              </div>
             </div>
             <% end %>
           </form>

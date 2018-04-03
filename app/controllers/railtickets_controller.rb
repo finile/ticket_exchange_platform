@@ -64,7 +64,7 @@ class RailticketsController < ApplicationController
       @railticket.save
     end
       flash[:notice] = "高鐵票已加入購物車"
-      redirect_to rail_cart_path
+      redirect_back(fallback_location: root_path)
   end
 
   def remove_from_rail_cart
