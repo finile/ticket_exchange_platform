@@ -2,6 +2,7 @@
 <div class="container">
   <h1>使用者清單</h1>
     <div class="row">
+      <div class = "col-md- pull-left">
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -27,6 +28,23 @@
       </tbody>
      </table>
   </div>
-  <%= paginate @users %>
+  </div>
+
+      <div class = "col-md-4 pull-right">
+        <h3>Filter</h3>
+        <%= search_form_for @ransack, url: admin_users_path do |f| %>
+
+     <div>
+      <%= f.label :name_cont, "使用者名稱" %>
+      <%= f.text_field :name_cont %>
+     </div>
+    
+
+     <div>
+      <%= f.submit "篩選", class: "btn btn-info" %>
+    </div>
+        <% end %>
+      </div>
+      <%#= paginate @users %>
 </div>
 <%= render partial: "shared/footer"%>
