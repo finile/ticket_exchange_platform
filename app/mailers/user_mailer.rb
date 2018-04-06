@@ -6,7 +6,7 @@ class UserMailer < ApplicationMailer
       @comment = comment
       @content = "Here are someone offering the ticket you want!"
 
-      mail to: comment.user.email,
+      mail to:  comment.user.email,   #comboard.user.email
       subject: "New Relaese Hold Ticket Exchange Platform | 你徵求的機票已經有賣家提供了"
     end
 

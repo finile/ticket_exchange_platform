@@ -51,6 +51,7 @@ gem "letter_opener", :group => :development
 # gem 'gibbon', github: "amro/gibbon"
 gem 'gibbon', :git => 'https://github.com/amro/gibbon.git'
 gem 'carrierwave'
+gem 'ransack'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

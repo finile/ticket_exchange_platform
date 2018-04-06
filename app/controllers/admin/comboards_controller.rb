@@ -1,4 +1,4 @@
-class Admin::ComboardsController < Admin::BaseController  
+class Admin::ComboardsController < Admin::BaseController
   before_action :set_comboard, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -7,7 +7,7 @@ class Admin::ComboardsController < Admin::BaseController
 
   def show
    #set_comboard
-   # @comment = Comment.new
+   @comment = Comment.new
   end
 
   def edit
