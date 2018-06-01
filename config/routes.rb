@@ -54,6 +54,14 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :articles do 
+    collection do
+      get :visa
+      get :direct_flight
+      get :lagage
+    end
+  end
+
   namespace :admin do
     resources :users
     resources :tickets

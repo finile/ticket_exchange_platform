@@ -364,6 +364,88 @@ transition: background 0.3s ease-out; -moz-transition: background 0.3s ease-out;
 .airport-shuttle {background:url('../images/airport-shuttle.png') no-repeat center center;}
 .post .post-story .post-story-body{margin-bottom: 20px;}
 
+/*增加CSS部分*/
+.post .post-story .post-story-body h4 {
+  font-size: 28px;
+}
+
+.post .post-story .post-story-body p {
+  font-size: 20px;
+}
+
+.post .post-story .post-story-body #visa {
+  font-size: 20px;
+  border-collapse: collapse;
+}
+
+#visa td, #visa th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#visa tr:nth-child(even){background-color: #f2f2f2;}
+
+#visa tr:hover {background-color: #ddd;}
+
+#visa th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: grey;
+    color: white;
+}
+
+.post .post-story .post-story-body img {
+  width:55%;
+  height: auto;
+}
+
+.post .post-story .post-story-body hr {
+  border-top: 2px dashed #8c8b8b;
+}
+
+.post .post-story .post-story-body-airline .airline {
+  height: 350px;
+}
+
+
+.post .post-story .post-story-body-airline h3 {
+  font-size: 30px;
+  padding-bottom: 5px;
+}
+
+.post .post-story .post-story-body-airline h4 {
+  font-size: 28px;
+}
+
+.post .post-story .post-story-body-airline p {
+  font-size: 20px;
+}
+
+.post .post-story .post-story-body-airline img {
+  width:70%;
+  height: auto;
+}
+
+.post .post-story .post-story-body-airline hr {
+  border-top: 1px dashed #8c8b8b;
+}
+
+.post .post-story .post-story-body-lagage p {
+  font-size: 20px;
+}
+
+.post .post-story .post-story-body-lagage h3 {
+  font-size: 25px;
+  padding-bottom: 5px;
+}
+
+.post .post-story .post-story-body-lagage .lagage {
+  border-radius: 20px;
+  margin-top: 50px;
+}
+
+
 .post .post-story .post-story-link{}
 
 .post .post-story .post-story-tags{background: #fafafa; padding: 10px 25px;}
