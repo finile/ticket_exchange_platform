@@ -1,4 +1,6 @@
 class ParkticketsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_parkticket, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite]
 
   def index
     @parktickets = Parkticket.all
@@ -9,7 +11,7 @@ class ParkticketsController < ApplicationController
   end
 
   def create
-    @parkticket = current_user.parktickets.new(ticket_params)
+    @parkticket = current_user.parktickets.new(parkticket_params)
     if @parkticket.save
       flash[:notice] = "ticket was successfully created"
       redirect_to parkticket_path(@parkticket)

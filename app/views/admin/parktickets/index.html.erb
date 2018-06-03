@@ -1,0 +1,37 @@
+<%= render partial: "shared/admin_nav_bar" %>
+
+<div class="container">
+  <h1>機票優惠券清單</h1>
+  <div class="row">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Coupon ID</th>
+          <th>Park Name</th>
+          <th>Parkticket expiry date</th>
+          <th>Price</th>
+          <th>Others</th>
+          <th>Show</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @parktickets.each do |parkticket| %>
+        <tr>
+          <th scope="row"><%= parkticket.id %></th>
+          <td><%= parkticket.park_name %></td>
+          <td><%= parkticket.park_expiry_date %></td>
+          <td><%= parkticket.price %></td>
+          <td><%= parkticket.others %></td>
+          <td><%= link_to 'Show', admin_parkticket_path(parkticket) %></td>
+          <td><%= link_to 'Edit', edit_admin_parkticket_path(parkticket) %></td>
+          <td> <%= link_to 'Delete', admin_parkticket_path(parkticket), method: :delete, data: {confirm:"Are you sure?"} %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @parktickets %>
+  </div>
+</div>
+<%= render partial: "shared/footer"%>

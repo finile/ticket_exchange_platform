@@ -1,0 +1,109 @@
+<%= render partial: "shared/navbar" %>
+
+<div id="slider_wrapper">
+  <div class="container">
+    <div id="slider_inner">
+      <div class="">
+        <div id="slider">
+          <div class="">
+            <div class="carousel-box">
+              <div class="inner">
+                <div class="carousel main">
+                  <ul>
+                    <li>
+                      <div class="slider">
+                        <div class="slider_inner" id="coupon">
+                          <div class="txt1"><span>趕緊撿便宜！！！</span></div>
+                          <div class="txt2"><span>讓.齁.哩 遊園卷</span></div>
+                          <div class="txt3"><span>擁有最多最優惠的遊園卷交換資源，任君挑選，即刻搜尋</span></div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slider_pagination"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="parallax1" class="parallax">
+  <div class="bg1 parallax-bg"></div>
+  <div class="overlay"></div>
+  <div class="parallax-content">
+    <div class="container">
+    <div class="row">
+      <div class="col-sm-10 animated">
+        <div class="txt1">即刻輸入您手中的遊園卷</div>
+        <div class="txt2">讓您的手中用不到的遊園卷更有價值</div>
+      </div>
+      <div class="col-sm-2">
+        <%= link_to '輸入機票兌換卷', new_parkticket_path, class: "btn-default btn0" %>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<div id="popular_cruises1">
+  <div class="container">
+    <h2 class="animated">熱門兌換卷</h2>
+    <div class="title1 animated">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod <br>tincidunt ut laoreet dolore magna aliquam erat volutpat.
+    </div>
+    <br>
+    <div id="popular_wrapper" class="animated" data-animation="fadeIn" data-animation-delay="300">
+      <div id="popular_inner">
+        <div class="">
+          <div id="popular">
+            <div class="">
+              <div class="carousel-box">
+                <div class="inner">
+                  <div class="carousel main">
+                    <ul>
+                      <% @parktickets.each do |parkticket| %>
+                      <div class="col-sm-6 col-md-4">
+                        <li>
+                        <div class="popular ">
+                          <div class="popular_inner">
+                            <figure>
+                              <img src="http://placehold.it/370x232" alt="" class="img-responsive">
+                              <!-- <img src=<%= parkticket.image.url %> alt="coupon-image" class="img-responsive"/> --> 
+                                <div class="over">
+                                  <div class="v1"><%= parkticket.park_name %><span>被收藏次數: <%= parkticket.favorites_count %></span></div>
+                                </div>
+                            </figure>
+                            <div class="caption">
+                              <div class="txt1"><span><%= parkticket.park_name %></span></div>
+                              <div class="txt2">Expiry Date: <%= parkticket.park_expiry_date %></div>
+                              <div class="txt3 clearfix">
+                                <div class="left_side">
+                                  <div class="nums">收藏次數: <%= parkticket.favorites_count %></div>
+                                </div>
+                                <div class="right_side">
+                                </div>
+                                <div class="right_side"><%= link_to '詳情', parkticket_path(parkticket), class: "btn btn-info" %></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      </div>
+                      <% end %>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="popular_pagination"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render partial: "shared/footer"%>
+  
