@@ -38,6 +38,14 @@ Rails.application.routes.draw do
    end
   end
 
+  resources :parktickets, only: [:index, :show, :create, :edit, :new, :update, :destroy] do
+   resources :comments, only: [:create, :destroy]
+    member do
+      post :favorite
+      post :unfavorite
+   end
+  end
+
   resources :comboards, only: [:index, :show, :create, :edit, :new, :update, :destroy] do
    resources :comments, only: [:create, :destroy]
   end
@@ -51,6 +59,7 @@ Rails.application.routes.draw do
       get :comments
       get :coupons
       get :comboards
+      get :parktickets
     end
   end
 
@@ -62,6 +71,7 @@ Rails.application.routes.draw do
     resources :comboards
     resources :orders
     resources :rail_orders
+    resources :parktickets
     root "tickets#index"
   end
 
