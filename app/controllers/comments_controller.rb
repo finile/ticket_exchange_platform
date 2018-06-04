@@ -9,6 +9,8 @@ class CommentsController < ApplicationController
         @commentable = Railticket.find(params[:railticket_id])
     elsif params[:comboard_id]
         @commentable = Comboard.find(params[:comboard_id])
+    elsif params[:metro_id]
+        @commentable = Metro.find(params[:metro_id])
     end
 
     @comment = @commentable.comments.build(comment_params)
