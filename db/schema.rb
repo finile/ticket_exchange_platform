@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180604151432) do
+ActiveRecord::Schema.define(version: 20180604180430) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 20180604151432) do
     t.text "others"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "favorites_count", default: 0
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -207,6 +208,10 @@ ActiveRecord::Schema.define(version: 20180604151432) do
     t.string "destination"
     t.string "train_no"
     t.string "departure"
+    t.string "ticket_type"
+    t.string "days"
+    t.string "area"
+    t.date "expire_date"
   end
 
   create_table "tickets", force: :cascade do |t|
