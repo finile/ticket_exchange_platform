@@ -12,8 +12,12 @@ class Search < ApplicationRecord
     @railtickets ||= find_railtickets
   end
 
+  def metros
+    @metros ||= find_metros
+  end
+
 private
-  
+
   def find_tickets
     tickets = Ticket.order(:flight_date)
     tickets = tickets.where("airline like ?", "%#{airline}%") if airline.present?
@@ -37,7 +41,7 @@ private
     coupons
   end
 
-    def find_railtickets
+  def find_railtickets
     railtickets = Railticket
     railtickets = railtickets.where("train_no like ?", "%#{train_no}%") if train_no.present?
     railtickets = railtickets.where("departure like ?", "%#{departure}%") if departure.present?
@@ -49,5 +53,16 @@ private
     railtickets
   end
 
-end
+  def find_metros
+    metros = Metro
+    metros = metros.where("ticket_type like ?", "%#{ticket_type}%") if ticket_type.present?
+    metros = metros.where("days like ?", "%#{days}%") if days.present?
+    metros = metros.where("area like ?", "%#{area}%") if area.present?
+    metros = metros.where("date >= ?", date_from ) if date_from.present?
+    metros = metros.where("date <= ?", date_to ) if date_to.present?
+    metros = metros.where("price >= ?", min_price) if min_price.present?
+    metros = metros.where("price <= ?", max_price) if max_price.present?
+    metros
+  end
 
+end
