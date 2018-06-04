@@ -1,0 +1,46 @@
+<%= render partial: "shared/admin_nav_bar" %>
+
+<div id="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+      <%= form_for [:admin, @order] do |f| %>
+        <div class="panel panel-order">
+          <h2>Order # <%= @order.sn %></h2>
+          <div class="order-content">
+            <div class="right-border">
+              <div class="order-data">
+                <ul class="order-list">
+                  <% @order.order_items.each do |item| %>
+                  <li>訂單 ID: <%= @order.id %><br> 
+                      商品數量: <%= item.quantity %><br> 
+                      商品單價: NTD$ <%= item.price %><br>
+                  </li>
+                  <% end %>
+                  <hr>
+                    總價格: NTD$ <%= @order.subtotal %>
+                </ul>
+              </div>
+              <div>
+                <h2>Shipping Information</h2>
+                <div class="order-data">
+                  訂購者姓名: <%= @order.name %><br>
+                  訂購者電話: <%= @order.phone %><br>
+                  訂購者地址: <%= @order.address %><br>
+                </div>
+              </div>
+            </div>
+            <div class="order-data">
+              <p>Payment Status: <%= f.select :payment_status, Order::PAYMENT_STATUS %></p><br>
+              <p>Shipping Status: <%= f.select :shipping_status, Order::SHIPPING_STATUS %></p><br>
+              <%= f.submit %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render partial: "shared/footer"%>

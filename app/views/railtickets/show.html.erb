@@ -1,0 +1,114 @@
+<%= render partial: "shared/navbar" %>
+<div id="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9">
+        <div class="blog_content">
+          <div class="post post-full">
+            <h3 class="hch">抵達站: <%= @railticket.destination %></h3>
+            <div class="clearfix"></div>
+            <p class="address">高鐵車號: <%= @railticket.train_no %></p>
+            <p class="address">由<a> <%= link_to "#{@railticket.user.name}", user_path(@railticket.user) %></a>提供</p>
+            <div class="post-header">
+              <div class="post-slide">
+                <div id="sl1">
+                  <div class="sl1_pagination"></div>
+                  <div class="carousel-box">
+                    <div class="inner">
+                      <div class="carousel main">
+                        <ul>
+                          <li>
+                            <div class="sl1">
+                              <div class="sl1_inner">
+                                <!-- <img src=<%= @railticket.image %> alt="railticket-image" class="img-responsive"/> -->
+                                <img src="http://placehold.it/370x232" alt="" class="img-responsive">
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="post-story">
+              <div class="post-story-body clearfix">              
+                <h4>詳細資訊</h4>
+                <ul>
+                  <li>高鐵車號: <%= @railticket.train_no %></li>
+                  <li>出發日期: <%= @railticket.train_date %></li>
+                  <li>出發時間: <%= @railticket.departure_time %></li>
+                  <li>抵達時間: <%= @railticket.arrive_time %></li>
+                  <li>出發站:<%= @railticket.departure %></li>
+                  <li>抵達站: <%= @railticket.destination %></li>
+                  <li>價格: <%= @railticket.price %></li>
+                  <li>折扣價格: <%= @railticket.discount %></li>
+                </ul>
+                <p>其他資訊: <%= @railticket.others %></p>
+                  <div class="right_side">
+                    <%= render partial: "shared/train_favorite", locals: {railticket: @railticket} %> |
+                    <% if current_user == @railticket.user %>
+                      <%= link_to 'Edit', edit_railticket_path(@railticket), class: "btn btn-info" %> | <%= link_to 'Delete', railticket_path(@railticket), method: :delete, class: "btn btn-info", data: {confirm:"Are you sure?"} %>
+                    <% end %>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="sidebar-block">
+          <form action="javascript;">
+            <div class="clearfix"></div>
+            <div style="margin-top:10px;"></div>
+            <div class="clearfix"></div>
+            <div class="col-sm-12 no-padding margin-top">
+              <div class="input1_wrapper">
+                <label class="col-md-6" style="padding-left:0;padding-top:12px;font-weight:500;color:#464646;font-size:13px;">
+                  建議價格:
+                </label>
+                <div class="col-md-6 price-total-left" style="padding-right:0;padding-left:0;">
+                  <span class="red">NTD$ <%= @railticket.price %></span>
+                </div>
+                <label class="col-md-6" style="padding-left:0;padding-top:12px;font-weight:500;color:#464646;font-size:13px;"> 
+                  數量: 
+                </label>
+                <div class="col-md-6 price-total-left" style="padding-right:0;padding-left:0;margin-top: 12px;">
+                  <h3><%= @railticket.quantity %></h3> 
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <% if @railticket.quantity == 0 %>
+            <div class="no-padding margin-top text-center" style="margin-top:30px;">
+              <a class="btn btn-default btn-cf-submit3"style="width:100%;">已售出</a> <br>
+            <% else %>
+              <%= link_to '立即加入高鐵票購物車', add_to_rail_cart_railticket_path(@railticket), class: "btn btn-default btn-cf-submit3" ,method: :post %> <br> 
+              <div class="clearfix"></div>
+            </div>
+            <% end %>
+          </form>
+        </div>
+        <div class="clearfix"></div>
+        <div class="margin-top"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <%= render partial: "shared/comments", locals: {commentable: @railticket} %>
+
+    <%= form_for [@railticket, @comment] do |f| %>
+    <div class="form-group">
+      <%= f.text_area :content, placeholder: "留言給賣家", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "立即聯絡賣家", class: "btn btn-primary" %>
+      <%= f.button "取消留言", type: :reset, class: "btn btn-default" %>
+    </div>
+  <% end %>
+  </div>
+</div>
+<%= render partial: "shared/footer"%>

@@ -1,0 +1,111 @@
+<%= render partial: "shared/navbar" %>
+<div id="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9">
+        <div class="blog_content">
+          <div class="post post-full">
+            <h3 class="hch">目的地: <%= @ticket.destination %></h3>
+            <div class="clearfix"></div>
+              <p class="address">航空公司: <%= @ticket.airline %></a></p>
+              <p class="address">由<a> <%= link_to "#{@ticket.user.name}", user_path(@ticket.user) %> </a>提供</p>
+              <div class="post-header">
+                <div class="post-slide">
+                  <div id="sl1">
+                    <div class="sl1_pagination"></div>
+                    <div class="carousel-box">
+                      <div class="inner">
+                        <div class="carousel main">
+                          <ul>
+                            <li>
+                              <div class="sl1">
+                                <div class="sl1_inner">
+                                  <!-- <img src=<%= @ticket.image.url %> alt="ticket-image" class="img-responsive" /> -->
+                                  <img src="http://placehold.it/370x232" alt="" class="img-responsive">
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="post-story">
+                <hr>
+                <div class="post-story-body clearfix">
+                <h3>出發日: <%= @ticket.flight_date %>; <%= @ticket.flight_time %></h3>
+                <ul>
+                    <li>出發地: <%= @ticket.departure %></li>
+                    <li>目的地: <%= @ticket.destination %></li>
+                </ul>
+                <hr>
+                <h4>詳細資訊:</h4>
+                <ul>
+                  <li>出發地: <%= @ticket.departure %></li>
+                  <li>目的地: <%= @ticket.destination %></li>
+                  <li><%= @ticket.airline %></li>
+                </ul>
+                <p>其他資訊: <%= @ticket.others %></p>
+                
+                  <div class="right_side">
+                    <%= render partial: "shared/ticket_favorite", locals: {ticket: @ticket} %> |
+                    <% if current_user == @ticket.user %>
+                      <%= link_to 'Edit', edit_ticket_path(@ticket), class: "btn btn-info" %> | <%= link_to 'Delete', ticket_path(@ticket), method: :delete, class: "btn btn-info", data: {confirm:"Are you sure?"} %>
+                    <% end %>
+                  </div>
+                
+                  <div class="right_side">
+                    
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="sidebar-block">
+            <form action="javascript:void(0);">
+             <div class="col-sm-12 no-padding margin-top">
+                <div class="input1_wrapper">
+                  <label class="col-md-6" style="padding-left:0;padding-top:12px;font-weight:500;color:#464646;font-size:13px;"> 
+                    建議售價: 
+                  </label>
+                  <div class="col-md-6 price-total-left" style="padding-right:0;padding-left:0;">
+                      <span class="red">NTD$ <%= @ticket.price %></span>
+                  </div>
+                  <label class="col-md-6" style="padding-left:0;padding-top:12px;font-weight:500;color:#464646;font-size:13px;">
+                  數量:
+                  </label>
+                  <div class="col-md-6 price-total-left" style="padding-right:0;padding-left:0;margin-top: 12px;">
+                  <h3><%= @ticket.quantity %></h3>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            <div class="clearfix"></div>
+          </form>
+        </div>
+        <div class="clearfix"></div>
+        <div class="margin-top"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+
+    <%= render partial: "shared/comments", locals: {commentable: @ticket} %>
+
+    <%= form_for [@ticket, @comment] do |f| %>
+      <div class="form-group">
+        <a name="comment"><%= f.text_area :content, placeholder: "留言給賣家", class: "form-control" %></a>
+      </div>
+      <div class="form-group">
+        <%= f.submit "立即聯絡賣家", class: "btn btn-primary" %>
+        <%= f.button "取消留言", type: :reset, class: "btn btn-default" %>
+      </div>
+    <% end %>
+  </div>
+</div>

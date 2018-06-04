@@ -1,0 +1,48 @@
+<%= render partial: "shared/admin_nav_bar" %>
+<div class="container">
+  <h1>高鐵票清單</h1>
+  <div class="row">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Train Ticket ID</th>
+          <th>Train No.</th>
+          <th>Train date</th>
+          <th>Departure time</th>
+          <th>Arrive time</th>
+          <th>Departure</th>
+          <th>Destination</th>
+          <th>User Name</th>
+          <th>Price</th>
+          <th>Original Discout</th>
+          <th>Others</th>
+          <th>Show</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @railtickets.each do |railticket| %>
+        <tr>
+          <th scope="row"><%= railticket.id %></th>
+          <td><%= railticket.train_no %></td>
+          <td><%= railticket.train_date %></td>
+          <td><%= railticket.departure_time %></td>
+          <td><%= railticket.arrive_time %></td>
+          <td><%= railticket.departure %></td>
+          <td><%= railticket.destination %></td>
+          <td><%= railticket.name %></td>
+          <td><%= railticket.price %></td>
+          <td><%= railticket.discount %></td>
+          <td><%= railticket.others %></td>
+          <td><%= link_to 'Show', admin_railticket_path(railticket) %></td>
+          <td><%= link_to 'Edit', edit_admin_railticket_path(railticket) %></td>
+          <td><%= link_to 'Delete', admin_railticket_path(railticket), method: :delete, data: {confirm:"Are you sure?"}%></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @railtickets %>
+  </div>
+</div>
+<%= render partial: "shared/footer"%>

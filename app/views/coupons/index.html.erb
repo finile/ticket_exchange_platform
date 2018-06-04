@@ -1,0 +1,165 @@
+<%= render partial: "shared/navbar" %>
+
+<div id="slider_wrapper">
+  <div class="container">
+    <div id="slider_inner">
+      <div class="">
+        <div id="slider">
+          <div class="">
+            <div class="carousel-box">
+              <div class="inner">
+                <div class="carousel main">
+                  <ul>
+                    <li>
+                      <div class="slider">
+                        <div class="slider_inner" id="coupon">
+                          <div class="txt1"><span>趕緊撿便宜！！！</span></div>
+                          <div class="txt2"><span>讓.齁.哩 機票兌換卷</span></div>
+                          <div class="txt3"><span>擁有最多最優惠的機票兌換卷資源，任君挑選，即刻搜尋</span></div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slider_pagination"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="front_tabs">
+  <div class="container">
+    <div class="tabs_wrapper tabs1_wrapper">
+      <div class="tabs tabs1">
+        <div class="tabs_content tabs1_content">
+          <div id="tabs-1" class="form1">
+            <%= form_for [@coupon, @search] do |f| %>
+              <div class="row">
+                <div class="col-sm-4 col-md-2">
+                  <div class="select1_wrapper">
+                    <label><%= f.label :airline, "航空公司" %></label>
+                    <div><%= f.text_field :airline, class: "select1_inner" %></div>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                  <div class="input1_wrapper">
+                    <label><%= f.label :destination, "目的地" %></label>
+                    <div><%= f.text_field :destination, class: "select1_inner" %></div>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                  <div class="input1_wrapper">
+                    <label><%= f.label :date_from, "出發日期" %></label>
+                    <div class="input1_inner">
+                      <%= f.date_field :date_from, class: "input datepicker" %> -
+                      <%= f.date_field :date_to, class: "input datepicker" %>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                  <div class="input1_wrapper">
+                    <label><%= f.label :min_price, "價格區間 NTD$" %></label>
+                    <div class="input1_inner">
+                      <%= f.text_field :min_price, class: "select1_inner" %> - <%= f.text_field :max_price, class: "select1_inner" %>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                  <div class="button1_wrapper">
+                    <%= f.submit "立馬搜尋", class: "btn btn-info btn-form1-submit" %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="parallax1" class="parallax">
+  <div class="bg1 parallax-bg"></div>
+  <div class="overlay"></div>
+  <div class="parallax-content">
+    <div class="container">
+    <div class="row">
+      <div class="col-sm-10 animated">
+        <div class="txt1">即刻輸入您手中的兌換卷</div>
+        <div class="txt2">讓您的手中用不到的兌換卷更有價值</div>
+      </div>
+      <div class="col-sm-2">
+        <%= link_to '輸入機票兌換卷', new_coupon_path, class: "btn-default btn0" %>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<div id="popular_cruises1">
+  <div class="container">
+    <h2 class="animated">熱門兌換卷</h2>
+    <div class="title1 animated">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod <br>tincidunt ut laoreet dolore magna aliquam erat volutpat.
+    </div>
+    <br>
+    <div id="popular_wrapper" class="animated" data-animation="fadeIn" data-animation-delay="300">
+      <div id="popular_inner">
+        <div class="">
+          <div id="popular">
+            <div class="">
+              <div class="carousel-box">
+                <div class="inner">
+                  <div class="carousel main">
+                    <ul>
+                      <% @coupons.each do |coupon| %>
+                      <div class="col-sm-6 col-md-4">
+                        <li>
+                        <div class="popular ">
+                          <div class="popular_inner">
+                            <figure>
+                              <img src="http://placehold.it/370x232" alt="" class="img-responsive">
+                              <!-- <img src=<%= coupon.image.url %> alt="coupon-image" class="img-responsive"/> --> 
+                                <div class="over">
+                                  <div class="v1"><%= coupon.destination %><span>被收藏次數: <%= coupon.favorites_count %></span></div>
+                                </div>
+                            </figure>
+                            <div class="caption">
+                              <div class="txt1"><span><%= coupon.destination %></span></div>
+                              <div class="txt1"><%= coupon.airline %></div>
+                              <div class="txt2">Expiry Date: <%= coupon.coupon_expiry_date %></div>
+                              <div class="txt2">使用期間: </div>
+                              <div class="txt2"> <%= coupon.flight_date_from %> ~ <%= coupon.flight_date_to %></div>
+                              <div class="txt3 clearfix">
+                                <div class="left_side">
+                                  <div class="nums">收藏次數: <%= coupon.favorites_count %></div>
+                                </div>
+                                <div class="right_side">
+                                  <%= render partial: "shared/coupon_favorite", locals: {coupon: coupon} %>
+                                </div>
+                                <div class="right_side"><%= link_to '詳情', coupon_path(coupon), class: "btn btn-info" %></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      </div>
+                      <% end %>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="popular_pagination"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render partial: "shared/footer"%>
+  

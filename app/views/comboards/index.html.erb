@@ -1,0 +1,96 @@
+<%= render partial: "shared/navbar" %>
+<div id="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-11">
+        <div class="blog_content">
+          <div class="num-comments">徵求機票留言板</div>
+          <% @comboards.each do |comboard| %>
+          <div class="comment-block clearfix">
+            <div class="caption">
+              <div class="top clearfix">
+                <div class="txt1">留言者: <a href="#"><%= link_to "#{comboard.user.name}", user_path(comboard.user) %></a></div>
+                <span>|</span>
+                <div class="txt2">留言時間: <%= comboard.created_at %></div>
+                <span>|</span>
+                <div class="txt3"><%= link_to '詳情', comboard_path(comboard) %></div>
+                <% if current_user == comboard.user %>
+                  <div class="txt3"><%= link_to '編輯', edit_comboard_path(comboard) %></div>
+                  <div class="txt3"><%= link_to '刪除', comboard_path(comboard), method: :delete, data: {confirm:"Are you sure?"} %> </div>
+                <% end %>
+              </div>
+              <div class="txt">
+                機票需求日期: 從 <%= comboard.flight_date_from %> ～ 到 <%= comboard.flight_date_to %><br>
+                出發地:<%= comboard.departure %><br>
+                目的地: <%= comboard.destination %><br>
+                期望價格: <%= comboard.price %><br>
+                其他資訊: <%= comboard.content %><br>
+              </div>
+              <div class="top clearfix">
+                <br>
+                <div class="txt3"><%= link_to '我有合適機票', new_ticket_path(@ticket) %></div>
+                <span>|</span>
+                <div class="txt3"><%= link_to '通知買家', comboard_path(comboard) %></div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+          <div class="text-center"><%= paginate @comboards %></div>
+          <div class="live-comment">
+            <div class="num-comments">留下您的需求</div>
+            <div class="live-comment-title"></div>
+            <div class="live-comment-form">
+              <div id="note3"></div>
+              <div id="fields3">
+                <%= form_for @comboard do |f| %>
+                <form id="ajax-contact-form3" class="form-horizontal" action="javascript:;">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <%= f.label :flight_date_from, "機票需求開始日期:" %>
+                        <%= f.date_field :flight_date_from, class: "form-control" %>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <%= f.label :flight_date_to, "機票需求結束日期:" %>
+                        <%= f.date_field :flight_date_to, class: "form-control" %>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <%= f.label :departure, "出發地" %>
+                        <%= f.text_field :departure, class: "form-control" %>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <%= f.label :destination, "目的地" %>
+                        <%= f.text_field :destination, class: "form-control" %>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <%= f.label :price, "期望價格" %>
+                        <%= f.text_field :price , class: "form-control" %>
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <%= f.label :content, "其他資訊" %>
+                        <%= f.text_area :content %>
+                      </div>
+                    </div>
+                  </div>
+                <%= f.submit '留言' %>
+              </form>
+              <% end %>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render partial: "shared/footer"%>

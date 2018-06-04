@@ -1,0 +1,30 @@
+
+<h1>Advanced Search</h1>
+
+<%= form_for @search do |f| %>
+  <div class="field">
+    <%= f.label :airline %><br />
+    <%= f.text_field :airline %>
+  </div>
+  <div class="field">
+    <%= f.label :flight_no %><br />
+    <%= f.text_field :flight_no %>
+  </div>
+  <div class="field">
+    <%= f.label :destination %><br />
+    <%= f.text_field :destination %>
+  </div>
+  <div class="field">
+    <%= f.label :date_from, "Date Range" %><br />
+    <%= f.date_field :date_from %> -
+    <%= f.date_field :date_to %>
+  </div>
+  <div class="field">
+    <%= f.label :min_price, "Price Range" %><br />
+    <%= f.text_field :min_price %> -
+    <%= f.text_field :max_price %>
+  </div>
+
+
+  <div class="actions"><%= f.submit "Search" %></div>
+<% end %>

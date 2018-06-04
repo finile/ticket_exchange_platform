@@ -1,0 +1,60 @@
+<%= render partial: "shared/navbar" %>
+<div class="breadcrumbs1_wrapper">
+  <div class="container">
+    <div class="breadcrumbs1"><a><%= link_to 'Back to 留言板', comboards_path %></a><span>/</span>留言</div>
+  </div>
+</div>
+<div id="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="blog_content">
+          <div class="post post-full">
+            <div class="post-story">
+              <h2>目的地: <%= @comboard.destination %></h2>
+              <div class="post-story-info">
+                <div class="date1"><%= @comboard.created_at %></div>
+                <div class="by">由 <a><%= link_to "#{@comboard.user.name}", user_path(@comboard.user) %></a>張貼</div>
+              </div>
+              <div class="post-story-body clearfix">
+                機票需求日期: <%= @comboard.flight_date_from %> ~ <%= @comboard.flight_date_to %><br>
+                出發地: <%= @comboard.departure %><br>
+                目的地: <%= @comboard.destination %><br>
+                期望價格: NTD$ <%= @comboard.price %><br>
+                其他附註: <%= @comboard.content %><br> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <% @comboard.comments.each do |comment| %>
+      <div>
+        <h4><%= comment.user.name %></h4>
+        <p><%= simple_format comment.content %></p>
+        <p class="text-muted">
+        <em><%= time_ago_in_words(comment.created_at) %> ago -</em>
+        <% if current_user.admin? %>
+          <%= link_to "刪除", comboard_comment_path(@comboard, comment), method: :delete, data: {confirm:"Are you sure?"} %>
+           <% end %>
+        </p>
+      </div>
+      <hr>
+    <% end %>
+    <%= form_for [@comboard, @comment] do |f| %>
+      <div class="form-group">
+        <%= f.text_area :content, placeholder: "留言給徵求者", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "立即聯絡賣家", class: "btn btn-primary" %>
+        <%= f.button "取消留言", type: :reset, class: "btn btn-default" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<%= render partial: "shared/footer"%>
+

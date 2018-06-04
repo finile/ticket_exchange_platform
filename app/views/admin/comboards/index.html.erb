@@ -1,0 +1,42 @@
+<%= render partial: "shared/admin_nav_bar" %>
+<div class="container">
+  <h1>機票徵求留言板清單</h1>
+  <div class="row">
+   <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Board ID</th>
+        <th>Flight date from</th>
+        <th>Flight date to</th>
+        <th>Departure</th>
+        <th>Destination</th>
+        <th>User Name</th>
+        <th>Expecting Price</th>
+        <th>Additional Remarkes</th>
+        <th>Show</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @comboards.each do |comboard| %>
+      <tr>
+        <th scope="row"><%= comboard.id %></th>
+        <td><%= comboard.flight_date_from %></td>
+        <td><%= comboard.flight_date_to %></td>
+        <td><%= comboard.departure  %></td>
+        <td><%= comboard.destination %></td>
+        <td><%= comboard.name %></td>
+        <td><%= comboard.price%></td>
+        <td><%= comboard.content %></td>
+        <td><%= link_to 'Show', admin_comboard_path(comboard) %></td>
+        <td><%= link_to 'Edit', edit_admin_comboard_path(comboard) %></td>
+        <td> <%= link_to 'Delete', admin_comboard_path(comboard), method: :delete, data: {confirm:"Are you sure?"} %></td>
+      </tr>
+      <% end %>
+    </tbody>
+    </table>
+    <%= paginate @comboards %>
+  </div>
+</div>
+<%= render partial: "shared/footer"%>

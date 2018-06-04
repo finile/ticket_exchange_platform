@@ -1,0 +1,88 @@
+<%= render partial: "shared/admin_nav_bar" %>
+<div id="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9">
+        <div class="blog_content">
+          <div class="post post-full">
+            <h3 class="hch"> Destination: <%= @railticket.destination %></h3>
+            <div class="clearfix"></div>
+            <p class="address"> Train no: <%= @railticket.train_no %></p>
+            <div class="post-header">
+              <div class="post-slide">
+                <div id="sl1">
+                  <div class="sl1_pagination"></div>
+                  <div class="carousel-box">
+                   <div class="inner">
+                      <div class="carousel main">
+                        <ul>
+                          <li>
+                            <div class="sl1">
+                              <div class="sl1_inner">
+                                <img src="http://placehold.it/370x232" alt="" class="img-responsive">
+                                <!-- <img src=<%= @railticket.image %> alt="railticket-image" class="img-responsive"/> -->
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="post-story">
+              <div class="post-story-body clearfix">
+                <h4>Details</h4>
+                <ul>
+                  <li>Train no: <%= @railticket.train_no %></li>
+                  <li>Train date: <%= @railticket.train_date %></li>
+                  <li>Departure time: <%= @railticket.departure_time %></li>
+                  <li>Arrive time: <%= @railticket.arrive_time %></li>
+                  <li>Departure:<%= @railticket.departure %></li>
+                  <li>Destination: <%= @railticket.destination %></li>
+                  <li>Price: <%= @railticket.price %></li>
+                  <li>Original Discount: <%= @railticket.discount %></li>
+                </ul>
+                <p>Others: <%= @railticket.others %></p>
+                  <div class="right_side">
+                    <%= link_to 'Edit', edit_admin_railticket_path(@railticket), class: "btn btn-info" %> |
+                    <%= link_to 'Delete', admin_railticket_path(@railticket), method: :delete, data: {confirm:"Are you sure?"}, class: "btn btn-info" %>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="sidebar-block">
+          <form action="javascript;">
+            <div class="clearfix"></div>
+            <div style="margin-top:10px;"></div>
+            <div class="clearfix"></div>
+            <div class="col-sm-12 no-padding margin-top">
+              <div class="input1_wrapper">
+                <label class="col-md-6" style="padding-left:0;padding-top:12px;font-weight:500;color:#464646;font-size:13px;">
+                  建議價格:
+                </label>
+                <div class="col-md-6 price-total-left" style="padding-right:0;padding-left:0;">
+                  <span class="red">NTD$ <%= @railticket.price %></span>
+                </div>
+                <label class="col-md-6" style="padding-left:0;padding-top:12px;font-weight:500;color:#464646;font-size:13px;">
+                  數量:
+                </label>
+                <div class="col-md-6 price-total-left" style="padding-right:0;padding-left:0;margin-top: 12px;">
+                  <h3><%= @railticket.quantity %></h3>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+          </form>
+        </div>
+        <div class="clearfix"></div>
+        <div class="margin-top"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render partial: "shared/footer"%>

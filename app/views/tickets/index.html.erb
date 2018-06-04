@@ -1,0 +1,179 @@
+<%= render partial: "shared/navbar" %>
+
+<div id="slider_wrapper">
+  <div class="container">
+    <div id="slider_inner">
+      <div class="">
+        <div id="slider">
+          <div class="">
+            <div class="carousel-box">
+              <div class="inner">
+                <div class="carousel main">
+                  <ul>
+                    <li>
+                      <div class="slider">
+                        <div class="slider_inner" id="ticket">
+                          <div class="txt1"><span>歡迎來到</span></div>
+                          <div class="txt2"><span>讓.齁.哩 廉航機票交換平台</span></div>
+                          <div class="txt3"><span>立即搜尋你要的機票: </span></div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slider_pagination"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="front_tabs">
+  <div class="container">
+    <div class="tabs_wrapper tabs1_wrapper">
+      <div class="tabs tabs1">
+        <div class="tabs_content tabs1_content">
+          <div id="tabs-1" class="form1">
+            <%= form_for [@ticket, @search] do |f| %>
+              <div class="row">
+                <div class="col-sm-4 col-md-2">
+                  <div class="select1_wrapper">
+                    <label><%= f.label :airline, "廉航公司" %></label>
+                    <div><%= f.text_field :airline, class: "select1_inner" %></div>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                  <div class="select1_wrapper">
+                    <label><%= f.label :flight_no, "班機號碼" %></label>
+                    <div><%= f.text_field :flight_no, class: "select1_inner" %></div>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                  <div class="input1_wrapper">
+                    <label><%= f.label :destination, "目的地" %></label>
+                    <div><%= f.text_field :destination, class: "select1_inner" %></div>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                  <div class="input1_wrapper">
+                    <label><%= f.label :date_from, "出發日期" %></label>
+                    <div class="input1_inner">
+                      <%= f.date_field :date_from, class: "input datepicker" %> - <%= f.date_field :date_to, class: "input datepicker" %>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                  <div class="input1_wrapper">
+                    <label><%= f.label :min_price, "價格區間 NTD$" %></label>
+                    <div class="input1_inner">
+                      <%= f.text_field :min_price, class: "select1_inner" %> - <%= f.text_field :max_price, class: "select1_inner" %>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                  <div class="button1_wrapper">
+                    <%= f.submit "立馬搜尋", class: "btn btn-info btn-form1-submit" %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+<div id="parallax1" class="parallax">
+  <div class="bg1 parallax-bg"></div>
+  <div class="overlay"></div>
+  <div class="parallax-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-10 animated">
+          <div class="txt1">即刻輸入您手中的廉航機票</div>
+          <div class="txt2">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper.
+        </div>
+        </div>
+        <div class="col-sm-2">
+         <%= link_to '輸入機票', new_ticket_path, class: "btn-default btn0" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="sky_widget">
+  <div class="container">
+    <div class="row">
+      <h3 class="title">搜尋即時票價和比價</h2>
+      <br>
+      <script charset="utf-8" src="//www.travelpayouts.com/widgets/0d971e4a17022288108f5e9469f8553e.js?v=1238" async></script>
+    </div>
+  </div>
+</div>
+
+<div id="popular_cruises1">
+  <div class="container">
+    <h2 class="animated">熱門機票</h2>
+    <div class="title1 animated">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod <br>tincidunt ut laoreet dolore magna aliquam erat volutpat.
+    </div>
+    <br>
+    <div id="popular_wrapper" class="animated" data-animation="fadeIn" data-animation-delay="300">
+      <div id="popular_inner">
+        <div class="">
+          <div id="popular">
+            <div class="">
+              <div class="carousel-box">
+                <div class="inner">
+                  <div class="carousel main">
+                    <ul>
+                      <% @tickets.each do |ticket| %>
+                      <div class="col-sm-6 col-md-4">
+                        <li>
+                          <div class="popular ">
+                            <div class="popular_inner">
+                              <figure>
+                                <!-- <img src=<%= ticket.image.url %> alt="ticket-image" class="img-responsive"/> --> 
+                                <img src="http://placehold.it/370x232" alt="" class="img-responsive">
+                                  <div class="over">
+                                    <div class="v1"><%= ticket.destination %><span>被收藏次數: <%= ticket.favorites_count %></span></div>
+                                  </div>
+                              </figure>
+                              <div class="caption">
+                                <div class="txt1"><span><%= ticket.destination %></span></div>
+                                <div class="txt1"><%= ticket.airline %></div>
+                                <div class="txt2">Flight No: <%= ticket.flight_no %></div>
+                                <div class="txt2">Flight Date: <%= ticket.flight_date %></div>
+                                <div class="txt2">Departure: <%= ticket.departure %></div>
+                                <div class="txt3 clearfix">
+                                  <div class="left_side">
+                                    <div class="nums">收藏次數: <%= ticket.favorites_count %></div>
+                                  </div>
+                                  <div class="right_side">
+                                    <%= render partial: "shared/ticket_favorite", locals: {ticket: ticket} %>
+                                  </div>
+                                  <div class="right_side"><%= link_to '詳情', ticket_path(ticket), class: "btn btn-info" %></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </div>
+                      <% end %>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="popular_pagination"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render partial: "shared/footer"%>

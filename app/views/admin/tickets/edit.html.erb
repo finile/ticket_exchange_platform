@@ -1,0 +1,121 @@
+<%= render partial: "shared/admin_nav_bar" %>
+<div id="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-sm-offset-2">
+        <div class="sidebar-block">
+          <%= form_for [:admin, @ticket] do |f| %>
+          <form action="javascript:void(0);">
+            <h3>輸入您的票券</h3>
+
+            <div class="col-sm-12 no-padding margin-top">
+              <div class="input1_wrapper">
+                <label><%= f.label :airline, "廉航航空公司:" %></label>
+                <div class="input2_inner">
+                  <%= f.text_field :airline %>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-sm-12 no-padding margin-top">
+              <div class="input1_wrapper">
+                <label><%= f.label :flight_no, "航班號碼:" %></label>
+                <div class="input2_inner">
+                  <%= f.text_field :flight_no, class: "input" %>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-sm-12 no-padding margin-top">
+              <div class="input1_wrapper">
+                <label><%= f.label :flight_date, "出發日期:" %></label>
+                <div class="input1_inner">
+                  <%= f.date_field :flight_date, class: "input datepicker"  %>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-sm-12 no-padding margin-top">
+              <div class="input1_wrapper">
+                <label><%= f.label :flight_time, "起飛時間:" %></label>
+                <div class="input1_inner">
+                  <%= f.time_field :flight_time, class: "input timepicker" %>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-sm-12 no-padding margin-top">
+              <div class="input1_wrapper">
+                <label><%= f.label :departure, "出發地:" %></label>
+                <div class="input2_inner">
+                    <%= f.text_field :departure, class: "input" %>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-sm-12 no-padding margin-top">
+              <div class="input1_wrapper">
+                <label><%= f.label :destination, "目的地:" %></label>
+                <div class="input2_inner">
+                  <%= f.text_field :destination, class: "input" %>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-sm-12 no-padding margin-top">
+              <div class="input1_wrapper">
+                <label><%= f.label :name, "機票姓名:" %></label>
+                <div class="input2_inner">
+                  <%= f.text_field :name, class: "input" %>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-sm-12 no-padding margin-top">
+              <div class="input1_wrapper">
+                <label><%= f.label :price, "欲售價格:" %></label>
+                <div class="input2_inner">
+                  <%= f.text_field :price, class: "input" %>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-sm-12 no-padding margin-top">
+              <div class="input1_wrapper">
+                <label><%= f.label :quantity, "機票張數:" %></label>
+                <div class="input2_inner">
+                  <%= f.text_field :quantity, class: "input" %>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-sm-12 no-padding margin-top">
+              <div class="input1_wrapper">
+                <label><%= f.label :image, "選擇機票照片:" %></label>
+                <%= f.file_field :image, class: "input" %>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-sm-12 no-padding margin-top">
+              <div class="input1_wrapper">
+                <label><%= f.label :others, "其他資訊" %></label>
+                <div class="input2_inner">
+                  <%= f.text_area :others, class: "input" %>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="no-padding margin-top text-center" style="margin-top:30px;">
+              <%= f.submit '資訊輸入', class: 'btn btn-default btn-cf-submit3', style: 'width:100%;' %>
+            </div>
+            <div class="clearfix"></div>
+          </form>
+        <% end %>
+        </div>
+        <div class="clearfix"></div>
+        <div class="margin-top"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render partial: "shared/footer"%>

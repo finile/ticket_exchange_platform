@@ -1,0 +1,35 @@
+<div id="main">
+  <div class="top2_wrapper">
+    <div class="container">
+      <div class="top2 clearfix">
+      <header>
+        <div class="logo_wrapper">
+          <a href="" class="logo">
+            <%= link_to tickets_path do %>
+              <img src="/images/logo4.jpg" alt="" class="img-responsive">
+            <% end %>
+          </a>
+        </div>
+      </header>
+      <div class="navbar navbar_ navbar-default">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <div class="navbar-collapse navbar-collapse_ collapse">
+          <ul class="nav navbar-nav sf-menu clearfix">
+            <li class="<%= active_class(admin_tickets_path) %>"><%= link_to '機票清單', admin_tickets_path %><em></em></li>
+            <li class="<%= active_class(admin_coupons_path) %>"><%= link_to '兌換卷清單', admin_coupons_path %><em></em></li>
+            <li class="<%= active_class(admin_railtickets_path) %>"><%= link_to '高鐵票清單', admin_railtickets_path %><em></em></li>
+            <li class="<%= active_class(admin_comboards_path) %>"><%= link_to '留言板清單', admin_comboards_path %><em></em></li>
+            <li class="<%= active_class(admin_user_path(current_user)) %>"><%= link_to '使用者清單', admin_users_path %><em></em></li>
+            <li class="<%= active_class(admin_orders_path) %>"><%= link_to '兌換卷訂單清單', admin_orders_path %><em></em></li>
+            <li class="<%= active_class(admin_rail_orders_path) %>"><%= link_to '高鐵票訂單清單', admin_rail_orders_path %><em></em></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

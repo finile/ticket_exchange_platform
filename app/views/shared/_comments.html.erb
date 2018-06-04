@@ -1,0 +1,13 @@
+<% commentable.comments.each do |comment| %>
+<div>
+  <h4><%= link_to "#{comment.user.name}", user_path(comment.user) %></h4>
+  <p><%= simple_format comment.content %></p>
+  <p class="text-muted">
+  <em><%= time_ago_in_words(comment.created_at) %> ago -</em>
+  <% if current_user.admin? %>
+    <%= link_to "Delete", ticket_comment_path(commentable, comment), method: :delete, data: {confirm:"Are you sure?"} %>
+  <% end %>
+  </p>
+</div>
+<hr>
+<% end %>
