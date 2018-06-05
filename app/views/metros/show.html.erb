@@ -1,0 +1,102 @@
+<%= render partial: "shared/navbar" %>
+<div id="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9">
+        <div class="blog_content">
+          <div class="post post-full">
+            <h3 class="hch">周遊券使用地區 <%= @metro.area %></h3>
+            <div class="clearfix"></div>
+              <p class="address">周遊券種類: <%= @metro.ticket_type %></p>
+              <p class="address">由<a> <%= link_to "#{@metro.user.name}", user_path(@metro.user) %></a>提供</p>
+              <div class="post-header">
+                <div class="post-slide">
+                  <div id="sl1">
+                    <div class="sl1_pagination"></div>
+                    <div class="carousel-box">
+                      <div class="inner">
+                        <div class="carousel main">
+                          <ul>
+                            <li>
+                              <div class="sl1">
+                                <div class="sl1_inner">
+                                  <img src="http://placehold.it/370x232" alt="" class="img-responsive">
+                                  <!-- <img src=<%= @metro.image.url %> alt="metro-image" class="img-responsive" /> -->
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="post-story">
+                <hr>
+                <div class="post-story-body clearfix">
+                <h3>周遊券到期日: <%= @metro.expire_date %><br></h3>
+                <h3>周遊券使用天數: <%= @metro.days %><br></h3>
+                <!-- <h3>使用區間: <%#= @metro.date_from %> ~ <%#= @metro.date_to %> </h3> -->
+                <hr>
+                <h4>細節:</h4>
+
+                <p>其他資訊: <%= @metro.others %></p>
+                <div class="right_side">
+                  <%= render partial: "shared/metro_favorite", locals: {metro: @metro} %> |
+                  <% if current_user == @metro.user %>
+                    <%= link_to 'Edit', edit_metro_path(@metro), class: "btn btn-info" %> | <%= link_to 'Delete', metro_path(@metro), method: :delete, class: "btn btn-info", data: {confirm:"Are you sure?"} %>
+                  <% end %>
+                </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="sidebar-block">
+          <form action="javascript:void(0);">
+            <div class="col-sm-12 no-padding margin-top">
+              <div class="input1_wrapper">
+                <label class="col-md-6" style="padding-left:0;padding-top:12px;font-weight:500;color:#464646;font-size:13px;">
+                  欲售價格:
+                </label>
+                <div class="col-md-6 price-total-left" style="padding-right:0;padding-left:0;">
+                    <span class="red">NTD$ <%= @cmetro.price %></span>
+                </div>
+                <!-- <label class="col-md-6" style="padding-left:0;padding-top:12px;font-weight:500;color:#464646;font-size:13px;">
+                  數量:
+                </label>
+                <div class="col-md-6 price-total-left" style="padding-right:0;padding-left:0;margin-top: 12px;">
+                    <h3><%#= @metro.quantity %></h3>
+                </div> -->
+              </div>
+            </div>
+            <div class="clearfix"></div>
+
+          </form>
+        </div>
+        <div class="clearfix"></div>
+        <div class="margin-top"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <%= render partial: "shared/comments", locals: {commentable: @metro} %>
+
+    <%= form_for [@metro, @comment] do |f| %>
+      <div class="form-group">
+        <%= f.text_area :content, placeholder: "留言給賣家", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "立即聯絡賣家", class: "btn btn-primary" %>
+        <%= f.button "取消留言", type: :reset, class: "btn btn-default" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<%= render partial: "shared/footer"%>
