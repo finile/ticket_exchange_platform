@@ -1,0 +1,76 @@
+<%= render partial: "shared/admin_nav_bar" %>
+<div id="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9">
+        <div class="blog_content">
+          <div class="post post-full">
+            <p class="address">Airline: <%= @parkticket.park_name %></p>
+            <div class="post-header">
+              <div class="post-slide">
+                <div id="sl1">
+                  <div class="sl1_pagination"></div>
+                  <div class="carousel-box">
+                    <div class="inner">
+                      <div class="carousel main">
+                        <ul>
+                          <li>
+                            <div class="sl1">
+                              <div class="sl1_inner">
+                                <img src="http://placehold.it/370x232" alt="" class="img-responsive">
+                                <!-- <img src=<%= @parkticket.image.url %> alt="coupon-image" class="img-responsive" /> -->
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="post-story">
+              <hr>
+              <div class="post-story-body clearfix">
+                <h3>遊園卷 Expiry Date: <%= @parkticket.park_expiry_date %><br></h3>
+                <hr>
+                <h4>Details:</h4>
+                <p>Others: <%= @parkticket.others %></p>
+                <div class="right_side">
+                  <%= link_to 'Edit', edit_admin_parkticket_path(@parkticket), class: "btn btn-info" %> |
+                  <%= link_to 'Delete', admin_parkticket_path(@parkticket), method: :delete, data: {confirm:"Are you sure?"}, class: "btn btn-info" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="sidebar-block">
+          <form action="javascript:void(0);">
+            <div class="col-sm-12 no-padding margin-top">
+              <div class="input1_wrapper">
+                <label class="col-md-6" style="padding-left:0;padding-top:12px;font-weight:500;color:#464646;font-size:13px;">
+                  建議售價:
+                </label>
+                <div class="col-md-6 price-total-left" style="padding-right:0;padding-left:0;">
+                    <span class="red">NTD$ <%= @parkticket.price %></span>
+                </div>
+                <label class="col-md-6" style="padding-left:0;padding-top:12px;font-weight:500;color:#464646;font-size:13px;">
+                  數量:
+                </label>
+                <div class="col-md-6 price-total-left" style="padding-right:0;padding-left:0;margin-top: 12px;">
+                    <h3><%= @parkticket.quantity %></h3>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+          </form>
+        </div>
+        <div class="clearfix"></div>
+        <div class="margin-top"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render partial: "shared/footer"%>

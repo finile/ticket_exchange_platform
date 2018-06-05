@@ -112,6 +112,26 @@ namespace :dev do
     puts "now you have #{Coupon.count} coupons data"
   end
 
+  task fake_parkticket: :environment do
+    Parkticket.destroy_all
+    #create 25 fake coupons information
+    file = File.open("#{Rails.root}/public/images/370x232.png")
+    User.all.each do |user|
+      rand(3).times do
+        user.parktickets.create(
+          park_name: FFaker::Airline.name,
+          park_expiry_date: FFaker::Time.date,
+          image: file,
+          others:FFaker::Lorem::sentence(15),
+          quantity: rand(1..5),
+          price: rand(1000..10000)
+        )
+      end
+    end
+    puts "have created fake parktickets by users"
+    puts "now you have #{Parkticket.count} parktickets data"
+  end
+
   task fake_comboard: :environment do
     Comboard.destroy_all
     #create 25 fake comboards information

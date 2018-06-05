@@ -1,0 +1,97 @@
+<%= render partial: "shared/navbar" %>
+<div id="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9">
+        <div class="blog_content">
+          <div class="post post-full">
+            <h3 class="hch">遊樂園名稱 <%= @parkticket.park_name %></h3>
+            <div class="clearfix"></div>
+              <p class="address">由<a> <%= link_to "#{@parkticket.user.name}", user_path(@parkticket.user) %></a>提供</p>
+              <div class="post-header">
+                <div class="post-slide">
+                  <div id="sl1">
+                    <div class="sl1_pagination"></div>
+                    <div class="carousel-box">
+                      <div class="inner">
+                        <div class="carousel main">
+                          <ul>
+                            <li>
+                              <div class="sl1">
+                                <div class="sl1_inner">
+                                  <img src="http://placehold.it/370x232" alt="" class="img-responsive">
+                                  <!-- <img src=<%= @parkticket.image.url %> alt="coupon-image" class="img-responsive" /> -->
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="post-story">
+                <hr>
+                <div class="post-story-body clearfix">
+                <h3>遊園卷到期日: <%= @parkticket.park_expiry_date %><br></h3>
+                <hr>
+                <h4>細節:</h4>
+                <p>其他資訊: <%= @parkticket.others %></p>
+                <div class="right_side">
+                  <%= render partial: "shared/parkticket_favorite", locals: {parkticket: @parkticket} %> |
+                  <% if current_user == @parkticket.user %>
+                    <%= link_to 'Edit', edit_parkticket_path(@parkticket), class: "btn btn-info" %> | <%= link_to 'Delete', parkticket_path(@parkticket), method: :delete, class: "btn btn-info", data: {confirm:"Are you sure?"} %>
+                  <% end %>
+                </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="sidebar-block">
+          <form action="javascript:void(0);">
+            <div class="col-sm-12 no-padding margin-top">
+              <div class="input1_wrapper">
+                <label class="col-md-6" style="padding-left:0;padding-top:12px;font-weight:500;color:#464646;font-size:13px;"> 
+                  建議售價: 
+                </label>
+                <div class="col-md-6 price-total-left" style="padding-right:0;padding-left:0;">
+                    <span class="red">NTD$ <%= @parkticket.price %></span>
+                </div>
+                <label class="col-md-6" style="padding-left:0;padding-top:12px;font-weight:500;color:#464646;font-size:13px;"> 
+                  數量: 
+                </label>
+                <div class="col-md-6 price-total-left" style="padding-right:0;padding-left:0;margin-top: 12px;">
+                    <h3><%= @parkticket.quantity %></h3> 
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+          </form>
+        </div>
+        <div class="clearfix"></div>
+        <div class="margin-top"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <%= render partial: "shared/comments", locals: {commentable: @parkticket} %>
+    
+    <%= form_for [@parkticket, @comment] do |f| %>
+      <div class="form-group">
+        <%= f.text_area :content, placeholder: "留言給賣家", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "立即聯絡賣家", class: "btn btn-primary" %>
+        <%= f.button "取消留言", type: :reset, class: "btn btn-default" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<%= render partial: "shared/footer"%>
