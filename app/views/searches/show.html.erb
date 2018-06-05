@@ -2,7 +2,8 @@
   <%= render partial: "shared/search_ticket", locals: {ticket: @search.tickets} %>
 <% elsif @search.train_no %>
   <%= render partial: "shared/search_railticket", locals: { ticket: @search.railtickets} %>
+<% elsif @search.area %>
+  <%= render partial: "shared/search_metro", locals: { ticket: @search.metros} %>
 <% else %>
   <%= render partial: "shared/search_coupon", locals: {ticket: @search.coupons} %>
 <% end %>
-
