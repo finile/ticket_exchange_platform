@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # ActiveAdmin.routes(self)
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  
+
   root "tickets#index"
   post "spgateway/return"
   post 'spgateway1/return'
@@ -35,7 +35,15 @@ Rails.application.routes.draw do
       post :unfavorite
       post :add_to_rail_cart
       post :remove_from_rail_cart
-   end
+    end
+  end
+
+  resources :metros, only: [:index, :show, :create, :edit, :new, :update, :destroy] do
+   resources :comments, only: [:create, :destroy]
+    member do
+      post :favorite
+      post :unfavorite
+    end
   end
 
   resources :comboards, only: [:index, :show, :create, :edit, :new, :update, :destroy] do
@@ -51,6 +59,7 @@ Rails.application.routes.draw do
       get :comments
       get :coupons
       get :comboards
+      get :metros
     end
   end
 
@@ -62,13 +71,14 @@ Rails.application.routes.draw do
     resources :comboards
     resources :orders
     resources :rail_orders
+    resources :metros
     root "tickets#index"
   end
 
   resources :searches
 
   resource :cart
-  resources :orders do 
+  resources :orders do
     post :checkout_spgateway, on: :member
   end
 
