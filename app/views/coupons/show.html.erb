@@ -78,13 +78,6 @@
               </div>
             </div>
             <div class="clearfix"></div>
-            <% if @coupon.quantity == 0 %>
-            <div class="no-padding margin-top text-center" style="margin-top:30px;">
-                <a class="btn btn-default btn-cf-submit3"style="width:100%;">已售出</a> <br>
-              <% else %>
-                <%= link_to '立即加入兌換卷購物車', add_to_cart_coupon_path(@coupon), class: "btn btn-default btn-cf-submit3" ,method: :post %> <br> 
-            </div>
-            <% end %>
           </form>
         </div>
         <div class="clearfix"></div>

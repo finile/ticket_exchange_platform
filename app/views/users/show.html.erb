@@ -186,10 +186,6 @@
               <li><a href="#favorited_ticket">收藏的機票<span><%= @favorited_tickets.count %></span></a></li>
               <li><a href="#favorited_coupon">收藏的優惠卷<span><%= @favorited_coupons.count %></span></a></li>
               <li><a href="#favorited_railticket">收藏的高鐵票<span><%= @favorited_railtickets.count %></span></a></li>
-              <li><%= link_to "機票兌換卷購物車", cart_path %><span></span></li>
-              <li><%= link_to "高鐵票購物車", rail_cart_path%><span></span></li>
-              <li><%= link_to "機票兌換卷訂單", orders_path %><span></span></li>
-              <li><%= link_to "高鐵票訂單", rail_orders_path%><span></span></li>
             <% end %>
           </ul>
         </div>

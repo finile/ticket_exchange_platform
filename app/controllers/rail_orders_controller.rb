@@ -1,46 +1,46 @@
 class RailOrdersController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  # skip_before_action :verify_authenticity_token
   
-  def index
-    @rail_orders = current_user.rail_orders.order(created_at: :desc)
-  end
+  # def index
+  #   @rail_orders = current_user.rail_orders.order(created_at: :desc)
+  # end
 
-  def create
-    @rail_order = current_user.rail_orders.new(rail_order_params)
-    @rail_order.sn = Time.now.to_i
-    @rail_order.add_rail_order_items(current_rail_cart)
-    @rail_order.amount = current_rail_cart.subtotal
-    if @rail_order.save
-      current_rail_cart.destroy
-      redirect_to rail_orders_path, notice: "new order created"
-    else
-      @rail_items = current_rail_cart.rail_cart_items
-      render "rail_carts/show"
-    end
+  # def create
+  #   @rail_order = current_user.rail_orders.new(rail_order_params)
+  #   @rail_order.sn = Time.now.to_i
+  #   @rail_order.add_rail_order_items(current_rail_cart)
+  #   @rail_order.amount = current_rail_cart.subtotal
+  #   if @rail_order.save
+  #     current_rail_cart.destroy
+  #     redirect_to rail_orders_path, notice: "new order created"
+  #   else
+  #     @rail_items = current_rail_cart.rail_cart_items
+  #     render "rail_carts/show"
+  #   end
 
-  end
+  # end
 
-  def update
-    @rail_order = current_user.rail_orders.find(params[:id])
-    if @rail_order.rail_shipping_status == "not_shipped"
-      @rail_order.rail_shipping_status = "cancelled"
-      @rail_order.save
-      redirect_to rail_orders_path, alert: "order##{@rail_order.sn} cancelled."
-    end
+  # def update
+  #   @rail_order = current_user.rail_orders.find(params[:id])
+  #   if @rail_order.rail_shipping_status == "not_shipped"
+  #     @rail_order.rail_shipping_status = "cancelled"
+  #     @rail_order.save
+  #     redirect_to rail_orders_path, alert: "order##{@rail_order.sn} cancelled."
+  #   end
 
-  end
+  # end
 
-  def checkout_spgateway1
-    @rail_order = current_user.rail_orders.find(params[:id])
-    if @rail_order.rail_payment_status != "not_paid"
-      flash[:alert] = "Order has been paid."
-      redirect_to rail_orders_path
-    else
-      @payment = Payment.create!(
-        sn: Time.now.to_i,
-        rail_order_id: @rail_order.id,
-        amount: @rail_order.amount
-      )
+  # def checkout_spgateway1
+  #   @rail_order = current_user.rail_orders.find(params[:id])
+  #   if @rail_order.rail_payment_status != "not_paid"
+  #     flash[:alert] = "Order has been paid."
+  #     redirect_to rail_orders_path
+  #   else
+  #     @payment = Payment.create!(
+  #       sn: Time.now.to_i,
+  #       rail_order_id: @rail_order.id,
+  #       amount: @rail_order.amount
+  #     )
 
       #  spgateway_data = {
       #   MerchantID: "MS33487888",
@@ -80,14 +80,14 @@ class RailOrdersController < ApplicationController
       # @trade_sha = spgateway_data[:TradeSha]
       # @version = spgateway_data[:Version]
 
-      render layout: false
-    end
-  end
+  #     render layout: false
+  #   end
+  # end
 
-  private
+  # private
 
-  def rail_order_params
-    params.require(:rail_order).permit(:name, :phone, :address, :payment_method)
-  end
+  # def rail_order_params
+  #   params.require(:rail_order).permit(:name, :phone, :address, :payment_method)
+  # end
   
 end
