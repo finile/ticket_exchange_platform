@@ -1367,3 +1367,33 @@ transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; -webkit-trans
         max-height: 995px;
     }
 }
+
+
+.button-group .col-sm-4, .button-group .col-sm-3 {
+  display: inline-block;
+}
+
+.button-group .col-sm-4, .button-group .col-sm-3 {
+  margin-right: 18px;
+  font-size: 18px;
+}
+
+.button-group a {
+  display: block;
+  color: #000;
+  // background: #79E8E2;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  padding: 10px 38px;
+  text-transform: capitalize;
+}
+
+.button-group a:hover {
+  // background: #79E8E2;
+  color: #79E8E2;
+  -webkit-transition: all .4s linear;
+  -moz-transition: all .4s linear;
+  -ms-transition: all .4s linear;
+  -o-transition: all .4s linear;
+  transition: all .4s linear;
+}

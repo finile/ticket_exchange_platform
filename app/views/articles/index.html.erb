@@ -1,4 +1,117 @@
+<div id="main">
+  <div class="top2_wrapper">
+    <div class="container">
+      <div class="top2 clearfix">
+      <header>
+        <div class="logo_wrapper">
+          <a href="index.html" class="logo">
+            <%= link_to tickets_path do %>
+              <img src="/images/logo4.jpg" alt="" class="img-responsive">
+            <% end %>
+          </a>
+        </div>
+      </header>
+      <div class="navbar navbar_ navbar-default">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <div class="navbar-collapse navbar-collapse_ collapse">
+          <ul class="nav navbar-nav sf-menu clearfix">
+            <!-- <li class="<%#= active_class(tickets_path) %>"><%= link_to '廉航機票', tickets_path %><em></em></li>
+            <li class="<%#= active_class(coupons_path) %>"><%= link_to '機票兌換卷', coupons_path %><em></em></li>
+            <li class="<%#= active_class(railtickets_path) %>"><%= link_to '高鐵票', railtickets_path %><em></em></li>
+            <li class="<%#= active_class(metros_path) %>"><%= link_to '多日周遊券', metros_path %><em></em></li>
+            <li class="<%#= active_class(parktickets_path) %>"><%= link_to '遊園卷', parktickets_path %><em></em></li>
+            <li class="<%#= active_class(comboards_path) %>"><%= link_to '需求佈告欄', comboards_path %><em></em></li>
+            <li class="<%#= active_class(comboards_path) %>"><%= link_to '懶人包首頁', articles_path %><em></em></li> -->
+            <% if current_user %>
+              <li class="<%= active_class(user_path(current_user)) %>"><%= link_to '個人資訊', user_path(current_user) %><em></em></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="slider_wrapper">
+  <div class="container">
+    <div id="slider_inner">
+      <div class="">
+        <div id="slider">
+          <div class="">
+            <div class="carousel-box">
+              <div class="inner">
+                <div class="carousel main">
+                  <ul>
+                    <li>
+                      <div class="slider">
+                        <div class="slider_inner" id="ticket">
+                          <div class="txt1"><span>歡迎來到</span></div>
+                          <div class="txt2"><span>讓.齁.哩 旅遊二手票券交易平台</span></div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slider_pagination"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h4>New Hold Release 是一個提供旅遊相關二手票券交易的平台，希望促進二手票券利用率，並提供便宜票券和各種旅遊資訊。</h4>
+      <h2>二手票券交易</h2>
+        <div class="button-group">
+          <div class="col-sm-4">
+            <img src="/images/airline.jpg" alt="">
+            <class="<%= active_class(tickets_path) %>"><%= link_to '廉航機票', tickets_path %>
+          </div>
+          <div class="col-sm-4">
+            <img src="/images/voucher1.png" alt="">
+            <class="<%= active_class(coupons_path) %>"><%= link_to '機票兌換券', coupons_path %>
+          </div>
+          <div class="col-sm-3">
+            <img src="/images/hsr.png" alt="">
+            <class="<%= active_class(railtickets_path) %>"><%= link_to '高鐵票', railtickets_path %>
+          </div>
+          <div class="col-sm-4">
+            <img src="/images/metro9.png" alt="">
+            <class="<%= active_class(metros_path) %>"><%= link_to '多日周遊券', metros_path %>
+          </div>
+          <div class="col-sm-4">
+            <img src="/images/park.png" alt="">
+            <class="<%= active_class(parktickets_path) %>"><%= link_to '遊園券', parktickets_path %>
+          </div>
+          <div class="col-sm-3">
+            <img src="/images/board10.jpg" alt="">
+            <class="<%= active_class(comboards_path) %>"><%= link_to '需求佈告欄', comboards_path %>
+          </div>
+       </div>
+     </div>
+   </div>
+ </div>
+
+
+
+
+
 
 <%= link_to '各國簽證', visa_articles_path %>
 <%= link_to '廉航台灣直飛', direct_flight_articles_path %>
 <%= link_to '各家廉航限重', lagage_articles_path %>
+<%= link_to '那些東西不能帶上飛機', carry_articles_path %>
+<%= link_to '廉航二手票券計價說明', price_articles_path %>
+<%= link_to '各家廉航報到規定', checkin_articles_path %>
+<%= render partial: "shared/footer"%>
