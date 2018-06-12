@@ -364,86 +364,6 @@ transition: background 0.3s ease-out; -moz-transition: background 0.3s ease-out;
 .airport-shuttle {background:url('../images/airport-shuttle.png') no-repeat center center;}
 .post .post-story .post-story-body{margin-bottom: 20px;}
 
-/*增加CSS部分*/
-.post .post-story .post-story-body h4 {
-  font-size: 28px;
-}
-
-.post .post-story .post-story-body p {
-  font-size: 20px;
-}
-
-.post .post-story .post-story-body #visa {
-  font-size: 20px;
-  border-collapse: collapse;
-}
-
-#visa td, #visa th {
-    border: 1px solid #ddd;
-    padding: 8px;
-}
-
-#visa tr:nth-child(even){background-color: #f2f2f2;}
-
-#visa tr:hover {background-color: #ddd;}
-
-#visa th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: grey;
-    color: white;
-}
-
-.post .post-story .post-story-body img {
-  width:55%;
-  height: auto;
-}
-
-.post .post-story .post-story-body hr {
-  border-top: 2px dashed #8c8b8b;
-}
-
-.post .post-story .post-story-body-airline .airline {
-  height: 350px;
-}
-
-
-.post .post-story .post-story-body-airline h3 {
-  font-size: 30px;
-  padding-bottom: 5px;
-}
-
-.post .post-story .post-story-body-airline h4 {
-  font-size: 28px;
-}
-
-.post .post-story .post-story-body-airline p {
-  font-size: 20px;
-}
-
-.post .post-story .post-story-body-airline img {
-  width:70%;
-  height: auto;
-}
-
-.post .post-story .post-story-body-airline hr {
-  border-top: 1px dashed #8c8b8b;
-}
-
-.post .post-story .post-story-body-lagage p {
-  font-size: 20px;
-}
-
-.post .post-story .post-story-body-lagage h3 {
-  font-size: 25px;
-  padding-bottom: 5px;
-}
-
-.post .post-story .post-story-body-lagage .lagage {
-  border-radius: 20px;
-  margin-top: 50px;
-}
 
 
 .post .post-story .post-story-link{}
@@ -1331,42 +1251,109 @@ transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; -webkit-trans
 
   .comment-block.left1{margin-left: 20px;}
 
-
-
-
-
-
-
-
-
-
-
 }
 @media (min-width: 481px) and (max-width: 767px) {
-
-
 
 }
 /* Landscape phones and down */
 @media (max-width: 480px) {
-
   .popular .popular_inner .txt3 .nums{display: none;}
-
-
-
-
-
-
-
-
-
 }
 @media (min-width: 2559px) {
-
     .video-background-wrapper {
         max-height: 995px;
     }
 }
+
+/*增加CSS部分*/
+.post .post-story .post-story-body h4 {
+  font-size: 28px;
+}
+
+.post .post-story .post-story-body p {
+  font-size: 20px;
+}
+
+.post .post-story .post-story-body #visa {
+  font-size: 20px;
+  border-collapse: collapse;
+}
+
+#visa td, #visa th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#visa tr:nth-child(even){background-color: #f2f2f2;}
+
+#visa tr:hover {background-color: #ddd;}
+
+#visa th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: grey;
+    color: white;
+}
+
+.post .post-story .post-story-body img {
+  width:55%;
+  height: auto;
+}
+
+.post .post-story .post-story-body hr {
+  border-top: 2px dashed #8c8b8b;
+}
+
+.post .post-story .post-story-body-airline .airline {
+  height: 350px;
+}
+
+
+.post .post-story .post-story-body-airline h3 {
+  font-size: 30px;
+  padding-bottom: 5px;
+}
+
+.post .post-story .post-story-body-airline h4 {
+  font-size: 28px;
+}
+
+.post .post-story .post-story-body-airline p {
+  font-size: 20px;
+}
+
+.post .post-story .post-story-body-airline img {
+  width:70%;
+  height: auto;
+}
+
+.post .post-story .post-story-body-airline hr {
+  border-top: 1px dashed #8c8b8b;
+}
+
+.post .post-story .post-story-body-lagage p {
+  font-size: 20px;
+}
+
+.post .post-story .post-story-body-lagage h3 {
+  font-size: 25px;
+  padding-bottom: 5px;
+}
+
+.post .post-story .post-story-body-lagage .lagage {
+  border-radius: 20px;
+  margin-top: 50px;
+}
+
+#popular .article li {
+  margin-bottom: 15px;
+}
+
+.video-background-wrapper {
+  max-height: 995px;
+}
+
 
 
 .button-group .col-sm-4, .button-group .col-sm-3 {
@@ -1396,4 +1383,18 @@ transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; -webkit-trans
   -ms-transition: all .4s linear;
   -o-transition: all .4s linear;
   transition: all .4s linear;
+}
+
+.popular .popular_inner {
+  border-radius: 10px;
+  border:1px solid #e5e5e5;
+}
+.popular .popular_inner figure .over{opacity: 1;filter:alpha(opacity=100);}
+.popular .popular_inner figure .over .information{ font-weight: 700; font-size: 21px;}
+.popular .popular_inner figure .over .information span{color: #fef697; font-size: 16px; padding-left: 5px; font-style: italic; font-weight: 400;}
+.popular .popular_inner .caption {
+  text-align: center;
+}
+.popular .popular_inner .caption a {
+  text-decoration: none;
 }
