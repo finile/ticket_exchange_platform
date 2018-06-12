@@ -1,10 +1,10 @@
 class SpgatewayController < ActionController::Base
 
-  def return
+  # def return
     # hash_key = "TYiU1DmujbmURuMe0Htc6sep2Er4xD0L"
     # hash_iv = "JhTNuxOHK7jDcZQQ"
-    trade_info = spagatway_params['TradeInfo']
-    trade_sha = spagatway_params['TradeSha']
+    # trade_info = spagatway_params['TradeInfo']
+    # trade_sha = spagatway_params['TradeSha']
 
     # str = "HashKey=#{hash_key}&#{trade_info}&HashIV=#{hash_iv}"
     # check_sha = Digest::SHA256.hexdigest(str).upcase
@@ -26,31 +26,31 @@ class SpgatewayController < ActionController::Base
     #   data = JSON.parse(plain)
     # end
 
-    data = Spgateway.decrypt(trade_info, trade_sha)
+  #   data = Spgateway.decrypt(trade_info, trade_sha)
 
     
-    if data
-      payment = Payment.find(data['Result']['MerchantOrderNo'].to_i)
-      if params['Status'] == 'SUCCESS'
-        payment.paid_at = Time.now
-      end
-      payment.params = data
-    end
+  #   if data
+  #     payment = Payment.find(data['Result']['MerchantOrderNo'].to_i)
+  #     if params['Status'] == 'SUCCESS'
+  #       payment.paid_at = Time.now
+  #     end
+  #     payment.params = data
+  #   end
 
-    if payment&.save
-      order = payment.order
-      order.update(payment_status: "paid")
-      # send paid email
-      flash[:notice] = "#{payment.sn} paid"
-    else
-      flash[:alert] = "Something wrong!!!"
-    end
-    redirect_to orders_path
-  end
+  #   if payment&.save
+  #     order = payment.order
+  #     order.update(payment_status: "paid")
+  #     # send paid email
+  #     flash[:notice] = "#{payment.sn} paid"
+  #   else
+  #     flash[:alert] = "Something wrong!!!"
+  #   end
+  #   redirect_to orders_path
+  # end
 
-  private
+  # private
 
-  def spagatway_params
-    params.slice("Status", "MerchantID", "Version", "TradeInfo", "TradeSha")
-  end
+  # def spagatway_params
+  #   params.slice("Status", "MerchantID", "Version", "TradeInfo", "TradeSha")
+  # end
 end
