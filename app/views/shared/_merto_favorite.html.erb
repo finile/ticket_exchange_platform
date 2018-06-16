@@ -1,0 +1,5 @@
+<% if metro.is_favorited?(current_user) %>
+  <%= link_to '不收藏', unfavorite_metro_path(metro), method: :post, class: "btn btn-info" %>
+<% else %>
+  <%= link_to '收藏', favorite_metro_path(metro), method: :post, class: "btn btn-primary" %>
+<% end %>
