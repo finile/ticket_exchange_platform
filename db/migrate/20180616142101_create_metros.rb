@@ -1,10 +1,14 @@
 class CreateMetros < ActiveRecord::Migration[5.1]
   def change
     create_table :metros do |t|
-      add_column :searches, :ticket_type, :string
-      add_column :searches, :days, :string
-      add_column :searches, :area, :string
-      add_column :searches, :expire_date, :date
+      t.string :ticket_type
+      t.string :days
+      t.date :expire_date
+      t.string :area
+      t.integer :price
+      t.string :image
+      t.text :others
+      t.integer :favorites_count, default: 0
       t.timestamps
     end
   end
