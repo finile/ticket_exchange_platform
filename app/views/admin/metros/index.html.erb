@@ -1,0 +1,41 @@
+<%= render partial: "shared/admin_nav_bar" %>
+
+<div class="container">
+  <h1>周遊券清單</h1>
+  <div class="row">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Multiday Pass ID</th>
+          <th>Area</th>
+          <th>Ticket Type</th>
+          <th>expire date</th>
+          <th>Days</th>
+          <th>Price</th>
+          <th>Others</th>
+          <th>Show</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @metros.each do |metro| %>
+        <tr>
+          <th scope="row"><%= metro.id %></th>
+          <td><%= metro.area %></td>
+          <td><%= metro.ticket_type %></td>
+          <td><%= metro.expire_date %></td>
+          <td><%= metro.days %></td>
+          <td><%= metro.price %></td>
+          <td><%= metro.others %></td>
+          <td><%= link_to 'Show', admin_metro_path(metro) %></td>
+          <td><%= link_to 'Edit', edit_admin_cmetro_path(metro) %></td>
+          <td> <%= link_to 'Delete', admin_metro_path(metro), method: :delete, data: {confirm:"Are you sure?"} %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @metros %>
+  </div>
+</div>
+<%= render partial: "shared/footer"%>
