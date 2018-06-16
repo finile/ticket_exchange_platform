@@ -1,0 +1,164 @@
+<%= render partial: "shared/navbar" %>
+
+<div id="slider_wrapper">
+  <div class="container">
+    <div id="slider_inner">
+      <div class="">
+        <div id="slider">
+          <div class="">
+            <div class="carousel-box">
+              <div class="inner">
+                <div class="carousel main">
+                  <ul>
+                    <li>
+                      <div class="slider">
+                        <div class="slider_inner" id="metro">
+
+                          <div class="txt2"><span>讓.齁.哩 多日捷運、鐵路、公車周遊券</span></div>
+                          <div class="txt3"><span>擁有多種優惠的二手周遊券，請即刻搜尋</span></div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slider_pagination"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="front_tabs">
+  <div class="container">
+    <div class="tabs_wrapper tabs1_wrapper">
+      <div class="tabs tabs1">
+        <div class="tabs_content tabs1_content">
+          <div id="tabs-1" class="form1">
+            <%= form_for [@metro, @search] do |f| %>
+              <div class="row">
+                <div class="col-sm-4 col-md-2">
+                  <div class="select1_wrapper">
+                    <label><%= f.label :area, "使用區域" %></label>
+                    <div><%= f.text_field :area, class: "select1_inner" %></div>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                  <div class="input1_wrapper">
+                    <label><%= f.label :ticket_type, "周遊券種類" %></label>
+                    <div><%= f.text_field :ticket_type, class: "select1_inner" %></div>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                  <div class="input1_wrapper">
+                    <label><%= f.label :date_from, "出發日期" %></label>
+                    <div class="input1_inner">
+                      <%= f.date_field :date_from, class: "input datepicker" %> -
+                      <%= f.date_field :date_to, class: "input datepicker" %>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                  <div class="input1_wrapper">
+                    <label><%= f.label :min_price, "價格區間 NTD$" %></label>
+                    <div class="input1_inner">
+                      <%= f.text_field :min_price, class: "select1_inner" %> - <%= f.text_field :max_price, class: "select1_inner" %>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                  <div class="button1_wrapper">
+                    <%= f.submit "立即搜尋", class: "btn btn-info btn-form1-submit" %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="parallax1" class="parallax">
+  <div class="bg1 parallax-bg"></div>
+  <div class="overlay"></div>
+  <div class="parallax-content">
+    <div class="container">
+    <div class="row">
+      <div class="col-sm-10 animated">
+        <div class="txt1">即刻輸入您手中的周遊券</div>
+        <div class="txt2">讓您的手中用不到的周遊券更有價值</div>
+      </div>
+      <div class="col-sm-2">
+        <%= link_to '輸入周遊券', new_metro_path, class: "btn-default btn0" %>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<div id="popular_cruises1">
+  <div class="container">
+    <h2 class="animated">熱門周遊券</h2>
+    <div class="title1 animated">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod <br>tincidunt ut laoreet dolore magna aliquam erat volutpat.
+    </div>
+    <br>
+    <div id="popular_wrapper" class="animated" data-animation="fadeIn" data-animation-delay="300">
+      <div id="popular_inner">
+        <div class="">
+          <div id="popular">
+            <div class="">
+              <div class="carousel-box">
+                <div class="inner">
+                  <div class="carousel main">
+                    <ul>
+                      <% @metros.each do |metro| %>
+                      <div class="col-sm-6 col-md-4">
+                        <li>
+                        <div class="popular ">
+                          <div class="popular_inner">
+                            <figure>
+                              <img src="http://placehold.it/370x232" alt="" class="img-responsive">
+                              <!-- <img src=<%= metro.image.url %> alt="metro-image" class="img-responsive"/> -->
+                                <div class="over">
+                                  <div class="v1"><%= metro.area %><span>被收藏次數: <%= metro.favorites_count %></span></div>
+                                </div>
+                            </figure>
+                            <div class="caption">
+                              <div class="txt1"><span><%= metro.area %></span></div>
+                              <div class="txt1"><%= metro.ticket_type %></div>
+                              <div class="txt2">Expire Date: <%= metro.expire_date %></div>
+                              <div class="txt2">周遊券天數: </div>
+                              <div class="txt2"> <%= metro.days %></div>
+                              <div class="txt3 clearfix">
+                                <div class="left_side">
+                                  <div class="nums">收藏次數: <%= metro.favorites_count %></div>
+                                </div>
+                                <div class="right_side">
+                                  <%= render partial: "shared/metro_favorite", locals: {metro: metro} %>
+                                </div>
+                               <div class="right_side"><%= link_to '詳情', metro_path(metro), class: "btn btn-info" %></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                     </div>
+                      <% end %>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="popular_pagination"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render partial: "shared/footer"%>

@@ -21,8 +21,8 @@ Rails.application.routes.draw do
       member do
         post :favorite
         post :unfavorite
-        post :add_to_cart
-        post :remove_from_cart
+        # post :add_to_cart
+        # post :remove_from_cart
       end
   end
 
@@ -34,7 +34,16 @@ Rails.application.routes.draw do
       post :unfavorite
       # post :add_to_rail_cart
       # post :remove_from_rail_cart
-   end
+    end
+  end
+
+  resources :metros, only: [:index, :show, :create, :edit, :new, :update, :destroy] do
+   resources :comments, only: [:create, :destroy]
+    member do
+      post :favorite
+      post :unfavorite
+      
+    end
   end
 
   resources :parktickets, only: [:index, :show, :create, :edit, :new, :update, :destroy] do
@@ -42,7 +51,7 @@ Rails.application.routes.draw do
     member do
       post :favorite
       post :unfavorite
-   end
+    end
   end
 
   resources :metros, only: [:index, :show, :create, :edit, :new, :update, :destroy] do
@@ -66,6 +75,7 @@ Rails.application.routes.draw do
       get :comments
       get :coupons
       get :comboards
+      get :metros
       get :parktickets
     end
   end
