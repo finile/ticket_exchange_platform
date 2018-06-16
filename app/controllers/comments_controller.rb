@@ -9,6 +9,8 @@ class CommentsController < ApplicationController
         @commentable = Railticket.find(params[:railticket_id])
     elsif params[:comboard_id]
         @commentable = Comboard.find(params[:comboard_id])
+    elsif params[:metro_id]
+        @commentable = Metro.find(params[:metro_id])
     elsif params[:parkticket_id]
         @commentable = Parkticket.find(params[:parkticket_id])
     end
@@ -16,11 +18,8 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.build(comment_params)
     @comment.user = current_user
     @comment.save
-    # UserMailer.notify_buyer(@comment).deliver_now!
-    # if @comment.save
-    #   UserMailer.notify_buyer(@comment).deliver_now!
-    # end
-    redirect_to @commentable, notice: "your comment was sucessfully posted and notice has been sent"
+
+    redirect_to @commentable, notice: "your comment was sucessfully posted"
 
   end
 
