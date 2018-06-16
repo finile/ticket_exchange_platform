@@ -32,18 +32,18 @@
 
       <!-- <div class = "col-md-4 pull-right">
         <h3>Filter</h3>
-        <%= search_form_for @ransack, url: admin_users_path do |f| %>
+        <%#= search_form_for @ransack, url: admin_users_path do |f| %>
 
      <div>
-      <%= f.label :name_cont, "使用者名稱" %>
-      <%= f.text_field :name_cont %>
+      <%#= f.label :name_cont, "使用者名稱" %>
+      <%#= f.text_field :name_cont %>
      </div>
 
 
      <div>
-      <%= f.submit "篩選", class: "btn btn-info" %>
+      <%#= f.submit "篩選", class: "btn btn-info" %>
     </div>
-        <% end %>
+        <%# end %>
       </div> -->
       <%= paginate @users %>
 </div>
