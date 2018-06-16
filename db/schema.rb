@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180616142101) do
+ActiveRecord::Schema.define(version: 20180616151448) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -227,6 +227,10 @@ ActiveRecord::Schema.define(version: 20180616142101) do
     t.string "destination"
     t.string "train_no"
     t.string "departure"
+    t.string "ticket_type"
+    t.string "days"
+    t.string "area"
+    t.date "expire_date"
   end
 
   create_table "tickets", force: :cascade do |t|
