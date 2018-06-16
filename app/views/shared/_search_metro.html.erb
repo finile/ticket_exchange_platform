@@ -1,0 +1,61 @@
+<%= render partial: "shared/navbar" %>
+
+<div id="popular_cruises1">
+  <div class="container">
+    <h2 class="animated">熱門周遊券搜尋結果</h2>
+    <div class="title1 animated">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod <br>tincidunt ut laoreet dolore magna aliquam erat volutpat.
+    </div>
+    <br><br>
+
+    <div id="popular_wrapper" class="animated" data-animation="fadeIn" data-animation-delay="300">
+      <div id="popular_inner">
+        <div class="">
+          <div id="popular">
+            <div class="">
+              <div class="carousel-box">
+                <div class="inner">
+                  <div class="carousel main">
+                    <ul>
+                      <% @search.metros.each do |metro| %>
+                      <div class="col-sm-6 col-md-4">
+                        <li>
+                          <div class="popular ">
+                            <div class="popular_inner">
+                              <figure>
+                                <img src="http://placehold.it/370x232" alt="" class="img-responsive">
+                                  <div class="over">
+                                    <div class="v1"><%= metro.area %><span>17 Deal Offers</span></div>
+                                    <div class="v2">Lorem ipsum dolor sit amet,concateus.</div>
+                                  </div>
+                              </figure>
+                              <div class="caption">
+                                <div class="txt1"><span><%= metro.ticket_type %></span></div>
+                                <div class="txt1"><%= metro.days %></div>
+                                <div class="txt2">Expire Date: <%= metro.expire_date %></div>
+                                <!-- <div class="txt2">使用期間: </div>
+                                <div class="txt2"> <%#= metro.date_from %></div> -->
+                                <div class="txt3 clearfix">
+                                  <div class="left_side">
+                                    <div class="nums"> 18 Reviews</div>
+                                  </div>
+                                  <div class="right_side">
+                                    <%= render partial: "shared/metro_favorite", locals: {metro: metro} %>
+                                  </div>
+                                  <div class="right_side"><%= link_to '詳情', metro_path(metro), class: "btn btn-info" %></div>                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </div>
+                      <% end %>                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="popular_pagination"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
