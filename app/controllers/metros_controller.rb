@@ -52,7 +52,7 @@ class MetrosController < ApplicationController
   end
 
   def unfavorite
-    favorites = Favorite.where(railticket: @railticket, user: current_user)
+    favorites = Favorite.where(metro: @metro, user: current_user)
     favorites.destroy_all
     redirect_back(fallback_location: root_path)
   end
@@ -61,12 +61,12 @@ class MetrosController < ApplicationController
 
 private
 
-  def set_railticket
+  def set_metro
     @metro = Metro.find(params[:id])
   end
 
-  def railticket_params
-    params.require(:railticket).permit(:ticket_type, :days, :expire_date, :area, :price, :image, :others )
+  def metro_params
+    params.require(:metro).permit(:ticket_type, :days, :expire_date, :area, :price, :image, :others )
   end
 
 end
