@@ -5,8 +5,10 @@ class UsersController < ApplicationController
     @posted_tickets = @user.tickets
     @posted_coupons = @user.coupons
     @posted_railtickets = @user.railtickets
+    @posted_parktickets = @user.parktickets
     @favorited_tickets = @user.favorited_tickets
     @favorited_railtickets = @user.favorited_railtickets
+    @favorited_parktickets = @user.favorited_parktickets
     @favorited_coupons = @user.favorited_coupons
   end
 

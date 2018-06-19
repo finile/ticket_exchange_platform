@@ -57,6 +57,29 @@
               </div>
             <% end %>
           <% end %>
+          <% if @user.parktickets.count != 0 %>
+            <a name="posted_park_ticket"></a>
+            <div class="num-comments">已張貼的遊園卷</div>
+            <% @posted_parktickets.each do |parkticket| %>
+              <div class="comment-block clearfix">
+                  <figure>
+                      <img src="http://placehold.it/70x70" alt="" class="img-responsive">
+                  </figure>
+                  <div class="caption">
+                      <div class="top clearfix">
+                        <div class="txt1">遊樂園:<a href="#"> <%= parkticket.park_name %></a></div>
+                        <span>|</span>
+                        <div class="txt2">遊園卷到期日: <%= parkticket.park_expiry_date %></div>
+                        <span>|</span>
+                        <div class="txt3"><%= link_to '詳情', parkticket_path(parkticket) %></div>
+                      </div>
+                       <div class="txt">
+                        <%= link_to '刪除', parkticket_path(parkticket), method: :delete, class: "btn btn-info", data: {confirm:"Are you sure?"} %>
+                      </div>
+                  </div>
+              </div>
+            <% end %>
+          <% end %>
           <% if @user.railtickets.count != 0 %>
             <a name="posted_rail_ticket"></a>
             <div class="num-comments">已張貼的高鐵票</div>
@@ -141,6 +164,30 @@
                 </div>
               <% end %>
             <% end %>
+            <% if @favorited_parktickets.count != 0 %>
+              <a name="favorited_parkticket"></a>
+              <div class="num-comments">收藏的遊園卷</div>
+              <% @favorited_parktickets.each do |parkticket| %>
+                <div class="comment-block clearfix">
+                  <figure>
+                      <img src="http://placehold.it/70x70" alt="" class="img-responsive">
+                  </figure>
+                  <div class="caption">
+                    <div class="top clearfix">
+                      <div class="txt1">遊樂園: <a href="#"> <%= parkticket.park_name %></a></div>
+                      <span>|</span>
+                      <div class="txt2">遊樂園到期日: <%= parkticket.park_expiry_date %></div>
+                      <span>|</span>
+                      <div class="txt3"><%= link_to 'Show', parkticket_path(parkticket) %></div>
+                    </div>
+                    <div class="txt">
+                      <%= render partial: "shared/parkticket_favorite", locals: {parkticket: parkticket} %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+
             <% if @favorited_railtickets.count != 0 %>
               <div class="num-comments">收藏的高鐵票</div>
               <a name="favorited_railticket"></a>
@@ -181,10 +228,12 @@
             <br>
             <li><a>已張貼的機票<span><%= @user.tickets.count %></span></a></li>
             <li><a href="#posted_coupon">已張貼的優惠卷<span><%= @user.coupons.count %></span></a></li>
+            <li><a href="#posted_park_ticket">已張貼的遊園卷<span><%= @user.parktickets.count %></span></a></li>
             <li><a href="#posted_rail_ticket">已張貼的高鐵票<span><%= @user.railtickets.count %></span></a></li>
             <% if @user == current_user %> 
               <li><a href="#favorited_ticket">收藏的機票<span><%= @favorited_tickets.count %></span></a></li>
               <li><a href="#favorited_coupon">收藏的優惠卷<span><%= @favorited_coupons.count %></span></a></li>
+              <li><a href="#favorited_parkticket">收藏的遊園卷<span><%= @favorited_parktickets.count %></span></a></li>
               <li><a href="#favorited_railticket">收藏的高鐵票<span><%= @favorited_railtickets.count %></span></a></li>
             <% end %>
           </ul>

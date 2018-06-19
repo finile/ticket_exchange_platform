@@ -1,0 +1,60 @@
+<%= render partial: "shared/navbar" %>
+
+<div id="popular_cruises1">
+  <div class="container">
+    <h2 class="animated">遊園卷搜尋結果</h2>
+    <div class="title1 animated">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod <br>tincidunt ut laoreet dolore magna aliquam erat volutpat.
+    </div>
+    <br><br>
+
+    <div id="popular_wrapper" class="animated" data-animation="fadeIn" data-animation-delay="300">
+      <div id="popular_inner">
+        <div class="">
+          <div id="popular">
+            <div class="">
+              <div class="carousel-box">
+                <div class="inner">
+                  <div class="carousel main">
+                    <ul>
+                      <% @search.parktickets.each do |parkticket| %>
+                      <div class="col-sm-6 col-md-4">
+                        <li>
+                          <div class="popular ">
+                            <div class="popular_inner">
+                              <figure>
+                                <img src="http://placehold.it/370x232" alt="" class="img-responsive">
+                                  <div class="over">
+                                    <div class="v1"><%= parkticket.park_name %><span>17 Deal Offers</span></div>
+                                    <div class="v2">Lorem ipsum dolor sit amet,concateus.</div>
+                                  </div>
+                              </figure>
+                              <div class="caption">
+                                <div class="txt1"><span><%= parkticket.park_name %></span></div>
+                                <div class="txt2">Expire Date: <%= parkticket.park_expiry_date.strftime("%Y/%m/%d") %></div>
+                                <div class="txt3 clearfix">
+                                  <div class="left_side">
+                                    <div class="nums">收藏次數: <%= parkticket.favorites_count %></div>
+                                  </div>
+                                  <div class="right_side">
+                                    <%= render partial: "shared/parkticket_favorite", locals: {parkticket: parkticket} %>
+                                  </div>
+                                  <div class="right_side"><%= link_to '詳情', parkticket_path(parkticket), class: "btn btn-info" %></div>                                
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </div>
+                      <% end %>                    
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="popular_pagination"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

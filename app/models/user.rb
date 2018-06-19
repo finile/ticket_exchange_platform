@@ -21,7 +21,7 @@ class User < ApplicationRecord
   has_many :favorited_tickets, through: :favorites, source: :ticket
   has_many :favorited_railtickets, through: :favorites, source: :railticket
   has_many :favorited_coupons, through: :favorites, source: :coupon
-  has_many :favortied_parkticket, through: :favorites, source: :parkticket
+  has_many :favorited_parktickets, through: :favorites, source: :parkticket
 
 
 

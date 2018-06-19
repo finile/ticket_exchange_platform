@@ -12,6 +12,10 @@ class Search < ApplicationRecord
     @railtickets ||= find_railtickets
   end
 
+  def parktickets
+    @parktickets ||= find_parktickets
+  end
+
   def metros
     @metros ||= find_metros
   end
@@ -51,6 +55,16 @@ private
     railtickets = railtickets .where("price >= ?", min_price) if min_price.present?
     railtickets = railtickets .where("price <= ?", max_price) if max_price.present?
     railtickets
+  end
+
+  def find_parktickets
+    parktickets = Parkticket
+    parktickets = parktickets.where("park_name like ?", "%#{park_name}%") if park_name.present?
+    parktickets = parktickets.where("park_expiry_date >= ?", date_from ) if date_from.present?
+    parktickets = parktickets.where("park_expiry_date <= ?", date_to ) if date_to.present?
+    parktickets = parktickets.where("price >= ?", min_price) if min_price.present?
+    parktickets = parktickets.where("price <= ?", max_price) if max_price.present?
+    parktickets
   end
 
   def find_metros

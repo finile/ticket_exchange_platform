@@ -18,7 +18,7 @@ class SearchesController < ApplicationController
   private
 
   def search_params
-    params.require(:search).permit(:airline, :flight_no, :date_from, :date_to, :min_price, :max_price, :destination, :train_no, :departure, :days, :ticket_type, :area, :expire_date)
+    params.require(:search).permit(:airline, :flight_no, :date_from, :date_to, :min_price, :max_price, :destination, :train_no, :departure, :days, :ticket_type, :area, :expire_date, :park_expiry_date, :park_name)
   end
 
 end

@@ -5,7 +5,7 @@
       <div class="col-sm-9">
         <div class="blog_content">
           <div class="post post-full">
-            <h3 class="hch">遊樂園名稱 <%= @parkticket.park_name %></h3>
+            <h3 class="hch"><%= @parkticket.park_name %></h3>
             <div class="clearfix"></div>
               <p class="address">由<a> <%= link_to "#{@parkticket.user.name}", user_path(@parkticket.user) %></a>提供</p>
               <div class="post-header">
@@ -34,9 +34,8 @@
               <div class="post-story">
                 <hr>
                 <div class="post-story-body clearfix">
-                <h3>遊園卷到期日: <%= @parkticket.park_expiry_date %><br></h3>
+                <h3>遊園卷到期日: <%= @parkticket.park_expiry_date.strftime("%Y/%m/%d") %><br></h3>
                 <hr>
-                <h4>細節:</h4>
                 <p>其他資訊: <%= @parkticket.others %></p>
                 <div class="right_side">
                   <%= render partial: "shared/parkticket_favorite", locals: {parkticket: @parkticket} %> |
