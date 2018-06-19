@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-
+before_action :authenticate_user!
   def create
     if params[:ticket_id]
         @commentable = Ticket.find(params[:ticket_id])

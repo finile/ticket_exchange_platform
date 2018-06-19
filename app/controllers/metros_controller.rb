@@ -1,4 +1,5 @@
 class MetrosController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_metro, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite]
 
   def index
