@@ -2,15 +2,17 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user, only: [:show, :edit, :update]
 
-  def show 
+  def show
     @posted_tickets = @user.tickets
     @posted_coupons = @user.coupons
     @posted_railtickets = @user.railtickets
+    @posted_metros = @user.metros
     @posted_parktickets = @user.parktickets
     @favorited_tickets = @user.favorited_tickets
-    @favorited_railtickets = @user.favorited_railtickets
-    @favorited_parktickets = @user.favorited_parktickets
     @favorited_coupons = @user.favorited_coupons
+    @favorited_railtickets = @user.favorited_railtickets
+    @favorited_metros = @user.favorited_metros
+    @favorited_parktickets = @user.favorited_parktickets
   end
 
   def edit
@@ -33,7 +35,7 @@ class UsersController < ApplicationController
 
 
   def set_user
-    @user = User.find(params[:id]) 
+    @user = User.find(params[:id])
   end
 
   def user_params
