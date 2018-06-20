@@ -1,5 +1,5 @@
 namespace :dev do
-  task fake: [:fake_user, :fake_ticket, :fake_railticket, :fake_coupon, :fake_comboard, :fake_comment, :fake_favorite]
+  task fake: [:fake_user, :fake_ticket, :fake_railticket, :fake_coupon, :fake_metro, :fake_parkticket, :fake_comboard, :fake_comment, :fake_favorite]
 
   task fake_user: :environment do
     User.destroy_all
@@ -21,7 +21,7 @@ namespace :dev do
       name: "Admin",
       role: "admin"
       )
-    
+
     puts "admin has been created"
   end
 
@@ -62,7 +62,6 @@ namespace :dev do
     a_day_ago = now - 60*60*24
     arrive_time = a_day_ago + 60*3
 
-    #create 25 fake tickets information
     User.all.each do |user|
       rand(2).times do
         user.railtickets.create(
@@ -96,7 +95,7 @@ namespace :dev do
         user.coupons.create(
           airline: FFaker::Airline.name,
           destination: FFaker::Address.city,
-          departure: FFaker::Address.city, 
+          departure: FFaker::Address.city,
           coupon_expiry_date: FFaker::Time.date,
           flight_date_from: FFaker::Time.date,
           flight_date_to: FFaker::Time.date,
@@ -112,9 +111,33 @@ namespace :dev do
     puts "now you have #{Coupon.count} coupons data"
   end
 
+  task fake_metro: :environment do
+    Metro.destroy_all
+
+    file = File.open("#{Rails.root}/public/images/370x232.png")
+    User.all.each do |user|
+      rand(2).times do
+        user.metros.create(
+          area: FFaker::Address.country,
+          ticket_type: FFaker::Airline.name,
+          days: rand(3..10),
+          expiry_date: FFaker::Time.date,
+          # date_from: FFaker::Time.date,
+          # date_to: FFaker::Time.date,
+          image: file,
+          others:FFaker::Lorem::sentence(15),
+          # quantity: rand(1..5),
+          price: rand(1000..5000)
+        )
+      end
+    end
+    puts "have created fake metros by users"
+    puts "now you have #{Metro.count} coupons data"
+  end
+
   task fake_parkticket: :environment do
     Parkticket.destroy_all
-    #create 25 fake coupons information
+
     file = File.open("#{Rails.root}/public/images/370x232.png")
     User.all.each do |user|
       rand(3).times do

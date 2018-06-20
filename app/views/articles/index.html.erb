@@ -12,14 +12,14 @@
         </div>
       </header>
       <div class="navbar navbar_ navbar-default">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+        <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
-        </button>
-        <div class="navbar-collapse navbar-collapse_ collapse">
-          <ul class="nav navbar-nav sf-menu clearfix">
+        </button> -->
+        <!-- <div class="navbar-collapse navbar-collapse_ collapse"> -->
+          <!-- <ul class="nav navbar-nav sf-menu clearfix"> -->
             <!-- <li class="<%#= active_class(tickets_path) %>"><%= link_to '廉航機票', tickets_path %><em></em></li>
             <li class="<%#= active_class(coupons_path) %>"><%= link_to '機票兌換卷', coupons_path %><em></em></li>
             <li class="<%#= active_class(railtickets_path) %>"><%= link_to '高鐵票', railtickets_path %><em></em></li>
@@ -27,11 +27,11 @@
             <li class="<%#= active_class(parktickets_path) %>"><%= link_to '遊園卷', parktickets_path %><em></em></li>
             <li class="<%#= active_class(comboards_path) %>"><%= link_to '需求佈告欄', comboards_path %><em></em></li>
             <li class="<%#= active_class(comboards_path) %>"><%= link_to '懶人包首頁', articles_path %><em></em></li> -->
-            <% if current_user %>
+            <!-- <% if current_user %>
               <li class="<%= active_class(user_path(current_user)) %>"><%= link_to '個人資訊', user_path(current_user) %><em></em></li>
-            <% end %>
-          </ul>
-        </div>
+            <% end %> -->
+          <!-- </ul> -->
+        <!-- </div> -->
       </div>
     </div>
   </div>
@@ -71,42 +71,49 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-      <h4>New Hold Release 是一個提供旅遊相關二手票券交易的平台，希望促進二手票券利用率，並提供便宜票券和各種旅遊資訊。</h4>
+      <h3>New Hold Release 是一個提供旅遊相關二手票券交易的平台，希望促進二手票券利用率，並提供便宜票券和各種旅遊資訊。</h3>
       <h2>二手票券交易</h2>
         <div class="button-group">
+
           <div class="col-sm-4">
             <img src="/images/airline.jpg" alt="">
             <class="<%= active_class(tickets_path) %>"><%= link_to '廉航機票', tickets_path %>
-            <p>廉航機票交易，貼心提醒:請先查</p>
-            <p>  詢廉航機票轉讓計價說明。</p>
+            <p>貼心提醒:請先查詢廉航機</p>
+            <p>票轉讓計價說明。</p>
+
           </div>
           <div class="col-sm-4">
             <img src="/images/voucher1.png" alt="">
             <class="<%= active_class(coupons_path) %>"><%= link_to '機票兌換券', coupons_path %>
-            <p>廉航機票兌換券，可以直兌換或折</p>
-            <p>  抵廉航機票，方便好用不記名。</p>
+            <p>可以直兌換或折抵廉航機票，</p>
+            <p>方便好用不記名。</p>
+
           </div>
           <div class="col-sm-3">
             <img src="/images/hsr.png" alt="">
             <class="<%= active_class(railtickets_path) %>"><%= link_to '高鐵票', railtickets_path %>
-            <p>沒搶到早鳥票?來這看看~各種折扣高鐵票轉讓都可以在這裡找到和出售。</p>
+            <p>沒搶到早鳥票?各種折扣高</p>
+            <p>鐵票都可在這找到和出售。</p>
+
           </div>
           <div class="col-sm-4">
             <img src="/images/metro9.png" alt="">
             <class="<%= active_class(metros_path) %>"><%= link_to '多日周遊券', metros_path %>
-            <p>各種國內外鐵路、捷運、公車的</p>
-            <p>  多日券最佳流通處。</p>
+            <p>各種國內外鐵路、捷運、公</p>
+            <p>車的多日券最佳流通處。</p>
           </div>
           <div class="col-sm-4">
             <img src="/images/park.png" alt="">
             <class="<%= active_class(parktickets_path) %>"><%= link_to '遊園券', parktickets_path %>
-            <p>來不及使用的各國遊園票券可在這脫</p>
-            <p>  手，想要買遊園票券也不再貴桑桑。</p>
+            <p>來不及使用的遊園券可在這</p>
+            <p>脫手，想要買也不再貴桑桑。</p>
+            
           </div>
           <div class="col-sm-3">
             <img src="/images/board10.jpg" alt="">
             <class="<%= active_class(comboards_path) %>"><%= link_to '需求佈告欄', comboards_path %>
-            <p>找不到你需要的二手票券?直接貼出你的需求，找到有緣人。</p>
+            <p>找不到需要的二手票券?直</p>
+            <p>接貼出需求，找到有緣人。</p>
           </div>
        </div>
      </div>

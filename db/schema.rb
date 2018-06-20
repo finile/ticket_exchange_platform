@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180619160136) do
+ActiveRecord::Schema.define(version: 20180620174809) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 20180619160136) do
 
   create_table "metros", force: :cascade do |t|
     t.string "ticket_type"
-    t.string "days"
+    t.integer "days"
     t.date "expire_date"
     t.string "area"
     t.integer "price"
@@ -112,6 +112,8 @@ ActiveRecord::Schema.define(version: 20180619160136) do
     t.integer "favorites_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "quantity"
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -277,6 +279,7 @@ ActiveRecord::Schema.define(version: 20180619160136) do
     t.string "address"
     t.string "phone"
     t.integer "parktickets_count", default: 0
+    t.integer "metros_count", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
