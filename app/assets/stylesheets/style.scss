@@ -1354,14 +1354,12 @@ transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; -webkit-trans
   max-height: 995px;
 }
 
-
-
 .button-group .col-sm-4, .button-group .col-sm-3 {
   display: inline-block;
 }
 
 .button-group .col-sm-4, .button-group .col-sm-3 {
-  margin-right: 18px;
+  margin-right: 10px;
   font-size: 18px;
 }
 
@@ -1394,4 +1392,11 @@ transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; -webkit-trans
 
 .popular .caption .information {
   font-size: 19px;
+}
+
+.container .row .blog_content .posted {
+  border-radius: 15px;
+  box-shadow: 3px 3px 5px rgba(0,169,157,0.3);
+  padding: 0px 20px 10px 20px;
+  background: #e2e2e2;
 }
