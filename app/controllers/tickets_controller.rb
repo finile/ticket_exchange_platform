@@ -1,5 +1,5 @@
 class TicketsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_ticket, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite]
 
   def index
@@ -7,7 +7,7 @@ class TicketsController < ApplicationController
     # .where({flight_date: (Time.now.midnight - 150.day)..Time.now.midnight}).limit(10)
     # @tickets = Ticket.page(params[:page]).per(9)
     @tickets = Ticket.all.order(favorites_count: :desc).limit(6)
-    @search = Search.new 
+    @search = Search.new
   end
 
   def new

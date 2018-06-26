@@ -5,24 +5,25 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
   # after_create :subscribe_job
- 
+
   validates_presence_of :name
-  
+
   has_many :tickets, dependent: :destroy
   has_many :coupons, dependent: :destroy
   has_many :railtickets, dependent: :destroy
   has_many :parktickets, dependent: :destroy
+  has_many :metros, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :comboards, dependent: :destroy
-  has_many :orders
-  has_many :rail_orders
+  # has_many :orders
+  # has_many :rail_orders
 
   has_many :favorites, dependent: :destroy
   has_many :favorited_tickets, through: :favorites, source: :ticket
   has_many :favorited_railtickets, through: :favorites, source: :railticket
   has_many :favorited_coupons, through: :favorites, source: :coupon
   has_many :favorited_parktickets, through: :favorites, source: :parkticket
-
+  has_many :favorited_metros, through: :favorites, source: :metro
 
 
   # for FB log in

@@ -1,10 +1,10 @@
 class ParkticketsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_parkticket, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite]
 
   def index
     @parktickets = Parkticket.all.order(favorites_count: :desc).limit(6)
-    @search = Search.new 
+    @search = Search.new
   end
 
   def new
@@ -27,7 +27,7 @@ class ParkticketsController < ApplicationController
   end
 
   def edit
-    
+
   end
 
   def update

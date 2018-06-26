@@ -1,5 +1,5 @@
 class RailticketsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_railticket, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite, :add_to_rail_cart, :remove_from_rail_cart]
 
   def index
