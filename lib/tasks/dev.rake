@@ -121,7 +121,7 @@ namespace :dev do
           area: FFaker::Address.country,
           ticket_type: FFaker::Airline.name,
           days: rand(3..10),
-          expiry_date: FFaker::Time.date,
+          expire_date: FFaker::Time.date,
           # date_from: FFaker::Time.date,
           # date_to: FFaker::Time.date,
           image: file,
