@@ -1,7 +1,7 @@
 <%= render partial: "shared/navbar" %>
 <div id="content">
   <div class="container">
-    <div class="row">     
+    <div class="row">
       <div class="col-sm-9">
         <div class="blog_content">
           <h3>已張貼的票卷</h3>
@@ -23,7 +23,7 @@
                         </div>
                         <div class="txt">
                           <%= ticket.airline %> <br>
-                          航班號碼: <%= ticket.flight_no %> 
+                          航班號碼: <%= ticket.flight_no %>
                         </div>
                         <div class="txt">
                           <a href="#"><%= link_to '刪除', ticket_path(ticket), method: :delete, class: "btn btn-info", data: {confirm:"Are you sure?"} %></a>
@@ -50,7 +50,7 @@
                         </div>
                         <div class="txt">
                           使用期間: <br>
-                          <%= coupon.flight_date_from %> ~ <%= coupon.flight_date_to %> 
+                          <%= coupon.flight_date_from %> ~ <%= coupon.flight_date_to %>
                         </div>
                          <div class="txt">
                           <%= link_to '刪除', coupon_path(coupon), method: :delete, class: "btn btn-info", data: {confirm:"Are you sure?"} %>
@@ -155,7 +155,7 @@
                       </div>
                       <div class="txt">
                         <%= ticket.airline %> <br>
-                        航班號碼: <%= ticket.flight_no %> 
+                        航班號碼: <%= ticket.flight_no %>
                       </div>
                       <div class="txt">
                         <%= render partial: "shared/ticket_favorite", locals: {ticket: ticket} %>
@@ -183,7 +183,7 @@
                     <div class="txt">
                       使用期間: <br>
                       <%= coupon.flight_date_from %> ~ <br>
-                      <%= coupon.flight_date_to %> 
+                      <%= coupon.flight_date_to %>
                     </div>
                     <div class="txt">
                       <%= render partial: "shared/coupon_favorite", locals: {coupon: coupon} %>
@@ -273,19 +273,21 @@
         <div class="blog_sidebar">
           <h3><%= @user.name%></h3>
           <% if @user == current_user %>
-            <%= link_to '編輯個人資料', edit_user_path(current_user), class: "btn btn-info"%> 
+            <%= link_to '編輯個人資料', edit_user_path(current_user), class: "btn btn-info"%>
           <% end %>
           <ul class="ul4">
             <br>
-            <li><a>已張貼的機票<span><%= @user.tickets.count %></span></a></li>
+            <h3>已張貼</h3>
+            <li><a href="#posted_ticket">已張貼的機票<span><%= @user.tickets.count %></span></a></li>
             <li><a href="#posted_coupon">已張貼的優惠卷<span><%= @user.coupons.count %></span></a></li>
             <li><a href="#posted_metro_ticket">已張貼的周遊卷<span><%= @user.metros.count %></span></a></li>
             <li><a href="#posted_park_ticket">已張貼的遊園卷<span><%= @user.parktickets.count %></span></a></li>
             <li><a href="#posted_rail_ticket">已張貼的高鐵票<span><%= @user.railtickets.count %></span></a></li>
-            <% if @user == current_user %> 
+            <% if @user == current_user %>
+              <h3>已收藏</h3>
               <li><a href="#favorited_ticket">收藏的機票<span><%= @favorited_tickets.count %></span></a></li>
               <li><a href="#favorited_coupon">收藏的優惠卷<span><%= @favorited_coupons.count %></span></a></li>
-               <li><a href="#favorited_metro">收藏的周遊卷<span><%= @favorited_metros.count %></span></a></li>
+              <li><a href="#favorited_metro">收藏的周遊卷<span><%= @favorited_metros.count %></span></a></li>
               <li><a href="#favorited_parkticket">收藏的遊園卷<span><%= @favorited_parktickets.count %></span></a></li>
               <li><a href="#favorited_railticket">收藏的高鐵票<span><%= @favorited_railtickets.count %></span></a></li>
             <% end %>

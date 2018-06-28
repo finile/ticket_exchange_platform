@@ -67,7 +67,7 @@ private
   end
 
   def metro_params
-    params.require(:metro).permit(:ticket_type, :days, :expire_date, :area, :price, :image, :others )
+    params.require(:metro).permit(:ticket_type, :days, :expire_date, :area, :price, :image, :others, :quantity)
   end
 
 end

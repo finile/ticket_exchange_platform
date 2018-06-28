@@ -1360,10 +1360,7 @@ transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; -webkit-trans
   font-size: 20px;
 }
 
-.button-group .col-sm-4, .button-group .col-sm-3 {
-  margin-right: 10px;
-  font-size: 18px;
-}
+
 .col-sm-12 airline hr {
   border-top: 1px dashed #8c8b8b;
 }
@@ -1376,15 +1373,9 @@ transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; -webkit-trans
   text-transform: capitalize;
 }
 
-// .button-group a:hover {
-//   // background: #79E8E2;
-//   color: #79E8E2;
-//   -webkit-transition: all .4s linear;
-//   -moz-transition: all .4s linear;
-//   -ms-transition: all .4s linear;
-//   -o-transition: all .4s linear;
-//   transition: all .4s linear;
-// }
+.button-group a:hover {
+  color: #1cbbb4;
+}
 
 // .popular .popular_inner figure .over{opacity: 1;filter:alpha(opacity=100);}
 // .popular .popular_inner figure .over .information{ font-weight: 700; font-size: 21px;}
@@ -1396,6 +1387,8 @@ transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; -webkit-trans
 .popular .caption .information {
   font-size: 19px;
 }
+
+.popular .caption .information a:hover {color: #1cbbb4;}
 
 .container .row .blog_content .posted {
   border-radius: 15px;
