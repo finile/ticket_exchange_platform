@@ -13,3 +13,6 @@ password: 12345678
 
 Heroku link:
 https://new-hold-release.herokuapp.com/users/sign_in
+
+專案內容：
+NEW HOLD RELEASE 是一個提供旅遊相關二手票券交易的平台，希望促進二手票券利用率，並提供便宜票券和各種旅遊資訊。
