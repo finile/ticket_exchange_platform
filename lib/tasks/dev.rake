@@ -113,26 +113,25 @@ namespace :dev do
 
   task fake_metro: :environment do
     Metro.destroy_all
-
     file = File.open("#{Rails.root}/public/images/370x232.png")
     User.all.each do |user|
-      rand(2).times do
+      rand(3).times do
         user.metros.create(
           area: FFaker::Address.country,
-          ticket_type: FFaker::Airline.name,
+          ticket_type: FFaker::Lorem::sentence(1),
           days: rand(3..10),
           expire_date: FFaker::Time.date,
           # date_from: FFaker::Time.date,
           # date_to: FFaker::Time.date,
           image: file,
           others:FFaker::Lorem::sentence(15),
-          # quantity: rand(1..5),
+          quantity: rand(1..5),
           price: rand(1000..5000)
         )
       end
     end
     puts "have created fake metros by users"
-    puts "now you have #{Metro.count} coupons data"
+    puts "now you have #{Metro.count} metros data"
   end
 
   task fake_parkticket: :environment do
