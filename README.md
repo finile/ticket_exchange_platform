@@ -10,3 +10,6 @@ Please run 'rails dev:fake' to create all fake data, including user, ticket, cou
 admin:
 account: root@example.com
 password: 12345678
+
+Heroku link:
+https://new-hold-release.herokuapp.com/users/sign_in
